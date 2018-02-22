@@ -16,48 +16,38 @@
         <!--Login View Controller-->
         <scene sceneID="eTu-KC-ltc">
             <objects>
-                <viewController id="i4k-UV-IBx" customClass="LoginViewController" customModule="Favurs" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="i4k-UV-IBx" customClass="LoginViewController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8ZQ-21-8gr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGA-b2-cUt">
-                                <rect key="frame" x="115" y="673" width="140" height="43"/>
-                                <state key="normal" title="Forgot password"/>
-                                <connections>
-                                    <segue destination="CZd-L0-gAB" kind="show" id="cV9-f9-cLN">
-                                        <nil key="action"/>
-                                    </segue>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmn-pY-fvH">
-                                <rect key="frame" x="117" y="667" width="140" height="43"/>
-                                <state key="normal" title="Forgot password"/>
-                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueRectangle" translatesAutoresizingMaskIntoConstraints="NO" id="UdK-2Z-6FZ">
-                                <rect key="frame" x="18" y="171" width="335" height="52"/>
+                                <rect key="frame" x="18" y="197" width="335" height="52"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gOr-tW-M1G">
-                                <rect key="frame" x="29" y="189" width="312" height="17"/>
+                                <rect key="frame" x="29" y="215" width="312" height="17"/>
                                 <color key="textColor" red="0.0" green="0.4431372549" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueRectangle" translatesAutoresizingMaskIntoConstraints="NO" id="hq1-xr-WRh">
-                                <rect key="frame" x="18" y="231" width="335" height="52"/>
+                                <rect key="frame" x="18" y="257" width="335" height="52"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v1i-Vc-5XG">
-                                <rect key="frame" x="29" y="249" width="312" height="17"/>
+                                <rect key="frame" x="29" y="275" width="312" height="17"/>
                                 <color key="textColor" red="0.0" green="0.4431372549" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1el-XI-DUZ">
-                                <rect key="frame" x="117" y="603" width="133" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1el-XI-DUZ">
+                                <rect key="frame" x="117" y="557" width="133" height="30"/>
                                 <color key="backgroundColor" red="1" green="0.1858018226" blue="0.1703749413" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="Sign Up">
                                     <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="signUpButtonTapped:" destination="i4k-UV-IBx" eventType="touchUpInside" id="FtR-l8-6tG"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDJ-Vs-r3e">
                                 <rect key="frame" x="117" y="355" width="139" height="38"/>
@@ -68,25 +58,38 @@
                                 <state key="normal" title="Sign In">
                                     <color key="titleShadowColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </state>
+                                <connections>
+                                    <action selector="signinButtonTapped:" destination="i4k-UV-IBx" eventType="touchUpInside" id="k1X-4d-xFD"/>
+                                </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="XbN-BG-UKQ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XbN-BG-UKQ">
                                 <rect key="frame" x="58" y="57" width="254" height="77"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="77" id="eOf-uW-cgY"/>
                                 </constraints>
                             </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="error" translatesAutoresizingMaskIntoConstraints="NO" id="SY5-0u-n9q">
+                                <rect key="frame" x="311" y="155" width="30" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGA-b2-cUt">
+                                <rect key="frame" x="115" y="595" width="140" height="43"/>
+                                <state key="normal" title="Forgot password"/>
+                                <connections>
+                                    <segue destination="CZd-L0-gAB" kind="show" id="cV9-f9-cLN">
+                                        <nil key="action"/>
+                                    </segue>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="XbN-BG-UKQ" firstAttribute="top" secondItem="35x-MD-QZK" secondAttribute="top" constant="37" id="36x-g4-fmG"/>
                             <constraint firstItem="gOr-tW-M1G" firstAttribute="leading" secondItem="v1i-Vc-5XG" secondAttribute="leading" id="3Gn-6x-fah"/>
                             <constraint firstItem="XbN-BG-UKQ" firstAttribute="leading" secondItem="35x-MD-QZK" secondAttribute="leading" constant="58" id="68c-3D-lIw"/>
-                            <constraint firstItem="UdK-2Z-6FZ" firstAttribute="top" secondItem="XbN-BG-UKQ" secondAttribute="bottom" constant="37" id="8rH-gs-xDS"/>
+                            <constraint firstItem="UdK-2Z-6FZ" firstAttribute="top" secondItem="XbN-BG-UKQ" secondAttribute="bottom" constant="63" id="8rH-gs-xDS"/>
                             <constraint firstAttribute="bottom" secondItem="1el-XI-DUZ" secondAttribute="bottom" constant="34" id="9Fn-9y-w1D"/>
-                            <constraint firstItem="eDJ-Vs-r3e" firstAttribute="centerX" secondItem="rmn-pY-fvH" secondAttribute="centerX" id="AbH-Q5-qU7"/>
-                            <constraint firstItem="1el-XI-DUZ" firstAttribute="leading" secondItem="rmn-pY-fvH" secondAttribute="leading" id="Ait-NV-Jhb"/>
                             <constraint firstItem="v1i-Vc-5XG" firstAttribute="top" secondItem="UdK-2Z-6FZ" secondAttribute="bottom" constant="26" id="FkU-6g-ytu"/>
-                            <constraint firstItem="rmn-pY-fvH" firstAttribute="top" secondItem="1el-XI-DUZ" secondAttribute="bottom" constant="34" id="GHZ-7T-1IK"/>
                             <constraint firstItem="35x-MD-QZK" firstAttribute="trailing" secondItem="eDJ-Vs-r3e" secondAttribute="trailing" constant="119" id="GLh-5l-DUs"/>
                             <constraint firstItem="v1i-Vc-5XG" firstAttribute="centerY" secondItem="hq1-xr-WRh" secondAttribute="centerY" id="IGI-hH-CUT"/>
                             <constraint firstItem="35x-MD-QZK" firstAttribute="trailing" secondItem="1el-XI-DUZ" secondAttribute="trailing" constant="125" id="Na6-kc-v8e"/>
@@ -101,7 +104,7 @@
                             <constraint firstItem="gOr-tW-M1G" firstAttribute="trailing" secondItem="UdK-2Z-6FZ" secondAttribute="trailing" constant="-12" id="lU0-yG-PhD"/>
                             <constraint firstItem="hq1-xr-WRh" firstAttribute="top" secondItem="gOr-tW-M1G" secondAttribute="bottom" constant="25" id="nPH-ln-hbC"/>
                             <constraint firstItem="UdK-2Z-6FZ" firstAttribute="leading" secondItem="35x-MD-QZK" secondAttribute="leading" constant="18" id="nvn-x3-grL"/>
-                            <constraint firstItem="eDJ-Vs-r3e" firstAttribute="top" secondItem="hq1-xr-WRh" secondAttribute="bottom" constant="72" id="pQO-O1-F3M"/>
+                            <constraint firstItem="eDJ-Vs-r3e" firstAttribute="top" secondItem="hq1-xr-WRh" secondAttribute="bottom" constant="46" id="pQO-O1-F3M"/>
                             <constraint firstItem="35x-MD-QZK" firstAttribute="trailing" secondItem="UdK-2Z-6FZ" secondAttribute="trailing" constant="22" id="te5-nJ-5jK"/>
                             <constraint firstItem="XbN-BG-UKQ" firstAttribute="centerX" secondItem="gOr-tW-M1G" secondAttribute="centerX" id="w0j-Lt-l9q"/>
                             <constraint firstItem="v1i-Vc-5XG" firstAttribute="trailing" secondItem="hq1-xr-WRh" secondAttribute="trailing" constant="-12" id="yFJ-kL-awf"/>
@@ -110,6 +113,11 @@
                     </view>
                     <navigationItem key="navigationItem" id="xPU-Kc-BjF"/>
                     <connections>
+                        <outlet property="emailImageView" destination="UdK-2Z-6FZ" id="SsT-Jj-cxE"/>
+                        <outlet property="emailTextField" destination="gOr-tW-M1G" id="knh-se-UVd"/>
+                        <outlet property="errorImageView" destination="SY5-0u-n9q" id="V5K-6a-DGU"/>
+                        <outlet property="passwordImageView" destination="hq1-xr-WRh" id="wDI-6l-pgv"/>
+                        <outlet property="passwordTextfield" destination="v1i-Vc-5XG" id="0qO-7m-BZS"/>
                         <segue destination="J4k-Yr-FuW" kind="show" identifier="signUpIdentifier" id="8KC-oN-5iy">
                             <nil key="action"/>
                         </segue>
@@ -122,7 +130,7 @@
         <!--Register View Controller-->
         <scene sceneID="32c-x7-n9H">
             <objects>
-                <viewController id="J4k-Yr-FuW" customClass="RegisterViewController" customModule="Favurs" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="J4k-Yr-FuW" customClass="RegisterViewController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dCB-CM-Xb5"/>
                         <viewControllerLayoutGuide type="bottom" id="SRw-ZS-6G5"/>
@@ -172,24 +180,12 @@
                                 </state>
                                 <state key="highlighted" image="CreateAccountPressed"/>
                                 <connections>
-                                    <action selector="createAccountButtonPressed:" destination="J4k-Yr-FuW" eventType="touchUpInside" id="IuT-fo-WOe"/>
+                                    <action selector="createAccountTapped:" destination="J4k-Yr-FuW" eventType="touchUpInside" id="sCP-U1-U0G"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="3FF-K1-e0M">
-                                <rect key="frame" x="72" y="59" width="269" height="80"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="error" translatesAutoresizingMaskIntoConstraints="NO" id="Ue8-Eu-onn">
                                 <rect key="frame" x="303" y="253" width="30" height="34"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ProfilePic" translatesAutoresizingMaskIntoConstraints="NO" id="gAu-0j-cgl">
-                                <rect key="frame" x="136" y="163" width="141" height="94"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="dfV-5j-j7i" appends="YES" id="XMT-te-m8x"/>
-                                </connections>
                             </imageView>
                             <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add Photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RwX-Y6-080">
                                 <rect key="frame" x="136" y="266" width="141" height="21"/>
@@ -202,6 +198,14 @@
                                     <outletCollection property="gestureRecognizers" destination="8Za-4m-oRN" appends="YES" id="r0M-Y1-HyM"/>
                                 </connections>
                             </label>
+                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ProfilePic" translatesAutoresizingMaskIntoConstraints="NO" id="gAu-0j-cgl">
+                                <rect key="frame" x="136" y="149" width="141" height="94"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="dfV-5j-j7i" appends="YES" id="XMT-te-m8x"/>
+                                </connections>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="1sR-N7-tCZ"/>
@@ -209,29 +213,21 @@
                     <navigationItem key="navigationItem" id="qw1-KY-iks"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="emailImageView" destination="TQh-Aq-7k9" id="Y3Y-ex-tKt"/>
-                        <outlet property="emailTextField" destination="6kq-Ro-dNd" id="6es-GW-7Qa"/>
-                        <outlet property="errorCircleImageView" destination="Ue8-Eu-onn" id="V6r-HV-eDq"/>
-                        <outlet property="passwordImageView" destination="r8O-Jx-WO9" id="0lU-aX-RG9"/>
-                        <outlet property="passwordTextField" destination="hlq-Fe-F9z" id="mXI-uz-NgM"/>
-                        <outlet property="uploadPictureImageView" destination="gAu-0j-cgl" id="Z14-I1-8mX"/>
-                        <outlet property="userNameTextField" destination="T8Q-hg-ih5" id="fod-V9-nVs"/>
-                        <outlet property="usernameImageView" destination="eDz-Ln-VcI" id="3gd-3y-w66"/>
+                        <outlet property="emailImageView" destination="TQh-Aq-7k9" id="OgT-Au-WvM"/>
+                        <outlet property="emailTextField" destination="6kq-Ro-dNd" id="kae-5c-XVL"/>
+                        <outlet property="errorCircleImageView" destination="Ue8-Eu-onn" id="ikI-eC-TFs"/>
+                        <outlet property="passwordImageView" destination="r8O-Jx-WO9" id="So7-Y9-YKn"/>
+                        <outlet property="passwordTextField" destination="hlq-Fe-F9z" id="G8X-qI-NbE"/>
+                        <outlet property="uploadPictureImageView" destination="gAu-0j-cgl" id="SFq-lE-6SD"/>
+                        <outlet property="usernameImageView" destination="eDz-Ln-VcI" id="hbX-xy-l8a"/>
+                        <outlet property="usernameTextField" destination="T8Q-hg-ih5" id="t34-G5-21g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LO1-P2-8R6" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="dfV-5j-j7i">
-                    <connections>
-                        <action selector="uploadPhoto:" destination="J4k-Yr-FuW" id="Rb3-ak-UI3"/>
-                    </connections>
-                </tapGestureRecognizer>
-                <tapGestureRecognizer id="8Za-4m-oRN">
-                    <connections>
-                        <action selector="uploadPhoto:" destination="J4k-Yr-FuW" id="Bxb-kd-aK0"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="dfV-5j-j7i"/>
+                <tapGestureRecognizer id="8Za-4m-oRN"/>
             </objects>
-            <point key="canvasLocation" x="447.19999999999999" y="31.773399014778327"/>
+            <point key="canvasLocation" x="502" y="54"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vcI-kF-elU">
@@ -251,10 +247,10 @@
             </objects>
             <point key="canvasLocation" x="-1154" y="32"/>
         </scene>
-        <!--Forgot Password View Controller-->
+        <!--View Controller-->
         <scene sceneID="lgx-sn-hCb">
             <objects>
-                <viewController storyboardIdentifier="resetPassword" id="CZd-L0-gAB" customClass="ForgotPasswordViewController" customModule="Favurs" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="resetPassword" id="CZd-L0-gAB" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fgN-2H-FMv"/>
                         <viewControllerLayoutGuide type="bottom" id="ZUk-hP-Pme"/>
@@ -353,10 +349,10 @@
             </objects>
             <point key="canvasLocation" x="445.60000000000002" y="-693.10344827586209"/>
         </scene>
-        <!--Email Sent View Controller-->
+        <!--View Controller-->
         <scene sceneID="QXI-Fw-orI">
             <objects>
-                <viewController id="qwr-A4-OXU" customClass="EmailSentViewController" customModule="Favurs" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="qwr-A4-OXU" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ANc-Ii-6hU"/>
                         <viewControllerLayoutGuide type="bottom" id="1MJ-N9-qKt"/>
@@ -443,7 +439,6 @@
         <image name="CreateAccount" width="194" height="49"/>
         <image name="CreateAccountPressed" width="16" height="16"/>
         <image name="Email" width="28" height="20"/>
-        <image name="Logo" width="16" height="16"/>
         <image name="ProfilePic" width="25" height="23"/>
         <image name="ResetPasswordPressed" width="200" height="49"/>
         <image name="SoundsGood" width="225" height="49"/>
@@ -1212,7 +1207,7 @@ zrDWsNmw67DusPMAAAAAAAACAQAAAAAAAABBAAAAAAAAAAAAAAAAAACw9Q
         <image name="error" width="34" height="34"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="h8r-R5-0bK"/>
+        <segue reference="cV9-f9-cLN"/>
         <segue reference="Umy-nI-f0p"/>
     </inferredMetricsTieBreakers>
 </document>
