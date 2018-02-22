@@ -13,9 +13,13 @@
 		DA13D004203E0A7D0021EB7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA13D003203E0A7D0021EB7E /* Assets.xcassets */; };
 		DA13D007203E0A7D0021EB7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA13D005203E0A7D0021EB7E /* LaunchScreen.storyboard */; };
 		DA13D00F203E0ABD0021EB7E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA13D00E203E0ABD0021EB7E /* GoogleService-Info.plist */; };
+		DADC7B75203E17E100F87438 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DADC7B74203E17E100F87438 /* Login.storyboard */; };
+		DDA4E6EB6D878ECD74290C15 /* Pods_Brewiskey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6018CC304C6E50FF5E034F2A /* Pods_Brewiskey.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6018CC304C6E50FF5E034F2A /* Pods_Brewiskey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Brewiskey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9331F07D589DD426C72146BB /* Pods-Brewiskey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brewiskey.release.xcconfig"; path = "Pods/Target Support Files/Pods-Brewiskey/Pods-Brewiskey.release.xcconfig"; sourceTree = "<group>"; };
 		DA13CFF9203E0A7D0021EB7E /* Brewiskey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brewiskey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA13CFFC203E0A7D0021EB7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA13CFFE203E0A7D0021EB7E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -24,6 +28,8 @@
 		DA13D006203E0A7D0021EB7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA13D008203E0A7D0021EB7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA13D00E203E0ABD0021EB7E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DADC7B74203E17E100F87438 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
+		F894043FE0F9A2676D6EDB6C /* Pods-Brewiskey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brewiskey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Brewiskey/Pods-Brewiskey.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DDA4E6EB6D878ECD74290C15 /* Pods_Brewiskey.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C7CEA58751C949CCEC1B0E5 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F894043FE0F9A2676D6EDB6C /* Pods-Brewiskey.debug.xcconfig */,
+				9331F07D589DD426C72146BB /* Pods-Brewiskey.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		DA13CFF0203E0A7C0021EB7E = {
 			isa = PBXGroup;
 			children = (
 				DA13CFFB203E0A7D0021EB7E /* Brewiskey */,
 				DA13CFFA203E0A7D0021EB7E /* Products */,
+				8C7CEA58751C949CCEC1B0E5 /* Pods */,
+				FE9E7D2D697B8090B543F272 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -56,15 +74,56 @@
 		DA13CFFB203E0A7D0021EB7E /* Brewiskey */ = {
 			isa = PBXGroup;
 			children = (
+				DA13D003203E0A7D0021EB7E /* Assets.xcassets */,
+				DADC7B70203E175500F87438 /* Data */,
+				DADC7B71203E176B00F87438 /* View */,
+				DADC7B72203E178200F87438 /* Login */,
+				DADC7B73203E179600F87438 /* Main */,
 				DA13CFFC203E0A7D0021EB7E /* AppDelegate.swift */,
 				DA13CFFE203E0A7D0021EB7E /* ViewController.swift */,
-				DA13D000203E0A7D0021EB7E /* Main.storyboard */,
-				DA13D003203E0A7D0021EB7E /* Assets.xcassets */,
 				DA13D005203E0A7D0021EB7E /* LaunchScreen.storyboard */,
 				DA13D008203E0A7D0021EB7E /* Info.plist */,
 				DA13D00E203E0ABD0021EB7E /* GoogleService-Info.plist */,
 			);
 			path = Brewiskey;
+			sourceTree = "<group>";
+		};
+		DADC7B70203E175500F87438 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		DADC7B71203E176B00F87438 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				DADC7B74203E17E100F87438 /* Login.storyboard */,
+				DA13D000203E0A7D0021EB7E /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		DADC7B72203E178200F87438 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		DADC7B73203E179600F87438 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Main;
+			sourceTree = "<group>";
+		};
+		FE9E7D2D697B8090B543F272 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				6018CC304C6E50FF5E034F2A /* Pods_Brewiskey.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +133,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = DA13D00B203E0A7D0021EB7E /* Build configuration list for PBXNativeTarget "Brewiskey" */;
 			buildPhases = (
+				870062A3AF581A17ECD7A8EE /* [CP] Check Pods Manifest.lock */,
 				DA13CFF5203E0A7C0021EB7E /* Sources */,
 				DA13CFF6203E0A7C0021EB7E /* Frameworks */,
 				DA13CFF7203E0A7C0021EB7E /* Resources */,
+				399EB37D478276C5A687DDD8 /* [CP] Embed Pods Frameworks */,
+				37909F97A566BD94AB0FE84E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -129,11 +191,72 @@
 				DA13D007203E0A7D0021EB7E /* LaunchScreen.storyboard in Resources */,
 				DA13D00F203E0ABD0021EB7E /* GoogleService-Info.plist in Resources */,
 				DA13D004203E0A7D0021EB7E /* Assets.xcassets in Resources */,
+				DADC7B75203E17E100F87438 /* Login.storyboard in Resources */,
 				DA13D002203E0A7D0021EB7E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		37909F97A566BD94AB0FE84E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Brewiskey/Pods-Brewiskey-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		399EB37D478276C5A687DDD8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Brewiskey/Pods-Brewiskey-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Brewiskey/Pods-Brewiskey-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		870062A3AF581A17ECD7A8EE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Brewiskey-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		DA13CFF5203E0A7C0021EB7E /* Sources */ = {
@@ -276,6 +399,7 @@
 		};
 		DA13D00C203E0A7D0021EB7E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F894043FE0F9A2676D6EDB6C /* Pods-Brewiskey.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -291,6 +415,7 @@
 		};
 		DA13D00D203E0A7D0021EB7E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9331F07D589DD426C72146BB /* Pods-Brewiskey.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
