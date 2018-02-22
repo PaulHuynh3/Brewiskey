@@ -39,21 +39,25 @@ class LoginViewController: UIViewController {
         if let email = emailTextField.text, let password = passwordTextfield.text{
             Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
                 
+                if let user = user {
+                    //save nsuser to nsdefault or something
+                    let appDelegate = UIApplication.shared.delegate as? AppDelegate
+                    appDelegate?.transitionToMarketPlace()
+                    
+                } else {
+                    let alert = UIAlertController(title: "Login Error", message: "Username or password is incorrect", preferredStyle: .alert)
+                    
+                    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                    
+                    alert.addAction(okAction)
+                    
+                    self.present(alert, animated: true, completion: nil)
+                }
+                
             })
             
-        } else {
-            let alert = UIAlertController(title: "Login Error", message: "Username or password is incorrect", preferredStyle: .alert)
-            
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            
-            alert.addAction(okAction)
-            
-            self.present(alert, animated: true, completion: nil)
-            
         }
-        
-        
-        
+
     }
     
     

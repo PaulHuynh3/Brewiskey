@@ -42,7 +42,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func transitionToMarketPlace(){
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let tabController = mainStoryboard.instantiateViewController(withIdentifier: "MarketPlace") as! UITabBarController
+        UIView.transition(with: self.window!, duration: 0.5, options: UIViewAnimationOptions.transitionFlipFromRight, animations: {
+            self.window?.rootViewController = tabController}, completion: nil)
+        }
 
+    func transitionToLogin(){
+        let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
+        let navController = loginStoryboard.instantiateViewController(withIdentifier: "LoginScreen")
+        UIView.transition(with: self.window!, duration: 0.5, options: UIViewAnimationOptions.transitionFlipFromLeft, animations: {
+        self.window?.rootViewController = navController
+        }, completion: nil)
+        
+    }
 
 }
 
