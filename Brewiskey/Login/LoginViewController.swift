@@ -38,9 +38,9 @@ class LoginViewController: UIViewController {
         
         if let email = emailTextField.text, let password = passwordTextfield.text{
             Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
-                
+
                 if let user = user {
-                    //save nsuser to nsdefault or something
+                    //save user to nsdefault or something
                     let appDelegate = UIApplication.shared.delegate as? AppDelegate
                     appDelegate?.transitionToMarketPlace()
                     

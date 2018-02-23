@@ -22,19 +22,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueRectangle" translatesAutoresizingMaskIntoConstraints="NO" id="UdK-2Z-6FZ">
-                                <rect key="frame" x="18" y="241" width="335" height="52"/>
+                                <rect key="frame" x="18" y="197" width="335" height="52"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gOr-tW-M1G">
-                                <rect key="frame" x="29" y="259" width="312" height="17"/>
+                                <rect key="frame" x="29" y="215" width="312" height="17"/>
                                 <color key="textColor" red="0.0" green="0.4431372549" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueRectangle" translatesAutoresizingMaskIntoConstraints="NO" id="hq1-xr-WRh">
-                                <rect key="frame" x="18" y="301" width="335" height="52"/>
+                                <rect key="frame" x="18" y="257" width="335" height="52"/>
                             </imageView>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v1i-Vc-5XG">
-                                <rect key="frame" x="29" y="319" width="312" height="17"/>
+                                <rect key="frame" x="29" y="275" width="312" height="17"/>
                                 <color key="textColor" red="0.0" green="0.4431372549" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
@@ -50,7 +50,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eDJ-Vs-r3e">
-                                <rect key="frame" x="117" y="399" width="139" height="38"/>
+                                <rect key="frame" x="117" y="355" width="139" height="38"/>
                                 <color key="backgroundColor" red="0.93725490570000003" green="0.93725490570000003" blue="0.95686274770000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="38" id="DeQ-6L-Orx"/>
@@ -63,14 +63,10 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XbN-BG-UKQ">
-                                <rect key="frame" x="58" y="101" width="254" height="77"/>
+                                <rect key="frame" x="58" y="57" width="254" height="77"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="77" id="eOf-uW-cgY"/>
                                 </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="error" translatesAutoresizingMaskIntoConstraints="NO" id="SY5-0u-n9q">
-                                <rect key="frame" x="311" y="155" width="30" height="34"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CGA-b2-cUt">
                                 <rect key="frame" x="115" y="595" width="140" height="43"/>
@@ -81,6 +77,10 @@
                                     </segue>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="error" translatesAutoresizingMaskIntoConstraints="NO" id="SY5-0u-n9q">
+                                <rect key="frame" x="323" y="155" width="30" height="34"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -195,7 +195,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="8Za-4m-oRN" appends="YES" id="r0M-Y1-HyM"/>
+                                    <outletCollection property="gestureRecognizers" destination="3Ep-uu-kyh" appends="YES" id="Vz3-3o-I7G"/>
                                 </connections>
                             </label>
                             <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ProfilePic" translatesAutoresizingMaskIntoConstraints="NO" id="gAu-0j-cgl">
@@ -203,7 +203,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="dfV-5j-j7i" appends="YES" id="XMT-te-m8x"/>
+                                    <outletCollection property="gestureRecognizers" destination="WtO-2P-dIk" appends="YES" id="f5A-x2-PpL"/>
                                 </connections>
                             </imageView>
                         </subviews>
@@ -224,8 +224,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LO1-P2-8R6" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="dfV-5j-j7i"/>
-                <tapGestureRecognizer id="8Za-4m-oRN"/>
+                <tapGestureRecognizer id="WtO-2P-dIk">
+                    <connections>
+                        <action selector="uploadPhoto:" destination="J4k-Yr-FuW" id="VWX-Ev-nJC"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="3Ep-uu-kyh">
+                    <connections>
+                        <action selector="uploadPhoto:" destination="J4k-Yr-FuW" id="TSP-iz-c8M"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="502" y="54"/>
         </scene>
@@ -1207,6 +1215,6 @@ zrDWsNmw67DusPMAAAAAAAACAQAAAAAAAABBAAAAAAAAAAAAAAAAAACw9Q
         <image name="error" width="34" height="34"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="a8m-Q4-0DY"/>
+        <segue reference="Umy-nI-f0p"/>
     </inferredMetricsTieBreakers>
 </document>
