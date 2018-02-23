@@ -255,10 +255,10 @@
             </objects>
             <point key="canvasLocation" x="-1154" y="32"/>
         </scene>
-        <!--View Controller-->
+        <!--Forgot Password View Controller-->
         <scene sceneID="lgx-sn-hCb">
             <objects>
-                <viewController storyboardIdentifier="resetPassword" id="CZd-L0-gAB" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="resetPassword" id="CZd-L0-gAB" customClass="ForgotPasswordViewController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fgN-2H-FMv"/>
                         <viewControllerLayoutGuide type="bottom" id="ZUk-hP-Pme"/>
@@ -1215,6 +1215,7 @@ zrDWsNmw67DusPMAAAAAAAACAQAAAAAAAABBAAAAAAAAAAAAAAAAAACw9Q
         <image name="error" width="34" height="34"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="h8r-R5-0bK"/>
         <segue reference="Umy-nI-f0p"/>
     </inferredMetricsTieBreakers>
 </document>
