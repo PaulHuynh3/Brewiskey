@@ -47,5 +47,14 @@ class ForgotPasswordViewController: UIViewController {
         activityIndicator.stopAnimating()
     }
     
+}
+
+class EmailSentViewController: UIViewController {
+    
+    @IBAction func soundsGoodButtonTapped(_ sender: Any) {
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
     
 }
+

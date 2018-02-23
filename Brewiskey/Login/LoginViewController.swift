@@ -65,6 +65,11 @@ class LoginViewController: UIViewController {
         performSegue(withIdentifier:"signUpIdentifier", sender: self)
     }
     
+    @IBAction func forgotPasswordButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier:"forgotPasswordSegue", sender: self)
+    }
+    
+    
 
 
 }

@@ -62,9 +62,6 @@
 		DA056E86203FC8DB007EECAE /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				DA13D005203E0A7D0021EB7E /* LaunchScreen.storyboard */,
-				DA13D008203E0A7D0021EB7E /* Info.plist */,
-				DA13D00E203E0ABD0021EB7E /* GoogleService-Info.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -92,6 +89,9 @@
 			children = (
 				DA13D003203E0A7D0021EB7E /* Assets.xcassets */,
 				DA13CFFC203E0A7D0021EB7E /* AppDelegate.swift */,
+				DA13D008203E0A7D0021EB7E /* Info.plist */,
+				DA13D00E203E0ABD0021EB7E /* GoogleService-Info.plist */,
+				DA13D005203E0A7D0021EB7E /* LaunchScreen.storyboard */,
 				DADC7B70203E175500F87438 /* Data */,
 				DADC7B71203E176B00F87438 /* View */,
 				DADC7B72203E178200F87438 /* Login */,
