@@ -234,7 +234,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="516" y="32"/>
+            <point key="canvasLocation" x="446" y="31"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="vcI-kF-elU">
@@ -354,7 +354,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xo4-LP-U9e" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="445.60000000000002" y="-693.10344827586209"/>
+            <point key="canvasLocation" x="446" y="801"/>
         </scene>
         <!--Email Sent View Controller-->
         <scene sceneID="QXI-Fw-orI">
@@ -434,7 +434,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kD1-mZ-ok1" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1268" y="-693"/>
+            <point key="canvasLocation" x="1319" y="800"/>
         </scene>
     </scenes>
     <resources>

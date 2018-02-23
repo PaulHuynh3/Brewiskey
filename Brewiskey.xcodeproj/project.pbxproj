@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA056E85203FC7A6007EECAE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA056E84203FC7A6007EECAE /* User.swift */; };
+		DA056E85203FC7A6007EECAE /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA056E84203FC7A6007EECAE /* DataModel.swift */; };
 		DA056E88203FC982007EECAE /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA056E87203FC982007EECAE /* ForgotPasswordViewController.swift */; };
 		DA13CFFD203E0A7D0021EB7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13CFFC203E0A7D0021EB7E /* AppDelegate.swift */; };
 		DA13CFFF203E0A7D0021EB7E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13CFFE203E0A7D0021EB7E /* LoginViewController.swift */; };
@@ -15,6 +15,7 @@
 		DA13D004203E0A7D0021EB7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA13D003203E0A7D0021EB7E /* Assets.xcassets */; };
 		DA13D007203E0A7D0021EB7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA13D005203E0A7D0021EB7E /* LaunchScreen.storyboard */; };
 		DA13D00F203E0ABD0021EB7E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA13D00E203E0ABD0021EB7E /* GoogleService-Info.plist */; };
+		DAA23AD22040B08900D481E2 /* MarketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA23AD12040B08900D481E2 /* MarketTableViewController.swift */; };
 		DADC7B75203E17E100F87438 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DADC7B74203E17E100F87438 /* Login.storyboard */; };
 		DADC7B77203E6A4900F87438 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADC7B76203E6A4900F87438 /* RegisterViewController.swift */; };
 		DDA4E6EB6D878ECD74290C15 /* Pods_Brewiskey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6018CC304C6E50FF5E034F2A /* Pods_Brewiskey.framework */; };
@@ -23,7 +24,7 @@
 /* Begin PBXFileReference section */
 		6018CC304C6E50FF5E034F2A /* Pods_Brewiskey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Brewiskey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9331F07D589DD426C72146BB /* Pods-Brewiskey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brewiskey.release.xcconfig"; path = "Pods/Target Support Files/Pods-Brewiskey/Pods-Brewiskey.release.xcconfig"; sourceTree = "<group>"; };
-		DA056E84203FC7A6007EECAE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		DA056E84203FC7A6007EECAE /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		DA056E87203FC982007EECAE /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		DA13CFF9203E0A7D0021EB7E /* Brewiskey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brewiskey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA13CFFC203E0A7D0021EB7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -33,6 +34,7 @@
 		DA13D006203E0A7D0021EB7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA13D008203E0A7D0021EB7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA13D00E203E0ABD0021EB7E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DAA23AD12040B08900D481E2 /* MarketTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketTableViewController.swift; sourceTree = "<group>"; };
 		DADC7B74203E17E100F87438 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DADC7B76203E6A4900F87438 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		F894043FE0F9A2676D6EDB6C /* Pods-Brewiskey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brewiskey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Brewiskey/Pods-Brewiskey.debug.xcconfig"; sourceTree = "<group>"; };
@@ -104,7 +106,7 @@
 		DADC7B70203E175500F87438 /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				DA056E84203FC7A6007EECAE /* User.swift */,
+				DA056E84203FC7A6007EECAE /* DataModel.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -131,6 +133,7 @@
 		DADC7B73203E179600F87438 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				DAA23AD12040B08900D481E2 /* MarketTableViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -280,7 +283,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA056E85203FC7A6007EECAE /* User.swift in Sources */,
+				DAA23AD22040B08900D481E2 /* MarketTableViewController.swift in Sources */,
+				DA056E85203FC7A6007EECAE /* DataModel.swift in Sources */,
 				DA056E88203FC982007EECAE /* ForgotPasswordViewController.swift in Sources */,
 				DADC7B77203E6A4900F87438 /* RegisterViewController.swift in Sources */,
 				DA13CFFF203E0A7D0021EB7E /* LoginViewController.swift in Sources */,
