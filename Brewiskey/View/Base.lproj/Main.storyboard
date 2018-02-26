@@ -361,6 +361,33 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="M1r-wt-YF0">
+                                        <rect key="frame" x="0.0" y="451" width="375" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="M1r-wt-YF0" id="MiT-M1-lrz">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Logout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5BM-TP-HOY">
+                                                    <rect key="frame" x="16" y="12" width="343" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="rightNavy" translatesAutoresizingMaskIntoConstraints="NO" id="OA7-Xt-kcv">
+                                                    <rect key="frame" x="335" y="12" width="35" height="21"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="5BM-TP-HOY" secondAttribute="trailing" constant="16" id="4zF-Ao-Ixd"/>
+                                                <constraint firstItem="OA7-Xt-kcv" firstAttribute="top" secondItem="MiT-M1-lrz" secondAttribute="top" constant="12" id="Dbt-Mk-Pkg"/>
+                                                <constraint firstItem="5BM-TP-HOY" firstAttribute="top" secondItem="MiT-M1-lrz" secondAttribute="top" constant="12" id="ZES-e7-2xb"/>
+                                                <constraint firstItem="5BM-TP-HOY" firstAttribute="leading" secondItem="MiT-M1-lrz" secondAttribute="leading" constant="16" id="lJ8-mD-s4m"/>
+                                                <constraint firstAttribute="bottom" secondItem="OA7-Xt-kcv" secondAttribute="bottom" constant="10.5" id="qH4-t5-A7a"/>
+                                                <constraint firstItem="OA7-Xt-kcv" firstAttribute="centerX" secondItem="MiT-M1-lrz" secondAttribute="centerX" constant="165" id="xgr-iB-VYY"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
