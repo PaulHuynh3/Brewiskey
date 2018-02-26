@@ -133,10 +133,10 @@
             </objects>
             <point key="canvasLocation" x="-642" y="1026"/>
         </scene>
-        <!--Table View Controller-->
+        <!--More Table View Controller-->
         <scene sceneID="Yv3-Do-IWg">
             <objects>
-                <tableViewController id="bHG-3g-GSl" sceneMemberID="viewController">
+                <tableViewController id="bHG-3g-GSl" customClass="MoreTableViewController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="oBF-jH-iaT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -370,6 +370,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="jMT-RD-dgN"/>
+                    <connections>
+                        <outlet property="profileEmailLabel" destination="BIr-W5-Oq1" id="YNp-pG-ekU"/>
+                        <outlet property="profileImageView" destination="KSH-2v-bSs" id="Czi-aP-UiB"/>
+                        <outlet property="profileNameLabel" destination="PLX-G0-b6k" id="hke-iG-vVM"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fG6-Hc-Hm8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
