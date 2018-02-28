@@ -16,7 +16,7 @@ class User: NSObject {
     var profileImageUrl: String?
 }
 
-class Spirits: NSObject {
+class Spirit: NSObject {
     var name: String?
     var price: String?
     var percent: String?

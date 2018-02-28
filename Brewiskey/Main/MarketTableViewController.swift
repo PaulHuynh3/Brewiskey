@@ -20,18 +20,39 @@ class MarketTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkIfUserIsLoggedIn()
-
+//        FirebaseAPI.fetchAllBeerBrandAndImages{ (beer) in
+//            DispatchQueue.main.async {
+//                self.beers.add(beer)
+//                self.tableView.reloadData()
+//            }
+//        }
+//        FirebaseAPI.fetchAllWineBrandAndImages { (wine) in
+//            DispatchQueue.main.async {
+//                self.wines.add(wine)
+//                self.tableView.reloadData()
+//            }
+//        }
+//        FirebaseAPI.fetchAllSpiritBrandAndImages { (spirit) in
+//            DispatchQueue.main.async {
+//                self.spirits.add(spirit)
+//                self.tableView.reloadData()
+//            }
+//        }
         
-    }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(true)
-        FirebaseAPI.fetchDatabaseAllBeers { (beer) in
-            DispatchQueue.main.async {
-                self.beers.add(beer)
-                self.tableView.reloadData()
-            }
+        FirebaseAPI.fetchAllBeerBrandAndImages{ (beer) in
+            FirebaseAPI.fetchAllWineBrandAndImages(completion: { (wine) in
+                FirebaseAPI.fetchAllSpiritBrandAndImages(completion: { (spirit) in
+                    DispatchQueue.main.async {
+                        self.beers.add(beer)
+                        self.wines.add(wine)
+                        self.spirits.add(spirit)
+                        self.tableView.reloadData()
+                    }
+                    
+                })
+            })
         }
+        
     }
     
     func checkIfUserIsLoggedIn(){
@@ -70,17 +91,19 @@ class MarketTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 60
+        return 75
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier") as! MarketTableViewCell
-        let beer = beers[indexPath.row] as? Beer
         
+        if indexPath.row < beers.count {
+        let beer = beers[indexPath.row] as? Beer
         if let imageUrl = beer?.imageUrl{
         cell.alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
         cell.brandNameLabel.text = beer?.name
         }
+    }
         
         return cell
     }

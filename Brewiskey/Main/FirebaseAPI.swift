@@ -13,7 +13,7 @@ import Firebase
 class FirebaseAPI: NSObject {
     
     
-    class func fetchDatabaseUser(uid:String, completion:@escaping (_ user:User) -> Void){
+    class func fetchDatabaseCurrentUser(uid:String, completion:@escaping (_ user:User) -> Void){
         
         Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -31,7 +31,7 @@ class FirebaseAPI: NSObject {
             }
         })
     }
-    class func fetchDatabaseAllUsers(completion:@escaping (_ user: User) -> Void){
+    class func fetchDatabaseUsers(completion:@escaping (_ user: User) -> Void){
         
         Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
             
@@ -47,9 +47,9 @@ class FirebaseAPI: NSObject {
             
         }, withCancel: nil)
     }
-    class func fetchDatabaseAllBeers(completion:@escaping (_ user: Beer) -> Void){
+    class func fetchAllBeerBrandAndImages(completion:@escaping (_ beer: Beer) -> Void){
         
-        Database.database().reference().child("beer").observe(.childAdded, with: { (snapshot) in
+        Database.database().reference().child("beers").observe(.childAdded, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String:AnyObject]{
                 let beer = Beer()
@@ -58,9 +58,35 @@ class FirebaseAPI: NSObject {
                 
                 completion(beer)
             }
-            
         }, withCancel: nil)
     }
+    class func fetchAllSpiritBrandAndImages(completion:@escaping (_ spirit: Spirit) -> Void){
+        
+        Database.database().reference().child("spirits").observe(.childAdded, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String:AnyObject]{
+                let spirit = Spirit()
+                spirit.name = dictionary["name"] as? String
+                spirit.imageUrl = dictionary["imageUrl"] as? String
+                
+                completion(spirit)
+            }
+        }, withCancel: nil)
+    }
+    class func fetchAllWineBrandAndImages(completion:@escaping (_ wine: Wine) -> Void){
+        
+        Database.database().reference().child("wines").observe(.childAdded, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String:AnyObject]{
+                let wine = Wine()
+                wine.name = dictionary["name"] as? String
+                wine.imageUrl = dictionary["imageUrl"] as? String
+                
+                completion(wine)
+            }
+        }, withCancel: nil)
+    }
+    
     
 }
 

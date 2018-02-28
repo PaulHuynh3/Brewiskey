@@ -42,7 +42,7 @@ class MoreTableViewController: UITableViewController {
     }
     
     private func fetchAndConfigureProfile(){
-        FirebaseAPI.fetchDatabaseUser(uid: uid!) { (user) in
+        FirebaseAPI.fetchDatabaseCurrentUser(uid: uid!) { (user) in
             self.profileNameLabel.text = user.username
             self.profileEmailLabel.text = user.email
             if let profileImageUrl = user.profileImageUrl {
