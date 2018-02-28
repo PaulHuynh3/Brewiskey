@@ -47,7 +47,20 @@ class FirebaseAPI: NSObject {
             
         }, withCancel: nil)
     }
-    
+    class func fetchDatabaseAllBeers(completion:@escaping (_ user: Beer) -> Void){
+        
+        Database.database().reference().child("beer").observe(.childAdded, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String:AnyObject]{
+                let beer = Beer()
+                beer.name = dictionary["name"] as? String
+                beer.imageUrl = dictionary["imageUrl"] as? String
+                
+                completion(beer)
+            }
+            
+        }, withCancel: nil)
+    }
     
 }
 

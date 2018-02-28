@@ -21,6 +21,7 @@ class Spirits: NSObject {
     var price: String?
     var percent: String?
     var country: String?
+    var imageUrl: String?
     var shortDescription: String?
 }
 
@@ -29,6 +30,7 @@ class Wine: NSObject {
     var price: String?
     var percent: String?
     var country: String?
+    var imageUrl: String?
     var shortDescription: String?
 }
 
@@ -37,5 +39,6 @@ class Beer: NSObject {
     var price: String?
     var percent: String?
     var country: String?
+    var imageUrl: String?
     var shortDescription: String?
 }

@@ -11,7 +11,6 @@ import UIKit
 class MarketTableViewCell: UITableViewCell {
 
     @IBOutlet weak var alcoholImageView: UIImageView!
-    @IBOutlet weak var alcoholNameLabel: UILabel!
-    @IBOutlet weak var alcoholPriceLabel: UILabel!
+    @IBOutlet weak var brandNameLabel: UILabel!
         
 }

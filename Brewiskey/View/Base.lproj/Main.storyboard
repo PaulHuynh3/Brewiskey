@@ -29,15 +29,8 @@
                                             <rect key="frame" x="16" y="11" width="96" height="65"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="6 Pack Coors Light" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCR-cG-Tcw">
-                                            <rect key="frame" x="120" y="11" width="239" height="36"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$10" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sgc-MH-Pdf">
-                                            <rect key="frame" x="120" y="55" width="239" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Coors Light" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QCR-cG-Tcw">
+                                            <rect key="frame" x="120" y="25" width="239" height="36"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
@@ -47,8 +40,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="alcoholImageView" destination="xNO-M6-tnu" id="gRS-5d-paS"/>
-                                    <outlet property="alcoholNameLabel" destination="QCR-cG-Tcw" id="QA6-z7-aMS"/>
-                                    <outlet property="alcoholPriceLabel" destination="sgc-MH-Pdf" id="m9B-hD-DZl"/>
+                                    <outlet property="brandNameLabel" destination="QCR-cG-Tcw" id="VIV-lM-xku"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

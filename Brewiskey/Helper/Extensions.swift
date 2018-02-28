@@ -17,13 +17,13 @@ extension UIImageView {
         
         //blank out white space to take out flashing.
         self.image = nil
-        
+        //set image if its there
         if let cachedImage = imageCache.object(forKey: urlString as NSString){
             self.image = cachedImage
             return
         }
         
-        
+        //if not then dl the image.
         let url = URL(string: urlString)
         let task = URLSession.shared.dataTask(with: url!, completionHandler: { (data, response, error) in
             

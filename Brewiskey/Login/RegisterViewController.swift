@@ -67,7 +67,7 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
                     }
                     
                     if let profileImageURL = metadata?.downloadURL()?.absoluteString{
-                        //set their age?
+                        //add value for age, remove username and put full name
                         let values = ["username":username, "email":email, "password":password, "profileImageUrl":profileImageURL]
                         
                         self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
