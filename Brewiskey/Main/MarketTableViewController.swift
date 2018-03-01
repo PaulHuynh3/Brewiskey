@@ -20,38 +20,44 @@ class MarketTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkIfUserIsLoggedIn()
-//        FirebaseAPI.fetchAllBeerBrandAndImages{ (beer) in
-//            DispatchQueue.main.async {
-//                self.beers.add(beer)
-//                self.tableView.reloadData()
-//            }
-//        }
-//        FirebaseAPI.fetchAllWineBrandAndImages { (wine) in
-//            DispatchQueue.main.async {
-//                self.wines.add(wine)
-//                self.tableView.reloadData()
-//            }
-//        }
-//        FirebaseAPI.fetchAllSpiritBrandAndImages { (spirit) in
-//            DispatchQueue.main.async {
-//                self.spirits.add(spirit)
-//                self.tableView.reloadData()
-//            }
-//        }
-        
         FirebaseAPI.fetchAllBeerBrandAndImages{ (beer) in
-            FirebaseAPI.fetchAllWineBrandAndImages(completion: { (wine) in
-                FirebaseAPI.fetchAllSpiritBrandAndImages(completion: { (spirit) in
-                    DispatchQueue.main.async {
-                        self.beers.add(beer)
-                        self.wines.add(wine)
-                        self.spirits.add(spirit)
-                        self.tableView.reloadData()
-                    }
-                    
-                })
-            })
+            self.beers.add(beer)
+
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                print("tableview was reloaded")
+            }
         }
+        FirebaseAPI.fetchAllWineBrandAndImages { (wine) in
+            self.wines.add(wine)
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                print("tableview was reloaded")
+            }
+        }
+        FirebaseAPI.fetchAllSpiritBrandAndImages { (spirit) in
+            self.spirits.add(spirit)
+
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+                print("tableview was reloaded")
+            }
+        }
+ 
+//        FirebaseAPI.fetchAllBeerBrandAndImages{ (beer) in
+//            FirebaseAPI.fetchAllWineBrandAndImages(completion: { (wine) in
+//                FirebaseAPI.fetchAllSpiritBrandAndImages(completion: { (spirit) in
+//                    self.beers.add(beer)
+//                    self.wines.add(wine)
+//                    self.spirits.add(spirit)
+//
+//                    DispatchQueue.main.async {
+//                        self.tableView.reloadData()
+//                    }
+//
+//                })
+//            })
+//        }
         
     }
     
@@ -97,13 +103,29 @@ class MarketTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier") as! MarketTableViewCell
         
-        if indexPath.row < beers.count {
-        let beer = beers[indexPath.row] as? Beer
-        if let imageUrl = beer?.imageUrl{
-        cell.alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
-        cell.brandNameLabel.text = beer?.name
+        if beers.count > indexPath.row {
+            let beer = beers[indexPath.row] as? Beer
+            cell.brandNameLabel.text = beer?.name
+            if let imageUrl = beer?.imageUrl{
+            cell.alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+          }
+        }  else if beers.count + wines.count > indexPath.row {
+            let wine = wines[indexPath.row - self.beers.count] as? Wine
+                cell.brandNameLabel.text = wine?.name
+            if let imageUrl = wine?.imageUrl{
+                cell.alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+            }
+            
+        } else if beers.count + wines.count + spirits.count > indexPath.row {
+            
+            let spirit = spirits[indexPath.row - self.beers.count - self.wines.count] as? Spirit
+            cell.brandNameLabel.text = spirit?.name
+            
+            if let imageUrl = spirit?.imageUrl {
+                cell.alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+            }
+            
         }
-    }
         
         return cell
     }
