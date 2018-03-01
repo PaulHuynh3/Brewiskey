@@ -36,9 +36,17 @@ class Wine: NSObject {
 
 class Beer: NSObject {
     var name: String?
-    var price: String?
     var percent: String?
     var country: String?
     var imageUrl: String?
     var shortDescription: String?
+    
+    var singleCanPrice: String?
+    var singleCanContent: String?
+    var singleBottlePrice: String?
+    var singleBottleContent: String?
+    
+    var sixPackCanPrice: String?
+    var sixPackBottlePrice: String?
+    
 }

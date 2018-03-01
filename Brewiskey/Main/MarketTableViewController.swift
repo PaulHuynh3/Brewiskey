@@ -20,54 +20,44 @@ class MarketTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         checkIfUserIsLoggedIn()
+        fetchAlcoholBrandsAndSetupTableview()
+        
+    }
+    
+    func fetchAlcoholBrandsAndSetupTableview(){
         FirebaseAPI.fetchAllBeerBrandAndImages{ (beer) in
             self.beers.add(beer)
-
+            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-                print("tableview was reloaded")
             }
         }
         FirebaseAPI.fetchAllWineBrandAndImages { (wine) in
             self.wines.add(wine)
+            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-                print("tableview was reloaded")
             }
         }
         FirebaseAPI.fetchAllSpiritBrandAndImages { (spirit) in
             self.spirits.add(spirit)
-
+            
             DispatchQueue.main.async {
                 self.tableView.reloadData()
-                print("tableview was reloaded")
             }
         }
- 
-//        FirebaseAPI.fetchAllBeerBrandAndImages{ (beer) in
-//            FirebaseAPI.fetchAllWineBrandAndImages(completion: { (wine) in
-//                FirebaseAPI.fetchAllSpiritBrandAndImages(completion: { (spirit) in
-//                    self.beers.add(beer)
-//                    self.wines.add(wine)
-//                    self.spirits.add(spirit)
-//
-//                    DispatchQueue.main.async {
-//                        self.tableView.reloadData()
-//                    }
-//
-//                })
-//            })
-//        }
-        
     }
     
     func checkIfUserIsLoggedIn(){
         if Auth.auth().currentUser?.uid == nil {
          handleLogout()
         } else {
-//            fetchUserAndSetupNavBarTitle()
+            FirebaseAPI.fetchDatabaseUsers(completion: { (user) in
+                DispatchQueue.main.async {
+                    self.navigationItem.title = "Welcome " + user.username!
+                }
+            })
         }
-        
     }
     
     func handleLogout(){
@@ -84,7 +74,6 @@ class MarketTableViewController: UITableViewController {
         }
         
     }
-    
     
     // MARK: - Tableview data source
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -132,6 +121,10 @@ class MarketTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        
+        
+        
     }
     
     
