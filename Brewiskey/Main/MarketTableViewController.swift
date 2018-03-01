@@ -93,27 +93,17 @@ class MarketTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier") as! MarketTableViewCell
         
         if beers.count > indexPath.row {
-            let beer = beers[indexPath.row] as? Beer
-            cell.brandNameLabel.text = beer?.name
-            if let imageUrl = beer?.imageUrl{
-            cell.alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
-          }
-        }  else if beers.count + wines.count > indexPath.row {
-            let wine = wines[indexPath.row - self.beers.count] as? Wine
-                cell.brandNameLabel.text = wine?.name
-            if let imageUrl = wine?.imageUrl{
-                cell.alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
-            }
+            let beer = beers[indexPath.row] as! Beer
+            cell.setupBeerNamesAndImages(beer)
+            
+        } else if beers.count + wines.count > indexPath.row {
+            let wine = wines[indexPath.row - self.beers.count] as! Wine
+            cell.setupWineNamesAndImages(wine)
             
         } else if beers.count + wines.count + spirits.count > indexPath.row {
-            
-            let spirit = spirits[indexPath.row - self.beers.count - self.wines.count] as? Spirit
-            cell.brandNameLabel.text = spirit?.name
-            
-            if let imageUrl = spirit?.imageUrl {
-                cell.alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
-            }
-            
+            let spirit = spirits[indexPath.row - self.beers.count - self.wines.count] as! Spirit
+            cell.setupSpiritNamesAndImages(spirit)
+    
         }
         
         return cell
@@ -121,6 +111,16 @@ class MarketTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if beers.count > indexPath.row {
+            print("beer object selected")
+        }
+        else if beers.count + wines.count > indexPath.row {
+            print("Wine obj selected")
+            
+        } else if beers.count + wines.count + spirits.count > indexPath.row {
+           print("Spirit object selected")
+            
+        }
         
         
         
