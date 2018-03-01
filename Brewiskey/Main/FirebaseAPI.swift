@@ -48,7 +48,7 @@ class FirebaseAPI: NSObject {
         }, withCancel: nil)
     }
     class func fetchAllBeerBrandAndImages(completion:@escaping (_ beer: Beer) -> Void){
-        
+        //put this network call into a for loop statement so it doesnt need to constantly reload the table?
         Database.database().reference().child("beers").observe(.childAdded, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String:AnyObject]{
@@ -58,20 +58,20 @@ class FirebaseAPI: NSObject {
                 beer.country = dictionary["country"] as? String
                 beer.percent = dictionary["alcoholPercent"] as? String
                 
-                let singleCan = dictionary["singleCan"] as! NSDictionary
+                if let singleCan = dictionary["singleCan"] as? NSDictionary{
                 beer.singleCanPrice = singleCan["price"] as? String
                 beer.singleCanContent = singleCan["content"] as? String
-                
-                let singleBottle = dictionary["singleBottle"] as! NSDictionary
+                }
+                if let singleBottle = dictionary["singleBottle"] as? NSDictionary{
                 beer.singleBottlePrice = singleBottle["price"] as? String
                 beer.singleBottleContent = singleBottle["content"] as? String
-                
-                let sickPackCan = dictionary["sixPackCan"] as! NSDictionary
+                }
+                if let sickPackCan = dictionary["sixPackCan"] as? NSDictionary{
                 beer.sixPackCanPrice = sickPackCan["price"] as? String
-                
-                let sixPackBottle = dictionary["sixPackBottle"] as! NSDictionary
+                }
+                if let sixPackBottle = dictionary["sixPackBottle"] as? NSDictionary{
                 beer.sixPackBottlePrice = sixPackBottle["price"] as? String
-                
+                }
                 completion(beer)
             }
         }, withCancel: nil)
@@ -84,7 +84,21 @@ class FirebaseAPI: NSObject {
                 let spirit = Spirit()
                 spirit.name = dictionary["name"] as? String
                 spirit.imageUrl = dictionary["imageUrl"] as? String
+                spirit.percent = dictionary["alcoholPercent"] as? String
+                spirit.country = dictionary["country"] as? String
                 
+                if let largeBottleDict = dictionary["1140Bottle"] as? NSDictionary{
+                    spirit.largeBottlePrice = largeBottleDict["price"] as? String
+                    spirit.largeBottleContent = largeBottleDict["content"] as? String
+                }
+                if let mediumBottleDict = dictionary["750Bottle"] as? NSDictionary {
+                    spirit.mediumBottlePrice = mediumBottleDict["price"] as? String
+                    spirit.mediumBottleContent = mediumBottleDict["content"] as? String
+                }
+                if let smallBottleDict = dictionary["375Bottle"] as? NSDictionary{
+                    spirit.smallBottlePrice = smallBottleDict["price"] as? String
+                    spirit.smallBottleContent = smallBottleDict["content"] as? String
+                }
                 completion(spirit)
             }
         }, withCancel: nil)
@@ -97,7 +111,13 @@ class FirebaseAPI: NSObject {
                 let wine = Wine()
                 wine.name = dictionary["name"] as? String
                 wine.imageUrl = dictionary["imageUrl"] as? String
+                wine.country = dictionary["country"] as? String
+                wine.percent = dictionary["alcoholPercent"] as? String
                 
+                if let mediumBottleDict = dictionary["750Bottle"] as? NSDictionary{
+                    wine.mediumBottlePrice = mediumBottleDict["price"] as? String
+                    wine.mediumBottleContent = mediumBottleDict["content"] as? String
+                }
                 completion(wine)
             }
         }, withCancel: nil)

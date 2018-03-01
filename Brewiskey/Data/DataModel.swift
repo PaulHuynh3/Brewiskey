@@ -18,20 +18,28 @@ class User: NSObject {
 
 class Spirit: NSObject {
     var name: String?
-    var price: String?
     var percent: String?
     var country: String?
     var imageUrl: String?
     var shortDescription: String?
+    
+    var largeBottlePrice: String?
+    var largeBottleContent: String?
+    var mediumBottlePrice: String?
+    var mediumBottleContent: String?
+    var smallBottlePrice: String?
+    var smallBottleContent: String?
 }
 
 class Wine: NSObject {
     var name: String?
-    var price: String?
     var percent: String?
     var country: String?
     var imageUrl: String?
     var shortDescription: String?
+    
+    var mediumBottlePrice: String?
+    var mediumBottleContent: String?
 }
 
 class Beer: NSObject {
