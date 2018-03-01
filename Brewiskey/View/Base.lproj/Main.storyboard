@@ -41,7 +41,6 @@
                                 <connections>
                                     <outlet property="alcoholImageView" destination="xNO-M6-tnu" id="gRS-5d-paS"/>
                                     <outlet property="brandNameLabel" destination="QCR-cG-Tcw" id="VIV-lM-xku"/>
-                                    <segue destination="NKg-CB-by0" kind="show" id="8VT-PK-9Ad"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -51,15 +50,20 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Gkg-Dw-kyX"/>
+                    <connections>
+                        <segue destination="NKg-CB-by0" kind="show" identifier="beerDetailedViewSegue" id="8XC-xJ-jGG"/>
+                        <segue destination="NKg-CB-by0" kind="show" identifier="wineDetailedViewSegue" id="AAW-e7-rke"/>
+                        <segue destination="NKg-CB-by0" kind="show" identifier="spiritDetailedViewSegue" id="ueP-sk-nbX"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cd9-YO-YwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="261.60000000000002" y="-591.45427286356824"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Detailed Table View Controller-->
         <scene sceneID="sB8-1R-jpF">
             <objects>
-                <tableViewController id="NKg-CB-by0" sceneMemberID="viewController">
+                <tableViewController id="NKg-CB-by0" customClass="DetailedTableViewController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Jlu-fm-3fz">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -99,6 +103,13 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Country" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oe6-iK-iRU">
+                                                    <rect key="frame" x="215" y="110" width="125" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -126,7 +137,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="126.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Checkout" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FV7-Pn-KEu">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Add to Shopping Cart" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FV7-Pn-KEu">
                                                     <rect key="frame" x="102" y="53" width="176" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -144,10 +155,17 @@
                             <outlet property="delegate" destination="NKg-CB-by0" id="PGc-Sw-AOU"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="alcoholImageview" destination="3S3-Du-gTi" id="Yag-4Y-dnZ"/>
+                        <outlet property="contentLabel" destination="PRg-Qz-Bj8" id="Efm-MH-y9x"/>
+                        <outlet property="countryLabel" destination="Oe6-iK-iRU" id="xvq-Wu-ljj"/>
+                        <outlet property="priceLabel" destination="QUC-jQ-Wr7" id="QLc-lD-23O"/>
+                        <outlet property="quantityLabel" destination="ggr-Ng-gv8" id="Fbn-wL-fTB"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ICu-Ho-qqe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1138.4000000000001" y="-591.45427286356824"/>
+            <point key="canvasLocation" x="1301.5999999999999" y="-753.37331334332839"/>
         </scene>
         <!--Brewiskey-->
         <scene sceneID="kNi-vm-12u">
@@ -540,4 +558,7 @@
         <image name="shopping-cart" width="29" height="30"/>
         <image name="water-bottle" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ueP-sk-nbX"/>
+    </inferredMetricsTieBreakers>
 </document>

@@ -111,13 +111,27 @@ class MarketTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier") as! MarketTableViewCell
+        
         if beers.count > indexPath.row {
+            let beer = beers[indexPath.row] as? Beer
+            
+            performSegue(withIdentifier: "beerDetailedViewSegue", sender: beer)
+            
             print("beer object selected")
         }
         else if beers.count + wines.count > indexPath.row {
-            print("Wine obj selected")
+            let wine = wines[indexPath.row - beers.count] as? Wine
+            
+            performSegue(withIdentifier: "wineDetailedViewSegue", sender: wine)
+            
+            print("Wine object selected")
             
         } else if beers.count + wines.count + spirits.count > indexPath.row {
+            let spirit = spirits[indexPath.row - beers.count - wines.count] as? Spirit
+            
+            performSegue(withIdentifier: "spiritDetailedViewSegue", sender: spirit)
+            
            print("Spirit object selected")
             
         }
@@ -129,7 +143,39 @@ class MarketTableViewController: UITableViewController {
     
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
+        
+        if segue.identifier == "beerDetailedViewSegue"{
+            let detailedTableView = segue.destination as? DetailedTableViewController
+            //the sender was set in indexpath.
+            let beer = sender as? Beer
+            detailedTableView?.beer = beer
+            detailedTableView?.beerMode = true
+//            detailedTableView?.alcoholImageview.loadImagesUsingCacheWithUrlString(urlString: (beer?.imageUrl)!)
+//            detailedTableView?.priceLabel.text = beer?.singleCanPrice
+//            detailedTableView?.contentLabel.text = beer?.singleCanContent
+        }
+        
+        if segue.identifier == "wineDetailedViewSegue"{
+            let detailedTableView = segue.destination as? DetailedTableViewController
+            let wine = sender as? Wine
+            detailedTableView?.wine = wine
+            detailedTableView?.wineMode = true
+//            detailedTableView?.alcoholImageview.loadImagesUsingCacheWithUrlString(urlString: (wine?.imageUrl)!)
+//            detailedTableView?.contentLabel.text = wine?.mediumBottleContent
+//            detailedTableView?.priceLabel.text = wine?.mediumBottlePrice
+        }
+        
+        if segue.identifier == "spiritDetailedViewSegue"{
+            let detailedTableView = segue.destination as? DetailedTableViewController
+            let spirit = sender as? Spirit
+            detailedTableView?.spirit = spirit
+            detailedTableView?.spiritMode = true
+//            detailedTableView?.alcoholImageview.loadImagesUsingCacheWithUrlString(urlString: (spirit?.imageUrl)!)
+//            detailedTableView?.contentLabel.text = spirit?.largeBottleContent
+//            detailedTableView?.priceLabel.text = spirit?.largeBottlePrice
+            
+        }
+        
         
     }
     
