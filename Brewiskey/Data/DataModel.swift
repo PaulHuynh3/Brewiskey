@@ -51,6 +51,7 @@ class Beer: NSObject {
     
     var singleCanPrice: String?
     var singleCanContent: String?
+    
     var singleBottlePrice: String?
     var singleBottleContent: String?
     

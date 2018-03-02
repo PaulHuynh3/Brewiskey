@@ -86,7 +86,6 @@ class DetailedTableViewController: UITableViewController {
             alcoholSelectionTable.spirit = spirit
         }
         
-        
     }
 
 
