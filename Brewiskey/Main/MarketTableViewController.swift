@@ -111,7 +111,6 @@ class MarketTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-//        let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier") as! MarketTableViewCell
         
         if beers.count > indexPath.row {
             let beer = beers[indexPath.row] as? Beer
@@ -136,9 +135,6 @@ class MarketTableViewController: UITableViewController {
             
         }
         
-        
-        
-        
     }
     
     
@@ -150,9 +146,6 @@ class MarketTableViewController: UITableViewController {
             let beer = sender as? Beer
             detailedTableView?.beer = beer
             detailedTableView?.beerMode = true
-//            detailedTableView?.alcoholImageview.loadImagesUsingCacheWithUrlString(urlString: (beer?.imageUrl)!)
-//            detailedTableView?.priceLabel.text = beer?.singleCanPrice
-//            detailedTableView?.contentLabel.text = beer?.singleCanContent
         }
         
         if segue.identifier == "wineDetailedViewSegue"{
@@ -160,9 +153,6 @@ class MarketTableViewController: UITableViewController {
             let wine = sender as? Wine
             detailedTableView?.wine = wine
             detailedTableView?.wineMode = true
-//            detailedTableView?.alcoholImageview.loadImagesUsingCacheWithUrlString(urlString: (wine?.imageUrl)!)
-//            detailedTableView?.contentLabel.text = wine?.mediumBottleContent
-//            detailedTableView?.priceLabel.text = wine?.mediumBottlePrice
         }
         
         if segue.identifier == "spiritDetailedViewSegue"{
@@ -170,12 +160,7 @@ class MarketTableViewController: UITableViewController {
             let spirit = sender as? Spirit
             detailedTableView?.spirit = spirit
             detailedTableView?.spiritMode = true
-//            detailedTableView?.alcoholImageview.loadImagesUsingCacheWithUrlString(urlString: (spirit?.imageUrl)!)
-//            detailedTableView?.contentLabel.text = spirit?.largeBottleContent
-//            detailedTableView?.priceLabel.text = spirit?.largeBottlePrice
-            
         }
-        
         
     }
     

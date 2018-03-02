@@ -13,18 +13,11 @@ class DetailedTableViewController: UITableViewController {
     var wineMode = false
     var spiritMode = false
     
-    var beer: Beer?{
-        didSet{
-     
-        }
-    }
+    var beer: Beer?
     var wine: Wine?
     var spirit: Spirit?
     
     @IBOutlet weak var alcoholImageview: UIImageView!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var contentLabel: UILabel!
-    @IBOutlet weak var quantityLabel: UILabel!
     @IBOutlet weak var countryLabel: UILabel!
     
     
@@ -40,27 +33,59 @@ class DetailedTableViewController: UITableViewController {
             if let imageUrl = beer?.imageUrl{
                 alcoholImageview.loadImagesUsingCacheWithUrlString(urlString:imageUrl)
             }
-            priceLabel.text = beer?.singleCanPrice
-            contentLabel.text = beer?.singleCanContent
             countryLabel.text = beer?.country
         }
         else if wineMode == true {
             if let imageUrl = wine?.imageUrl{
                 alcoholImageview.loadImagesUsingCacheWithUrlString(urlString:imageUrl)
             }
-            priceLabel.text = wine?.mediumBottlePrice
-            contentLabel.text = wine?.mediumBottleContent
             countryLabel.text = wine?.country
         }
         else if spiritMode == true {
             if let imageUrl = spirit?.imageUrl{
                 alcoholImageview.loadImagesUsingCacheWithUrlString(urlString:imageUrl)
             }
-            priceLabel.text = spirit?.largeBottlePrice
-            contentLabel.text = spirit?.largeBottleContent
             countryLabel.text = spirit?.country
-            
         }
+        
+    }
+    
+    
+    @IBAction func dropDownButtonTapped(_ sender: Any) {
+        //setting the sender as the object
+        if beerMode == true {
+        performSegue(withIdentifier: "beerDropDownSegue", sender: beer)
+        }
+        else if wineMode == true {
+        performSegue(withIdentifier: "wineDropDownSegue", sender: wine)
+        }
+        else if spiritMode == true{
+        performSegue(withIdentifier: "spiritDropDownSegue", sender: spirit)
+        }
+    }
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        //using the set sender to segue to dropdown vc.
+        if segue.identifier == "beerDropDownSegue"{
+            let alcoholSelectionTable = segue.destination as! AlcoholSelectionTableViewController
+            let beer = sender as? Beer
+            alcoholSelectionTable.beerMode = true
+            alcoholSelectionTable.beer = beer
+        }
+        if segue.identifier == "wineDropDownSegue"{
+            let alcoholSelectionTable = segue.destination as! AlcoholSelectionTableViewController
+            let wine = sender as? Wine
+            alcoholSelectionTable.wineMode = true
+            alcoholSelectionTable.wine = wine
+        }
+        if segue.identifier == "spiritDropDownSegue"{
+            let alcoholSelectionTable = segue.destination as! AlcoholSelectionTableViewController
+            let spirit = sender as? Spirit
+            alcoholSelectionTable.spiritMode = true
+            alcoholSelectionTable.spirit = spirit
+        }
+        
         
     }
 
