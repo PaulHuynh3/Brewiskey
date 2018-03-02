@@ -23,7 +23,10 @@ class AlcoholSelectionTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if beerMode == true{
-            beerSelection = [(beer?.singleCanPrice)! + " " + (beer?.singleCanContent)!, (beer?.sixPackCanPrice)!, (beer?.singleBottlePrice)!, (beer?.sixPackBottlePrice)!]
+            let firstBeer = "Single Beer " + (beer?.singleCanPrice)! + " " + (beer?.singleCanContent)!
+            let secondBeer = "Six Pack Can " + (beer?.sixPackCanPrice)! + " " + (beer?.singleCanContent)! + " x6"
+            
+            beerSelection = [firstBeer, secondBeer, (beer?.singleBottlePrice)!, (beer?.sixPackBottlePrice)!]
         }
         //initialize the array
         selectedItem = []
