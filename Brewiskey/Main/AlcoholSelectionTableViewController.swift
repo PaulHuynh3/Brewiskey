@@ -32,6 +32,21 @@ class AlcoholSelectionTableViewController: UITableViewController {
         selectedItem = []
     }
     
+    @IBAction func backButtonTapped(_ sender: Any) {
+        if self.navigationController is MarketNavController {
+            let marketNav = self.navigationController as! MarketNavController
+            let user = marketNav.user
+            
+            user?.alcoholItems?.addObjects(from: [selectedItem])
+            
+            //pop to prev VC
+            navigationController?.popViewController(animated: true)
+        }
+        
+    }
+    
+    
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
@@ -66,17 +81,23 @@ class AlcoholSelectionTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let beer = beerSelection[indexPath.row]
         
-        if selectedItem.contains(beer) {
-//            selectedItem?.removeObject(identicalTo: beer)
-            selectedItem.remove(beer)
-        } else{
-            selectedItem?.add(beer)
+        if beerMode == true {
+        
+            let beer = beerSelection[indexPath.row]
+            
+            if selectedItem.contains(beer) {
+                selectedItem.remove(beer)
+            } else{
+                selectedItem?.add(beer)
+            }
+            self.tableView.reloadData()
         }
-        self.tableView.reloadData()
   
   }
+    
+    
+    
     
     
 }

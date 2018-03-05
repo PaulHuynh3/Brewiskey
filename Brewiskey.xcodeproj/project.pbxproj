@@ -15,6 +15,7 @@
 		DA13D004203E0A7D0021EB7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA13D003203E0A7D0021EB7E /* Assets.xcassets */; };
 		DA13D007203E0A7D0021EB7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA13D005203E0A7D0021EB7E /* LaunchScreen.storyboard */; };
 		DA13D00F203E0ABD0021EB7E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA13D00E203E0ABD0021EB7E /* GoogleService-Info.plist */; };
+		DA2C31F4204DC4C400FF6444 /* MarketNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C31F3204DC4C400FF6444 /* MarketNavController.swift */; };
 		DA2E85DD2043A7B40057C4C6 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E85DC2043A7B40057C4C6 /* MoreTableViewController.swift */; };
 		DA2E85DF2043C62E0057C4C6 /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E85DE2043C62E0057C4C6 /* FirebaseAPI.swift */; };
 		DA2E85E22043C8110057C4C6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E85E12043C8110057C4C6 /* Extensions.swift */; };
@@ -40,6 +41,7 @@
 		DA13D006203E0A7D0021EB7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA13D008203E0A7D0021EB7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DA13D00E203E0ABD0021EB7E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		DA2C31F3204DC4C400FF6444 /* MarketNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketNavController.swift; sourceTree = "<group>"; };
 		DA2E85DC2043A7B40057C4C6 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		DA2E85DE2043C62E0057C4C6 /* FirebaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
 		DA2E85E12043C8110057C4C6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			isa = PBXGroup;
 			children = (
 				DA2E85DE2043C62E0057C4C6 /* FirebaseAPI.swift */,
+				DA2C31F3204DC4C400FF6444 /* MarketNavController.swift */,
 				DAA23AD12040B08900D481E2 /* MarketTableViewController.swift */,
 				DAB177B020421771009F0B45 /* MarketTableViewCell.swift */,
 				DA2E916320487F9F00AF0247 /* DetailedTableViewController.swift */,
@@ -314,6 +317,7 @@
 				DAB177B120421771009F0B45 /* MarketTableViewCell.swift in Sources */,
 				DA2E91662048FF7900AF0247 /* AlcoholSelectionTableViewController.swift in Sources */,
 				DA2E85DD2043A7B40057C4C6 /* MoreTableViewController.swift in Sources */,
+				DA2C31F4204DC4C400FF6444 /* MarketNavController.swift in Sources */,
 				DA056E85203FC7A6007EECAE /* DataModel.swift in Sources */,
 				DA2E85E22043C8110057C4C6 /* Extensions.swift in Sources */,
 				DA056E88203FC982007EECAE /* ForgotPasswordViewController.swift in Sources */,

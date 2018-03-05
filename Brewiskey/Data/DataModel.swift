@@ -14,6 +14,12 @@ class User: NSObject {
     var username: String?
     var email: String?
     var profileImageUrl: String?
+    var alcoholItems: NSMutableArray?
+    
+    override init() {
+        //iniatilize the array before it can be used.
+        alcoholItems = NSMutableArray()
+    }
 }
 
 class Spirit: NSObject {

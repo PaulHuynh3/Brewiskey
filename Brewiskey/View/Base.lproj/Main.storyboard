@@ -60,7 +60,7 @@
             </objects>
             <point key="canvasLocation" x="261.60000000000002" y="-591.45427286356824"/>
         </scene>
-        <!--Detailed Table View Controller-->
+        <!--Title-->
         <scene sceneID="sB8-1R-jpF">
             <objects>
                 <tableViewController id="NKg-CB-by0" customClass="DetailedTableViewController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
@@ -159,6 +159,13 @@
                             <outlet property="delegate" destination="NKg-CB-by0" id="PGc-Sw-AOU"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="IbR-Ha-WT4">
+                        <barButtonItem key="leftBarButtonItem" image="StepBack" id="oGo-hq-9PU">
+                            <connections>
+                                <action selector="backButtonTapped:" destination="NKg-CB-by0" id="DgW-S4-GUY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="alcoholImageview" destination="3S3-Du-gTi" id="Yag-4Y-dnZ"/>
                         <outlet property="countryLabel" destination="Oe6-iK-iRU" id="xvq-Wu-ljj"/>
@@ -171,7 +178,7 @@
             </objects>
             <point key="canvasLocation" x="1245.5999999999999" y="-645.42728635682158"/>
         </scene>
-        <!--Alcohol Selection Table View Controller-->
+        <!--Title-->
         <scene sceneID="fTm-zP-Ryc">
             <objects>
                 <tableViewController id="ooN-vQ-Kj5" customClass="AlcoholSelectionTableViewController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
@@ -180,11 +187,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellIdentifier" rowHeight="39" id="ufU-GX-vKQ">
-                                <rect key="frame" x="0.0" y="28" width="375" height="39"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellIdentifier" rowHeight="48" id="ufU-GX-vKQ">
+                                <rect key="frame" x="0.0" y="28" width="375" height="48"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ufU-GX-vKQ" id="roO-4f-OKZ">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="38.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="47.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -194,15 +201,22 @@
                             <outlet property="delegate" destination="ooN-vQ-Kj5" id="olz-OC-GgT"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Title" id="QXb-Cy-4f5">
+                        <barButtonItem key="leftBarButtonItem" image="StepBack" id="UCZ-HS-tBQ">
+                            <connections>
+                                <action selector="backButtonTapped:" destination="ooN-vQ-Kj5" id="wBN-h9-Q7U"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7iQ-P2-3Ox" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2236" y="-694"/>
+            <point key="canvasLocation" x="2236" y="-694.00299850074964"/>
         </scene>
         <!--Brewiskey-->
         <scene sceneID="kNi-vm-12u">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5se-Ej-YMD" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5se-Ej-YMD" customClass="MarketNavController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Brewiskey" image="water-bottle" id="AxD-aZ-WoA"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="TBX-AT-5fs">
@@ -541,7 +555,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fG6-Hc-Hm8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="200.80000000000001" y="1036.7316341829087"/>
+            <point key="canvasLocation" x="204" y="1026"/>
         </scene>
         <!--Check Out-->
         <scene sceneID="Iqd-aN-axb">
@@ -585,6 +599,7 @@
     <resources>
         <image name="More" width="30" height="30"/>
         <image name="Paul" width="1080" height="720"/>
+        <image name="StepBack" width="29" height="31"/>
         <image name="leftNavy" width="9" height="17"/>
         <image name="rightNavy" width="9" height="17"/>
         <image name="shopping-cart" width="29" height="30"/>
@@ -592,6 +607,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="f5O-hr-gff"/>
-        <segue reference="ueP-sk-nbX"/>
+        <segue reference="8XC-xJ-jGG"/>
     </inferredMetricsTieBreakers>
 </document>

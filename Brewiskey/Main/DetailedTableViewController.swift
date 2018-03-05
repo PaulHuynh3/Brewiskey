@@ -28,6 +28,11 @@ class DetailedTableViewController: UITableViewController {
  
     }
     
+    @IBAction func backButtonTapped(_ sender: Any) {
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    
     func configureAndSetUpLabels(){
         if beerMode == true{
             if let imageUrl = beer?.imageUrl{
@@ -85,6 +90,8 @@ class DetailedTableViewController: UITableViewController {
             alcoholSelectionTable.spiritMode = true
             alcoholSelectionTable.spirit = spirit
         }
+        
+      
         
     }
     
