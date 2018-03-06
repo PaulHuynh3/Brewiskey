@@ -44,8 +44,8 @@ class Wine: NSObject {
     var imageUrl: String?
     var shortDescription: String?
     
-    var mediumBottlePrice: String?
-    var mediumBottleContent: String?
+    var bottlePrice: String?
+    var bottleContent: String?
 }
 
 class Beer: NSObject {

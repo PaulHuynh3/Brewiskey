@@ -49,7 +49,6 @@ class MoreTableViewController: UITableViewController {
                 self.profileImageView.loadImagesUsingCacheWithUrlString(urlString: profileImageUrl)
             }
         }
-        
     }
     
     

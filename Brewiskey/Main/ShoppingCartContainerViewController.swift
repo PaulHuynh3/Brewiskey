@@ -9,13 +9,13 @@
 import UIKit
 
 class ShoppingCartContainerViewController: UIViewController {
-    
+    //make a reference to vc to use its variables..
     var alcoholSelectionTableView: AlcoholSelectionTableViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+       
     }
 
     @IBAction func addToCartTapped(_ sender: Any) {
@@ -24,7 +24,13 @@ class ShoppingCartContainerViewController: UIViewController {
             let user = marketNav.user
             
             user?.alcoholItems?.addObjects(from: [alcoholSelectionTableView?.selectedItem as Any])
-            print("Alcohol saved to shopping cart")
+            
+            let alert = UIAlertController(title: "", message: "Saved to shopping cart", preferredStyle: .alert)
+            
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            
+            alert.addAction(okAction)
+            self.present(alert, animated: true, completion: nil)
         }
         
     }

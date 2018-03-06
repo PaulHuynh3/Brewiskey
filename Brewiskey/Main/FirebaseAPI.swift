@@ -115,8 +115,8 @@ class FirebaseAPI: NSObject {
                 wine.percent = dictionary["alcoholPercent"] as? String
                 
                 if let mediumBottleDict = dictionary["750Bottle"] as? NSDictionary{
-                    wine.mediumBottlePrice = mediumBottleDict["price"] as? String
-                    wine.mediumBottleContent = mediumBottleDict["content"] as? String
+                    wine.bottlePrice = mediumBottleDict["price"] as? String
+                    wine.bottleContent = mediumBottleDict["content"] as? String
                 }
                 completion(wine)
             }
