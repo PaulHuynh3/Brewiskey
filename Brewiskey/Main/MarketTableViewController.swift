@@ -19,9 +19,12 @@ class MarketTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        checkIfUserIsLoggedIn()
         fetchAlcoholBrandsAndSetupTableview()
-        
+        uid = Auth.auth().currentUser?.uid
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        checkIfUserIsLoggedIn()
     }
     
     func fetchAlcoholBrandsAndSetupTableview(){
@@ -52,11 +55,13 @@ class MarketTableViewController: UITableViewController {
         if Auth.auth().currentUser?.uid == nil {
          handleLogout()
         } else {
-            FirebaseAPI.fetchDatabaseUsers(completion: { (user) in
-                DispatchQueue.main.async {
-                    self.navigationItem.title = "Welcome " + user.username!
-                }
-            })
+        FirebaseAPI.fetchDatabaseCurrentUser(uid: uid!, completion: { (user) in
+            DispatchQueue.main.async {
+                self.navigationItem.title = "Welcome " + user.username!
+            }
+            
+        })
+            
         }
     }
     

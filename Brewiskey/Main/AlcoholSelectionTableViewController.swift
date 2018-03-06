@@ -148,8 +148,6 @@ class AlcoholSelectionTableViewController: UITableViewController {
                 selectedItem?.add(wine)
             }
             self.tableView.reloadData()
-            
-            
         }
         
         if spiritMode == true {
@@ -161,7 +159,6 @@ class AlcoholSelectionTableViewController: UITableViewController {
                 selectedItem?.add(spirit)
             }
             self.tableView.reloadData()
-            
         }
   
   }

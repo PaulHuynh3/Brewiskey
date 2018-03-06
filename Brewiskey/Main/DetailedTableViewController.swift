@@ -90,8 +90,7 @@ class DetailedTableViewController: UITableViewController {
             alcoholSelectionTable.spiritMode = true
             alcoholSelectionTable.spirit = spirit
         }
-        
-      
+ 
         
     }
     
