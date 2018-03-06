@@ -33,21 +33,6 @@ class AlcoholSelectionTableViewController: UITableViewController {
     }
     
     
-    @IBAction func addToCartButtonTapped(_ sender: Any) {
-        if self.navigationController is MarketNavController {
-            let marketNav = self.navigationController as! MarketNavController
-            let user = marketNav.user
-            
-            user?.alcoholItems?.addObjects(from: [selectedItem])
-        }
-        
-    }
-    
-    @IBAction func checkoutButtonTapped(_ sender: Any) {
-        
-        
-    }
-    
     @IBAction func backButtonTapped(_ sender: Any) {
         if self.navigationController is MarketNavController {
             let marketNav = self.navigationController as! MarketNavController
@@ -115,6 +100,15 @@ class AlcoholSelectionTableViewController: UITableViewController {
   }
     
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "shoppingCartSegue"{
+            let shoppingCartViewController = segue.destination as! ShoppingCartContainerViewController
+            //setting the variable as this view controller.
+            shoppingCartViewController.alcoholSelectionTableView = self
+            
+        }
+        
+    }
     
     
     
