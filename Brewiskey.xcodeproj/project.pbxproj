@@ -26,6 +26,8 @@
 		DAB177B120421771009F0B45 /* MarketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB177B020421771009F0B45 /* MarketTableViewCell.swift */; };
 		DADC7B75203E17E100F87438 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DADC7B74203E17E100F87438 /* Login.storyboard */; };
 		DADC7B77203E6A4900F87438 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADC7B76203E6A4900F87438 /* RegisterViewController.swift */; };
+		DAE169FD20769AE200B21D30 /* OnboardingView1.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE169FC20769AE200B21D30 /* OnboardingView1.xib */; };
+		DAE169FF20769B3B00B21D30 /* BaseOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE169FE20769B3B00B21D30 /* BaseOnboardingView.swift */; };
 		DDA4E6EB6D878ECD74290C15 /* Pods_Brewiskey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6018CC304C6E50FF5E034F2A /* Pods_Brewiskey.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,6 +55,8 @@
 		DAB177B020421771009F0B45 /* MarketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketTableViewCell.swift; sourceTree = "<group>"; };
 		DADC7B74203E17E100F87438 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DADC7B76203E6A4900F87438 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		DAE169FC20769AE200B21D30 /* OnboardingView1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView1.xib; sourceTree = "<group>"; };
+		DAE169FE20769B3B00B21D30 /* BaseOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseOnboardingView.swift; sourceTree = "<group>"; };
 		F894043FE0F9A2676D6EDB6C /* Pods-Brewiskey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brewiskey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Brewiskey/Pods-Brewiskey.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -112,7 +116,7 @@
 				DA13D005203E0A7D0021EB7E /* LaunchScreen.storyboard */,
 				DADC7B70203E175500F87438 /* Data */,
 				DADC7B71203E176B00F87438 /* View */,
-				DADC7B72203E178200F87438 /* Login */,
+				DADC7B72203E178200F87438 /* Onboarding */,
 				DADC7B73203E179600F87438 /* Main */,
 				DA2E85E02043C7F90057C4C6 /* Helper */,
 				DA056E86203FC8DB007EECAE /* Supporting Files */,
@@ -145,14 +149,16 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		DADC7B72203E178200F87438 /* Login */ = {
+		DADC7B72203E178200F87438 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
 				DA13CFFE203E0A7D0021EB7E /* LoginViewController.swift */,
 				DA056E87203FC982007EECAE /* ForgotPasswordViewController.swift */,
 				DADC7B76203E6A4900F87438 /* RegisterViewController.swift */,
+				DAE169FE20769B3B00B21D30 /* BaseOnboardingView.swift */,
+				DAE169FC20769AE200B21D30 /* OnboardingView1.xib */,
 			);
-			path = Login;
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		DADC7B73203E179600F87438 /* Main */ = {
@@ -245,6 +251,7 @@
 				DA13D004203E0A7D0021EB7E /* Assets.xcassets in Resources */,
 				DADC7B75203E17E100F87438 /* Login.storyboard in Resources */,
 				DA13D002203E0A7D0021EB7E /* Main.storyboard in Resources */,
+				DAE169FD20769AE200B21D30 /* OnboardingView1.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -319,6 +326,7 @@
 				DA2E85DF2043C62E0057C4C6 /* FirebaseAPI.swift in Sources */,
 				DAB177B120421771009F0B45 /* MarketTableViewCell.swift in Sources */,
 				DA2E91662048FF7900AF0247 /* AlcoholSelectionTableViewController.swift in Sources */,
+				DAE169FF20769B3B00B21D30 /* BaseOnboardingView.swift in Sources */,
 				DA2E85DD2043A7B40057C4C6 /* MoreTableViewController.swift in Sources */,
 				DA2C31F4204DC4C400FF6444 /* MarketNavController.swift in Sources */,
 				DA056E85203FC7A6007EECAE /* DataModel.swift in Sources */,
