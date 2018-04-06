@@ -17,12 +17,15 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordImageView: UIImageView!
     @IBOutlet weak var passwordTextfield: UITextField!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         errorImageView.isHidden = true
     }
-
+    
+    @IBAction func backArrowTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     @IBAction func signinButtonTapped(_ sender: Any) {
         
@@ -59,7 +62,12 @@ class LoginViewController: UIViewController {
         }
 
     }
-
+    
+    
+    @IBAction func forgotPasswordTapped(_ sender: Any) {
+        performSegue(withIdentifier: "forgotPasswordSegue", sender: nil)
+    }
+    
 
 }
 

@@ -49,6 +49,15 @@ class MoreTableViewController: UITableViewController {
                 self.profileImageView.loadImagesUsingCacheWithUrlString(urlString: profileImageUrl)
             }
         }
+        
+        if let currentUser = Auth.auth().currentUser{
+            profileNameLabel.text = currentUser.displayName
+            
+            guard let imageUrl = currentUser.photoURL else {return}
+            FirebaseAPI.loadImageFromUrl(url: imageUrl, completion: { (downloadedImage) in
+                self.profileImageView.image = downloadedImage
+            })
+        }
     }
     
     

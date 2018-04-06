@@ -12,6 +12,8 @@ import UIKit
 class User: NSObject {
     var id: String?
     var username: String?
+    var firstName: String?
+    var lastName: String?
     var email: String?
     var profileImageUrl: String?
     var alcoholItems: NSMutableArray?

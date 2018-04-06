@@ -13,7 +13,7 @@ let imageCache = NSCache<NSString, UIImage>()
 
 extension UIImageView {
     //So that the downloaded images dont need to be downloaded again. Saves networking data.
-    func loadImagesUsingCacheWithUrlString(urlString:String){
+    func loadImagesUsingCacheWithUrlString(urlString: String){
         
         //blank out white space to take out flashing.
         self.image = nil

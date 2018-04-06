@@ -55,12 +55,12 @@ class MarketTableViewController: UITableViewController {
         if Auth.auth().currentUser?.uid == nil {
          handleLogout()
         } else {
-        FirebaseAPI.fetchDatabaseCurrentUser(uid: uid!, completion: { (user) in
-            DispatchQueue.main.async {
-                self.navigationItem.title = "Welcome " + user.username!
-            }
-            
-        })
+//        FirebaseAPI.fetchDatabaseCurrentUser(uid: uid!, completion: { (user) in
+//            DispatchQueue.main.async {
+//                self.navigationItem.title = "Welcome " + user.username!
+//            }
+//
+//        })
             
         }
     }

@@ -123,6 +123,25 @@ class FirebaseAPI: NSObject {
         }, withCancel: nil)
     }
     
+    class func loadImageFromUrl(url: URL, completion: @escaping (UIImage) -> Void) {
+        let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
+            
+            if let error = error {
+                print(error, #line)
+                return
+            }
+            
+            guard let data = data else {
+                return
+            }
+            
+            DispatchQueue.main.async {
+                if let downloadedImage = UIImage(data: data) {
+                completion(downloadedImage)
+                }
+            }
+        })
+        task.resume()
+    }
     
 }
-

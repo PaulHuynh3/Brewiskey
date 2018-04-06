@@ -23,6 +23,9 @@
 		DA2E916420487F9F00AF0247 /* DetailedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E916320487F9F00AF0247 /* DetailedTableViewController.swift */; };
 		DA2E91662048FF7900AF0247 /* AlcoholSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E91652048FF7900AF0247 /* AlcoholSelectionTableViewController.swift */; };
 		DA389A7C20774763009F3CE8 /* OnboardingCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA389A7B20774763009F3CE8 /* OnboardingCheck.swift */; };
+		DA5F352C2077C46100A64FA0 /* FacebookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F352B2077C46100A64FA0 /* FacebookAPI.swift */; };
+		DA5F352E2077C79D00A64FA0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F352D2077C79D00A64FA0 /* Constants.swift */; };
+		DA5F3530207825D400A64FA0 /* EmailSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F352F207825D400A64FA0 /* EmailSentViewController.swift */; };
 		DA9F41D7207719E00004797B /* OnboardingView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F41D6207719E00004797B /* OnboardingView2.xib */; };
 		DA9F41D920771B7C0004797B /* OnboardingView3.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F41D820771B7C0004797B /* OnboardingView3.xib */; };
 		DA9F41DB20771B890004797B /* OnboardingView4.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F41DA20771B890004797B /* OnboardingView4.xib */; };
@@ -58,6 +61,9 @@
 		DA2E916320487F9F00AF0247 /* DetailedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTableViewController.swift; sourceTree = "<group>"; };
 		DA2E91652048FF7900AF0247 /* AlcoholSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholSelectionTableViewController.swift; sourceTree = "<group>"; };
 		DA389A7B20774763009F3CE8 /* OnboardingCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCheck.swift; sourceTree = "<group>"; };
+		DA5F352B2077C46100A64FA0 /* FacebookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAPI.swift; sourceTree = "<group>"; };
+		DA5F352D2077C79D00A64FA0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		DA5F352F207825D400A64FA0 /* EmailSentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSentViewController.swift; sourceTree = "<group>"; };
 		DA9F41D6207719E00004797B /* OnboardingView2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView2.xib; sourceTree = "<group>"; };
 		DA9F41D820771B7C0004797B /* OnboardingView3.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView3.xib; sourceTree = "<group>"; };
 		DA9F41DA20771B890004797B /* OnboardingView4.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView4.xib; sourceTree = "<group>"; };
@@ -148,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				DA056E84203FC7A6007EECAE /* DataModel.swift */,
+				DA5F352D2077C79D00A64FA0 /* Constants.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -168,6 +175,7 @@
 				DAE16A042076A0B300B21D30 /* IntroductionScreenViewController.swift */,
 				DA13CFFE203E0A7D0021EB7E /* LoginViewController.swift */,
 				DA056E87203FC982007EECAE /* ForgotPasswordViewController.swift */,
+				DA5F352F207825D400A64FA0 /* EmailSentViewController.swift */,
 				DADC7B76203E6A4900F87438 /* RegisterViewController.swift */,
 				DAE169FE20769B3B00B21D30 /* BaseOnboardingView.swift */,
 				DAE169FC20769AE200B21D30 /* OnboardingView0.xib */,
@@ -183,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				DA2E85DE2043C62E0057C4C6 /* FirebaseAPI.swift */,
+				DA5F352B2077C46100A64FA0 /* FacebookAPI.swift */,
 				DA2C31F3204DC4C400FF6444 /* MarketNavController.swift */,
 				DAA23AD12040B08900D481E2 /* MarketTableViewController.swift */,
 				DAB177B020421771009F0B45 /* MarketTableViewCell.swift */,
@@ -302,6 +311,10 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Brewiskey/Pods-Brewiskey-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Bolts/Bolts.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKCoreKit/FBSDKCoreKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKLoginKit/FBSDKLoginKit.framework",
+				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
@@ -309,6 +322,10 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Bolts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKCoreKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKLoginKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
@@ -345,7 +362,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAA23AD22040B08900D481E2 /* MarketTableViewController.swift in Sources */,
+				DA5F352E2077C79D00A64FA0 /* Constants.swift in Sources */,
 				DA2E85DF2043C62E0057C4C6 /* FirebaseAPI.swift in Sources */,
+				DA5F352C2077C46100A64FA0 /* FacebookAPI.swift in Sources */,
 				DAE16A052076A0B300B21D30 /* IntroductionScreenViewController.swift in Sources */,
 				DAB177B120421771009F0B45 /* MarketTableViewCell.swift in Sources */,
 				DA2E91662048FF7900AF0247 /* AlcoholSelectionTableViewController.swift in Sources */,
@@ -355,6 +374,7 @@
 				DA056E85203FC7A6007EECAE /* DataModel.swift in Sources */,
 				DA2E85E22043C8110057C4C6 /* Extensions.swift in Sources */,
 				DA056E88203FC982007EECAE /* ForgotPasswordViewController.swift in Sources */,
+				DA5F3530207825D400A64FA0 /* EmailSentViewController.swift in Sources */,
 				DADC7B77203E6A4900F87438 /* RegisterViewController.swift in Sources */,
 				DA2C31F6204E313A00FF6444 /* ShoppingCartContainerViewController.swift in Sources */,
 				DA13CFFF203E0A7D0021EB7E /* LoginViewController.swift in Sources */,

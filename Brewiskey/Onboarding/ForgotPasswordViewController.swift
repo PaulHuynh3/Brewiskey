@@ -20,9 +20,12 @@ class ForgotPasswordViewController: UIViewController {
         errorCircleImageView.isHidden = true
     }
     
+    @IBAction func backArrowTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     
     @IBAction func resetPasswordButtonTapped(_ sender: Any) {
-        
         if emailTextField.text == ""{
             emailImageView.image = UIImage(named: "RedRectangle")
             errorCircleImageView.isHidden = false
@@ -48,13 +51,3 @@ class ForgotPasswordViewController: UIViewController {
     }
     
 }
-
-class EmailSentViewController: UIViewController {
-    
-    @IBAction func soundsGoodButtonTapped(_ sender: Any) {
-        navigationController?.popToRootViewController(animated: true)
-    }
-    
-    
-}
-

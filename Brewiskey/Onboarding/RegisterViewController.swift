@@ -9,11 +9,13 @@
 import UIKit
 import Firebase
 
-class RegisterViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class RegisterViewController: UIViewController {
     
     @IBOutlet weak var uploadPictureImageView: UIImageView!
-    @IBOutlet weak var usernameImageView: UIImageView!
-    @IBOutlet weak var usernameTextField: UITextField!
+    @IBOutlet weak var firstNameImageview: UIImageView!
+    @IBOutlet weak var firstNameTextfield: UITextField!
+    @IBOutlet weak var lastNameImageview: UIImageView!
+    @IBOutlet weak var lastNameTextfield: UITextField!
     @IBOutlet weak var emailImageView: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordImageView: UIImageView!
@@ -26,28 +28,45 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         errorCircleImageView.isHidden = true
     }
     
+    @IBAction func backArrowTapped(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
 
     @IBAction func createAccountTapped(_ sender: Any) {
         //            Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in   }) verifying email... implement later on?
-        guard let username = usernameTextField.text,
+        guard let firstName = firstNameTextfield.text,
+              let lastName = lastNameTextfield.text,
               let email = emailTextField.text,
               let password = passwordTextField.text else {return}
         
-        if !checkBlankFieldsAndDisplayError(username: username, email: email, password: password){
+        if !checkBlankFields(firstName: firstName, lastName: lastName, email: email, password: password){
+            let errorMessage = "Please fill out all mandatory fields."
+            displayError(message: errorMessage)
+            return
+        }
+        
+        if !checkValidEmail(email){
+            let errorMessage = "Please enter a valid email."
+            displayError(message: errorMessage)
+            return
+        }
+        
+        if !checkPasswordComplexity(password){
+            let errorMessage = "Password must be at least 8 characters with at least one uppercase letter, one number and one special character."
+            displayError(message: errorMessage)
+            return
+        }
+        
+        if checkEmailPasswordMatch(email: email, password: password){
+            let errorMessage = "Email and password may not be the same!"
+            displayError(message: errorMessage)
             return
         }
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             
             if let error = error {
-                print(error)
-                let alert = UIAlertController(title: "Error", message: error.localizedDescription, preferredStyle: .alert)
-                
-                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                
-                alert.addAction(okAction)
-                
-                self.present(alert, animated: true, completion: nil)
+                self.displayError(message: error.localizedDescription)
                 return
             }
             
@@ -67,62 +86,30 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
                         print(error)
                         return
                     }
-                    
-                    if let profileImageURL = metadata?.downloadURL()?.absoluteString{
-                        //add value for age, remove username and put full name
-                        let values = ["username":username, "email":email, "password":password, "profileImageUrl":profileImageURL]
+                    DispatchQueue.main.async {
+                        guard let profileImageURL = metadata?.downloadURL()?.absoluteString else {
+                            return
+                        }
+                        
+                        let values = ["firstName": firstName, "lastName": lastName, "email": email, "profileImageUrl": profileImageURL]
+                        
+                        let userDefault = UserDefaults.standard
+                        userDefault.set(true, forKey: kUserInfo.kLoginStatus)
+                        userDefault.set(uid, forKey: kUserInfo.kUserId)
+                        userDefault.set(true, forKey: kUserInfo.kNewUser)
+                        userDefault.set(firstName, forKey: kUserInfo.kFirstName)
+                        userDefault.set(lastName, forKey: kUserInfo.kLastName)
+                        userDefault.set(email, forKey: kUserInfo.kEmail)
                         
                         self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
                     }
-                    
                 })
             }
         }
     }
     
-    private func checkBlankFieldsAndDisplayError(username: String, email: String, password: String) -> Bool{
-        let errorMessage = "Please fill out all mandatory fields"
-        
-        if username.trim() == "" || email.trim() == "" || password.trim() == "" {
-            if username == "" {
-                usernameImageView.image = UIImage(named: "RedRectangle")
-            } else {
-                usernameImageView.image = UIImage(named: "BlueRectangle")
-            }
-            
-            if email == "" {
-                emailImageView.image = UIImage(named: "RedRectangle")
-            } else {
-                emailImageView.image = UIImage(named: "BlueRectangle")
-            }
-            
-            if password == "" {
-                passwordImageView.image = UIImage(named:"RedRectangle")
-            } else {
-                passwordImageView.image = UIImage(named: "BlueRectangle")
-            }
-            
-            errorCircleImageView.isHidden = false
-            
-            displayError(message: errorMessage)
-            return false
-        } else {
-            return true
-        }
-    }
-    
-    private func displayError(message: String){
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
-    }
-        
     private func registerUserIntoDatabaseWithUID(_ uid:String, values: [String:AnyObject]){
-            
        let userReference = self.database.child("users").child(uid)
-            
-            
         userReference.updateChildValues(values, withCompletionBlock: { (error, databaseRef) in
         if let error = error {
                     print(error, #line)
@@ -133,9 +120,10 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         appDelegate?.transitionToMarketPlace()
                 
             })
-            
         }
-    
+}
+
+extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBAction func uploadPhoto(_ sender: Any) {
         let alert = UIAlertController(title: "Edit Profile Picture", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
@@ -191,9 +179,99 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         
     }
     
-    
-
-    
 }
 
+extension RegisterViewController {
+    
+    private func checkBlankFields(firstName: String, lastName: String, email: String, password: String) -> Bool{
+        if firstName.trim() == "" || lastName.trim() == "" || email.trim() == "" || password.trim() == "" {
+            if firstName == "" {
+                firstNameImageview.image = UIImage(named: "RedRectangle")
+                errorCircleImageView.isHidden = false
+            } else {
+                firstNameImageview.image = UIImage(named: "BlueRectangle")
+                errorCircleImageView.isHidden = true
+            }
+            if lastName == "" {
+                lastNameImageview.image = UIImage(named: "RedRectangle")
+                errorCircleImageView.isHidden = false
+            } else {
+                lastNameImageview.image = UIImage(named: "BlueRectangle")
+                errorCircleImageView.isHidden = true
+            }
+            
+            if email == "" {
+                emailImageView.image = UIImage(named: "RedRectangle")
+                errorCircleImageView.isHidden = false
+            } else {
+                emailImageView.image = UIImage(named: "BlueRectangle")
+                errorCircleImageView.isHidden = true
+            }
+            
+            if password == "" {
+                passwordImageView.image = UIImage(named:"RedRectangle")
+                errorCircleImageView.isHidden = false
+            } else {
+                passwordImageView.image = UIImage(named: "BlueRectangle")
+                errorCircleImageView.isHidden = true
+            }
+            return false
+        } else {
+            return true
+        }
+    }
+    
+    private func checkValidEmail(_ email: String) -> Bool{
+        let validateEmailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format: "SELF MATCHES %@", validateEmailRegEx)
+        if emailTest.evaluate(with: email) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func checkPasswordComplexity(_ password: String) -> Bool {
+        let capitalLetterRegEx  = ".*[A-Z]+.*"
+        let checkForCapital = NSPredicate(format:"SELF MATCHES %@", capitalLetterRegEx)
+        let capitalResult = checkForCapital.evaluate(with: password)
+        
+        let lowerLetterRegEx = ".*[a-z]+.*"
+        let checkForLowerCase = NSPredicate(format:"SELF MATCHES %@", lowerLetterRegEx)
+        let lowerCaseResult = checkForLowerCase.evaluate(with: password)
+        
+        let numberRegEx  = ".*[0-9]+.*"
+        let checkForNumber = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
+        let numberResult = checkForNumber.evaluate(with: password)
+        
+        let specialCharacterRegEx  = ".*[!@#$%^&*()-_+=]+.*"
+        let checkForSpecialText = NSPredicate(format:"SELF MATCHES %@", specialCharacterRegEx)
+        let specialResult = checkForSpecialText.evaluate(with: password)
+        
+        let requiredLengthRegEx = ".*.{8}+.*"
+        let checkForRequiredLength = NSPredicate(format:"SELF MATCHES %@", requiredLengthRegEx)
+        let requiredLengthResult = checkForRequiredLength.evaluate(with: password)
+        
+        if capitalResult && lowerCaseResult && numberResult && specialResult && requiredLengthResult {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func checkEmailPasswordMatch(email: String, password: String) -> Bool {
+        if email == password {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func displayError(message: String){
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+}
 
