@@ -55,18 +55,18 @@ class MarketTableViewController: UITableViewController {
         if Auth.auth().currentUser?.uid == nil {
          handleLogout()
         } else {
-//        FirebaseAPI.fetchDatabaseCurrentUser(uid: uid!, completion: { (user) in
-//            DispatchQueue.main.async {
-//                self.navigationItem.title = "Welcome " + user.username!
-//            }
-//
-//        })
-            
+            if let firstName = UserDefaults.standard.string(forKey: kUserInfo.kFirstName), let lastName = UserDefaults.standard.string(forKey: kUserInfo.kLastName){
+                self.navigationItem.title = "Welcome " + firstName + " " + lastName
+            } else {
+                if let displayName = UserDefaults.standard.string(forKey: kUserInfo.kDisplayName) {
+                     self.navigationItem.title = "Welcome " + displayName
+                }
+            }
         }
+        
     }
     
     func handleLogout(){
-        
         do {
             try Auth.auth().signOut()
         } catch let logoutError{

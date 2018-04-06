@@ -43,7 +43,9 @@ class MoreTableViewController: UITableViewController {
     
     private func fetchAndConfigureProfile(){
         FirebaseAPI.fetchDatabaseCurrentUser(uid: uid!) { (user) in
-            self.profileNameLabel.text = user.username
+           let firstName = UserDefaults.standard.string(forKey: kUserInfo.kFirstName)
+           let lastName = UserDefaults.standard.string(forKey: kUserInfo.kLastName)
+            self.profileNameLabel.text = "\(firstName) \(lastName)"
             self.profileEmailLabel.text = user.email
             if let profileImageUrl = user.profileImageUrl {
                 self.profileImageView.loadImagesUsingCacheWithUrlString(urlString: profileImageUrl)

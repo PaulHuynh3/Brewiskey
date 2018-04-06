@@ -9,7 +9,7 @@
 import Foundation
 
 struct kUserInfo {
-    
+    static let kDisplayName = "displayName"
     static let kFirstName = "firstName"
     static let kLastName = "lastName"
     static let kUserId = "userId"

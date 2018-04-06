@@ -173,10 +173,10 @@
 			children = (
 				DA389A7B20774763009F3CE8 /* OnboardingCheck.swift */,
 				DAE16A042076A0B300B21D30 /* IntroductionScreenViewController.swift */,
+				DADC7B76203E6A4900F87438 /* RegisterViewController.swift */,
 				DA13CFFE203E0A7D0021EB7E /* LoginViewController.swift */,
 				DA056E87203FC982007EECAE /* ForgotPasswordViewController.swift */,
 				DA5F352F207825D400A64FA0 /* EmailSentViewController.swift */,
-				DADC7B76203E6A4900F87438 /* RegisterViewController.swift */,
 				DAE169FE20769B3B00B21D30 /* BaseOnboardingView.swift */,
 				DAE169FC20769AE200B21D30 /* OnboardingView0.xib */,
 				DAE16A0220769C9B00B21D30 /* OnboardingView1.xib */,

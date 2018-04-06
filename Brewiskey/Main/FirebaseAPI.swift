@@ -11,7 +11,7 @@ import UIKit
 import Firebase
 
 class FirebaseAPI: NSObject {
-    
+    //may not need these api calls...
     
     class func fetchDatabaseCurrentUser(uid:String, completion:@escaping (_ user:User) -> Void){
         
@@ -22,10 +22,10 @@ class FirebaseAPI: NSObject {
                 let user = User()
                 //this gives the unique user id.
                 user.id = snapshot.key
-                user.username = dictionary["username"] as? String
+                user.firstName = dictionary["firstName"] as? String
+                user.lastName = dictionary["lastName"] as? String
                 user.email = dictionary["email"] as? String
                 user.profileImageUrl = dictionary["profileImageUrl"] as? String
-                
                 
                 completion(user)
             }
@@ -38,7 +38,8 @@ class FirebaseAPI: NSObject {
             if let dictionary = snapshot.value as? [String:AnyObject]{
                 let user = User()
                 user.id = snapshot.key
-                user.username = dictionary["username"] as? String
+                user.firstName = dictionary["firstName"] as? String
+                user.lastName = dictionary["lastName"] as? String
                 user.email = dictionary["email"] as? String
                 user.profileImageUrl = dictionary["profileImageUrl"] as? String
                 
