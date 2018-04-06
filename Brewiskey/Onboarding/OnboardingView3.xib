@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="bdH-Y9-hDy" customClass="BaseOnboardingView" customModule="Brewiskey" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlcoholBackground5" translatesAutoresizingMaskIntoConstraints="NO" id="HQ4-Ce-ppv">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fiC-uB-5Ef">
+                    <rect key="frame" x="284" y="20" width="75" height="40"/>
+                    <state key="normal" image="loginBtn"/>
+                    <connections>
+                        <action selector="loginButtonTapped:" destination="bdH-Y9-hDy" eventType="touchUpInside" id="yLK-sA-z6Y"/>
+                    </connections>
+                </button>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" currentPage="3" translatesAutoresizingMaskIntoConstraints="NO" id="6EN-jB-KRZ">
+                    <rect key="frame" x="152" y="554" width="71" height="37"/>
+                    <color key="pageIndicatorTintColor" red="1" green="1" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="currentPageIndicatorTintColor" red="0.049917560569999998" green="0.076097820199999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </pageControl>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dl5-Oi-OfQ">
+                    <rect key="frame" x="16" y="599" width="150" height="48"/>
+                    <state key="normal" image="fbBtn"/>
+                    <connections>
+                        <action selector="FacebookButtonTapped:" destination="bdH-Y9-hDy" eventType="touchUpInside" id="AEC-hb-JmV"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="h4K-OY-TFn">
+                    <rect key="frame" x="209" y="599" width="150" height="48"/>
+                    <state key="normal" image="signupBtn"/>
+                    <connections>
+                        <action selector="emailButtonTapped:" destination="bdH-Y9-hDy" eventType="touchUpInside" id="jNM-0W-k9l"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="fiC-uB-5Ef" firstAttribute="top" secondItem="Heb-e7-qcO" secondAttribute="top" id="1MB-oA-k8N"/>
+                <constraint firstItem="HQ4-Ce-ppv" firstAttribute="leading" secondItem="Heb-e7-qcO" secondAttribute="leading" id="46N-Bq-smz"/>
+                <constraint firstItem="HQ4-Ce-ppv" firstAttribute="bottom" secondItem="Heb-e7-qcO" secondAttribute="bottom" id="8QB-oa-JoH"/>
+                <constraint firstItem="Dl5-Oi-OfQ" firstAttribute="top" secondItem="6EN-jB-KRZ" secondAttribute="bottom" constant="8" id="9yt-1o-BiC"/>
+                <constraint firstItem="Heb-e7-qcO" firstAttribute="bottom" secondItem="Dl5-Oi-OfQ" secondAttribute="bottom" constant="20" id="Ot3-cv-udJ"/>
+                <constraint firstItem="fiC-uB-5Ef" firstAttribute="width" secondItem="bdH-Y9-hDy" secondAttribute="width" multiplier="0.2" id="S1c-s5-Opj"/>
+                <constraint firstItem="h4K-OY-TFn" firstAttribute="width" secondItem="Dl5-Oi-OfQ" secondAttribute="width" id="Xa9-q3-dR8"/>
+                <constraint firstItem="Heb-e7-qcO" firstAttribute="trailing" secondItem="h4K-OY-TFn" secondAttribute="trailing" constant="16" id="Xbo-rO-ZDQ"/>
+                <constraint firstItem="Heb-e7-qcO" firstAttribute="bottom" secondItem="h4K-OY-TFn" secondAttribute="bottom" constant="20" id="cZH-w7-181"/>
+                <constraint firstItem="Heb-e7-qcO" firstAttribute="trailing" secondItem="fiC-uB-5Ef" secondAttribute="trailing" constant="16" id="g2y-lP-vgE"/>
+                <constraint firstItem="6EN-jB-KRZ" firstAttribute="centerX" secondItem="Heb-e7-qcO" secondAttribute="centerX" id="i4t-wD-dPK"/>
+                <constraint firstItem="Dl5-Oi-OfQ" firstAttribute="width" secondItem="bdH-Y9-hDy" secondAttribute="width" multiplier="0.4" id="kaA-OC-XJs"/>
+                <constraint firstItem="HQ4-Ce-ppv" firstAttribute="top" secondItem="bdH-Y9-hDy" secondAttribute="top" id="qQi-BU-BQp"/>
+                <constraint firstItem="Dl5-Oi-OfQ" firstAttribute="leading" secondItem="Heb-e7-qcO" secondAttribute="leading" constant="16" id="voc-KM-NKV"/>
+                <constraint firstItem="HQ4-Ce-ppv" firstAttribute="trailing" secondItem="Heb-e7-qcO" secondAttribute="trailing" id="zTF-P2-dQh"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="Heb-e7-qcO"/>
+            <point key="canvasLocation" x="-23" y="6"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="AlcoholBackground5" width="286" height="176"/>
+        <image name="fbBtn" width="156" height="48"/>
+        <image name="loginBtn" width="72" height="40"/>
+        <image name="signupBtn" width="156" height="48"/>
+    </resources>
+</document>

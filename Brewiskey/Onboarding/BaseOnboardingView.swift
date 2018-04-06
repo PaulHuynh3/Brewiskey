@@ -6,9 +6,23 @@
 //  Copyright © 2018 Paul. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class BaseOnboardingView: UIView {
+    var navigateUserDelegate: BaseOnboardingScreenDelegate!
+    
+    @IBAction func loginButtonTapped(_ sender: Any) {
+        navigateUserDelegate.loginUser()
+    }
+    
+    @IBAction func FacebookButtonTapped(_ sender: Any) {
+        navigateUserDelegate.signupWithFacebook()
+    }
+    
+    @IBAction func emailButtonTapped(_ sender: Any) {
+        navigateUserDelegate.signupWithEmail()
+    }
+    
     
     
 }
