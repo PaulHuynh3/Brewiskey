@@ -33,7 +33,9 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
               let email = emailTextField.text,
               let password = passwordTextField.text else {return}
         
-        textFieldCheck(username: username, email: email, password: password)
+        if !checkBlankFieldsAndDisplayError(username: username, email: email, password: password){
+            return
+        }
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             
@@ -78,9 +80,10 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
     
-    private func textFieldCheck(username:String, email:String, password:String){
+    private func checkBlankFieldsAndDisplayError(username: String, email: String, password: String) -> Bool{
+        let errorMessage = "Please fill out all mandatory fields"
         
-        if username == "" || email == "" || password == "" {
+        if username.trim() == "" || email.trim() == "" || password.trim() == "" {
             if username == "" {
                 usernameImageView.image = UIImage(named: "RedRectangle")
             } else {
@@ -100,14 +103,19 @@ class RegisterViewController: UIViewController, UIImagePickerControllerDelegate,
             }
             
             errorCircleImageView.isHidden = false
-            let alert = UIAlertController(title: "Required", message: "Please fill out all mandatory fields", preferredStyle: .alert)
             
-            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            
-            alert.addAction(okAction)
-            self.present(alert, animated: true, completion: nil)
-            return
+            displayError(message: errorMessage)
+            return false
+        } else {
+            return true
         }
+    }
+    
+    private func displayError(message: String){
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
     }
         
     private func registerUserIntoDatabaseWithUID(_ uid:String, values: [String:AnyObject]){

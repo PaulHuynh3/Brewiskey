@@ -13,7 +13,6 @@ class MarketTableViewCell: UITableViewCell {
     @IBOutlet weak var alcoholImageView: UIImageView!
     @IBOutlet weak var brandNameLabel: UILabel!
     
-    
     func setupBeerNamesAndImages(_ beer: Beer){
         
         if let imageUrl = beer.imageUrl{
