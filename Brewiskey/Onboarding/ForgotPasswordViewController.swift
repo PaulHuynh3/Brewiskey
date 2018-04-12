@@ -17,6 +17,7 @@ class ForgotPasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        emailTextField.delegate = self
         errorCircleImageView.isHidden = true
     }
     
@@ -26,22 +27,26 @@ class ForgotPasswordViewController: UIViewController {
     
     
     @IBAction func resetPasswordButtonTapped(_ sender: Any) {
-        if emailTextField.text == ""{
+        guard let email = emailTextField.text else {return}
+        
+        if email.trim() == "" {
             emailImageView.image = UIImage(named: "RedRectangle")
             errorCircleImageView.isHidden = false
             return
         }
-        guard let email = emailTextField.text else {return}
+        
+        if !checkValidEmail(email){
+            let errorMessage = "Please enter a valid email!"
+            displayError(errorMessage)
+            return
+        }
         
         activityIndicator.startAnimating()
         
         Auth.auth().sendPasswordReset(withEmail: email) { (error) in
             
-            if error != nil {
-                let alert = UIAlertController(title: "Error", message: "The email is not valid", preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                alert.addAction(okAction)
-                self.present(alert, animated: true, completion: nil)
+            if let error = error {
+                self.displayError(error.localizedDescription)
             } else {
                 self.performSegue(withIdentifier: "resetPasswordIdentifier", sender: self)
             }
@@ -50,4 +55,32 @@ class ForgotPasswordViewController: UIViewController {
         activityIndicator.stopAnimating()
     }
     
+    private func checkValidEmail(_ email: String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        
+        if emailTest.evaluate(with: email) {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    private func displayError(_ message: String){
+        let title = "Error"
+        let actionOk = "OK"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: actionOk, style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
+    
+}
+
+extension ForgotPasswordViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }

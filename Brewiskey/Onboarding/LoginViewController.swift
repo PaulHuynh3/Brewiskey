@@ -20,6 +20,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         errorImageView.isHidden = true
+        self.emailTextField.delegate = self
+        self.passwordTextfield.delegate = self
     }
     
     @IBAction func backArrowTapped(_ sender: Any) {
@@ -56,26 +58,35 @@ class LoginViewController: UIViewController {
                     appDelegate?.transitionToMarketPlace()
                     
                 } else {
-                    let alert = UIAlertController(title: "Login Error", message: "Username or password is incorrect", preferredStyle: .alert)
-                    
-                    let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-                    
-                    alert.addAction(okAction)
-                    
-                    self.present(alert, animated: true, completion: nil)
+                    let errorMessage = "Username or password is incorrect"
+                    self.displayError(errorMessage)
+                    return
                 }
                 
             })
             
         }
-
     }
-    
     
     @IBAction func forgotPasswordTapped(_ sender: Any) {
         performSegue(withIdentifier: "forgotPasswordSegue", sender: nil)
     }
     
+    private func displayError(_ message: String){
+        let title = "Error"
+        let actionOk = "OK"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: actionOk, style: .default, handler: nil)
+        alert.addAction(okAction)
+        present(alert, animated: true, completion: nil)
+    }
 
+}
+
+extension LoginViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 

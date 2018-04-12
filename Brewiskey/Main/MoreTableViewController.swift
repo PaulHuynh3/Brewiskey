@@ -43,9 +43,10 @@ class MoreTableViewController: UITableViewController {
     
     private func fetchAndConfigureProfile(){
         FirebaseAPI.fetchDatabaseCurrentUser(uid: uid!) { (user) in
-           let firstName = UserDefaults.standard.string(forKey: kUserInfo.kFirstName)
-           let lastName = UserDefaults.standard.string(forKey: kUserInfo.kLastName)
-            self.profileNameLabel.text = "\(firstName) \(lastName)"
+           if let firstName = UserDefaults.standard.string(forKey: kUserInfo.kFirstName),
+            let lastName = UserDefaults.standard.string(forKey: kUserInfo.kLastName) {
+            self.profileNameLabel.text = firstName + " " + lastName
+            }
             self.profileEmailLabel.text = user.email
             if let profileImageUrl = user.profileImageUrl {
                 self.profileImageView.loadImagesUsingCacheWithUrlString(urlString: profileImageUrl)
@@ -62,20 +63,26 @@ class MoreTableViewController: UITableViewController {
         }
     }
     
-    
+    //handle logout clear nsuserdefaults, clear any data associated with previous user..
     private func handleLogout(){
         do {
             try Auth.auth().signOut()
         } catch let logoutError{
             print(logoutError)
+            return
         }
         
         DispatchQueue.main.async {
+            let userDefault = UserDefaults.standard
+            userDefault.set(false, forKey: kUserInfo.kLoginStatus)
+            userDefault.set(nil, forKey: kUserInfo.kUserId)
+            userDefault.set(nil, forKey: kUserInfo.kEmail)
+            userDefault.set(nil, forKey: kUserInfo.kFirstName)
+            userDefault.set(nil, forKey: kUserInfo.kLastName)
+            
             let appDelegate = UIApplication.shared.delegate as? AppDelegate
             appDelegate?.transitionToLogin()
         }
     }
     
-
-
 }

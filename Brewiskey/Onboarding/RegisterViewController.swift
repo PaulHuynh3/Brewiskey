@@ -25,6 +25,10 @@ class RegisterViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        firstNameTextfield.delegate = self
+        lastNameTextfield.delegate = self
+        emailTextField.delegate = self
+        passwordTextField.delegate = self
         errorCircleImageView.isHidden = true
     }
     
@@ -272,6 +276,13 @@ extension RegisterViewController {
         let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
+    }
+}
+
+extension RegisterViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
 
