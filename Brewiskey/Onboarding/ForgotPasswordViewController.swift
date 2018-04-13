@@ -13,7 +13,7 @@ class ForgotPasswordViewController: UIViewController {
     @IBOutlet weak var emailImageView: UIImageView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var errorCircleImageView: UIImageView!
-    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,19 +40,24 @@ class ForgotPasswordViewController: UIViewController {
             displayError(errorMessage)
             return
         }
-        
+        let activityIndicator = UIActivityIndicatorView()
+        activityIndicator.hidesWhenStopped = true
+        activityIndicator.activityIndicatorViewStyle = .gray
+        view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
         
         Auth.auth().sendPasswordReset(withEmail: email) { (error) in
             
             if let error = error {
                 self.displayError(error.localizedDescription)
+                 activityIndicator.stopAnimating()
             } else {
                 self.performSegue(withIdentifier: "resetPasswordIdentifier", sender: self)
+                activityIndicator.stopAnimating()
             }
             
         }
-        activityIndicator.stopAnimating()
+        
     }
     
     private func checkValidEmail(_ email: String) -> Bool {

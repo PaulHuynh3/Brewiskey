@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -51,7 +51,7 @@
             <constraints>
                 <constraint firstItem="ddN-jD-XZy" firstAttribute="centerX" secondItem="vfp-VR-B3O" secondAttribute="centerX" id="7EI-hM-BxE"/>
                 <constraint firstItem="Cfy-Ie-vlu" firstAttribute="width" secondItem="gbG-7f-ZYj" secondAttribute="width" id="8A2-dR-G4L"/>
-                <constraint firstItem="v9O-TE-eBE" firstAttribute="bottom" secondItem="vfp-VR-B3O" secondAttribute="bottom" id="Ez4-Ow-vZC"/>
+                <constraint firstItem="v9O-TE-eBE" firstAttribute="bottom" secondItem="QpG-bI-bqG" secondAttribute="bottom" id="Ez4-Ow-vZC"/>
                 <constraint firstItem="gbG-7f-ZYj" firstAttribute="width" secondItem="QpG-bI-bqG" secondAttribute="width" multiplier="0.4" id="IcT-yy-tBp"/>
                 <constraint firstItem="v9O-TE-eBE" firstAttribute="top" secondItem="QpG-bI-bqG" secondAttribute="top" id="T0H-5L-Shj"/>
                 <constraint firstItem="m8q-LO-gkd" firstAttribute="width" secondItem="QpG-bI-bqG" secondAttribute="width" multiplier="0.2" id="Tvv-ge-eQJ"/>

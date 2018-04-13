@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L0v-E5-SK4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="L0v-E5-SK4">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -268,14 +268,14 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="BlueRectangle" translatesAutoresizingMaskIntoConstraints="NO" id="tmP-ld-xc4">
-                                <rect key="frame" x="20" y="250" width="335" height="53"/>
+                                <rect key="frame" x="28" y="250" width="319" height="53"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="53" id="HWS-FJ-w9v"/>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="350" id="ujs-Nm-TAM"/>
                                 </constraints>
                             </imageView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6ha-q4-Syc">
-                                <rect key="frame" x="35" y="265" width="305" height="20"/>
+                                <rect key="frame" x="43" y="265" width="289" height="20"/>
                                 <color key="textColor" red="0.0" green="0.4431372549" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
@@ -352,13 +352,10 @@
                     <navigationItem key="navigationItem" id="jAK-Oy-ddw"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <outlet property="activityIndicator" destination="Akr-Fd-Bfi" id="Bb0-Yp-1NQ"/>
                         <outlet property="emailImageView" destination="tmP-ld-xc4" id="sPE-TR-Udt"/>
                         <outlet property="emailTextField" destination="6ha-q4-Syc" id="L2g-Px-vcL"/>
                         <outlet property="errorCircleImageView" destination="HsR-eg-8os" id="AZx-IJ-3Pj"/>
-                        <segue destination="qwr-A4-OXU" kind="show" identifier="resetPasswordIdentifier" id="h8r-R5-0bK">
-                            <nil key="action"/>
-                        </segue>
+                        <segue destination="qwr-A4-OXU" kind="show" identifier="resetPasswordIdentifier" id="h8r-R5-0bK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xo4-LP-U9e" sceneMemberID="firstResponder"/>
@@ -404,10 +401,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cfe-Xa-7Ph">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QhT-Xl-ed7">
                                 <rect key="frame" x="105" y="384" width="164" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -420,23 +413,14 @@
                         </subviews>
                         <color key="backgroundColor" red="0.13490901290000001" green="0.1936739361" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="Cfe-Xa-7Ph" firstAttribute="top" secondItem="ANc-Ii-6hU" secondAttribute="bottom" constant="-20" id="86V-X6-LRg"/>
                             <constraint firstItem="smT-aH-cez" firstAttribute="centerX" secondItem="SoV-b8-1oe" secondAttribute="centerX" id="89u-11-qhz"/>
                             <constraint firstItem="0Ne-7Z-qLn" firstAttribute="centerX" secondItem="SoV-b8-1oe" secondAttribute="centerX" id="F0E-KJ-0PS"/>
                             <constraint firstItem="0Ne-7Z-qLn" firstAttribute="top" secondItem="ANc-Ii-6hU" secondAttribute="bottom" constant="272" id="PSy-ti-s31"/>
                             <constraint firstItem="smT-aH-cez" firstAttribute="top" secondItem="ANc-Ii-6hU" secondAttribute="bottom" constant="129" id="eJb-52-ib6"/>
                             <constraint firstItem="MFo-NX-DCF" firstAttribute="centerX" secondItem="SoV-b8-1oe" secondAttribute="centerX" id="eOf-Ra-0fp"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Cfe-Xa-7Ph" secondAttribute="trailing" constant="-20" id="hF3-Zb-KRP"/>
                             <constraint firstItem="MFo-NX-DCF" firstAttribute="top" secondItem="ANc-Ii-6hU" secondAttribute="bottom" constant="203" id="izh-1L-sL8"/>
-                            <constraint firstItem="1MJ-N9-qKt" firstAttribute="top" secondItem="Cfe-Xa-7Ph" secondAttribute="bottom" id="jDi-6u-fXe"/>
-                            <constraint firstItem="Cfe-Xa-7Ph" firstAttribute="leading" secondItem="SoV-b8-1oe" secondAttribute="leadingMargin" constant="-20" id="qLL-bN-ojR"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="o8K-hT-Sqn"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="Cfe-Xa-7Ph"/>
-                            </mask>
-                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="1DG-yf-fbf"/>
                     <nil key="simulatedTopBarMetrics"/>
