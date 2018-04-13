@@ -14,9 +14,9 @@ class ForgotPasswordViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var errorCircleImageView: UIImageView!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         emailTextField.delegate = self
         errorCircleImageView.isHidden = true
     }
@@ -27,17 +27,20 @@ class ForgotPasswordViewController: UIViewController {
     
     
     @IBAction func resetPasswordButtonTapped(_ sender: Any) {
-        guard let email = emailTextField.text else {return}
+        guard let email = emailTextField.text else {
+            return
+        }
         
+        let onboardingCheckUtils = OnboardingCheckUtils(presentingViewController: self)
         if email.trim() == "" {
             emailImageView.image = UIImage(named: "RedRectangle")
             errorCircleImageView.isHidden = false
             return
         }
-        
-        if !checkValidEmail(email){
+   
+        if !onboardingCheckUtils.checkValidEmail(email){
             let errorMessage = "Please enter a valid email!"
-            displayError(errorMessage)
+            onboardingCheckUtils.displayError(errorMessage)
             return
         }
         let activityIndicator = UIActivityIndicatorView()
@@ -47,39 +50,16 @@ class ForgotPasswordViewController: UIViewController {
         activityIndicator.startAnimating()
         
         Auth.auth().sendPasswordReset(withEmail: email) { (error) in
-            
             if let error = error {
-                self.displayError(error.localizedDescription)
+                onboardingCheckUtils.displayError(error.localizedDescription)
                  activityIndicator.stopAnimating()
             } else {
                 self.performSegue(withIdentifier: "resetPasswordIdentifier", sender: self)
                 activityIndicator.stopAnimating()
             }
-            
         }
         
     }
-    
-    private func checkValidEmail(_ email: String) -> Bool {
-        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
-        
-        if emailTest.evaluate(with: email) {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    private func displayError(_ message: String){
-        let title = "Error"
-        let actionOk = "OK"
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: actionOk, style: .default, handler: nil)
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
-    }
-    
 }
 
 extension ForgotPasswordViewController: UITextFieldDelegate {

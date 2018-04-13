@@ -56,10 +56,12 @@ class MoreTableViewController: UITableViewController {
         if let currentUser = Auth.auth().currentUser{
             profileNameLabel.text = currentUser.displayName
             
-            guard let imageUrl = currentUser.photoURL else {return}
-            FirebaseAPI.loadImageFromUrl(url: imageUrl, completion: { (downloadedImage) in
-                self.profileImageView.image = downloadedImage
-            })
+            //facebook user's image
+            if let imageUrl = currentUser.photoURL {
+                FirebaseAPI.loadImageFromUrl(url: imageUrl, completion: { (downloadedImage) in
+                    self.profileImageView.image = downloadedImage
+                })
+            }
         }
     }
     

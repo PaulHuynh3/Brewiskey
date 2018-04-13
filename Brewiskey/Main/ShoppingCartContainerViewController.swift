@@ -24,17 +24,13 @@ class ShoppingCartContainerViewController: UIViewController {
             let user = marketNav.user
             
             user?.alcoholItems?.addObjects(from: [alcoholSelectionTableView?.selectedItem as Any])
-            
             let alert = UIAlertController(title: "", message: "Saved to shopping cart", preferredStyle: .alert)
-            
             let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-            
             alert.addAction(okAction)
             self.present(alert, animated: true, completion: nil)
         }
         
     }
-    
     
     @IBAction func checkoutButtonTapped(_ sender: Any) {
         print("Proceed to checkout.")

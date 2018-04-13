@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DA056E85203FC7A6007EECAE /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA056E84203FC7A6007EECAE /* DataModel.swift */; };
 		DA056E88203FC982007EECAE /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA056E87203FC982007EECAE /* ForgotPasswordViewController.swift */; };
+		DA06DCE6208063730039D063 /* UserDefaultUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06DCE5208063730039D063 /* UserDefaultUtils.swift */; };
 		DA13CFFD203E0A7D0021EB7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13CFFC203E0A7D0021EB7E /* AppDelegate.swift */; };
 		DA13CFFF203E0A7D0021EB7E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13CFFE203E0A7D0021EB7E /* LoginViewController.swift */; };
 		DA13D002203E0A7D0021EB7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA13D000203E0A7D0021EB7E /* Main.storyboard */; };
@@ -22,7 +23,7 @@
 		DA2E85E22043C8110057C4C6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E85E12043C8110057C4C6 /* Extensions.swift */; };
 		DA2E916420487F9F00AF0247 /* DetailedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E916320487F9F00AF0247 /* DetailedTableViewController.swift */; };
 		DA2E91662048FF7900AF0247 /* AlcoholSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E91652048FF7900AF0247 /* AlcoholSelectionTableViewController.swift */; };
-		DA389A7C20774763009F3CE8 /* OnboardingCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA389A7B20774763009F3CE8 /* OnboardingCheck.swift */; };
+		DA389A7C20774763009F3CE8 /* OnboardingCheckUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA389A7B20774763009F3CE8 /* OnboardingCheckUtils.swift */; };
 		DA5F352C2077C46100A64FA0 /* FacebookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F352B2077C46100A64FA0 /* FacebookAPI.swift */; };
 		DA5F352E2077C79D00A64FA0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F352D2077C79D00A64FA0 /* Constants.swift */; };
 		DA5F3530207825D400A64FA0 /* EmailSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F352F207825D400A64FA0 /* EmailSentViewController.swift */; };
@@ -45,6 +46,7 @@
 		9331F07D589DD426C72146BB /* Pods-Brewiskey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brewiskey.release.xcconfig"; path = "Pods/Target Support Files/Pods-Brewiskey/Pods-Brewiskey.release.xcconfig"; sourceTree = "<group>"; };
 		DA056E84203FC7A6007EECAE /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		DA056E87203FC982007EECAE /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		DA06DCE5208063730039D063 /* UserDefaultUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultUtils.swift; sourceTree = "<group>"; };
 		DA13CFF9203E0A7D0021EB7E /* Brewiskey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brewiskey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA13CFFC203E0A7D0021EB7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA13CFFE203E0A7D0021EB7E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -60,7 +62,7 @@
 		DA2E85E12043C8110057C4C6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DA2E916320487F9F00AF0247 /* DetailedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTableViewController.swift; sourceTree = "<group>"; };
 		DA2E91652048FF7900AF0247 /* AlcoholSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholSelectionTableViewController.swift; sourceTree = "<group>"; };
-		DA389A7B20774763009F3CE8 /* OnboardingCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCheck.swift; sourceTree = "<group>"; };
+		DA389A7B20774763009F3CE8 /* OnboardingCheckUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCheckUtils.swift; sourceTree = "<group>"; };
 		DA5F352B2077C46100A64FA0 /* FacebookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAPI.swift; sourceTree = "<group>"; };
 		DA5F352D2077C79D00A64FA0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DA5F352F207825D400A64FA0 /* EmailSentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSentViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,15 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DA06DCE4208063500039D063 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				DA389A7B20774763009F3CE8 /* OnboardingCheckUtils.swift */,
+				DA06DCE5208063730039D063 /* UserDefaultUtils.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		DA13CFF0203E0A7C0021EB7E = {
 			isa = PBXGroup;
 			children = (
@@ -134,6 +145,7 @@
 				DA13D005203E0A7D0021EB7E /* LaunchScreen.storyboard */,
 				DADC7B70203E175500F87438 /* Data */,
 				DADC7B71203E176B00F87438 /* View */,
+				DA06DCE4208063500039D063 /* Utility */,
 				DADC7B72203E178200F87438 /* Onboarding */,
 				DADC7B73203E179600F87438 /* Main */,
 				DA2E85E02043C7F90057C4C6 /* Helper */,
@@ -171,7 +183,6 @@
 		DADC7B72203E178200F87438 /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				DA389A7B20774763009F3CE8 /* OnboardingCheck.swift */,
 				DAE16A042076A0B300B21D30 /* IntroductionScreenViewController.swift */,
 				DADC7B76203E6A4900F87438 /* RegisterViewController.swift */,
 				DA13CFFE203E0A7D0021EB7E /* LoginViewController.swift */,
@@ -379,7 +390,8 @@
 				DA2C31F6204E313A00FF6444 /* ShoppingCartContainerViewController.swift in Sources */,
 				DA13CFFF203E0A7D0021EB7E /* LoginViewController.swift in Sources */,
 				DA2E916420487F9F00AF0247 /* DetailedTableViewController.swift in Sources */,
-				DA389A7C20774763009F3CE8 /* OnboardingCheck.swift in Sources */,
+				DA06DCE6208063730039D063 /* UserDefaultUtils.swift in Sources */,
+				DA389A7C20774763009F3CE8 /* OnboardingCheckUtils.swift in Sources */,
 				DA13CFFD203E0A7D0021EB7E /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -185,7 +185,8 @@ extension IntroductionScreenViewController: BaseOnboardingScreenDelegate {
                     
                     Auth.auth().signIn(with: credential, completion: { (user, error) in
                         if let error = error {
-                            self.displayError(message: error.localizedDescription)
+                            let onboardingCheckUtils = OnboardingCheckUtils(presentingViewController: self)
+                            onboardingCheckUtils.displayError(error.localizedDescription)
                             return
                         }
                         DispatchQueue.main.async {

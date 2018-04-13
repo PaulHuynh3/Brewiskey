@@ -16,9 +16,11 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordImageView: UIImageView!
     @IBOutlet weak var passwordTextfield: UITextField!
+    private var onboardingCheckUtils: OnboardingCheckUtils?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        onboardingCheckUtils = OnboardingCheckUtils(presentingViewController: self)
         errorImageView.isHidden = true
         self.emailTextField.delegate = self
         self.passwordTextfield.delegate = self
@@ -30,15 +32,15 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func signinButtonTapped(_ sender: Any) {
-        
-        if emailTextField.text == ""{
-            emailImageView.image = UIImage(named: "RedRectangle")
-            errorImageView.isHidden = false
+        guard let email = emailTextField.text,
+            let password = passwordTextfield.text else {
+                return
         }
         
-        if passwordTextfield.text == ""{
-            passwordImageView.image = UIImage(named: "RedRectangle")
-            errorImageView.isHidden = false
+        if checkForLoginEmptyFields(email: email, password: password) {
+            let errorMessage = "Please fill out all fields"
+            onboardingCheckUtils?.displayError(errorMessage)
+            return
         }
         
         if let email = emailTextField.text, let password = passwordTextfield.text{
@@ -59,7 +61,7 @@ class LoginViewController: UIViewController {
                     
                 } else {
                     let errorMessage = "Username or password is incorrect"
-                    self.displayError(errorMessage)
+                    self.onboardingCheckUtils?.displayError(errorMessage)
                     return
                 }
                 
@@ -68,19 +70,32 @@ class LoginViewController: UIViewController {
         }
     }
     
+   private func checkForLoginEmptyFields(email: String, password: String) -> Bool{
+        if email.trim() == "" || password.trim() == "" {
+            if email.trim() == "" {
+                emailImageView.image = UIImage(named: "RedRectangle")
+                errorImageView.isHidden = false
+            } else {
+                emailImageView.image = UIImage(named: "BlueRectangle")
+                errorImageView.isHidden = true
+            }
+            
+            if password.trim() == "" {
+                passwordImageView.image = UIImage(named: "RedRectangle")
+                errorImageView.isHidden = false
+            } else {
+                emailImageView.image = UIImage(named: "BlueRectangle")
+                errorImageView.isHidden = true
+            }
+            return true
+        }
+        return false
+    }
+    
     @IBAction func forgotPasswordTapped(_ sender: Any) {
         performSegue(withIdentifier: "forgotPasswordSegue", sender: nil)
     }
     
-    private func displayError(_ message: String){
-        let title = "Error"
-        let actionOk = "OK"
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: actionOk, style: .default, handler: nil)
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
-    }
-
 }
 
 extension LoginViewController: UITextFieldDelegate {

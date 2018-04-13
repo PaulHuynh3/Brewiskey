@@ -41,7 +41,11 @@ class RegisterViewController: UIViewController {
         guard let firstName = firstNameTextfield.text,
               let lastName = lastNameTextfield.text,
               let email = emailTextField.text,
-              let password = passwordTextField.text else {return}
+              let password = passwordTextField.text else {
+                return
+        }
+        
+        let onboardingCheckUtils = OnboardingCheckUtils(presentingViewController: self)
         
         if !checkBlankFields(firstName: firstName, lastName: lastName, email: email, password: password){
             let errorMessage = "Please fill out all mandatory fields."
@@ -49,19 +53,25 @@ class RegisterViewController: UIViewController {
             return
         }
         
-        if !checkValidEmail(email){
+        if !onboardingCheckUtils.checkValidEmail(email){
             let errorMessage = "Please enter a valid email."
+            emailImageView.image = UIImage(named: "RedRectangle")
             displayError(message: errorMessage)
             return
+        } else {
+            emailImageView.image = UIImage(named: "BlueRectangle")
         }
         
-        if !checkPasswordComplexity(password){
+        if !onboardingCheckUtils.checkPasswordComplexity(password){
             let errorMessage = "Password must be at least 8 characters with at least one uppercase letter, one number and one special character."
             displayError(message: errorMessage)
+            passwordImageView.image = UIImage(named: "RedRectangle")
             return
+        } else {
+            passwordImageView.image = UIImage(named: "BlueRectangle")
         }
         
-        if checkEmailPasswordMatch(email: email, password: password){
+        if onboardingCheckUtils.checkEmailPasswordMatch(email: email, password: password){
             let errorMessage = "Email and password may not be the same!"
             displayError(message: errorMessage)
             return
@@ -96,6 +106,7 @@ class RegisterViewController: UIViewController {
                         }
                         
                         let values = ["firstName": firstName, "lastName": lastName, "email": email, "profileImageUrl": profileImageURL]
+                        
                         
                         let userDefault = UserDefaults.standard
                         userDefault.set(true, forKey: kUserInfo.kLoginStatus)
@@ -189,14 +200,14 @@ extension RegisterViewController {
     
     private func checkBlankFields(firstName: String, lastName: String, email: String, password: String) -> Bool{
         if firstName.trim() == "" || lastName.trim() == "" || email.trim() == "" || password.trim() == "" {
-            if firstName == "" {
+            if firstName.trim() == "" {
                 firstNameImageview.image = UIImage(named: "RedRectangle")
                 errorCircleImageView.isHidden = false
             } else {
                 firstNameImageview.image = UIImage(named: "BlueRectangle")
                 errorCircleImageView.isHidden = true
             }
-            if lastName == "" {
+            if lastName.trim() == "" {
                 lastNameImageview.image = UIImage(named: "RedRectangle")
                 errorCircleImageView.isHidden = false
             } else {
@@ -204,7 +215,7 @@ extension RegisterViewController {
                 errorCircleImageView.isHidden = true
             }
             
-            if email == "" {
+            if email.trim() == "" {
                 emailImageView.image = UIImage(named: "RedRectangle")
                 errorCircleImageView.isHidden = false
             } else {
@@ -212,7 +223,7 @@ extension RegisterViewController {
                 errorCircleImageView.isHidden = true
             }
             
-            if password == "" {
+            if password.trim() == "" {
                 passwordImageView.image = UIImage(named:"RedRectangle")
                 errorCircleImageView.isHidden = false
             } else {
@@ -220,55 +231,8 @@ extension RegisterViewController {
                 errorCircleImageView.isHidden = true
             }
             return false
-        } else {
-            return true
         }
-    }
-    
-    private func checkValidEmail(_ email: String) -> Bool{
-        let validateEmailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
-        let emailTest = NSPredicate(format: "SELF MATCHES %@", validateEmailRegEx)
-        if emailTest.evaluate(with: email) {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    private func checkPasswordComplexity(_ password: String) -> Bool {
-        let capitalLetterRegEx  = ".*[A-Z]+.*"
-        let checkForCapital = NSPredicate(format:"SELF MATCHES %@", capitalLetterRegEx)
-        let capitalResult = checkForCapital.evaluate(with: password)
-        
-        let lowerLetterRegEx = ".*[a-z]+.*"
-        let checkForLowerCase = NSPredicate(format:"SELF MATCHES %@", lowerLetterRegEx)
-        let lowerCaseResult = checkForLowerCase.evaluate(with: password)
-        
-        let numberRegEx  = ".*[0-9]+.*"
-        let checkForNumber = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
-        let numberResult = checkForNumber.evaluate(with: password)
-        
-        let specialCharacterRegEx  = ".*[!@#$%^&*()-_+=]+.*"
-        let checkForSpecialText = NSPredicate(format:"SELF MATCHES %@", specialCharacterRegEx)
-        let specialResult = checkForSpecialText.evaluate(with: password)
-        
-        let requiredLengthRegEx = ".*.{8}+.*"
-        let checkForRequiredLength = NSPredicate(format:"SELF MATCHES %@", requiredLengthRegEx)
-        let requiredLengthResult = checkForRequiredLength.evaluate(with: password)
-        
-        if capitalResult && lowerCaseResult && numberResult && specialResult && requiredLengthResult {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    private func checkEmailPasswordMatch(email: String, password: String) -> Bool {
-        if email == password {
-            return true
-        } else {
-            return false
-        }
+        return true
     }
     
     private func displayError(message: String){
