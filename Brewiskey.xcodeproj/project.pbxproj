@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		DA056E85203FC7A6007EECAE /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA056E84203FC7A6007EECAE /* DataModel.swift */; };
 		DA056E88203FC982007EECAE /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA056E87203FC982007EECAE /* ForgotPasswordViewController.swift */; };
-		DA06DCE6208063730039D063 /* UserDefaultUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA06DCE5208063730039D063 /* UserDefaultUtils.swift */; };
 		DA13CFFD203E0A7D0021EB7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13CFFC203E0A7D0021EB7E /* AppDelegate.swift */; };
 		DA13CFFF203E0A7D0021EB7E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13CFFE203E0A7D0021EB7E /* LoginViewController.swift */; };
 		DA13D002203E0A7D0021EB7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA13D000203E0A7D0021EB7E /* Main.storyboard */; };
@@ -46,7 +45,6 @@
 		9331F07D589DD426C72146BB /* Pods-Brewiskey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brewiskey.release.xcconfig"; path = "Pods/Target Support Files/Pods-Brewiskey/Pods-Brewiskey.release.xcconfig"; sourceTree = "<group>"; };
 		DA056E84203FC7A6007EECAE /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		DA056E87203FC982007EECAE /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
-		DA06DCE5208063730039D063 /* UserDefaultUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultUtils.swift; sourceTree = "<group>"; };
 		DA13CFF9203E0A7D0021EB7E /* Brewiskey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brewiskey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA13CFFC203E0A7D0021EB7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA13CFFE203E0A7D0021EB7E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -112,7 +110,6 @@
 			isa = PBXGroup;
 			children = (
 				DA389A7B20774763009F3CE8 /* OnboardingCheckUtils.swift */,
-				DA06DCE5208063730039D063 /* UserDefaultUtils.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -390,7 +387,6 @@
 				DA2C31F6204E313A00FF6444 /* ShoppingCartContainerViewController.swift in Sources */,
 				DA13CFFF203E0A7D0021EB7E /* LoginViewController.swift in Sources */,
 				DA2E916420487F9F00AF0247 /* DetailedTableViewController.swift in Sources */,
-				DA06DCE6208063730039D063 /* UserDefaultUtils.swift in Sources */,
 				DA389A7C20774763009F3CE8 /* OnboardingCheckUtils.swift in Sources */,
 				DA13CFFD203E0A7D0021EB7E /* AppDelegate.swift in Sources */,
 			);

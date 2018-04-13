@@ -23,6 +23,4 @@ class BaseOnboardingView: UIView {
         navigateUserDelegate.signupWithEmail()
     }
     
-    
-    
 }

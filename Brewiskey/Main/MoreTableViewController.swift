@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import FBSDKLoginKit
 
 class MoreTableViewController: UITableViewController {
     @IBOutlet weak var profileImageView: UIImageView!
@@ -73,18 +74,20 @@ class MoreTableViewController: UITableViewController {
             print(logoutError)
             return
         }
-        
-        DispatchQueue.main.async {
-            let userDefault = UserDefaults.standard
-            userDefault.set(false, forKey: kUserInfo.kLoginStatus)
-            userDefault.set(nil, forKey: kUserInfo.kUserId)
-            userDefault.set(nil, forKey: kUserInfo.kEmail)
-            userDefault.set(nil, forKey: kUserInfo.kFirstName)
-            userDefault.set(nil, forKey: kUserInfo.kLastName)
-            
-            let appDelegate = UIApplication.shared.delegate as? AppDelegate
-            appDelegate?.transitionToLogin()
-        }
+        clearUserDefaults()
+        let fbsdkLogin = FBSDKLoginManager()
+        fbsdkLogin.logOut()
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.transitionToLogin()
+    }
+    
+    fileprivate func clearUserDefaults(){
+        let userDefault = UserDefaults.standard
+        userDefault.set(false, forKey: kUserInfo.kLoginStatus)
+        userDefault.set(nil, forKey: kUserInfo.kUserId)
+        userDefault.set(nil, forKey: kUserInfo.kEmail)
+        userDefault.set(nil, forKey: kUserInfo.kFirstName)
+        userDefault.set(nil, forKey: kUserInfo.kLastName)
     }
     
 }

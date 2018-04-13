@@ -107,7 +107,6 @@ class RegisterViewController: UIViewController {
                         
                         let values = ["firstName": firstName, "lastName": lastName, "email": email, "profileImageUrl": profileImageURL]
                         
-                        
                         let userDefault = UserDefaults.standard
                         userDefault.set(true, forKey: kUserInfo.kLoginStatus)
                         userDefault.set(uid, forKey: kUserInfo.kUserId)
@@ -124,18 +123,19 @@ class RegisterViewController: UIViewController {
     }
     
     private func registerUserIntoDatabaseWithUID(_ uid:String, values: [String:AnyObject]){
-       let userReference = self.database.child("users").child(uid)
+        let userReference = self.database.child("users").child(uid)
         userReference.updateChildValues(values, withCompletionBlock: { (error, databaseRef) in
-        if let error = error {
-                    print(error, #line)
-                    return
-                 }
-        print("user successfully saved into firebase db")
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        appDelegate?.transitionToMarketPlace()
-                
-            })
-        }
+            if let error = error {
+                print(error, #line)
+                return
+            }
+            print("user successfully saved into firebase db")
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            appDelegate?.transitionToMarketPlace()
+            
+        })
+    }
+    
 }
 
 extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
