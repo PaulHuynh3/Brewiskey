@@ -11,7 +11,7 @@ import UIKit
 class EmailSentViewController: UIViewController {
     
     @IBAction func soundsGoodButtonTapped(_ sender: Any) {
-        self.view.window?.rootViewController?.dismiss(animated: false, completion: nil)
+        self.presentingViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
 }

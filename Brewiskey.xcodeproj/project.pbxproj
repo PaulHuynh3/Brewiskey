@@ -26,11 +26,13 @@
 		DA5F352C2077C46100A64FA0 /* FacebookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F352B2077C46100A64FA0 /* FacebookAPI.swift */; };
 		DA5F352E2077C79D00A64FA0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F352D2077C79D00A64FA0 /* Constants.swift */; };
 		DA5F3530207825D400A64FA0 /* EmailSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F352F207825D400A64FA0 /* EmailSentViewController.swift */; };
+		DA70A9E62089495F00D3F2C3 /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA70A9E52089495F00D3F2C3 /* EditProfileTableViewController.swift */; };
 		DA9F41D7207719E00004797B /* OnboardingView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F41D6207719E00004797B /* OnboardingView2.xib */; };
 		DA9F41D920771B7C0004797B /* OnboardingView3.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F41D820771B7C0004797B /* OnboardingView3.xib */; };
 		DA9F41DB20771B890004797B /* OnboardingView4.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F41DA20771B890004797B /* OnboardingView4.xib */; };
 		DAA23AD22040B08900D481E2 /* MarketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA23AD12040B08900D481E2 /* MarketTableViewController.swift */; };
 		DAB177B120421771009F0B45 /* MarketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB177B020421771009F0B45 /* MarketTableViewCell.swift */; };
+		DAD28C6820859E8100D5037D /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD28C6720859E8100D5037D /* SettingsTableViewController.swift */; };
 		DADC7B75203E17E100F87438 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DADC7B74203E17E100F87438 /* Login.storyboard */; };
 		DADC7B77203E6A4900F87438 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADC7B76203E6A4900F87438 /* RegisterViewController.swift */; };
 		DAE169FD20769AE200B21D30 /* OnboardingView0.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE169FC20769AE200B21D30 /* OnboardingView0.xib */; };
@@ -64,11 +66,13 @@
 		DA5F352B2077C46100A64FA0 /* FacebookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAPI.swift; sourceTree = "<group>"; };
 		DA5F352D2077C79D00A64FA0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DA5F352F207825D400A64FA0 /* EmailSentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSentViewController.swift; sourceTree = "<group>"; };
+		DA70A9E52089495F00D3F2C3 /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		DA9F41D6207719E00004797B /* OnboardingView2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView2.xib; sourceTree = "<group>"; };
 		DA9F41D820771B7C0004797B /* OnboardingView3.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView3.xib; sourceTree = "<group>"; };
 		DA9F41DA20771B890004797B /* OnboardingView4.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView4.xib; sourceTree = "<group>"; };
 		DAA23AD12040B08900D481E2 /* MarketTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketTableViewController.swift; sourceTree = "<group>"; };
 		DAB177B020421771009F0B45 /* MarketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketTableViewCell.swift; sourceTree = "<group>"; };
+		DAD28C6720859E8100D5037D /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		DADC7B74203E17E100F87438 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DADC7B76203E6A4900F87438 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		DAE169FC20769AE200B21D30 /* OnboardingView0.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView0.xib; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 				DA06DCE4208063500039D063 /* Utility */,
 				DADC7B72203E178200F87438 /* Onboarding */,
 				DADC7B73203E179600F87438 /* Main */,
+				DA70A9E42089491A00D3F2C3 /* Settings */,
 				DA2E85E02043C7F90057C4C6 /* Helper */,
 				DA056E86203FC8DB007EECAE /* Supporting Files */,
 			);
@@ -157,6 +162,15 @@
 				DA2E85E12043C8110057C4C6 /* Extensions.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		DA70A9E42089491A00D3F2C3 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				DAD28C6720859E8100D5037D /* SettingsTableViewController.swift */,
+				DA70A9E52089495F00D3F2C3 /* EditProfileTableViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		DADC7B70203E175500F87438 /* Data */ = {
@@ -376,6 +390,7 @@
 				DAE16A052076A0B300B21D30 /* IntroductionScreenViewController.swift in Sources */,
 				DAB177B120421771009F0B45 /* MarketTableViewCell.swift in Sources */,
 				DA2E91662048FF7900AF0247 /* AlcoholSelectionTableViewController.swift in Sources */,
+				DA70A9E62089495F00D3F2C3 /* EditProfileTableViewController.swift in Sources */,
 				DAE169FF20769B3B00B21D30 /* BaseOnboardingView.swift in Sources */,
 				DA2E85DD2043A7B40057C4C6 /* MoreTableViewController.swift in Sources */,
 				DA2C31F4204DC4C400FF6444 /* MarketNavController.swift in Sources */,
@@ -389,6 +404,7 @@
 				DA2E916420487F9F00AF0247 /* DetailedTableViewController.swift in Sources */,
 				DA389A7C20774763009F3CE8 /* OnboardingCheckUtils.swift in Sources */,
 				DA13CFFD203E0A7D0021EB7E /* AppDelegate.swift in Sources */,
+				DAD28C6820859E8100D5037D /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

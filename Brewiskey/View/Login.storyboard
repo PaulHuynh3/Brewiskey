@@ -62,7 +62,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="textColor" red="0.0" green="0.4431372549" blue="0.73725490199999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" keyboardType="emailAddress"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="BlueRectangle" translatesAutoresizingMaskIntoConstraints="NO" id="hq1-xr-WRh">
                                 <rect key="frame" x="18" y="257" width="335" height="52"/>
@@ -181,7 +181,7 @@
                                     <outletCollection property="gestureRecognizers" destination="3Ep-uu-kyh" appends="YES" id="Vz3-3o-I7G"/>
                                 </connections>
                             </label>
-                            <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ProfilePic" translatesAutoresizingMaskIntoConstraints="NO" id="gAu-0j-cgl">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ProfileDefault" translatesAutoresizingMaskIntoConstraints="NO" id="gAu-0j-cgl">
                                 <rect key="frame" x="136" y="149" width="141" height="94"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
@@ -435,7 +435,7 @@
         <image name="CreateAccount" width="194" height="49"/>
         <image name="CreateAccountPressed" width="194" height="49"/>
         <image name="Email" width="28" height="20"/>
-        <image name="ProfilePic" width="25" height="23"/>
+        <image name="ProfileDefault" width="72" height="72"/>
         <image name="ResetPasswordPressed" width="200" height="49"/>
         <image name="SoundsGood" width="225" height="49"/>
         <image name="button:QhT-Xl-ed7:image" width="225" height="49">

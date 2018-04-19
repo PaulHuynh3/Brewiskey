@@ -17,7 +17,7 @@ class User: NSObject {
     var email: String?
     var profileImageUrl: String?
     var alcoholItems: NSMutableArray?
-    
+    var age: Int?
     override init() {
         //iniatilize the array before it can be used.
         alcoholItems = NSMutableArray()
