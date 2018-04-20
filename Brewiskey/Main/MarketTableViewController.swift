@@ -28,25 +28,25 @@ class MarketTableViewController: UITableViewController {
     }
     
     func fetchAlcoholBrandsAndSetupTableview(){
-        FirebaseAPI.fetchAllBeerBrandAndImages{ (beer) in
-            self.beers.add(beer)
+        FirebaseAPI.fetchAllBeerBrandAndImages{ [weak self] (beer) in
+            self?.beers.add(beer)
             
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
-        FirebaseAPI.fetchAllWineBrandAndImages { (wine) in
-            self.wines.add(wine)
+        FirebaseAPI.fetchAllWineBrandAndImages { [weak self] (wine) in
+            self?.wines.add(wine)
             
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
-        FirebaseAPI.fetchAllSpiritBrandAndImages { (spirit) in
-            self.spirits.add(spirit)
+        FirebaseAPI.fetchAllSpiritBrandAndImages { [weak self] (spirit) in
+            self?.spirits.add(spirit)
             
             DispatchQueue.main.async {
-                self.tableView.reloadData()
+                self?.tableView.reloadData()
             }
         }
     }

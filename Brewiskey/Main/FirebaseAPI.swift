@@ -18,7 +18,7 @@ class FirebaseAPI: NSObject {
         Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String: AnyObject]{
-                
+                DispatchQueue.main.async {
                 let user = User()
                 //this gives the unique user id.
                 user.id = snapshot.key
@@ -26,8 +26,8 @@ class FirebaseAPI: NSObject {
                 user.lastName = dictionary["lastName"] as? String
                 user.email = dictionary["email"] as? String
                 user.profileImageUrl = dictionary["profileImageUrl"] as? String
-                
-                completion(user)
+                    completion(user)
+                }
             }
         })
     }

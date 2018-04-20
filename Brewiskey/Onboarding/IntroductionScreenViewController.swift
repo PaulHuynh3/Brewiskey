@@ -190,6 +190,7 @@ extension IntroductionScreenViewController: BaseOnboardingScreenDelegate {
                             return
                         }
                         DispatchQueue.main.async {
+                            
                             guard let userId = user?.uid else {return}
                             let userDefault = UserDefaults.standard
                             userDefault.set(true, forKey: kUserInfo.kLoginStatus)

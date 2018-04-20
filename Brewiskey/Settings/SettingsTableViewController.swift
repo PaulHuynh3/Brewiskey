@@ -15,12 +15,12 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
     @IBOutlet weak var profileEmailLabel: UILabel!
-    var uid: String?
-    let user = User()
+
+    var user = User()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        uid = Auth.auth().currentUser?.uid
+        fetchUserObject()
         
     }
     
@@ -47,34 +47,19 @@ class SettingsTableViewController: UITableViewController {
         performSegue(withIdentifier: "editProfileSegue", sender: nil)
     }
     
-    fileprivate func fetchAndConfigureProfile(){
-        FirebaseAPI.fetchDatabaseCurrentUser(uid: uid!) { (user) in
-            if let firstName = UserDefaults.standard.string(forKey: kUserInfo.kFirstName),
-                let lastName = UserDefaults.standard.string(forKey: kUserInfo.kLastName) {
-                self.profileNameLabel.text = firstName + " " + lastName
-            }
-            self.profileEmailLabel.text = user.email
-            if let profileImageUrl = user.profileImageUrl {
-                self.profileImageView.loadImagesUsingCacheWithUrlString(urlString: profileImageUrl)
+    fileprivate func fetchUserObject(){
+        if let uid = Auth.auth().currentUser?.uid {
+            FirebaseAPI.fetchDatabaseCurrentUser(uid: uid) { [weak self] (user) in
+              self?.user = user
             }
         }
-        
-        if let currentUser = Auth.auth().currentUser{
-            profileNameLabel.text = currentUser.displayName
-            
-            //facebook user's image
-            if let imageUrl = currentUser.photoURL {
-                FirebaseAPI.loadImageFromUrl(url: imageUrl, completion: { (downloadedImage) in
-                    self.profileImageView.image = downloadedImage
-                })
-            }
-        }
+
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editProfileSegue" {
             let editProfileTableViewController = segue.destination as! EditProfileTableViewController
-            
+            editProfileTableViewController.user = self.user
         }
     }
     
