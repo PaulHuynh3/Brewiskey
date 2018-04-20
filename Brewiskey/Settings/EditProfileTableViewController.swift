@@ -15,18 +15,33 @@ class EditProfileTableViewController: UITableViewController {
     @IBOutlet weak var ageLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     
+    @IBOutlet weak var numberTextfield: UITextField!
+    @IBOutlet weak var streetTextfield: UITextField!
+    @IBOutlet weak var cityTextfield: UITextField!
+    @IBOutlet weak var provinceTextfield: UITextField!
+    @IBOutlet weak var postalCodeTextfield: UITextField!
+    
+    @IBOutlet weak var saveEditButton: UIBarButtonItem!
     var user = User()
     
-//    var user : User? = nil {
-//        didSet {
-//            fetchUserObject()
-//        }
-//    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
-         self.navigationItem.rightBarButtonItem = self.editButtonItem
         layoutUserProfile()
+        editingInProgress()
+    }
+    
+    //todo: use textfield delegate to show when a text has been changed and if its change make the save button pop up.
+    fileprivate func isEditingInProgress(){
+        guard let number = numberTextfield.text, let street = streetTextfield.text, let city = cityTextfield.text, let province = provinceTextfield.text, let postalCode = postalCodeTextfield.text else {
+            return
+        }
+        
+        if number.trim() == "" || street.trim() == "" || city.trim() == "" || province.trim() == "" || postalCode.trim() {
+            self.navigationItem.rightBarButtonItem = saveEditButton
+        } else {
+            self.navigationItem.rightBarButtonItem = nil
+        }
+        
     }
     
     fileprivate func layoutUserProfile(){
@@ -38,9 +53,6 @@ class EditProfileTableViewController: UITableViewController {
         
         if let profileImageUrl = user.profileImageUrl {
             profileImageView.loadImagesUsingCacheWithUrlString(urlString: profileImageUrl)
-//            profileImageView.layer.borderWidth = 1
-//            profileImageView.layer.masksToBounds = false
-//            profileImageView.layer.borderColor = UIColor.black.cgColor
             profileImageView.layer.cornerRadius = profileImageView.frame.size.width/2
             profileImageView.clipsToBounds = true
         }
@@ -51,4 +63,9 @@ class EditProfileTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: false)
     }
 
+}
+
+extension EditProfileTableViewController: UITextFieldDelegate {
+    
+    
 }

@@ -739,11 +739,19 @@
                             <outlet property="delegate" destination="KDh-fJ-zEt" id="kDw-sV-Mnr"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Profile" id="dkm-6a-gZy"/>
+                    <navigationItem key="navigationItem" title="Profile" id="dkm-6a-gZy">
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="5Z4-nG-Sam"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="ageLabel" destination="lVu-e4-r9r" id="DLW-DP-Btc"/>
+                        <outlet property="cityTextfield" destination="aUS-ei-aPK" id="7Nr-OM-xKA"/>
                         <outlet property="fullNameLabel" destination="5cf-qI-guf" id="qSs-a0-cWw"/>
+                        <outlet property="numberTextfield" destination="NgW-1S-Bj6" id="yd7-OX-JJU"/>
+                        <outlet property="postalCodeTextfield" destination="g5B-z6-Us7" id="Gal-DG-bhp"/>
                         <outlet property="profileImageView" destination="3au-0q-h2B" id="VoD-z3-trN"/>
+                        <outlet property="provinceTextfield" destination="N5W-qp-l33" id="ci9-IA-UaX"/>
+                        <outlet property="saveEditButton" destination="5Z4-nG-Sam" id="enM-nN-QiX"/>
+                        <outlet property="streetTextfield" destination="K3e-lc-vom" id="BzV-Gn-kmg"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bh5-3u-o07" userLabel="First Responder" sceneMemberID="firstResponder"/>
