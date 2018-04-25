@@ -34,6 +34,7 @@
 		DAB177B120421771009F0B45 /* MarketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB177B020421771009F0B45 /* MarketTableViewCell.swift */; };
 		DAB62860208FDC1B00A5890D /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB6285F208FDC1B00A5890D /* ProfileTableViewController.swift */; };
 		DAB62863209035EC00A5890D /* UserDefaultsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB62862209035EC00A5890D /* UserDefaultsUtils.swift */; };
+		DAC462442091168500673189 /* BrewiskeyAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC462432091168500673189 /* BrewiskeyAnalytics.swift */; };
 		DAD28C6820859E8100D5037D /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD28C6720859E8100D5037D /* SettingsTableViewController.swift */; };
 		DADC7B75203E17E100F87438 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DADC7B74203E17E100F87438 /* Login.storyboard */; };
 		DADC7B77203E6A4900F87438 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADC7B76203E6A4900F87438 /* RegisterViewController.swift */; };
@@ -76,6 +77,7 @@
 		DAB177B020421771009F0B45 /* MarketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketTableViewCell.swift; sourceTree = "<group>"; };
 		DAB6285F208FDC1B00A5890D /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		DAB62862209035EC00A5890D /* UserDefaultsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsUtils.swift; sourceTree = "<group>"; };
+		DAC462432091168500673189 /* BrewiskeyAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewiskeyAnalytics.swift; sourceTree = "<group>"; };
 		DAD28C6720859E8100D5037D /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		DADC7B74203E17E100F87438 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DADC7B76203E6A4900F87438 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -145,10 +147,10 @@
 			isa = PBXGroup;
 			children = (
 				DA13D003203E0A7D0021EB7E /* Assets.xcassets */,
-				DA13CFFC203E0A7D0021EB7E /* AppDelegate.swift */,
 				DA13D008203E0A7D0021EB7E /* Info.plist */,
 				DA13D00E203E0ABD0021EB7E /* GoogleService-Info.plist */,
 				DA13D005203E0A7D0021EB7E /* LaunchScreen.storyboard */,
+				DAC462422091164A00673189 /* AppDelegate */,
 				DADC7B70203E175500F87438 /* Data */,
 				DADC7B71203E176B00F87438 /* View */,
 				DA06DCE4208063500039D063 /* Utility */,
@@ -187,6 +189,15 @@
 				DA5F352B2077C46100A64FA0 /* FacebookAPI.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		DAC462422091164A00673189 /* AppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				DA13CFFC203E0A7D0021EB7E /* AppDelegate.swift */,
+				DAC462432091168500673189 /* BrewiskeyAnalytics.swift */,
+			);
+			path = AppDelegate;
 			sourceTree = "<group>";
 		};
 		DADC7B70203E175500F87438 /* Data */ = {
@@ -400,6 +411,7 @@
 				DAA23AD22040B08900D481E2 /* MarketTableViewController.swift in Sources */,
 				DA5F352E2077C79D00A64FA0 /* Constants.swift in Sources */,
 				DAB62863209035EC00A5890D /* UserDefaultsUtils.swift in Sources */,
+				DAC462442091168500673189 /* BrewiskeyAnalytics.swift in Sources */,
 				DA2E85DF2043C62E0057C4C6 /* FirebaseAPI.swift in Sources */,
 				DAB62860208FDC1B00A5890D /* ProfileTableViewController.swift in Sources */,
 				DA5F352C2077C46100A64FA0 /* FacebookAPI.swift in Sources */,

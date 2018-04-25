@@ -51,6 +51,8 @@ class IntroductionScreenViewController: UIViewController {
         ]
         self.onboardingView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[onboardingView]|", options: [], metrics: nil, views: views))
         self.onboardingView.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[onboardingView]|", options: [], metrics: nil, views: views))
+        
+        BrewiskeyAnalytics().onboardingScreen(index: self.index)
     }
     
     private func setupTapGesture(){
@@ -134,10 +136,12 @@ extension IntroductionScreenViewController {
 extension IntroductionScreenViewController: BaseOnboardingScreenDelegate {
     func signupWithEmail() {
         performSegue(withIdentifier: "signUpIdentifier", sender: nil)
+        BrewiskeyAnalytics().signupEmailScreen()
     }
     
     func loginUser() {
-        performSegue(withIdentifier: "loginIdentifier", sender: nil)  
+        performSegue(withIdentifier: "loginIdentifier", sender: nil)
+        BrewiskeyAnalytics().loginScreen()
     }
     
     func signupWithFacebook() {
@@ -203,7 +207,7 @@ extension IntroductionScreenViewController: BaseOnboardingScreenDelegate {
                             let values = ["firstName": firstName, "lastName": lastName, "email": email, "profileImageUrl": imageURL]
                             
                             self.registerUserIntoDatabaseAndLogin(userId, values: values as [String : AnyObject])
-                           
+                            BrewiskeyAnalytics().signupOrLoginWithFacebook()
                         }
                     })
                     

@@ -118,6 +118,7 @@ class RegisterViewController: UIViewController {
                         userDefault.set(email, forKey: kUserInfo.kEmail)
                         
                         self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
+                        BrewiskeyAnalytics().signupEmail()
                     }
                 })
             }

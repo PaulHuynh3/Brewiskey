@@ -53,6 +53,7 @@ class LoginViewController: UIViewController {
                     userDefault.set(false, forKey: kUserInfo.kNewUser)
                     userDefault.set(email, forKey: kUserInfo.kEmail)
                     
+                    BrewiskeyAnalytics().loginWithEmail()
                     let appDelegate = UIApplication.shared.delegate as? AppDelegate
                     appDelegate?.transitionToMarketPlace()
                     
@@ -91,6 +92,7 @@ class LoginViewController: UIViewController {
     
     @IBAction func forgotPasswordTapped(_ sender: Any) {
         performSegue(withIdentifier: "forgotPasswordSegue", sender: nil)
+        BrewiskeyAnalytics().forgotPasswordScreen()
     }
     
 }
