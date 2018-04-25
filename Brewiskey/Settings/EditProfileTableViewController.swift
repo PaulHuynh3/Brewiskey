@@ -166,9 +166,12 @@ class EditProfileTableViewController: UITableViewController {
                         userDefault.set(editedPostalCode, forKey: kUserInfo.kAddressPostalCode)
                         
                         if let email = editedEmail {
-                          self?.updateUserEmail(email)
+                            self?.updateUserEmail(email, completion: { (success: Bool) in
+                                if success {
+                                    self?.updateUserIntoDatabase(uid, values: values as [String : AnyObject])
+                                }
+                            })
                         }
-                        self?.updateUserIntoDatabase(uid, values: values as [String : AnyObject])
                     }
                 })
             }
@@ -177,11 +180,14 @@ class EditProfileTableViewController: UITableViewController {
         
     }
     
-    private func updateUserEmail(_ email: String){
+    private func updateUserEmail(_ email: String, completion: @escaping (Bool) -> Void){
         let user = Auth.auth().currentUser
         user?.updateEmail(to: email, completion: {(error : Error?) in
             if let error = error {
                 print(error.localizedDescription)
+                completion(false)
+            } else {
+           completion(true)
             }
         })
     }
