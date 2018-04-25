@@ -17,11 +17,21 @@ class User: NSObject {
     var email: String?
     var profileImageUrl: String?
     var alcoholItems: NSMutableArray?
-    var age: Int?
+    var age: String?
+    var address = Address()
     override init() {
         //iniatilize the array before it can be used.
         alcoholItems = NSMutableArray()
     }
+}
+
+class Address: NSObject {
+    var number: String?
+    var unitNumber: String?
+    var street: String?
+    var city: String?
+    var province: String?
+    var postalCode: String?
 }
 
 class Spirit: NSObject {

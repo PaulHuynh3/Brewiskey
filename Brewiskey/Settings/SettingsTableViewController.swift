@@ -56,9 +56,9 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "editProfileSegue" {
-            let editProfileTableViewController = segue.destination as! EditProfileTableViewController
-            editProfileTableViewController.user = self.user
+        if segue.identifier == "profileSegue" {
+            let profileTableViewController = segue.destination as! ProfileTableViewController
+            profileTableViewController.user = self.user
         }
     }
     

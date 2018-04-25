@@ -27,6 +27,13 @@ class FirebaseAPI: NSObject {
                 user.email = dictionary["email"] as? String
                 user.profileImageUrl = dictionary["profileImageUrl"] as? String
                     completion(user)
+                //user sets this when they finish registeration by editing their profile.
+                user.age = dictionary["age"] as? String
+                user.address.unitNumber = dictionary["unitNumber"] as? String
+                user.address.number = dictionary["streetNumber"] as? String
+                user.address.city = dictionary["city"] as? String
+                user.address.province = dictionary["province"] as? String
+                user.address.postalCode = dictionary["postalCode"] as? String
                 }
             }
         })
