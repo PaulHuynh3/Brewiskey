@@ -150,6 +150,7 @@
 				DADC7B71203E176B00F87438 /* View */,
 				DA06DCE4208063500039D063 /* Utility */,
 				DADC7B72203E178200F87438 /* Onboarding */,
+				DAB628612090222700A5890D /* Services */,
 				DADC7B73203E179600F87438 /* Main */,
 				DA70A9E42089491A00D3F2C3 /* Settings */,
 				DA2E85E02043C7F90057C4C6 /* Helper */,
@@ -174,6 +175,15 @@
 				DA70A9E52089495F00D3F2C3 /* EditProfileTableViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		DAB628612090222700A5890D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				DA2E85DE2043C62E0057C4C6 /* FirebaseAPI.swift */,
+				DA5F352B2077C46100A64FA0 /* FacebookAPI.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		DADC7B70203E175500F87438 /* Data */ = {
@@ -215,8 +225,6 @@
 		DADC7B73203E179600F87438 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				DA2E85DE2043C62E0057C4C6 /* FirebaseAPI.swift */,
-				DA5F352B2077C46100A64FA0 /* FacebookAPI.swift */,
 				DA2C31F3204DC4C400FF6444 /* MarketNavController.swift */,
 				DAA23AD12040B08900D481E2 /* MarketTableViewController.swift */,
 				DAB177B020421771009F0B45 /* MarketTableViewCell.swift */,

@@ -11,10 +11,12 @@ import Firebase
 
 class EditProfileTableViewController: UITableViewController {
     
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var firstNameTextfield: UITextField!
     @IBOutlet weak var lastNameTextfield: UITextField!
     @IBOutlet weak var ageTextfield: UITextField!
     @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var emailTextfield: UITextField!
     @IBOutlet weak var numberTextfield: UITextField!
     @IBOutlet weak var streetTextfield: UITextField!
     @IBOutlet weak var cityTextfield: UITextField!
@@ -23,6 +25,7 @@ class EditProfileTableViewController: UITableViewController {
     @IBOutlet weak var unitNumberOptionalTextfield: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
     var user = User()
+    let database = Database.database().reference()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,6 +89,9 @@ class EditProfileTableViewController: UITableViewController {
             profileImageView.layer.cornerRadius = profileImageView.frame.size.width/2
             profileImageView.clipsToBounds = true
         }
+        if let email = user.email {
+            emailTextfield.text = email
+        }
         
         //set after user edits their profile.
         if let age = user.age {
@@ -110,20 +116,87 @@ class EditProfileTableViewController: UITableViewController {
             unitNumberOptionalTextfield.text = unitNumber
         }
     }
-    
+    //TO DO ALLOW editing of email and MAYBE password change?
     @IBAction func saveProfileTapped(_ sender: Any) {
-        //save all the text on the current screen and picture and update the user's info.
-        let editedFirstName = firstNameTextfield.text
-        let editedLastName = lastNameTextfield.text
-        let editedAge = ageTextfield.text
-        let editedImage = profileImageView.image
-        let editedNumber = numberTextfield.text
-        let editedStreet = streetTextfield.text
-        let editedCity = cityTextfield.text
-        let editedProvince = provinceTextfield.text
-        let editedPostalCode = postalCodeTextfield.text
+        activityIndicatorView.startAnimating()
+        if let uid = Auth.auth().currentUser?.uid {
+            //save all the text on the current screen and picture and update the user's info.
+            let editedFirstName = firstNameTextfield.text
+            let editedLastName = lastNameTextfield.text
+            let editedEmail = emailTextfield.text
+            let editedAge = ageTextfield.text
+            let editedNumber = numberTextfield.text
+            let editedUnitNumber = unitNumberOptionalTextfield.text
+            let editedStreet = streetTextfield.text
+            let editedCity = cityTextfield.text
+            let editedProvince = provinceTextfield.text
+            let editedPostalCode = postalCodeTextfield.text
+            
+            //successfully authenticated user now upload picture to storage.
+            let imageName = NSUUID().uuidString
+            let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName).png")
+            
+            guard let profileImage = self.profileImageView.image else {return}
+            
+            //compresses the image
+            if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {
+                storageRef.putData(uploadData, metadata: nil, completion: {[weak self] (metadata, error) in
+                    
+                    if let error = error {
+                        print(error)
+                        return
+                    }
+                    DispatchQueue.main.async {
+                        guard let profileImageURL = metadata?.downloadURL()?.absoluteString else {
+                            return
+                        }
+                       
+                        let values = ["firstName": editedFirstName, "lastName": editedLastName, "email": editedEmail, "profileImageUrl": profileImageURL, "age": editedAge, "streetNumber": editedNumber, "unitNumber": editedUnitNumber, "street": editedStreet, "city": editedCity, "province": editedProvince, "postalCode": editedPostalCode]
+                        
+                        let userDefault = UserDefaults.standard
+                        userDefault.set(editedFirstName, forKey: kUserInfo.kFirstName)
+                        userDefault.set(editedLastName, forKey: kUserInfo.kLastName)
+                        userDefault.set(editedEmail, forKey: kUserInfo.kEmail)
+                        userDefault.set(editedAge, forKey: kUserInfo.kAge)
+                        userDefault.set(editedNumber, forKey: kUserInfo.kAddressNumber)
+                        userDefault.set(editedUnitNumber, forKey: kUserInfo.kAddressUnitNumber)
+                        userDefault.set(editedStreet, forKey: kUserInfo.kAddressStreet)
+                        userDefault.set(editedCity, forKey: kUserInfo.kAddressCity)
+                        userDefault.set(editedProvince, forKey: kUserInfo.kAddressProvince)
+                        userDefault.set(editedPostalCode, forKey: kUserInfo.kAddressPostalCode)
+                        
+                        if let email = editedEmail {
+                          self?.updateUserEmail(email)
+                        }
+                        self?.updateUserIntoDatabase(uid, values: values as [String : AnyObject])
+                    }
+                })
+            }
+            hideSaveButton()
+        }
         
-        hideSaveButton()
+    }
+    
+    private func updateUserEmail(_ email: String){
+        let user = Auth.auth().currentUser
+        user?.updateEmail(to: email, completion: {(error : Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        })
+    }
+    
+    private func updateUserIntoDatabase(_ uid:String, values: [String:AnyObject]){
+        let userReference = self.database.child("users").child(uid)
+        userReference.updateChildValues(values, withCompletionBlock: { [weak self] (error, databaseRef) in
+            if let error = error {
+                print(error, #line)
+                return
+            }
+            self?.activityIndicatorView.stopAnimating()
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            appDelegate?.transitionToMarketPlace()
+        })
     }
 
 }

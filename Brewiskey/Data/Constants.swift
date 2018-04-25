@@ -16,5 +16,12 @@ struct kUserInfo {
     static let kLoginStatus = "loginStatus"
     static let kNewUser = "newUser"
     static let kEmail = "email"
+    static let kAge = "age"
+    static let kAddressNumber = "addressNumber"
+    static let kAddressUnitNumber = "addressUnitNumber"
+    static let kAddressStreet = "addressStreet"
+    static let kAddressCity = "addressCity"
+    static let kAddressProvince = "addressProvince"
+    static let kAddressPostalCode = "addressPostalCode"
     
 }

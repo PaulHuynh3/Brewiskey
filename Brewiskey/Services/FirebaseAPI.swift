@@ -31,6 +31,7 @@ class FirebaseAPI: NSObject {
                 user.age = dictionary["age"] as? String
                 user.address.unitNumber = dictionary["unitNumber"] as? String
                 user.address.number = dictionary["streetNumber"] as? String
+                user.address.street = dictionary["street"] as? String
                 user.address.city = dictionary["city"] as? String
                 user.address.province = dictionary["province"] as? String
                 user.address.postalCode = dictionary["postalCode"] as? String
