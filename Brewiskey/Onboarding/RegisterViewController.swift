@@ -22,9 +22,11 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var errorCircleImageView: UIImageView!
     let database = Database.database().reference()
+    fileprivate var onboardingCheckUtils: OnboardingCheckUtils?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        onboardingCheckUtils = OnboardingCheckUtils(presentingViewController: self)
         firstNameTextfield.delegate = self
         lastNameTextfield.delegate = self
         emailTextField.delegate = self
@@ -49,14 +51,14 @@ class RegisterViewController: UIViewController {
         
         if !checkBlankFields(firstName: firstName, lastName: lastName, email: email, password: password){
             let errorMessage = "Please fill out all mandatory fields."
-            displayError(message: errorMessage)
+            onboardingCheckUtils.displayError(errorMessage)
             return
         }
         
         if !onboardingCheckUtils.checkValidEmail(email){
             let errorMessage = "Please enter a valid email."
             emailImageView.image = UIImage(named: "RedRectangle")
-            displayError(message: errorMessage)
+            onboardingCheckUtils.displayError(errorMessage)
             return
         } else {
             emailImageView.image = UIImage(named: "BlueRectangle")
@@ -64,7 +66,7 @@ class RegisterViewController: UIViewController {
         
         if !onboardingCheckUtils.checkPasswordComplexity(password){
             let errorMessage = "Password must be at least 8 characters with at least one uppercase letter, one number and one special character."
-            displayError(message: errorMessage)
+            onboardingCheckUtils.displayError(errorMessage)
             passwordImageView.image = UIImage(named: "RedRectangle")
             return
         } else {
@@ -73,14 +75,14 @@ class RegisterViewController: UIViewController {
         
         if onboardingCheckUtils.checkEmailPasswordMatch(email: email, password: password){
             let errorMessage = "Email and password may not be the same!"
-            displayError(message: errorMessage)
+            onboardingCheckUtils.displayError(errorMessage)
             return
         }
         
         Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
             
             if let error = error {
-                self.displayError(message: error.localizedDescription)
+                onboardingCheckUtils.displayError(error.localizedDescription)
                 return
             }
             
@@ -233,13 +235,6 @@ extension RegisterViewController {
             return false
         }
         return true
-    }
-    
-    private func displayError(message: String){
-        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alert.addAction(okAction)
-        present(alert, animated: true, completion: nil)
     }
 }
 

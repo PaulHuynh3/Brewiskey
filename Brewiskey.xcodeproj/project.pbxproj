@@ -33,6 +33,7 @@
 		DAA23AD22040B08900D481E2 /* MarketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA23AD12040B08900D481E2 /* MarketTableViewController.swift */; };
 		DAB177B120421771009F0B45 /* MarketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB177B020421771009F0B45 /* MarketTableViewCell.swift */; };
 		DAB62860208FDC1B00A5890D /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB6285F208FDC1B00A5890D /* ProfileTableViewController.swift */; };
+		DAB62863209035EC00A5890D /* UserDefaultsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB62862209035EC00A5890D /* UserDefaultsUtils.swift */; };
 		DAD28C6820859E8100D5037D /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD28C6720859E8100D5037D /* SettingsTableViewController.swift */; };
 		DADC7B75203E17E100F87438 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DADC7B74203E17E100F87438 /* Login.storyboard */; };
 		DADC7B77203E6A4900F87438 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADC7B76203E6A4900F87438 /* RegisterViewController.swift */; };
@@ -74,6 +75,7 @@
 		DAA23AD12040B08900D481E2 /* MarketTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketTableViewController.swift; sourceTree = "<group>"; };
 		DAB177B020421771009F0B45 /* MarketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketTableViewCell.swift; sourceTree = "<group>"; };
 		DAB6285F208FDC1B00A5890D /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
+		DAB62862209035EC00A5890D /* UserDefaultsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsUtils.swift; sourceTree = "<group>"; };
 		DAD28C6720859E8100D5037D /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		DADC7B74203E17E100F87438 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DADC7B76203E6A4900F87438 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				DA389A7B20774763009F3CE8 /* OnboardingCheckUtils.swift */,
+				DAB62862209035EC00A5890D /* UserDefaultsUtils.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -396,6 +399,7 @@
 			files = (
 				DAA23AD22040B08900D481E2 /* MarketTableViewController.swift in Sources */,
 				DA5F352E2077C79D00A64FA0 /* Constants.swift in Sources */,
+				DAB62863209035EC00A5890D /* UserDefaultsUtils.swift in Sources */,
 				DA2E85DF2043C62E0057C4C6 /* FirebaseAPI.swift in Sources */,
 				DAB62860208FDC1B00A5890D /* ProfileTableViewController.swift in Sources */,
 				DA5F352C2077C46100A64FA0 /* FacebookAPI.swift in Sources */,

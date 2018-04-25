@@ -26,11 +26,14 @@ class EditProfileTableViewController: UITableViewController {
     @IBOutlet weak var saveButton: UIBarButtonItem!
     var user = User()
     let database = Database.database().reference()
+    fileprivate var onboardCheckUtils: OnboardingCheckUtils?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        onboardCheckUtils = OnboardingCheckUtils(presentingViewController: self)
         layoutUserProfile()
         setTextfieldDelegates()
+        hideSaveButton()
         if isTextfieldEmpty() {
             showSaveButton()
         }
@@ -52,18 +55,8 @@ class EditProfileTableViewController: UITableViewController {
         cityTextfield.delegate = self
         provinceTextfield.delegate = self
         postalCodeTextfield.delegate = self
-    }
-    
-    //todo: use textfield delegate to show when a text has been changed and if its change make the save button pop up.
-    fileprivate func isTextfieldEmpty() -> Bool {
-        
-        if let number = numberTextfield.text, let street = streetTextfield.text, let city = cityTextfield.text, let province = provinceTextfield.text, let postalCode = postalCodeTextfield.text {
-            
-            if number.trim() == "" || street.trim() == "" || city.trim() == "" || province.trim() == "" || postalCode.trim() == "" {
-                return true
-            }
-        }
-        return false
+        unitNumberOptionalTextfield.delegate = self
+        emailTextfield.delegate = self
     }
     
     fileprivate func showSaveButton(){
@@ -92,8 +85,6 @@ class EditProfileTableViewController: UITableViewController {
         if let email = user.email {
             emailTextfield.text = email
         }
-        
-        //set after user edits their profile.
         if let age = user.age {
             ageTextfield.text = age
         }
@@ -116,8 +107,25 @@ class EditProfileTableViewController: UITableViewController {
             unitNumberOptionalTextfield.text = unitNumber
         }
     }
-    //TO DO ALLOW editing of email and MAYBE password change?
+    //PERFORM CHECKS
+    fileprivate func isTextfieldEmpty() -> Bool {
+        
+        if let number = numberTextfield.text, let street = streetTextfield.text, let city = cityTextfield.text, let province = provinceTextfield.text, let postalCode = postalCodeTextfield.text, let email = emailTextfield.text, let firstName = firstNameTextfield.text, let lastName = lastNameTextfield.text, let age = ageTextfield.text {
+            
+            if number.trim() == "" || street.trim() == "" || city.trim() == "" || province.trim() == "" || postalCode.trim() == "" || email.trim() == "" || firstName.trim() == "" || lastName.trim() == "" || age.trim() == "" {
+                return true
+            }
+        }
+        return false
+    }
+    
     @IBAction func saveProfileTapped(_ sender: Any) {
+        if isTextfieldEmpty() {
+            let message = "Please fill out all mandatory fields"
+            onboardCheckUtils?.displayError(message)
+            return
+        }
+        
         activityIndicatorView.startAnimating()
         if let uid = Auth.auth().currentUser?.uid {
             //save all the text on the current screen and picture and update the user's info.
@@ -157,13 +165,6 @@ class EditProfileTableViewController: UITableViewController {
                         userDefault.set(editedFirstName, forKey: kUserInfo.kFirstName)
                         userDefault.set(editedLastName, forKey: kUserInfo.kLastName)
                         userDefault.set(editedEmail, forKey: kUserInfo.kEmail)
-                        userDefault.set(editedAge, forKey: kUserInfo.kAge)
-                        userDefault.set(editedNumber, forKey: kUserInfo.kAddressNumber)
-                        userDefault.set(editedUnitNumber, forKey: kUserInfo.kAddressUnitNumber)
-                        userDefault.set(editedStreet, forKey: kUserInfo.kAddressStreet)
-                        userDefault.set(editedCity, forKey: kUserInfo.kAddressCity)
-                        userDefault.set(editedProvince, forKey: kUserInfo.kAddressProvince)
-                        userDefault.set(editedPostalCode, forKey: kUserInfo.kAddressPostalCode)
                         
                         if let email = editedEmail {
                             self?.updateUserEmail(email, completion: { (success: Bool) in
@@ -177,7 +178,6 @@ class EditProfileTableViewController: UITableViewController {
             }
             hideSaveButton()
         }
-        
     }
     
     private func updateUserEmail(_ email: String, completion: @escaping (Bool) -> Void){
@@ -227,7 +227,7 @@ extension EditProfileTableViewController: UITextFieldDelegate {
 extension EditProfileTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @objc func profileImageTapped(_ sender: Any) {
-        print("test")
+        showSaveButton()
         let alert = UIAlertController(title: "Edit Profile Picture", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
         
         let firstAction = UIAlertAction(title: "Take Photo", style: UIAlertActionStyle.default) { (actionOne) in

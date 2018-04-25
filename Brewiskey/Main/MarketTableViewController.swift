@@ -57,10 +57,6 @@ class MarketTableViewController: UITableViewController {
         } else {
             if let firstName = UserDefaults.standard.string(forKey: kUserInfo.kFirstName), let lastName = UserDefaults.standard.string(forKey: kUserInfo.kLastName){
                 self.navigationItem.title = "Welcome " + firstName + " " + lastName
-            } else {
-                if let displayName = UserDefaults.standard.string(forKey: kUserInfo.kDisplayName) {
-                     self.navigationItem.title = "Welcome " + displayName
-                }
             }
         }
         

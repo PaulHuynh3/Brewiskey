@@ -9,19 +9,10 @@
 import Foundation
 
 struct kUserInfo {
-    static let kDisplayName = "displayName"
     static let kFirstName = "firstName"
     static let kLastName = "lastName"
     static let kUserId = "userId"
     static let kLoginStatus = "loginStatus"
     static let kNewUser = "newUser"
     static let kEmail = "email"
-    static let kAge = "age"
-    static let kAddressNumber = "addressNumber"
-    static let kAddressUnitNumber = "addressUnitNumber"
-    static let kAddressStreet = "addressStreet"
-    static let kAddressCity = "addressCity"
-    static let kAddressProvince = "addressProvince"
-    static let kAddressPostalCode = "addressPostalCode"
-    
 }

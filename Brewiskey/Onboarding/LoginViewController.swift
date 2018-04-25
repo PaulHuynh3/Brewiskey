@@ -52,9 +52,6 @@ class LoginViewController: UIViewController {
                     userDefault.set(user.uid, forKey: kUserInfo.kUserId)
                     userDefault.set(false, forKey: kUserInfo.kNewUser)
                     userDefault.set(email, forKey: kUserInfo.kEmail)
-                    if UserDefaults.standard.string(forKey: kUserInfo.kFirstName) == nil || UserDefaults.standard.string(forKey: kUserInfo.kLastName) == nil {
-                        UserDefaults.standard.set(user.displayName, forKey: kUserInfo.kDisplayName)
-                    }
                     
                     let appDelegate = UIApplication.shared.delegate as? AppDelegate
                     appDelegate?.transitionToMarketPlace()
