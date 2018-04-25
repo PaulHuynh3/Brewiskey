@@ -28,7 +28,7 @@ class SettingsTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         switch indexPath.row {
-        case 0: navigateToEditProfile()
+        case 0: navigateToProfile()
         case 1:print("refer a friend")
         case 2:print("promo code")
         case 3:print("notifications")
@@ -42,8 +42,8 @@ class SettingsTableViewController: UITableViewController {
         
     }
     
-    fileprivate func navigateToEditProfile(){
-        performSegue(withIdentifier: "editProfileSegue", sender: nil)
+    fileprivate func navigateToProfile(){
+        performSegue(withIdentifier: "profileSegue", sender: nil)
     }
     
     fileprivate func fetchUserObject(){

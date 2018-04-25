@@ -64,6 +64,10 @@ class ProfileTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func editProfileTapped(_ sender: Any) {
+        performSegue(withIdentifier: "editProfileSegue", sender: nil)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "editProfileSegue" {
             let editProfileTableViewController = segue.destination as! EditProfileTableViewController
