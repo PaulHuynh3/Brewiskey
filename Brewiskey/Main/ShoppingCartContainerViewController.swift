@@ -14,7 +14,6 @@ class ShoppingCartContainerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
        
     }
 
