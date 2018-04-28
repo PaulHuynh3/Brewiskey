@@ -28,7 +28,7 @@ class SettingsTableViewController: UITableViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         switch indexPath.row {
-        case 0: navigateToProfile()
+        case 0: navigateToMyAccount()
         case 1:print("refer a friend")
         case 2:print("promo code")
         case 3:print("notifications")
@@ -42,8 +42,8 @@ class SettingsTableViewController: UITableViewController {
         
     }
     
-    fileprivate func navigateToProfile(){
-        performSegue(withIdentifier: "profileSegue", sender: nil)
+    fileprivate func navigateToMyAccount(){
+        performSegue(withIdentifier: "accountSegue", sender: nil)
     }
     
     fileprivate func fetchUserObject(){
@@ -56,9 +56,9 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "profileSegue" {
-            let profileTableViewController = segue.destination as! ProfileTableViewController
-            profileTableViewController.user = self.user
+        if segue.identifier == "accountSegue" {
+            let myAccountTableViewController = segue.destination as! MyAccountTableViewController
+            myAccountTableViewController.user = self.user
         }
     }
     

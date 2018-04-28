@@ -16,7 +16,7 @@ class EditProfileTableViewController: UITableViewController {
     @IBOutlet weak var lastNameTextfield: UITextField!
     @IBOutlet weak var ageTextfield: UITextField!
     @IBOutlet weak var profileImageView: UIImageView!
-    @IBOutlet weak var emailTextfield: UITextField!
+    @IBOutlet weak var emailButton: UIButton!
     @IBOutlet weak var numberTextfield: UITextField!
     @IBOutlet weak var streetTextfield: UITextField!
     @IBOutlet weak var cityTextfield: UITextField!
@@ -56,7 +56,6 @@ class EditProfileTableViewController: UITableViewController {
         provinceTextfield.delegate = self
         postalCodeTextfield.delegate = self
         unitNumberOptionalTextfield.delegate = self
-        emailTextfield.delegate = self
     }
     
     fileprivate func showSaveButton(){
@@ -83,7 +82,7 @@ class EditProfileTableViewController: UITableViewController {
             profileImageView.clipsToBounds = true
         }
         if let email = user.email {
-            emailTextfield.text = email
+            emailButton.setTitle(email, for: .normal)
         }
         if let age = user.age {
             ageTextfield.text = age
@@ -110,9 +109,9 @@ class EditProfileTableViewController: UITableViewController {
     //PERFORM CHECKS
     fileprivate func isTextfieldEmpty() -> Bool {
         
-        if let number = numberTextfield.text, let street = streetTextfield.text, let city = cityTextfield.text, let province = provinceTextfield.text, let postalCode = postalCodeTextfield.text, let email = emailTextfield.text, let firstName = firstNameTextfield.text, let lastName = lastNameTextfield.text, let age = ageTextfield.text {
+        if let number = numberTextfield.text, let street = streetTextfield.text, let city = cityTextfield.text, let province = provinceTextfield.text, let postalCode = postalCodeTextfield.text, let firstName = firstNameTextfield.text, let lastName = lastNameTextfield.text, let age = ageTextfield.text {
             
-            if number.trim() == "" || street.trim() == "" || city.trim() == "" || province.trim() == "" || postalCode.trim() == "" || email.trim() == "" || firstName.trim() == "" || lastName.trim() == "" || age.trim() == "" {
+            if number.trim() == "" || street.trim() == "" || city.trim() == "" || province.trim() == "" || postalCode.trim() == "" || firstName.trim() == "" || lastName.trim() == "" || age.trim() == "" {
                 return true
             }
         }
@@ -131,7 +130,6 @@ class EditProfileTableViewController: UITableViewController {
             //save all the text on the current screen and picture and update the user's info.
             let editedFirstName = firstNameTextfield.text
             let editedLastName = lastNameTextfield.text
-            let editedEmail = emailTextfield.text
             let editedAge = ageTextfield.text
             let editedNumber = numberTextfield.text
             let editedUnitNumber = unitNumberOptionalTextfield.text
@@ -159,37 +157,21 @@ class EditProfileTableViewController: UITableViewController {
                             return
                         }
                        
-                        let values = ["firstName": editedFirstName, "lastName": editedLastName, "email": editedEmail, "profileImageUrl": profileImageURL, "age": editedAge, "streetNumber": editedNumber, "unitNumber": editedUnitNumber, "street": editedStreet, "city": editedCity, "province": editedProvince, "postalCode": editedPostalCode]
+                        let values = ["firstName": editedFirstName, "lastName": editedLastName, "profileImageUrl": profileImageURL, "age": editedAge, "streetNumber": editedNumber, "unitNumber": editedUnitNumber, "street": editedStreet, "city": editedCity, "province": editedProvince, "postalCode": editedPostalCode]
                         
                         let userDefault = UserDefaults.standard
                         userDefault.set(editedFirstName, forKey: kUserInfo.kFirstName)
                         userDefault.set(editedLastName, forKey: kUserInfo.kLastName)
-                        userDefault.set(editedEmail, forKey: kUserInfo.kEmail)
                         
-                        if let email = editedEmail {
-                            self?.updateUserEmail(email, completion: { (success: Bool) in
-                                if success {
-                                    self?.updateUserIntoDatabase(uid, values: values as [String : AnyObject])
-                                }
-                            })
-                        }
+                     
+                        
+                      self?.updateUserIntoDatabase(uid, values: values as [String : AnyObject])
+                        
                     }
                 })
             }
             hideSaveButton()
         }
-    }
-    
-    private func updateUserEmail(_ email: String, completion: @escaping (Bool) -> Void){
-        let user = Auth.auth().currentUser
-        user?.updateEmail(to: email, completion: {(error : Error?) in
-            if let error = error {
-                print(error.localizedDescription)
-                completion(false)
-            } else {
-           completion(true)
-            }
-        })
     }
     
     private func updateUserIntoDatabase(_ uid:String, values: [String:AnyObject]){
@@ -204,6 +186,11 @@ class EditProfileTableViewController: UITableViewController {
             appDelegate?.transitionToMarketPlace()
         })
     }
+    
+    @IBAction func changeEmailTapped(_ sender: Any) {
+        performSegue(withIdentifier: "emailSegue", sender: nil)
+    }
+    
 
 }
 

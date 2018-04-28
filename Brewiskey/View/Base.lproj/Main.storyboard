@@ -532,7 +532,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="jMT-RD-dgN"/>
                     <connections>
-                        <segue destination="yDe-Nd-vcS" kind="show" identifier="profileSegue" id="46D-gd-l9j"/>
+                        <segue destination="9uP-MN-rti" kind="show" identifier="accountSegue" id="zWQ-xe-oXd"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fG6-Hc-Hm8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -680,13 +680,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="54.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="fse-n6-Ft7">
-                                                    <rect key="frame" x="16" y="11" width="343" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qs-9N-pWg">
+                                                    <rect key="frame" x="16" y="14" width="343" height="30"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <nil key="textColor"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                    <connections>
+                                                        <action selector="changeEmailTapped:" destination="KDh-fJ-zEt" eventType="touchUpInside" id="GJe-oh-lZV"/>
+                                                    </connections>
+                                                </button>
+                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rightNavy" translatesAutoresizingMaskIntoConstraints="NO" id="cS2-D3-rOI">
+                                                    <rect key="frame" x="324" y="19" width="35" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                </imageView>
                                             </subviews>
                                             <gestureRecognizers/>
                                         </tableViewCellContentView>
@@ -817,7 +821,7 @@
                         <outlet property="activityIndicatorView" destination="plB-w5-ImM" id="qcF-OR-Cue"/>
                         <outlet property="ageTextfield" destination="cLb-gG-lAg" id="6cP-zB-LNK"/>
                         <outlet property="cityTextfield" destination="aUS-ei-aPK" id="7Nr-OM-xKA"/>
-                        <outlet property="emailTextfield" destination="fse-n6-Ft7" id="Tdm-DW-jEO"/>
+                        <outlet property="emailButton" destination="1qs-9N-pWg" id="mWV-QQ-1WR"/>
                         <outlet property="firstNameTextfield" destination="QLA-cH-6b4" id="SQV-gN-fOF"/>
                         <outlet property="lastNameTextfield" destination="FXz-2h-LWr" id="iYQ-1H-sTG"/>
                         <outlet property="numberTextfield" destination="NgW-1S-Bj6" id="yd7-OX-JJU"/>
@@ -827,11 +831,56 @@
                         <outlet property="saveButton" destination="5Z4-nG-Sam" id="S8b-Mh-mXv"/>
                         <outlet property="streetTextfield" destination="K3e-lc-vom" id="BzV-Gn-kmg"/>
                         <outlet property="unitNumberOptionalTextfield" destination="Xaz-7T-PTj" id="R5e-Yv-RwX"/>
+                        <segue destination="QFH-jy-OGh" kind="show" identifier="emailSegue" id="TwK-5G-iLZ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Bh5-3u-o07" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2333.5999999999999" y="-2124.2878560719641"/>
+            <point key="canvasLocation" x="3533.5999999999999" y="-2042.4287856071965"/>
+        </scene>
+        <!--Change Email View Controller-->
+        <scene sceneID="guQ-tC-ggk">
+            <objects>
+                <viewController id="QFH-jy-OGh" customClass="ChangeEmailViewController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="EJh-tr-WTf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="New email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4K2-vS-Cdo">
+                                <rect key="frame" x="16" y="84" width="343" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirm new email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="10d-pp-aC1">
+                                <rect key="frame" x="16" y="135" width="343" height="33"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nil-e6-EiL">
+                                <rect key="frame" x="16" y="209" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                <state key="normal" title="CHANGE EMAIL"/>
+                                <connections>
+                                    <action selector="changeEmailTapped:" destination="QFH-jy-OGh" eventType="touchUpInside" id="4bK-Re-WzB"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="6hX-oa-uqL"/>
+                    </view>
+                    <connections>
+                        <outlet property="confirmEmailTextfield" destination="10d-pp-aC1" id="Rq5-GA-Dm9"/>
+                        <outlet property="newEmailTextfield" destination="4K2-vS-Cdo" id="PIS-7f-h9A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ggD-Oo-lb2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4389.6000000000004" y="-2042.4287856071965"/>
         </scene>
         <!--Check Out-->
         <scene sceneID="Iqd-aN-axb">
@@ -1141,12 +1190,12 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zC2-np-vjf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1468" y="-2124"/>
+            <point key="canvasLocation" x="2402" y="-2042"/>
         </scene>
-        <!--Settings Table View Controller-->
+        <!--My Account Table View Controller-->
         <scene sceneID="yAp-gL-jug">
             <objects>
-                <tableViewController id="9uP-MN-rti" customClass="SettingsTableViewController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="9uP-MN-rti" customClass="MyAccountTableViewController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="nzH-8o-tgB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1168,7 +1217,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Edit profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qJ-aY-pJf">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5qJ-aY-pJf">
                                                     <rect key="frame" x="19" y="11" width="343" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1196,7 +1245,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Change Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7so-i5-Otp">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7so-i5-Otp">
                                                     <rect key="frame" x="19" y="11" width="343" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1204,34 +1253,6 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rightNavy" translatesAutoresizingMaskIntoConstraints="NO" id="EkE-E1-Q25">
-                                                    <rect key="frame" x="335" y="12" width="35" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </imageView>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="nBf-Wv-oP2">
-                                        <rect key="frame" x="0.0" y="88" width="375" height="44"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="nBf-Wv-oP2" id="dXx-S0-FTs">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Refer a friend" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWm-tc-30k">
-                                                    <rect key="frame" x="19" y="75" width="343" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Change Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GOD-GE-DgU">
-                                                    <rect key="frame" x="19" y="11" width="343" height="21"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="rightNavy" translatesAutoresizingMaskIntoConstraints="NO" id="uS4-22-mEM">
                                                     <rect key="frame" x="335" y="12" width="35" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
@@ -1247,10 +1268,13 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="3Fa-ZT-Mre"/>
+                    <connections>
+                        <segue destination="yDe-Nd-vcS" kind="show" identifier="profileSegue" id="fEo-CC-tht"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hfA-yD-X1O" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2334" y="-1460"/>
+            <point key="canvasLocation" x="1364" y="-1849"/>
         </scene>
     </scenes>
     <resources>
