@@ -27,6 +27,7 @@
 		DA5F352E2077C79D00A64FA0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F352D2077C79D00A64FA0 /* Constants.swift */; };
 		DA5F3530207825D400A64FA0 /* EmailSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F352F207825D400A64FA0 /* EmailSentViewController.swift */; };
 		DA620DF3209561710026E4A5 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA620DF2209561710026E4A5 /* ChangePasswordViewController.swift */; };
+		DA620DF5209589620026E4A5 /* ReferralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA620DF4209589620026E4A5 /* ReferralViewController.swift */; };
 		DA70A9E62089495F00D3F2C3 /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA70A9E52089495F00D3F2C3 /* EditProfileTableViewController.swift */; };
 		DA9F41D7207719E00004797B /* OnboardingView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F41D6207719E00004797B /* OnboardingView2.xib */; };
 		DA9F41D920771B7C0004797B /* OnboardingView3.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F41D820771B7C0004797B /* OnboardingView3.xib */; };
@@ -73,6 +74,7 @@
 		DA5F352D2077C79D00A64FA0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DA5F352F207825D400A64FA0 /* EmailSentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSentViewController.swift; sourceTree = "<group>"; };
 		DA620DF2209561710026E4A5 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		DA620DF4209589620026E4A5 /* ReferralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralViewController.swift; sourceTree = "<group>"; };
 		DA70A9E52089495F00D3F2C3 /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		DA9F41D6207719E00004797B /* OnboardingView2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView2.xib; sourceTree = "<group>"; };
 		DA9F41D820771B7C0004797B /* OnboardingView3.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView3.xib; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				DAB6285F208FDC1B00A5890D /* ProfileTableViewController.swift */,
 				DA70A9E52089495F00D3F2C3 /* EditProfileTableViewController.swift */,
 				DAC4EC8A2094499800EE07A0 /* ChangeEmailViewController.swift */,
+				DA620DF4209589620026E4A5 /* ReferralViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -433,6 +436,7 @@
 				DA620DF3209561710026E4A5 /* ChangePasswordViewController.swift in Sources */,
 				DA2E85DD2043A7B40057C4C6 /* MoreTableViewController.swift in Sources */,
 				DA2C31F4204DC4C400FF6444 /* MarketNavController.swift in Sources */,
+				DA620DF5209589620026E4A5 /* ReferralViewController.swift in Sources */,
 				DA056E85203FC7A6007EECAE /* DataModel.swift in Sources */,
 				DA2E85E22043C8110057C4C6 /* Extensions.swift in Sources */,
 				DA056E88203FC982007EECAE /* ForgotPasswordViewController.swift in Sources */,

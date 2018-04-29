@@ -29,17 +29,27 @@ class SettingsTableViewController: UITableViewController {
         
         switch indexPath.row {
         case 0: navigateToMyAccount()
-        case 1:print("refer a friend")
+        case 1: navigateToReferFriend()
         case 2:print("promo code")
         case 3:print("notifications")
         case 4:print("past orders")
         case 5:print("payment")
-        case 6:print("help")
+        case 6: webPortalHelpPage()
         case 7: handleLogout()
             
         default: print("default")
         }
-        
+    }
+    
+    fileprivate func navigateToReferFriend() {
+        performSegue(withIdentifier: "referralSegue", sender: nil)
+    }
+    
+    fileprivate func webPortalHelpPage() {
+        guard let url = URL(string: "http://brewiskey.com/support/") else {
+            return
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
     fileprivate func navigateToMyAccount(){
