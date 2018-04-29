@@ -9,8 +9,12 @@
 import UIKit
 import Firebase
 
+protocol updateUserDelegate {
+    func refreshUserEmail()
+}
+
 class EditProfileTableViewController: UITableViewController {
-    
+
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     @IBOutlet weak var firstNameTextfield: UITextField!
     @IBOutlet weak var lastNameTextfield: UITextField!
@@ -106,7 +110,7 @@ class EditProfileTableViewController: UITableViewController {
             unitNumberOptionalTextfield.text = unitNumber
         }
     }
-    //PERFORM CHECKS
+    
     fileprivate func isTextfieldEmpty() -> Bool {
         
         if let number = numberTextfield.text, let street = streetTextfield.text, let city = cityTextfield.text, let province = provinceTextfield.text, let postalCode = postalCodeTextfield.text, let firstName = firstNameTextfield.text, let lastName = lastNameTextfield.text, let age = ageTextfield.text {
@@ -191,7 +195,22 @@ class EditProfileTableViewController: UITableViewController {
         performSegue(withIdentifier: "emailSegue", sender: nil)
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "emailSegue" {
+            let changeEmailViewController = segue.destination as! ChangeEmailViewController
+            changeEmailViewController.updateUserDelegate = self
+        }
+    }
 
+}
+
+extension EditProfileTableViewController: updateUserDelegate {
+    
+    func refreshUserEmail() {
+        if let email = Auth.auth().currentUser?.email {
+            self.emailButton.setTitle(email, for: .normal)
+        }
+    }
 }
 
 extension EditProfileTableViewController: UITextFieldDelegate {

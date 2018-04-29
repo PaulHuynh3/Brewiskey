@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 
 class ChangeEmailViewController: UIViewController {
+    var updateUserDelegate: updateUserDelegate?
     @IBOutlet weak var newEmailTextfield: UITextField!
     @IBOutlet weak var confirmEmailTextfield: UITextField!
     fileprivate var onboardingCheckUtils: OnboardingCheckUtils?
@@ -46,27 +47,31 @@ class ChangeEmailViewController: UIViewController {
 
         if checkEmailMatches(email: email, confirmEmail: confirmEmail) {
             if let uid = Auth.auth().currentUser?.uid {
-            
-            Auth.auth().currentUser?.updateEmail(to: email, completion: {[weak self] (error: Error?) in
-                if let error = error {
-                    self?.onboardingCheckUtils?.displayError(error.localizedDescription)
-                }
-                UserDefaults.standard.set(email, forKey: kUserInfo.kEmail)
-                self?.displayConfirmEmailChanged()
-
-                self?.updateUserIntoDatabase(uid, values: ["email": email] as [String: AnyObject])
-                self?.newEmailTextfield.text = ""
-                self?.confirmEmailTextfield.text = ""
-            })
-            
-        }
+                
+                Auth.auth().currentUser?.updateEmail(to: email, completion: {[weak self] (error: Error?) in
+                    if let error = error {
+                        self?.onboardingCheckUtils?.displayError(error.localizedDescription)
+                        return
+                    }
+                    UserDefaults.standard.set(email, forKey: kUserInfo.kEmail)
+                    self?.displayConfirmEmailChanged()
+                    self?.updateUserIntoDatabase(uid, values: ["email": email] as [String: AnyObject])
+                    self?.newEmailTextfield.text = ""
+                    self?.confirmEmailTextfield.text = ""
+                    self?.updateUserDelegate?.refreshUserEmail()
+                })
+                
+            }
+        } else {
+            let message = "Email does not match"
+            onboardingCheckUtils?.displayError(message)
         }
         
     }
     
     private func updateUserIntoDatabase(_ uid:String, values: [String: AnyObject]){
         let userReference = Database.database().reference().child("users").child(uid)
-        userReference.updateChildValues(values, withCompletionBlock: { [weak self] (error, databaseRef) in
+        userReference.updateChildValues(values, withCompletionBlock: {(error, databaseRef) in
             if let error = error {
                 print(error, #line)
                 return
@@ -102,8 +107,9 @@ class ChangeEmailViewController: UIViewController {
 }
 
 extension ChangeEmailViewController: UITextFieldDelegate {
+
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        resignFirstResponder()
+        textField.resignFirstResponder()
         return true
     }
     

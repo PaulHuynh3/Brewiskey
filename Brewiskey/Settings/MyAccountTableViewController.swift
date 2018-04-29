@@ -11,17 +11,12 @@ import UIKit
 class MyAccountTableViewController: UITableViewController {
     var user = User()
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-    }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
         switch indexPath.row {
         case 0: showProfile()
-        case 1:print("change password screen")
+        case 1: changePassword()
             
         default: print("default")
         }
@@ -30,6 +25,10 @@ class MyAccountTableViewController: UITableViewController {
     
     fileprivate func showProfile(){
         performSegue(withIdentifier: "profileSegue", sender: nil)
+    }
+    
+    fileprivate func changePassword(){
+        performSegue(withIdentifier: "passwordSegue", sender: nil)
     }
     
     
