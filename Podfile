@@ -7,8 +7,10 @@ target 'Brewiskey' do
     pod 'Firebase/Auth'
     pod 'Firebase/Database'
     pod 'Firebase/Storage'
+    pod 'Firebase/DynamicLinks'
     pod 'FBSDKCoreKit'
     pod 'FBSDKShareKit'
     pod 'FBSDKLoginKit'
+    pod 'Mobile-Buy-SDK'
 
 end

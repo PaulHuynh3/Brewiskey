@@ -34,5 +34,14 @@ class ReferralViewController: UIViewController {
         
     }
     
+    fileprivate func socialMediaLinks() {
+
+    }
+    
+    fileprivate func createDynamicLink() {
+
+    }
+    
+    
     
 }
