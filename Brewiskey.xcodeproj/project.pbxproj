@@ -23,6 +23,7 @@
 		DA2E916420487F9F00AF0247 /* DetailedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E916320487F9F00AF0247 /* DetailedTableViewController.swift */; };
 		DA2E91662048FF7900AF0247 /* AlcoholSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E91652048FF7900AF0247 /* AlcoholSelectionTableViewController.swift */; };
 		DA389A7C20774763009F3CE8 /* OnboardingCheckUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA389A7B20774763009F3CE8 /* OnboardingCheckUtils.swift */; };
+		DA56C62220A1599300DB38A4 /* PromoCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA56C62120A1599300DB38A4 /* PromoCodeViewController.swift */; };
 		DA5F352C2077C46100A64FA0 /* FacebookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F352B2077C46100A64FA0 /* FacebookAPI.swift */; };
 		DA5F352E2077C79D00A64FA0 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F352D2077C79D00A64FA0 /* Constants.swift */; };
 		DA5F3530207825D400A64FA0 /* EmailSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F352F207825D400A64FA0 /* EmailSentViewController.swift */; };
@@ -70,6 +71,7 @@
 		DA2E916320487F9F00AF0247 /* DetailedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTableViewController.swift; sourceTree = "<group>"; };
 		DA2E91652048FF7900AF0247 /* AlcoholSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholSelectionTableViewController.swift; sourceTree = "<group>"; };
 		DA389A7B20774763009F3CE8 /* OnboardingCheckUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCheckUtils.swift; sourceTree = "<group>"; };
+		DA56C62120A1599300DB38A4 /* PromoCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoCodeViewController.swift; sourceTree = "<group>"; };
 		DA5F352B2077C46100A64FA0 /* FacebookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAPI.swift; sourceTree = "<group>"; };
 		DA5F352D2077C79D00A64FA0 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		DA5F352F207825D400A64FA0 /* EmailSentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSentViewController.swift; sourceTree = "<group>"; };
@@ -192,6 +194,7 @@
 				DA70A9E52089495F00D3F2C3 /* EditProfileTableViewController.swift */,
 				DAC4EC8A2094499800EE07A0 /* ChangeEmailViewController.swift */,
 				DA620DF4209589620026E4A5 /* ReferralViewController.swift */,
+				DA56C62120A1599300DB38A4 /* PromoCodeViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -395,6 +398,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/Mobile-Buy-SDK/MobileBuySDK.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -406,6 +410,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MobileBuySDK.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -444,6 +449,7 @@
 				DAC4EC8B2094499800EE07A0 /* ChangeEmailViewController.swift in Sources */,
 				DAB62863209035EC00A5890D /* UserDefaultsUtils.swift in Sources */,
 				DAC462442091168500673189 /* BrewiskeyAnalytics.swift in Sources */,
+				DA56C62220A1599300DB38A4 /* PromoCodeViewController.swift in Sources */,
 				DA2E85DF2043C62E0057C4C6 /* FirebaseAPI.swift in Sources */,
 				DAB62860208FDC1B00A5890D /* ProfileTableViewController.swift in Sources */,
 				DA5F352C2077C46100A64FA0 /* FacebookAPI.swift in Sources */,

@@ -11,6 +11,5 @@ target 'Brewiskey' do
     pod 'FBSDKCoreKit'
     pod 'FBSDKShareKit'
     pod 'FBSDKLoginKit'
-    pod 'Mobile-Buy-SDK'
 
 end

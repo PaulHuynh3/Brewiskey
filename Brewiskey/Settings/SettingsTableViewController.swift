@@ -30,7 +30,7 @@ class SettingsTableViewController: UITableViewController {
         switch indexPath.row {
         case 0: navigateToMyAccount()
         case 1: navigateToReferFriend()
-        case 2:print("promo code")
+        case 2: navigateToPromoCode()
         case 3:print("notifications")
         case 4:print("past orders")
         case 5:print("payment")
@@ -52,8 +52,12 @@ class SettingsTableViewController: UITableViewController {
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
-    fileprivate func navigateToMyAccount(){
+    fileprivate func navigateToMyAccount() {
         performSegue(withIdentifier: "accountSegue", sender: nil)
+    }
+    
+    fileprivate func navigateToPromoCode() {
+        performSegue(withIdentifier: "promoCodeSegue", sender: nil)
     }
     
     fileprivate func fetchUserObject(){
