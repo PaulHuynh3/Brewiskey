@@ -23,6 +23,9 @@ class User: NSObject {
         //iniatilize the array before it can be used.
         alcoholItems = NSMutableArray()
     }
+    //need to set this in firebase...
+    var creditCards: NSMutableArray?
+    
 }
 
 class Address: NSObject {

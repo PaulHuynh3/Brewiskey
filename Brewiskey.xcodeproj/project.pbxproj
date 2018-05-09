@@ -41,6 +41,8 @@
 		DAC4EC89209442EE00EE07A0 /* MyAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4EC88209442EE00EE07A0 /* MyAccountTableViewController.swift */; };
 		DAC4EC8B2094499800EE07A0 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4EC8A2094499800EE07A0 /* ChangeEmailViewController.swift */; };
 		DAD28C6820859E8100D5037D /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD28C6720859E8100D5037D /* SettingsTableViewController.swift */; };
+		DAD934BA20A2A5E400BA6FFD /* UpdateCreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD934B920A2A5E400BA6FFD /* UpdateCreditCardViewController.swift */; };
+		DAD934BD20A2A80900BA6FFD /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD934BC20A2A80900BA6FFD /* PaymentViewController.swift */; };
 		DADC7B75203E17E100F87438 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DADC7B74203E17E100F87438 /* Login.storyboard */; };
 		DADC7B77203E6A4900F87438 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADC7B76203E6A4900F87438 /* RegisterViewController.swift */; };
 		DAE169FD20769AE200B21D30 /* OnboardingView0.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE169FC20769AE200B21D30 /* OnboardingView0.xib */; };
@@ -90,6 +92,8 @@
 		DAC4EC88209442EE00EE07A0 /* MyAccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountTableViewController.swift; sourceTree = "<group>"; };
 		DAC4EC8A2094499800EE07A0 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
 		DAD28C6720859E8100D5037D /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		DAD934B920A2A5E400BA6FFD /* UpdateCreditCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCreditCardViewController.swift; sourceTree = "<group>"; };
+		DAD934BC20A2A80900BA6FFD /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		DADC7B74203E17E100F87438 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DADC7B76203E6A4900F87438 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		DAE169FC20769AE200B21D30 /* OnboardingView0.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView0.xib; sourceTree = "<group>"; };
@@ -195,6 +199,8 @@
 				DAC4EC8A2094499800EE07A0 /* ChangeEmailViewController.swift */,
 				DA620DF4209589620026E4A5 /* ReferralViewController.swift */,
 				DA56C62120A1599300DB38A4 /* PromoCodeViewController.swift */,
+				DAD934BC20A2A80900BA6FFD /* PaymentViewController.swift */,
+				DAD934B920A2A5E400BA6FFD /* UpdateCreditCardViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -461,9 +467,11 @@
 				DA2C31F4204DC4C400FF6444 /* MarketNavController.swift in Sources */,
 				DA620DF5209589620026E4A5 /* ReferralViewController.swift in Sources */,
 				DA056E85203FC7A6007EECAE /* DataModel.swift in Sources */,
+				DAD934BD20A2A80900BA6FFD /* PaymentViewController.swift in Sources */,
 				DA2E85E22043C8110057C4C6 /* Extensions.swift in Sources */,
 				DA056E88203FC982007EECAE /* ForgotPasswordViewController.swift in Sources */,
 				DA5F3530207825D400A64FA0 /* EmailSentViewController.swift in Sources */,
+				DAD934BA20A2A5E400BA6FFD /* UpdateCreditCardViewController.swift in Sources */,
 				DADC7B77203E6A4900F87438 /* RegisterViewController.swift in Sources */,
 				DAC4EC89209442EE00EE07A0 /* MyAccountTableViewController.swift in Sources */,
 				DA2C31F6204E313A00FF6444 /* ShoppingCartContainerViewController.swift in Sources */,

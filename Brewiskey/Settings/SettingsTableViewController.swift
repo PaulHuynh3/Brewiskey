@@ -31,11 +31,10 @@ class SettingsTableViewController: UITableViewController {
         case 0: navigateToMyAccount()
         case 1: navigateToReferFriend()
         case 2: navigateToPromoCode()
-        case 3:print("notifications")
-        case 4:print("past orders")
-        case 5:print("payment")
-        case 6: webPortalHelpPage()
-        case 7: handleLogout()
+        case 3: print("past orders")
+        case 4: navigateToPayment()
+        case 5: webPortalHelpPage()
+        case 6: handleLogout()
             
         default: print("default")
         }
@@ -60,7 +59,11 @@ class SettingsTableViewController: UITableViewController {
         performSegue(withIdentifier: "promoCodeSegue", sender: nil)
     }
     
-    fileprivate func fetchUserObject(){
+    fileprivate func navigateToPayment() {
+        performSegue(withIdentifier: "paymentSegue", sender: nil)
+    }
+    
+    fileprivate func fetchUserObject() {
         if let uid = Auth.auth().currentUser?.uid {
             FirebaseAPI.fetchDatabaseCurrentUser(uid: uid) { [weak self] (user) in
               self?.user = user
@@ -73,6 +76,11 @@ class SettingsTableViewController: UITableViewController {
         if segue.identifier == "accountSegue" {
             let myAccountTableViewController = segue.destination as! MyAccountTableViewController
             myAccountTableViewController.user = self.user
+        }
+        
+        if segue.identifier == "paymentSegue" {
+            let paymentViewController = segue.destination as! PaymentViewController
+            paymentViewController.user = self.user
         }
     }
     
