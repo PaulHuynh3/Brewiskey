@@ -63,7 +63,6 @@ PODS:
   - GoogleToolboxForMac/NSString+URLArguments (2.1.3)
   - GTMSessionFetcher/Core (1.1.12)
   - leveldb-library (1.20)
-  - Mobile-Buy-SDK (3.1.3)
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
@@ -79,7 +78,6 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/DynamicLinks
   - Firebase/Storage
-  - Mobile-Buy-SDK
 
 SPEC CHECKSUMS:
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
@@ -97,9 +95,8 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 2501e2ad72a52eb3dfe7bd9aee7dad11b858bd20
   GTMSessionFetcher: ebaa1f79a5366922c1735f1566901f50beba23b7
   leveldb-library: 08cba283675b7ed2d99629a4bc5fd052cd2bb6a5
-  Mobile-Buy-SDK: b13db0864c8ca04379746b77e56a93ad5d4028b3
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
 
-PODFILE CHECKSUM: 1f50b1691d1cf3554b0b1c77d052c10beabc4048
+PODFILE CHECKSUM: 12479846fbdd2f97c494637116d6c9eb12428fbf
 
 COCOAPODS: 1.3.1
