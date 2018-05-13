@@ -45,7 +45,31 @@ extension UIImageView {
 }
 
 extension String {
+    
     func trim() -> String{
         return self.trimmingCharacters(in: NSCharacterSet.whitespaces)
+    }
+}
+
+extension UIViewController {
+   
+    func showAlert(title: String, message: String, actionTitle: String){
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: actionTitle, style: .cancel))
+        present(alert, animated: true, completion: nil)
+    }
+    
+    func showAlertWithAction(title: String, message: String, actionTitle: String, cancelTitle: String,  completion: @escaping (()->())) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let preferredAction = UIAlertAction(title: actionTitle, style: .default) { (action: UIAlertAction) in
+            DispatchQueue.main.async {
+                completion()
+            }
+        }
+        let cancelAction = UIAlertAction(title: cancelTitle, style: .cancel)
+        alert.addAction(preferredAction)
+        alert.addAction(cancelAction)
+        alert.preferredAction = preferredAction
+        present(alert, animated: true, completion: nil)
     }
 }

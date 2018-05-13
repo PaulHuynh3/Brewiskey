@@ -22,26 +22,24 @@ class PaymentViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
-
     @IBAction func addNewPaymentTapped(_ sender: Any) {
         
     }
-    
-    
-    
 }
 
 extension PaymentViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return (user.creditCards?.count)!
+        if let creditCards = user.creditCards?.count {
+            return creditCards
+        } else {
+            return 1
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        var cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier") as! UITableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cellIdentifier") as! UITableViewCell
         return cell
     }
 // https://stackoverflow.com/questions/23888682/validate-credit-card-number

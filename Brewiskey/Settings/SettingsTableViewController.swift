@@ -21,23 +21,20 @@ class SettingsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUserObject()
-        
+        setupUI()
+        setupNibTableView()
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        
-        switch indexPath.row {
-        case 0: navigateToMyAccount()
-        case 1: navigateToReferFriend()
-        case 2: navigateToPromoCode()
-        case 3: print("past orders")
-        case 4: navigateToPayment()
-        case 5: webPortalHelpPage()
-        case 6: handleLogout()
-            
-        default: print("default")
-        }
+    fileprivate func setupNibTableView() {
+        let cell = UINib(nibName: "OneLeftLabelCell", bundle: nil)
+        tableView.register(cell, forCellReuseIdentifier: "OneLeftLabelCell")
+    }
+    
+    fileprivate func setupUI() {
+        tableView.backgroundColor = UIColor(red: 0.82, green: 0.82, blue: 0.82, alpha: 1)
+        view.backgroundColor = UIColor(red: 0.82, green: 0.82, blue: 0.82, alpha: 1)
+        tableView.isScrollEnabled = false
+        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     }
     
     fileprivate func navigateToReferFriend() {
@@ -98,6 +95,62 @@ class SettingsTableViewController: UITableViewController {
         fbsdkLogin.logOut()
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         appDelegate?.transitionToLogin()
+    }
+    
+    //Mark: Tableview Datasource
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 7
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let oneLeftLabelCell =  tableView.dequeueReusableCell(withIdentifier: "OneLeftLabelCell") as! OneLeftLabelTableViewCell
+        let myAccount = "My account"
+        let referFriend = "Refer a friend"
+        let promoCode = "Promo Code"
+        let pastOrders = "Past orders"
+        let payment = "Payment"
+        let help = "Help"
+        let logout = "Log out"
+        
+        if indexPath.row == 0 {
+            oneLeftLabelCell.leftLabel = myAccount
+        } else if indexPath.row == 1 {
+            oneLeftLabelCell.leftLabel = referFriend
+        } else if indexPath.row == 2 {
+            oneLeftLabelCell.leftLabel = promoCode
+        } else if indexPath.row == 3 {
+            oneLeftLabelCell.leftLabel = pastOrders
+        } else if indexPath.row == 4 {
+            oneLeftLabelCell.leftLabel = payment
+        } else if indexPath.row == 5 {
+            oneLeftLabelCell.leftLabel = help
+        } else {
+            oneLeftLabelCell.leftLabel = logout
+        }
+        oneLeftLabelCell.accessoryType = .disclosureIndicator
+        return oneLeftLabelCell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        switch indexPath.row {
+        case 0: navigateToMyAccount()
+        case 1: navigateToReferFriend()
+        case 2: navigateToPromoCode()
+        case 3: print("past orders")
+        case 4: navigateToPayment()
+        case 5: webPortalHelpPage()
+        case 6: handleLogout()
+            
+        default: print("default")
+        }
     }
 
 }

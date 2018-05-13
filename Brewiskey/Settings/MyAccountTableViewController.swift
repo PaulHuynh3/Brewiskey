@@ -11,6 +11,17 @@ import UIKit
 class MyAccountTableViewController: UITableViewController {
     var user = User()
     
+    override func viewDidLoad() {
+        setupUI()
+    }
+    
+    fileprivate func setupUI() {
+        tableView.backgroundColor = UIColor(red: 0.82, green: 0.82, blue: 0.82, alpha: 1)
+        view.backgroundColor = UIColor(red: 0.82, green: 0.82, blue: 0.82, alpha: 1)
+        tableView.isScrollEnabled = false
+        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         

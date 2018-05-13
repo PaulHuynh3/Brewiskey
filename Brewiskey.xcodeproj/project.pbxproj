@@ -30,6 +30,8 @@
 		DA620DF3209561710026E4A5 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA620DF2209561710026E4A5 /* ChangePasswordViewController.swift */; };
 		DA620DF5209589620026E4A5 /* ReferralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA620DF4209589620026E4A5 /* ReferralViewController.swift */; };
 		DA70A9E62089495F00D3F2C3 /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA70A9E52089495F00D3F2C3 /* EditProfileTableViewController.swift */; };
+		DA91AEBC20A8F2C400BEF84B /* OneLeftLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA91AEBB20A8F2C400BEF84B /* OneLeftLabelCell.xib */; };
+		DA91AEBE20A8F2F500BEF84B /* OneLeftLabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91AEBD20A8F2F500BEF84B /* OneLeftLabelTableViewCell.swift */; };
 		DA9F41D7207719E00004797B /* OnboardingView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F41D6207719E00004797B /* OnboardingView2.xib */; };
 		DA9F41D920771B7C0004797B /* OnboardingView3.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F41D820771B7C0004797B /* OnboardingView3.xib */; };
 		DA9F41DB20771B890004797B /* OnboardingView4.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F41DA20771B890004797B /* OnboardingView4.xib */; };
@@ -81,6 +83,8 @@
 		DA620DF4209589620026E4A5 /* ReferralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralViewController.swift; sourceTree = "<group>"; };
 		DA70A9E52089495F00D3F2C3 /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		DA7E7D58209ABC2100882FCA /* Brewiskey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Brewiskey.entitlements; sourceTree = "<group>"; };
+		DA91AEBB20A8F2C400BEF84B /* OneLeftLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OneLeftLabelCell.xib; sourceTree = "<group>"; };
+		DA91AEBD20A8F2F500BEF84B /* OneLeftLabelTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneLeftLabelTableViewCell.swift; sourceTree = "<group>"; };
 		DA9F41D6207719E00004797B /* OnboardingView2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView2.xib; sourceTree = "<group>"; };
 		DA9F41D820771B7C0004797B /* OnboardingView3.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView3.xib; sourceTree = "<group>"; };
 		DA9F41DA20771B890004797B /* OnboardingView4.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView4.xib; sourceTree = "<group>"; };
@@ -175,6 +179,7 @@
 				DADC7B73203E179600F87438 /* Main */,
 				DA70A9E42089491A00D3F2C3 /* Settings */,
 				DA2E85E02043C7F90057C4C6 /* Helper */,
+				DA91AEBA20A8F25200BEF84B /* UITableVIewCell */,
 				DA056E86203FC8DB007EECAE /* Supporting Files */,
 			);
 			path = Brewiskey;
@@ -203,6 +208,15 @@
 				DAD934B920A2A5E400BA6FFD /* UpdateCreditCardViewController.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		DA91AEBA20A8F25200BEF84B /* UITableVIewCell */ = {
+			isa = PBXGroup;
+			children = (
+				DA91AEBD20A8F2F500BEF84B /* OneLeftLabelTableViewCell.swift */,
+				DA91AEBB20A8F2C400BEF84B /* OneLeftLabelCell.xib */,
+			);
+			path = UITableVIewCell;
 			sourceTree = "<group>";
 		};
 		DAB628612090222700A5890D /* Services */ = {
@@ -368,6 +382,7 @@
 				DA9F41D920771B7C0004797B /* OnboardingView3.xib in Resources */,
 				DADC7B75203E17E100F87438 /* Login.storyboard in Resources */,
 				DA13D002203E0A7D0021EB7E /* Main.storyboard in Resources */,
+				DA91AEBC20A8F2C400BEF84B /* OneLeftLabelCell.xib in Resources */,
 				DA9F41DB20771B890004797B /* OnboardingView4.xib in Resources */,
 				DAE169FD20769AE200B21D30 /* OnboardingView0.xib in Resources */,
 			);
@@ -467,6 +482,7 @@
 				DA2C31F4204DC4C400FF6444 /* MarketNavController.swift in Sources */,
 				DA620DF5209589620026E4A5 /* ReferralViewController.swift in Sources */,
 				DA056E85203FC7A6007EECAE /* DataModel.swift in Sources */,
+				DA91AEBE20A8F2F500BEF84B /* OneLeftLabelTableViewCell.swift in Sources */,
 				DAD934BD20A2A80900BA6FFD /* PaymentViewController.swift in Sources */,
 				DA2E85E22043C8110057C4C6 /* Extensions.swift in Sources */,
 				DA056E88203FC982007EECAE /* ForgotPasswordViewController.swift in Sources */,
