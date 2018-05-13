@@ -119,19 +119,19 @@ class SettingsTableViewController: UITableViewController {
         let logout = "Log out"
         
         if indexPath.row == 0 {
-            oneLeftLabelCell.leftLabel = myAccount
+            oneLeftLabelCell.leftLabel.text = myAccount
         } else if indexPath.row == 1 {
-            oneLeftLabelCell.leftLabel = referFriend
+            oneLeftLabelCell.leftLabel.text = referFriend
         } else if indexPath.row == 2 {
-            oneLeftLabelCell.leftLabel = promoCode
+            oneLeftLabelCell.leftLabel.text = promoCode
         } else if indexPath.row == 3 {
-            oneLeftLabelCell.leftLabel = pastOrders
+            oneLeftLabelCell.leftLabel.text = pastOrders
         } else if indexPath.row == 4 {
-            oneLeftLabelCell.leftLabel = payment
+            oneLeftLabelCell.leftLabel.text = payment
         } else if indexPath.row == 5 {
-            oneLeftLabelCell.leftLabel = help
+            oneLeftLabelCell.leftLabel.text = help
         } else {
-            oneLeftLabelCell.leftLabel = logout
+            oneLeftLabelCell.leftLabel.text = logout
         }
         oneLeftLabelCell.accessoryType = .disclosureIndicator
         return oneLeftLabelCell
