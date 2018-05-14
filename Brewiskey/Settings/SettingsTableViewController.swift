@@ -15,7 +15,7 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
     @IBOutlet weak var profileEmailLabel: UILabel!
-    let customCellIdentifier = "OneLeftLabelCellIdentifier"
+    let customCellIdentifier = "SimpleOneLabelCellIdentifier"
     var user = User()
     
     override func viewDidLoad() {
@@ -26,7 +26,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     fileprivate func setupNibTableView() {
-        let nibName = "OneLeftLabelCell"
+        let nibName = "SimpleOneLabelCell"
         let cell = UINib(nibName: nibName, bundle: nil)
         tableView.register(cell, forCellReuseIdentifier: customCellIdentifier)
     }
@@ -113,7 +113,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let oneLeftLabelCell =  tableView.dequeueReusableCell(withIdentifier: customCellIdentifier) as! OneLeftLabelTableViewCell
+        let oneLeftLabelCell =  tableView.dequeueReusableCell(withIdentifier: customCellIdentifier) as! SimpleOneLabelCell
         let myAccount = "My account"
         let referFriend = "Refer a friend"
         let promoCode = "Promo Code"

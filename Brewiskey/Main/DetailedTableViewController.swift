@@ -20,7 +20,6 @@ class DetailedTableViewController: UITableViewController {
     @IBOutlet weak var alcoholImageview: UIImageView!
     @IBOutlet weak var countryLabel: UILabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,7 +30,6 @@ class DetailedTableViewController: UITableViewController {
     @IBAction func backButtonTapped(_ sender: Any) {
         navigationController?.popToRootViewController(animated: true)
     }
-    
     
     func configureAndSetUpLabels(){
         if beerMode == true{
@@ -52,9 +50,7 @@ class DetailedTableViewController: UITableViewController {
             }
             countryLabel.text = spirit?.country
         }
-        
     }
-    
     
     @IBAction func dropDownButtonTapped(_ sender: Any) {
         //setting the sender as the object
@@ -68,7 +64,6 @@ class DetailedTableViewController: UITableViewController {
         performSegue(withIdentifier: "spiritDropDownSegue", sender: spirit)
         }
     }
-    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         //using the set sender to segue to dropdown vc.
@@ -90,16 +85,10 @@ class DetailedTableViewController: UITableViewController {
             alcoholSelectionTable.spiritMode = true
             alcoholSelectionTable.spirit = spirit
         }
- 
-        
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        
     }
-
-
 
 }
