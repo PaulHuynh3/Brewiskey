@@ -73,3 +73,11 @@ extension UIViewController {
         present(alert, animated: true, completion: nil)
     }
 }
+
+extension UIColor {
+    
+    struct brewiskeyColours {
+        static let lightGray = UIColor(red: 0.82, green: 0.82, blue: 0.82, alpha: 1)
+    }
+    
+}

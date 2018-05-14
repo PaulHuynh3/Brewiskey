@@ -15,7 +15,7 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
     @IBOutlet weak var profileEmailLabel: UILabel!
-
+    let customCellIdentifier = "OneLeftLabelCellIdentifier"
     var user = User()
     
     override func viewDidLoad() {
@@ -26,13 +26,14 @@ class SettingsTableViewController: UITableViewController {
     }
     
     fileprivate func setupNibTableView() {
-        let cell = UINib(nibName: "OneLeftLabelCell", bundle: nil)
-        tableView.register(cell, forCellReuseIdentifier: "OneLeftLabelCell")
+        let nibName = "OneLeftLabelCell"
+        let cell = UINib(nibName: nibName, bundle: nil)
+        tableView.register(cell, forCellReuseIdentifier: customCellIdentifier)
     }
     
     fileprivate func setupUI() {
-        tableView.backgroundColor = UIColor(red: 0.82, green: 0.82, blue: 0.82, alpha: 1)
-        view.backgroundColor = UIColor(red: 0.82, green: 0.82, blue: 0.82, alpha: 1)
+        tableView.backgroundColor = UIColor.brewiskeyColours.lightGray
+        view.backgroundColor = UIColor.brewiskeyColours.lightGray
         tableView.isScrollEnabled = false
         self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     }
@@ -42,7 +43,8 @@ class SettingsTableViewController: UITableViewController {
     }
     
     fileprivate func webPortalHelpPage() {
-        guard let url = URL(string: "http://brewiskey.com/support/") else {
+        let link = "http://brewiskey.com/support/"
+        guard let url = URL(string: link) else {
             return
         }
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
@@ -100,16 +102,18 @@ class SettingsTableViewController: UITableViewController {
     //Mark: Tableview Datasource
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        let section = 1
+        return section
     }
     
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 7
+        let rows = 7
+        return rows
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let oneLeftLabelCell =  tableView.dequeueReusableCell(withIdentifier: "OneLeftLabelCell") as! OneLeftLabelTableViewCell
+        let oneLeftLabelCell =  tableView.dequeueReusableCell(withIdentifier: customCellIdentifier) as! OneLeftLabelTableViewCell
         let myAccount = "My account"
         let referFriend = "Refer a friend"
         let promoCode = "Promo Code"
@@ -151,6 +155,10 @@ class SettingsTableViewController: UITableViewController {
             
         default: print("default")
         }
+    }
+    
+   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
+        return 55
     }
 
 }
