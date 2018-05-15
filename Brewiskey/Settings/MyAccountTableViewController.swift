@@ -10,7 +10,7 @@ import UIKit
 
 class MyAccountTableViewController: UITableViewController {
     var user = User()
-    let customCellIdentifier = "LeftLabelCellIdentifier"
+    let customCellIdentifier = "ImageLabelCellIdentifier"
     
     override func viewDidLoad() {
         setupUI()
@@ -25,7 +25,7 @@ class MyAccountTableViewController: UITableViewController {
     }
     
     fileprivate func setupNibTableView() {
-        let nibName = "LeftLabelCell"
+        let nibName = "ImageLabelCell"
         let cell = UINib(nibName: nibName, bundle: nil)
         tableView.register(cell, forCellReuseIdentifier: customCellIdentifier)
     }
@@ -58,18 +58,25 @@ class MyAccountTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let simpleOneLabelCell = tableView.dequeueReusableCell(withIdentifier: customCellIdentifier) as! LeftLabelCell
+        let imageLabelCell = tableView.dequeueReusableCell(withIdentifier: customCellIdentifier) as! ImageLabelCell
         let profile = "Profile"
         let password = "Password"
         
         if indexPath.row == 0 {
-            simpleOneLabelCell.leftLabel.text = profile
+            if let imageUrl = user.profileImageUrl {
+                imageLabelCell.leftImage.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+            } else {
+                imageLabelCell.leftImage.image = #imageLiteral(resourceName: "ProfileIcon")
+            }
+            
+            imageLabelCell.middleLabel.text = profile
         } else {
-            simpleOneLabelCell.leftLabel.text = password
+            imageLabelCell.leftImage.image = #imageLiteral(resourceName: "PasswordIcon")
+            imageLabelCell.middleLabel.text = password
         }
-        simpleOneLabelCell.accessoryType = .disclosureIndicator
+        imageLabelCell.accessoryType = .disclosureIndicator
         
-        return simpleOneLabelCell
+        return imageLabelCell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

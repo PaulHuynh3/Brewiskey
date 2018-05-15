@@ -24,7 +24,7 @@ class User: NSObject {
         alcoholItems = NSMutableArray()
     }
     //need to set this in firebase...
-    var creditCards: NSMutableArray?
+    var creditCards: [String]?
     
 }
 
