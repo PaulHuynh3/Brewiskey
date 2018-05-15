@@ -15,7 +15,7 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var profileImageView: UIImageView!
     @IBOutlet weak var profileNameLabel: UILabel!
     @IBOutlet weak var profileEmailLabel: UILabel!
-    let customCellIdentifier = "SimpleOneLabelCellIdentifier"
+    let customCellIdentifier = "ImageLabelCellIdentifier"
     var user = User()
     
     override func viewDidLoad() {
@@ -26,7 +26,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     fileprivate func setupNibTableView() {
-        let nibName = "SimpleOneLabelCell"
+        let nibName = "ImageLabelCell"
         let cell = UINib(nibName: nibName, bundle: nil)
         tableView.register(cell, forCellReuseIdentifier: customCellIdentifier)
     }
@@ -84,7 +84,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     //handle logout clear nsuserdefaults, clear any data associated with previous user..
-    private func handleLogout(){
+    private func handleLogout() {
         do {
             try Auth.auth().signOut()
         } catch let logoutError{
@@ -113,7 +113,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let oneLeftLabelCell =  tableView.dequeueReusableCell(withIdentifier: customCellIdentifier) as! SimpleOneLabelCell
+        let imageLabelCell =  tableView.dequeueReusableCell(withIdentifier: customCellIdentifier) as! ImageLabelCell
         let myAccount = "My account"
         let referFriend = "Refer a friend"
         let promoCode = "Promo Code"
@@ -123,22 +123,29 @@ class SettingsTableViewController: UITableViewController {
         let logout = "Log out"
         
         if indexPath.row == 0 {
-            oneLeftLabelCell.leftLabel.text = myAccount
+            imageLabelCell.leftImage.image = #imageLiteral(resourceName: "accountIcon")
+            imageLabelCell.middleLabel.text = myAccount
         } else if indexPath.row == 1 {
-            oneLeftLabelCell.leftLabel.text = referFriend
+            imageLabelCell.leftImage.image = #imageLiteral(resourceName: "referFriends")
+            imageLabelCell.middleLabel.text = referFriend
         } else if indexPath.row == 2 {
-            oneLeftLabelCell.leftLabel.text = promoCode
+            imageLabelCell.leftImage.image = #imageLiteral(resourceName: "promoCode")
+            imageLabelCell.middleLabel.text = promoCode
         } else if indexPath.row == 3 {
-            oneLeftLabelCell.leftLabel.text = pastOrders
+            imageLabelCell.leftImage.image = #imageLiteral(resourceName: "pastOrders")
+            imageLabelCell.middleLabel.text = pastOrders
         } else if indexPath.row == 4 {
-            oneLeftLabelCell.leftLabel.text = payment
+            imageLabelCell.leftImage.image = #imageLiteral(resourceName: "payment")
+            imageLabelCell.middleLabel.text = payment
         } else if indexPath.row == 5 {
-            oneLeftLabelCell.leftLabel.text = help
+            imageLabelCell.leftImage.image = #imageLiteral(resourceName: "helplogo")
+            imageLabelCell.middleLabel.text = help
         } else {
-            oneLeftLabelCell.leftLabel.text = logout
+            imageLabelCell.leftImage.image = #imageLiteral(resourceName: "logout")
+            imageLabelCell.middleLabel.text = logout
         }
-        oneLeftLabelCell.accessoryType = .disclosureIndicator
-        return oneLeftLabelCell
+        imageLabelCell.accessoryType = .disclosureIndicator
+        return imageLabelCell
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

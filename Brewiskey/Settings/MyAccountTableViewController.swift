@@ -10,7 +10,7 @@ import UIKit
 
 class MyAccountTableViewController: UITableViewController {
     var user = User()
-    let customCellIdentifier = "SimpleOneLabelCellIdentifier"
+    let customCellIdentifier = "LeftLabelCellIdentifier"
     
     override func viewDidLoad() {
         setupUI()
@@ -25,7 +25,7 @@ class MyAccountTableViewController: UITableViewController {
     }
     
     fileprivate func setupNibTableView() {
-        let nibName = "SimpleOneLabelCell"
+        let nibName = "LeftLabelCell"
         let cell = UINib(nibName: nibName, bundle: nil)
         tableView.register(cell, forCellReuseIdentifier: customCellIdentifier)
     }
@@ -58,7 +58,7 @@ class MyAccountTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let simpleOneLabelCell = tableView.dequeueReusableCell(withIdentifier: customCellIdentifier) as! SimpleOneLabelCell
+        let simpleOneLabelCell = tableView.dequeueReusableCell(withIdentifier: customCellIdentifier) as! LeftLabelCell
         let profile = "Profile"
         let password = "Password"
         
@@ -82,6 +82,10 @@ class MyAccountTableViewController: UITableViewController {
         default: print("default")
         }
         
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 55
     }
 
 
