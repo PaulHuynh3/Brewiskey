@@ -9,12 +9,12 @@
 /* Begin PBXBuildFile section */
 		DA056E85203FC7A6007EECAE /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA056E84203FC7A6007EECAE /* DataModel.swift */; };
 		DA056E88203FC982007EECAE /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA056E87203FC982007EECAE /* ForgotPasswordViewController.swift */; };
+		DA0E277520B0ABCE0061DBC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA0E277420B0ABCE0061DBC1 /* GoogleService-Info.plist */; };
 		DA13CFFD203E0A7D0021EB7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13CFFC203E0A7D0021EB7E /* AppDelegate.swift */; };
 		DA13CFFF203E0A7D0021EB7E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13CFFE203E0A7D0021EB7E /* LoginViewController.swift */; };
 		DA13D002203E0A7D0021EB7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA13D000203E0A7D0021EB7E /* Main.storyboard */; };
 		DA13D004203E0A7D0021EB7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA13D003203E0A7D0021EB7E /* Assets.xcassets */; };
 		DA13D007203E0A7D0021EB7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA13D005203E0A7D0021EB7E /* LaunchScreen.storyboard */; };
-		DA13D00F203E0ABD0021EB7E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA13D00E203E0ABD0021EB7E /* GoogleService-Info.plist */; };
 		DA2C31F4204DC4C400FF6444 /* MarketNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C31F3204DC4C400FF6444 /* MarketNavController.swift */; };
 		DA2C31F6204E313A00FF6444 /* ShoppingCartContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C31F5204E313A00FF6444 /* ShoppingCartContainerViewController.swift */; };
 		DA2E85DD2043A7B40057C4C6 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E85DC2043A7B40057C4C6 /* MoreTableViewController.swift */; };
@@ -61,6 +61,7 @@
 		9331F07D589DD426C72146BB /* Pods-Brewiskey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brewiskey.release.xcconfig"; path = "Pods/Target Support Files/Pods-Brewiskey/Pods-Brewiskey.release.xcconfig"; sourceTree = "<group>"; };
 		DA056E84203FC7A6007EECAE /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		DA056E87203FC982007EECAE /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		DA0E277420B0ABCE0061DBC1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DA13CFF9203E0A7D0021EB7E /* Brewiskey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brewiskey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA13CFFC203E0A7D0021EB7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA13CFFE203E0A7D0021EB7E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -68,7 +69,6 @@
 		DA13D003203E0A7D0021EB7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA13D006203E0A7D0021EB7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA13D008203E0A7D0021EB7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DA13D00E203E0ABD0021EB7E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DA2C31F3204DC4C400FF6444 /* MarketNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketNavController.swift; sourceTree = "<group>"; };
 		DA2C31F5204E313A00FF6444 /* ShoppingCartContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartContainerViewController.swift; sourceTree = "<group>"; };
 		DA2E85DC2043A7B40057C4C6 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
@@ -172,7 +172,7 @@
 				DA7E7D58209ABC2100882FCA /* Brewiskey.entitlements */,
 				DA13D003203E0A7D0021EB7E /* Assets.xcassets */,
 				DA13D008203E0A7D0021EB7E /* Info.plist */,
-				DA13D00E203E0ABD0021EB7E /* GoogleService-Info.plist */,
+				DA0E277420B0ABCE0061DBC1 /* GoogleService-Info.plist */,
 				DA13D005203E0A7D0021EB7E /* LaunchScreen.storyboard */,
 				DAC462422091164A00673189 /* AppDelegate */,
 				DADC7B70203E175500F87438 /* Data */,
@@ -382,7 +382,7 @@
 			files = (
 				DAE16A0320769C9B00B21D30 /* OnboardingView1.xib in Resources */,
 				DA13D007203E0A7D0021EB7E /* LaunchScreen.storyboard in Resources */,
-				DA13D00F203E0ABD0021EB7E /* GoogleService-Info.plist in Resources */,
+				DA0E277520B0ABCE0061DBC1 /* GoogleService-Info.plist in Resources */,
 				DA13D004203E0A7D0021EB7E /* Assets.xcassets in Resources */,
 				DA5EF4E220AA0C5F0070BD5D /* ImageLabelCell.xib in Resources */,
 				DA9F41D7207719E00004797B /* OnboardingView2.xib in Resources */,
