@@ -70,7 +70,4 @@ class OnboardingCheckUtils {
             return false
         }
     }
-    
-
-    
 }

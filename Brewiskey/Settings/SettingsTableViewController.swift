@@ -125,26 +125,33 @@ class SettingsTableViewController: UITableViewController {
         if indexPath.row == 0 {
             imageLabelCell.leftImage.image = #imageLiteral(resourceName: "accountIcon")
             imageLabelCell.middleLabel.text = myAccount
+            imageLabelCell.accessoryType = .disclosureIndicator
         } else if indexPath.row == 1 {
             imageLabelCell.leftImage.image = #imageLiteral(resourceName: "referFriends")
             imageLabelCell.middleLabel.text = referFriend
+            imageLabelCell.accessoryType = .disclosureIndicator
         } else if indexPath.row == 2 {
             imageLabelCell.leftImage.image = #imageLiteral(resourceName: "promoCode")
             imageLabelCell.middleLabel.text = promoCode
+            imageLabelCell.accessoryType = .disclosureIndicator
         } else if indexPath.row == 3 {
             imageLabelCell.leftImage.image = #imageLiteral(resourceName: "pastOrders")
             imageLabelCell.middleLabel.text = pastOrders
+            imageLabelCell.accessoryType = .disclosureIndicator
         } else if indexPath.row == 4 {
             imageLabelCell.leftImage.image = #imageLiteral(resourceName: "payment")
             imageLabelCell.middleLabel.text = payment
+            imageLabelCell.accessoryType = .disclosureIndicator
         } else if indexPath.row == 5 {
             imageLabelCell.leftImage.image = #imageLiteral(resourceName: "helplogo")
             imageLabelCell.middleLabel.text = help
+            imageLabelCell.accessoryType = .none
         } else {
             imageLabelCell.leftImage.image = #imageLiteral(resourceName: "logout")
             imageLabelCell.middleLabel.text = logout
+            imageLabelCell.accessoryType = .none
         }
-        imageLabelCell.accessoryType = .disclosureIndicator
+        
         return imageLabelCell
     }
     
