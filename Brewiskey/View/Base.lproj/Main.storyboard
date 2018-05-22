@@ -406,9 +406,9 @@
                     <navigationItem key="navigationItem" id="jMT-RD-dgN"/>
                     <connections>
                         <segue destination="9uP-MN-rti" kind="show" identifier="accountSegue" id="zWQ-xe-oXd"/>
-                        <segue destination="ENh-cU-joC" kind="show" identifier="referralSegue" id="bwt-W1-Y24"/>
                         <segue destination="mbm-el-bSa" kind="show" identifier="promoCodeSegue" id="AoP-Hv-a8Q"/>
                         <segue destination="ZOU-eA-6Uu" kind="show" identifier="paymentSegue" id="b9Z-Gp-JrE"/>
+                        <segue destination="ENh-cU-joC" kind="show" identifier="referralSegue" id="aKU-Aq-P3g"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fG6-Hc-Hm8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -494,6 +494,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hqb-w4-ruu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1113" y="2101"/>
+        </scene>
+        <!--Referral Table View Controller-->
+        <scene sceneID="EQd-jl-tLO">
+            <objects>
+                <tableViewController id="ewO-ls-8Ce" customClass="ReferralTableViewController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="ZmX-QA-hpW">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="fcr-CZ-QKb">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fcr-CZ-QKb" id="xY4-6f-0sr">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ewO-ls-8Ce" id="Z6O-5S-b6m"/>
+                            <outlet property="delegate" destination="ewO-ls-8Ce" id="1xc-iA-SRh"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="K0Z-U8-Ljg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2279" y="2165"/>
         </scene>
         <!--Payment View Controller-->
         <scene sceneID="CqQ-OT-fkJ">

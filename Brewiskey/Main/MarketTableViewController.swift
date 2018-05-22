@@ -21,7 +21,6 @@ class MarketTableViewController: UITableViewController {
         super.viewDidLoad()
         setupUI()
         fetchAlcoholBrandsAndSetupTableview()
-        uid = Auth.auth().currentUser?.uid
     }
 
     override func viewDidAppear(_ animated: Bool) {
@@ -62,18 +61,14 @@ class MarketTableViewController: UITableViewController {
     func checkIfUserIsLoggedIn(){
         if Auth.auth().currentUser?.uid == nil {
          handleLogout()
-        } else {
-            if let firstName = UserDefaults.standard.string(forKey: kUserInfo.kFirstName), let lastName = UserDefaults.standard.string(forKey: kUserInfo.kLastName){
-                self.navigationItem.title = "Welcome " + firstName + " " + lastName
-            }
         }
         
     }
     
-    func handleLogout(){
+    func handleLogout() {
         do {
             try Auth.auth().signOut()
-        } catch let logoutError{
+        } catch let logoutError {
             print(logoutError)
         }
         

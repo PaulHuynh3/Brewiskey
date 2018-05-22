@@ -6,4 +6,11 @@
 //  Copyright © 2018 Paul. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class HeaderCell: UITableViewCell {
+    
+    @IBOutlet weak var toggleButton: UIButton!
+    @IBOutlet weak var titleLabel: UILabel!
+    
+}

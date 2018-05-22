@@ -6,4 +6,11 @@
 //  Copyright © 2018 Paul. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+class ParamTableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var paramLabel: UILabel!
+    @IBOutlet weak var paramTextField: UITextField!
+    
+}

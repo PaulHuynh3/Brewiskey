@@ -9,12 +9,16 @@
 /* Begin PBXBuildFile section */
 		DA056E85203FC7A6007EECAE /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA056E84203FC7A6007EECAE /* DataModel.swift */; };
 		DA056E88203FC982007EECAE /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA056E87203FC982007EECAE /* ForgotPasswordViewController.swift */; };
-		DA0E277520B0ABCE0061DBC1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA0E277420B0ABCE0061DBC1 /* GoogleService-Info.plist */; };
 		DA13CFFD203E0A7D0021EB7E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13CFFC203E0A7D0021EB7E /* AppDelegate.swift */; };
 		DA13CFFF203E0A7D0021EB7E /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA13CFFE203E0A7D0021EB7E /* LoginViewController.swift */; };
 		DA13D002203E0A7D0021EB7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA13D000203E0A7D0021EB7E /* Main.storyboard */; };
 		DA13D004203E0A7D0021EB7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA13D003203E0A7D0021EB7E /* Assets.xcassets */; };
 		DA13D007203E0A7D0021EB7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA13D005203E0A7D0021EB7E /* LaunchScreen.storyboard */; };
+		DA1C6CE620B3366900911E64 /* ReferralTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CE520B3366900911E64 /* ReferralTableViewController.swift */; };
+		DA1C6CE820B3371500911E64 /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA1C6CE720B3371500911E64 /* HeaderCell.xib */; };
+		DA1C6CEA20B3373700911E64 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CE920B3373700911E64 /* HeaderCell.swift */; };
+		DA1C6CEC20B3386D00911E64 /* ParamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CEB20B3386D00911E64 /* ParamTableViewCell.swift */; };
+		DA1C6CEE20B33B8600911E64 /* ParamTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA1C6CED20B33B8600911E64 /* ParamTableViewCell.xib */; };
 		DA2C31F4204DC4C400FF6444 /* MarketNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C31F3204DC4C400FF6444 /* MarketNavController.swift */; };
 		DA2C31F6204E313A00FF6444 /* ShoppingCartContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C31F5204E313A00FF6444 /* ShoppingCartContainerViewController.swift */; };
 		DA2E85DD2043A7B40057C4C6 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E85DC2043A7B40057C4C6 /* MoreTableViewController.swift */; };
@@ -22,6 +26,7 @@
 		DA2E85E22043C8110057C4C6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E85E12043C8110057C4C6 /* Extensions.swift */; };
 		DA2E916420487F9F00AF0247 /* DetailedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E916320487F9F00AF0247 /* DetailedTableViewController.swift */; };
 		DA2E91662048FF7900AF0247 /* AlcoholSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E91652048FF7900AF0247 /* AlcoholSelectionTableViewController.swift */; };
+		DA31BD8620B13B6200D1EDBA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA31BD8520B13B6100D1EDBA /* GoogleService-Info.plist */; };
 		DA389A7C20774763009F3CE8 /* OnboardingCheckUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA389A7B20774763009F3CE8 /* OnboardingCheckUtils.swift */; };
 		DA56C62220A1599300DB38A4 /* PromoCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA56C62120A1599300DB38A4 /* PromoCodeViewController.swift */; };
 		DA5EF4E020AA0C4A0070BD5D /* ImageLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5EF4DF20AA0C4A0070BD5D /* ImageLabelCell.swift */; };
@@ -61,7 +66,6 @@
 		9331F07D589DD426C72146BB /* Pods-Brewiskey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brewiskey.release.xcconfig"; path = "Pods/Target Support Files/Pods-Brewiskey/Pods-Brewiskey.release.xcconfig"; sourceTree = "<group>"; };
 		DA056E84203FC7A6007EECAE /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		DA056E87203FC982007EECAE /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
-		DA0E277420B0ABCE0061DBC1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DA13CFF9203E0A7D0021EB7E /* Brewiskey.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Brewiskey.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA13CFFC203E0A7D0021EB7E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DA13CFFE203E0A7D0021EB7E /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -69,6 +73,11 @@
 		DA13D003203E0A7D0021EB7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA13D006203E0A7D0021EB7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA13D008203E0A7D0021EB7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA1C6CE520B3366900911E64 /* ReferralTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralTableViewController.swift; sourceTree = "<group>"; };
+		DA1C6CE720B3371500911E64 /* HeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
+		DA1C6CE920B3373700911E64 /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
+		DA1C6CEB20B3386D00911E64 /* ParamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParamTableViewCell.swift; sourceTree = "<group>"; };
+		DA1C6CED20B33B8600911E64 /* ParamTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParamTableViewCell.xib; sourceTree = "<group>"; };
 		DA2C31F3204DC4C400FF6444 /* MarketNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketNavController.swift; sourceTree = "<group>"; };
 		DA2C31F5204E313A00FF6444 /* ShoppingCartContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartContainerViewController.swift; sourceTree = "<group>"; };
 		DA2E85DC2043A7B40057C4C6 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
@@ -76,6 +85,7 @@
 		DA2E85E12043C8110057C4C6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DA2E916320487F9F00AF0247 /* DetailedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTableViewController.swift; sourceTree = "<group>"; };
 		DA2E91652048FF7900AF0247 /* AlcoholSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholSelectionTableViewController.swift; sourceTree = "<group>"; };
+		DA31BD8520B13B6100D1EDBA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		DA389A7B20774763009F3CE8 /* OnboardingCheckUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCheckUtils.swift; sourceTree = "<group>"; };
 		DA56C62120A1599300DB38A4 /* PromoCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoCodeViewController.swift; sourceTree = "<group>"; };
 		DA5EF4DF20AA0C4A0070BD5D /* ImageLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelCell.swift; sourceTree = "<group>"; };
@@ -172,7 +182,7 @@
 				DA7E7D58209ABC2100882FCA /* Brewiskey.entitlements */,
 				DA13D003203E0A7D0021EB7E /* Assets.xcassets */,
 				DA13D008203E0A7D0021EB7E /* Info.plist */,
-				DA0E277420B0ABCE0061DBC1 /* GoogleService-Info.plist */,
+				DA31BD8520B13B6100D1EDBA /* GoogleService-Info.plist */,
 				DA13D005203E0A7D0021EB7E /* LaunchScreen.storyboard */,
 				DAC462422091164A00673189 /* AppDelegate */,
 				DADC7B70203E175500F87438 /* Data */,
@@ -183,10 +193,19 @@
 				DADC7B73203E179600F87438 /* Main */,
 				DA70A9E42089491A00D3F2C3 /* Settings */,
 				DA2E85E02043C7F90057C4C6 /* Helper */,
+				DA1C6CEF20B33CAD00911E64 /* Utility */,
 				DA91AEBA20A8F25200BEF84B /* UITableVIewCell */,
 				DA056E86203FC8DB007EECAE /* Supporting Files */,
 			);
 			path = Brewiskey;
+			sourceTree = "<group>";
+		};
+		DA1C6CEF20B33CAD00911E64 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Utility;
+			path = Helper/Utility;
 			sourceTree = "<group>";
 		};
 		DA2E85E02043C7F90057C4C6 /* Helper */ = {
@@ -207,6 +226,7 @@
 				DA70A9E52089495F00D3F2C3 /* EditProfileTableViewController.swift */,
 				DAC4EC8A2094499800EE07A0 /* ChangeEmailViewController.swift */,
 				DA620DF4209589620026E4A5 /* ReferralViewController.swift */,
+				DA1C6CE520B3366900911E64 /* ReferralTableViewController.swift */,
 				DA56C62120A1599300DB38A4 /* PromoCodeViewController.swift */,
 				DAD934BC20A2A80900BA6FFD /* PaymentViewController.swift */,
 				DAD934B920A2A5E400BA6FFD /* UpdateCreditCardViewController.swift */,
@@ -221,6 +241,10 @@
 				DA91AEBB20A8F2C400BEF84B /* LeftLabelCell.xib */,
 				DA5EF4DF20AA0C4A0070BD5D /* ImageLabelCell.swift */,
 				DA5EF4E120AA0C5F0070BD5D /* ImageLabelCell.xib */,
+				DA1C6CE920B3373700911E64 /* HeaderCell.swift */,
+				DA1C6CE720B3371500911E64 /* HeaderCell.xib */,
+				DA1C6CEB20B3386D00911E64 /* ParamTableViewCell.swift */,
+				DA1C6CED20B33B8600911E64 /* ParamTableViewCell.xib */,
 			);
 			path = UITableVIewCell;
 			sourceTree = "<group>";
@@ -382,14 +406,16 @@
 			files = (
 				DAE16A0320769C9B00B21D30 /* OnboardingView1.xib in Resources */,
 				DA13D007203E0A7D0021EB7E /* LaunchScreen.storyboard in Resources */,
-				DA0E277520B0ABCE0061DBC1 /* GoogleService-Info.plist in Resources */,
 				DA13D004203E0A7D0021EB7E /* Assets.xcassets in Resources */,
 				DA5EF4E220AA0C5F0070BD5D /* ImageLabelCell.xib in Resources */,
 				DA9F41D7207719E00004797B /* OnboardingView2.xib in Resources */,
+				DA1C6CE820B3371500911E64 /* HeaderCell.xib in Resources */,
+				DA31BD8620B13B6200D1EDBA /* GoogleService-Info.plist in Resources */,
 				DA9F41D920771B7C0004797B /* OnboardingView3.xib in Resources */,
 				DADC7B75203E17E100F87438 /* Login.storyboard in Resources */,
 				DA13D002203E0A7D0021EB7E /* Main.storyboard in Resources */,
 				DA91AEBC20A8F2C400BEF84B /* LeftLabelCell.xib in Resources */,
+				DA1C6CEE20B33B8600911E64 /* ParamTableViewCell.xib in Resources */,
 				DA9F41DB20771B890004797B /* OnboardingView4.xib in Resources */,
 				DAE169FD20769AE200B21D30 /* OnboardingView0.xib in Resources */,
 			);
@@ -474,9 +500,12 @@
 				DA5F352E2077C79D00A64FA0 /* Constants.swift in Sources */,
 				DAC4EC8B2094499800EE07A0 /* ChangeEmailViewController.swift in Sources */,
 				DAB62863209035EC00A5890D /* UserDefaultsUtils.swift in Sources */,
+				DA1C6CEC20B3386D00911E64 /* ParamTableViewCell.swift in Sources */,
+				DA1C6CEA20B3373700911E64 /* HeaderCell.swift in Sources */,
 				DAC462442091168500673189 /* BrewiskeyAnalytics.swift in Sources */,
 				DA56C62220A1599300DB38A4 /* PromoCodeViewController.swift in Sources */,
 				DA2E85DF2043C62E0057C4C6 /* FirebaseAPI.swift in Sources */,
+				DA1C6CE620B3366900911E64 /* ReferralTableViewController.swift in Sources */,
 				DAB62860208FDC1B00A5890D /* ProfileTableViewController.swift in Sources */,
 				DA5F352C2077C46100A64FA0 /* FacebookAPI.swift in Sources */,
 				DAE16A052076A0B300B21D30 /* IntroductionScreenViewController.swift in Sources */,

@@ -11,6 +11,13 @@ import Firebase
 
 class ReferralViewController: UIViewController {
     
+    static let DYNAMIC_LINK_DOMAIN = "YOUR_DYNAMIC_LINK_DOMAIN"
+    
+    var sections = [Section]()
+    var dictionary = [Params: UITextField]()
+    var longLink: URL?
+    var shortLink: URL?
+    
     @IBOutlet weak var referralLabel: UILabel!
 
     override func viewDidLoad() {
@@ -39,9 +46,9 @@ class ReferralViewController: UIViewController {
         let link = URL(string: "https://mygame.example.com/?invitedby=\(uid)")
         let referralLink = DynamicLinkComponents(link: link!, domain: "abc123.app.goo.gl")
         
-        referralLink.iOSParameters = DynamicLinkIOSParameters(bundleID: "com.Paul.Brewiskey")
+        referralLink.iOSParameters = DynamicLinkIOSParameters(bundleID: "com.BrewiskeyApp.Group")
         referralLink.iOSParameters?.minimumAppVersion = "10"
-//        referralLink.iOSParameters?.appStoreID = "123456789"
+        referralLink.iOSParameters?.appStoreID = "1387191975"
         
         referralLink.shorten { (shortURL, warnings, error) in
             if let error = error {
@@ -51,6 +58,14 @@ class ReferralViewController: UIViewController {
             self.referralLabel.text = shortURL?.absoluteString
         }
         
+    }
+    
+    
+    fileprivate func createDynamiclink() {
+        // general link params
+//        https://stackoverflow.com/questions/43702442/ios-dynamic-link-builder-explanation
+        
+ 
     }
     
     
