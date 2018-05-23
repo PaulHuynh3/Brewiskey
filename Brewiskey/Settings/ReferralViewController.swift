@@ -11,9 +11,6 @@ import Firebase
 
 class ReferralViewController: UIViewController {
     
-    var longLink: URL?
-    var shortLink: URL?
-    
     @IBOutlet weak var referralLabel: UILabel!
 
     override func viewDidLoad() {
@@ -22,16 +19,21 @@ class ReferralViewController: UIViewController {
     }
     
     fileprivate func setupReferralLabel() {
-        let shortLink = UserDefaults.standard.url(forKey: kUserInfo.kReferralLink)
-        referralLabel.text = shortLink?.absoluteString
+        if let shortLink = UserDefaults.standard.url(forKey: kUserInfo.kReferralLink) {
+            referralLabel.text = shortLink.absoluteString
+        }
     }
 
     @IBAction func inviteButtonTapped(_ sender: Any) {
-        
+        guard let referralLink = referralLabel.text else{return}
+        let message = "Join Brewiskey and receive $5 when you sign up using:  \(referralLink)"
+        let activityController = UIActivityViewController(activityItems: [message, #imageLiteral(resourceName: "devil")], applicationActivities: nil)
+        present(activityController, animated: true, completion: nil)
     }
     
     @IBAction func copyButtonTapped(_ sender: Any) {
-        
+        UIPasteboard.general.string = referralLabel.text
+        self.showAlert(title: "", message: "Copied to clipboard", actionTitle: "OK")
     }
     
 }
