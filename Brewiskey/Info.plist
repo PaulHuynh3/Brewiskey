@@ -26,15 +26,14 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.BrewiskeyApp.Group</string>
+                <string>fb185034152139188</string>
 			</array>
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
 	<key>FacebookAppID</key>
-	<string>185034152139188
-185034152139188
-</string>
+	<string>185034152139188</string>
 	<key>FacebookDisplayName</key>
 	<string>Brewiskey</string>
 	<key>LSApplicationQueriesSchemes</key>

@@ -17,6 +17,7 @@ class UserDefaultsUtils {
         userDefault.set(nil, forKey: kUserInfo.kEmail)
         userDefault.set(nil, forKey: kUserInfo.kFirstName)
         userDefault.set(nil, forKey: kUserInfo.kLastName)
+        userDefault.set(false, forKey: kUserInfo.kNewUser)
     }
 
 }

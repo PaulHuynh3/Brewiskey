@@ -208,8 +208,7 @@ extension IntroductionScreenViewController: BaseOnboardingScreenDelegate {
                                 
                                 let userDefault = UserDefaults.standard
                                 
-                                if userDefault.bool(forKey: kUserInfo.kNewUser) != false {
-                                    userDefault.set(true, forKey: kUserInfo.kNewUser)
+                                if UserDefaults.standard.url(forKey: kUserInfo.kReferralLink) == nil {
                                     userDefault.set(link, forKey: kUserInfo.kReferralLink)
                                 }
                                 
@@ -218,6 +217,7 @@ extension IntroductionScreenViewController: BaseOnboardingScreenDelegate {
                                 userDefault.set(firstName, forKey: kUserInfo.kFirstName)
                                 userDefault.set(lastName, forKey: kUserInfo.kLastName)
                                 userDefault.set(email, forKey: kUserInfo.kEmail)
+                                userDefault.set(true, forKey: kUserInfo.kNewUser)
                                 
                                 let values = ["firstName": firstName, "lastName": lastName, "email": email, "profileImageUrl": imageURL, "ReferralLink": link.absoluteString]
                                 
