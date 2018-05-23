@@ -106,19 +106,31 @@ class RegisterViewController: UIViewController {
                         guard let profileImageURL = metadata?.downloadURL()?.absoluteString else {
                             return
                         }
-                        
-                        let values = ["firstName": firstName, "lastName": lastName, "email": email, "profileImageUrl": profileImageURL]
-                        
-                        let userDefault = UserDefaults.standard
-                        userDefault.set(true, forKey: kUserInfo.kLoginStatus)
-                        userDefault.set(uid, forKey: kUserInfo.kUserId)
-                        userDefault.set(true, forKey: kUserInfo.kNewUser)
-                        userDefault.set(firstName, forKey: kUserInfo.kFirstName)
-                        userDefault.set(lastName, forKey: kUserInfo.kLastName)
-                        userDefault.set(email, forKey: kUserInfo.kEmail)
-                        
-                        self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
-                        BrewiskeyAnalytics().signupEmail()
+                    
+                        FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, error: String?) in
+                            if let error = error {
+                                self.showAlert(title: "Error", message: error, actionTitle: "OK")
+                                return
+                            }
+                            guard let link = shortLink else {
+                                self.showAlert(title: "Error", message: "Referal Link nil", actionTitle: "OK")
+                                return
+                            }
+                            
+                            let values = ["firstName": firstName, "lastName": lastName, "email": email, "profileImageUrl": profileImageURL, "ReferralLink": link.absoluteString]
+                            
+                            let userDefault = UserDefaults.standard
+                            userDefault.set(true, forKey: kUserInfo.kLoginStatus)
+                            userDefault.set(uid, forKey: kUserInfo.kUserId)
+                            userDefault.set(true, forKey: kUserInfo.kNewUser)
+                            userDefault.set(firstName, forKey: kUserInfo.kFirstName)
+                            userDefault.set(lastName, forKey: kUserInfo.kLastName)
+                            userDefault.set(email, forKey: kUserInfo.kEmail)
+                            userDefault.set(shortLink, forKey: kUserInfo.kReferralLink)
+                            
+                            self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
+                            BrewiskeyAnalytics().signupEmail()
+                        })
                     }
                 })
             }

@@ -18,7 +18,12 @@ class ReferralViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupReferralLabel()
+    }
+    
+    fileprivate func setupReferralLabel() {
+        let shortLink = UserDefaults.standard.url(forKey: kUserInfo.kReferralLink)
+        referralLabel.text = shortLink?.absoluteString
     }
 
     @IBAction func inviteButtonTapped(_ sender: Any) {

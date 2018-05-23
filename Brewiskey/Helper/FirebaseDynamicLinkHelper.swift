@@ -41,44 +41,42 @@ class FirebaseDynamicLinkHelper {
     
     static let DYNAMIC_LINK_DOMAIN = "tba7j.app.goo.gl"
     
-    var longLink: URL?
-    var shortLink: URL?
-    
-    func createReferralDynamicLink() {
-        guard let uid = Auth.auth().currentUser?.uid else {return}
-        let linkString = "http://www.brewiskey.com/10promo/?invitedby=\(uid)"
-        
-        guard let link = URL(string: linkString) else { return }
-        let components = DynamicLinkComponents(link: link, domain: FirebaseDynamicLinkHelper.DYNAMIC_LINK_DOMAIN)
-        
-        // analytics params
-        let analyticsParams = DynamicLinkGoogleAnalyticsParameters(
-            source: Params.source.rawValue, medium: Params.medium.rawValue,
-            campaign: Params.campaign.rawValue)
-        analyticsParams.term = Params.term.rawValue
-        analyticsParams.content = Params.content.rawValue
-        components.analyticsParameters = analyticsParams
-        
-        let bundleID = Params.bundleID.rawValue
-        // iOS params
-        let iOSParams = DynamicLinkIOSParameters(bundleID: bundleID)
-        iOSParams.minimumAppVersion = Params.minimumAppVersion.rawValue
-        iOSParams.appStoreID = Params.appStoreID.rawValue
-        components.iOSParameters = iOSParams
-        
-        longLink = components.url
-        print(longLink?.absoluteString ?? "")
-        
-        components.shorten { (shortURL, warnings, error) in
-            // Handle shortURL.
-            if let error = error {
-                print(error.localizedDescription)
-                return
+        func createReferralDynamicLink(completion: @escaping (_ shortLink: URL?, _ error: String?) -> Void) {
+        if let uid = Auth.auth().currentUser?.uid {
+            let linkString = "http://www.brewiskey.com/10promo/?invitedby=\(uid)"
+            
+            if let link = URL(string: linkString) {
+                let components = DynamicLinkComponents(link: link, domain: FirebaseDynamicLinkHelper.DYNAMIC_LINK_DOMAIN)
+                
+                // analytics params
+                let analyticsParams = DynamicLinkGoogleAnalyticsParameters(
+                    source: Params.source.rawValue, medium: Params.medium.rawValue,
+                    campaign: Params.campaign.rawValue)
+                analyticsParams.term = Params.term.rawValue
+                analyticsParams.content = Params.content.rawValue
+                components.analyticsParameters = analyticsParams
+                
+                let bundleID = Params.bundleID.rawValue
+                // iOS params
+                let iOSParams = DynamicLinkIOSParameters(bundleID: bundleID)
+                iOSParams.minimumAppVersion = Params.minimumAppVersion.rawValue
+                iOSParams.appStoreID = Params.appStoreID.rawValue
+                components.iOSParameters = iOSParams
+                
+                components.shorten { (shortURL, warnings, error) in
+                    // Handle shortURL.\
+                    DispatchQueue.main.async {
+                        if let error = error {
+                            print(error.localizedDescription)
+                            completion(nil, error.localizedDescription)
+                            return
+                        }
+                        completion(shortURL, nil)
+                    }
+                }
             }
-            self.shortLink = shortURL
-            print(self.shortLink?.absoluteString ?? "")
+            
         }
-        
     }
-
+    
 }

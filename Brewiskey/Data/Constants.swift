@@ -15,4 +15,5 @@ struct kUserInfo {
     static let kLoginStatus = "loginStatus"
     static let kNewUser = "newUser"
     static let kEmail = "email"
+    static let kReferralLink = "referralLink"
 }

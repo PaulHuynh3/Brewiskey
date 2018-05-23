@@ -21,13 +21,12 @@ class MarketTableViewController: UITableViewController {
         super.viewDidLoad()
         setupUI()
         fetchAlcoholBrandsAndSetupTableview()
-        FirebaseDynamicLinkHelper().createReferralDynamicLink()
+        UserDefaults.standard.set(false, forKey: kUserInfo.kNewUser)
     }
 
     override func viewDidAppear(_ animated: Bool) {
         checkIfUserIsLoggedIn()
     }
-    
     
     fileprivate func setupUI() {
         tableView.backgroundColor = UIColor.brewiskeyColours.lightGray

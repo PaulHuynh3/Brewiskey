@@ -295,10 +295,10 @@
 				DA5F352F207825D400A64FA0 /* EmailSentViewController.swift */,
 				DAE169FE20769B3B00B21D30 /* BaseOnboardingView.swift */,
 				DAE169FC20769AE200B21D30 /* OnboardingView0.xib */,
-				DAE16A0220769C9B00B21D30 /* OnboardingView1.xib */,
 				DA9F41D6207719E00004797B /* OnboardingView2.xib */,
 				DA9F41D820771B7C0004797B /* OnboardingView3.xib */,
 				DA9F41DA20771B890004797B /* OnboardingView4.xib */,
+				DAE16A0220769C9B00B21D30 /* OnboardingView1.xib */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";

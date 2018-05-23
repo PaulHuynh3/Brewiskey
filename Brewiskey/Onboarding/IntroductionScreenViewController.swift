@@ -195,19 +195,35 @@ extension IntroductionScreenViewController: BaseOnboardingScreenDelegate {
                         }
                         DispatchQueue.main.async {
                             
-                            guard let userId = user?.uid else {return}
-                            let userDefault = UserDefaults.standard
-                            userDefault.set(true, forKey: kUserInfo.kLoginStatus)
-                            userDefault.set(userId, forKey: kUserInfo.kUserId)
-                            userDefault.set(true, forKey: kUserInfo.kNewUser)
-                            userDefault.set(firstName, forKey: kUserInfo.kFirstName)
-                            userDefault.set(lastName, forKey: kUserInfo.kLastName)
-                            userDefault.set(email, forKey: kUserInfo.kEmail)
-                            
-                            let values = ["firstName": firstName, "lastName": lastName, "email": email, "profileImageUrl": imageURL]
-                            
-                            self.registerUserIntoDatabaseAndLogin(userId, values: values as [String : AnyObject])
-                            BrewiskeyAnalytics().signupOrLoginWithFacebook()
+                            FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, error: String?) in
+                                guard let userId = user?.uid else {return}
+                                guard let link = shortLink else {
+                                    self.showAlert(title: "Error", message: "link found nil", actionTitle: "OK")
+                                    return
+                                }
+                                if let error = error {
+                                    self.showAlert(title: "Error", message: error, actionTitle: "OK")
+                                    return
+                                }
+                                
+                                let userDefault = UserDefaults.standard
+                                
+                                if userDefault.bool(forKey: kUserInfo.kNewUser) != false {
+                                    userDefault.set(true, forKey: kUserInfo.kNewUser)
+                                    userDefault.set(link, forKey: kUserInfo.kReferralLink)
+                                }
+                                
+                                userDefault.set(true, forKey: kUserInfo.kLoginStatus)
+                                userDefault.set(userId, forKey: kUserInfo.kUserId)
+                                userDefault.set(firstName, forKey: kUserInfo.kFirstName)
+                                userDefault.set(lastName, forKey: kUserInfo.kLastName)
+                                userDefault.set(email, forKey: kUserInfo.kEmail)
+                                
+                                let values = ["firstName": firstName, "lastName": lastName, "email": email, "profileImageUrl": imageURL, "ReferralLink": link.absoluteString]
+                                
+                                self.registerUserIntoDatabaseAndLogin(userId, values: values as [String : AnyObject])
+                                BrewiskeyAnalytics().signupOrLoginWithFacebook()
+                            })
                         }
                     })
                     
