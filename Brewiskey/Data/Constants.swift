@@ -16,4 +16,6 @@ struct kUserInfo {
     static let kNewUser = "newUser"
     static let kEmail = "email"
     static let kReferralLink = "referralLink"
+    static let kReferredBy = "referredBy"
+    static let isUsedReferralCode = "isUsedReferralCode"
 }

@@ -91,6 +91,7 @@ class SettingsTableViewController: UITableViewController {
             print(logoutError)
             return
         }
+        
         let userDefaultUtils = UserDefaultsUtils()
         userDefaultUtils.clearUserDefaults()
         let fbsdkLogin = FBSDKLoginManager()

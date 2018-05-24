@@ -31,6 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let sourceApplication = options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String
         let annotation = options[UIApplicationOpenURLOptionsKey.annotation]
         handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url,sourceApplication:sourceApplication , annotation: annotation)
+        
         return handled
     }
     
@@ -50,34 +51,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    //firebase dynamic link
-    func application(_ app: UIApplication, open url: URL, options: [String : AnyObject]) -> Bool {
-        if let dynamicLink = DynamicLinks.dynamicLinks()?.dynamicLink(fromCustomSchemeURL: url) {
-            self.handleIncomingDynamicLink(dynamicLink: dynamicLink)
-            return true
+}
+extension AppDelegate {
+    
+    //Firebase Dynamic links.
+    func application(_ application: UIApplication, continue userActivity: NSUserActivity,
+                     restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
+        
+        guard let dynamicLinks = DynamicLinks.dynamicLinks() else {
+            return false
         }
-        return false
+        
+        guard let incomingURL = userActivity.webpageURL else {
+            return false
+        }
+        
+        let handled = dynamicLinks.handleUniversalLink(incomingURL) { (dynamiclink, error) in
+            if let url = dynamiclink?.url {
+                self.handleDeepLink(url: url)
+            }
+        }
+        return handled
     }
     
-    func application(_ application: UIApplication, willContinueUserActivityWithType userActivityType: String) -> Bool {
-        if let incomingURL = userActivity?.webpageURL {
-            let linkHandled = DynamicLinks.dynamicLinks()!.handleUniversalLink(incomingURL) { [weak self] (dynamicLink, error) in
-                guard let strongSelf = self else {return}
-                if let dynamicLink = dynamicLink, let _ = dynamicLink.url {
-                    strongSelf.handleIncomingDynamicLink(dynamicLink: dynamicLink)
+    func handleDeepLink(url: URL){
+        let queryItems = URLComponents(url: url, resolvingAgainstBaseURL: true)?.queryItems
+        let invitedBy = queryItems?.filter({(item) in item.name == "invitedby"}).first?.value
+        let user = Auth.auth().currentUser
+        // If the user isn't signed in and the app was opened via an invitation
+        // link, sign in the user anonymously and record the referrer UID in the
+        // user's RTDB record.
+        if user == nil && invitedBy != nil {
+           
+            Auth.auth().signInAnonymously() { (user, error) in
+                if let user = user {
+                    let userRecord = Database.database().reference().child("users").child(user.uid)
+                    UserDefaults.standard.set(invitedBy, forKey: kUserInfo.kReferredBy)
+                    userRecord.child("referred_by").setValue(invitedBy)
+                    
                 }
             }
-            return linkHandled
         }
-        return false
-    }
-    
-    func handleIncomingDynamicLink(dynamicLink: DynamicLink) {
-        guard let pathComponents = dynamicLink.url?.pathComponents else {return}
-        for nextPiece in pathComponents {
-            //do some smart parsing here.
-        }
-        print("Your incoming link parameter is \(dynamicLink.url)")
+
     }
 
 }

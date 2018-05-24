@@ -56,7 +56,7 @@ class ForgotPasswordViewController: UIViewController {
             } else {
                 self.performSegue(withIdentifier: "resetPasswordIdentifier", sender: self)
                 activityIndicator.stopAnimating()
-                BrewiskeyAnalytics().forgotPasswordSubmitted()
+                BrewiskeyAnalytics().track(event: .forgotPasswordTapped)
             }
         }
         

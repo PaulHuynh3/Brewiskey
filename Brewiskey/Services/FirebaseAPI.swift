@@ -22,19 +22,19 @@ class FirebaseAPI: NSObject {
                 let user = User()
                 //this gives the unique user id.
                 user.id = snapshot.key
-                user.firstName = dictionary["firstName"] as? String
-                user.lastName = dictionary["lastName"] as? String
+                user.firstName = dictionary["first_name"] as? String
+                user.lastName = dictionary["last_name"] as? String
                 user.email = dictionary["email"] as? String
-                user.profileImageUrl = dictionary["profileImageUrl"] as? String
+                user.profileImageUrl = dictionary["profile_image_url"] as? String
                     completion(user)
                 //user sets this when they finish registeration by editing their profile.
                 user.age = dictionary["age"] as? String
-                user.address.unitNumber = dictionary["unitNumber"] as? String
-                user.address.number = dictionary["streetNumber"] as? String
+                user.address.unitNumber = dictionary["unit_number"] as? String
+                user.address.number = dictionary["street_number"] as? String
                 user.address.street = dictionary["street"] as? String
                 user.address.city = dictionary["city"] as? String
                 user.address.province = dictionary["province"] as? String
-                user.address.postalCode = dictionary["postalCode"] as? String
+                user.address.postalCode = dictionary["postal_code"] as? String
                 }
             }
         })
@@ -46,10 +46,10 @@ class FirebaseAPI: NSObject {
             if let dictionary = snapshot.value as? [String:AnyObject]{
                 let user = User()
                 user.id = snapshot.key
-                user.firstName = dictionary["firstName"] as? String
-                user.lastName = dictionary["lastName"] as? String
+                user.firstName = dictionary["first_name"] as? String
+                user.lastName = dictionary["last_name"] as? String
                 user.email = dictionary["email"] as? String
-                user.profileImageUrl = dictionary["profileImageUrl"] as? String
+                user.profileImageUrl = dictionary["profile_image_url"] as? String
                 
                 completion(user)
             }

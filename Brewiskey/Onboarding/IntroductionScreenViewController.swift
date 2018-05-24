@@ -136,12 +136,12 @@ extension IntroductionScreenViewController {
 extension IntroductionScreenViewController: BaseOnboardingScreenDelegate {
     func signupWithEmail() {
         performSegue(withIdentifier: "signUpIdentifier", sender: nil)
-        BrewiskeyAnalytics().signupEmailScreen()
+        BrewiskeyAnalytics().track(event: .userSignupEmail)
     }
     
     func loginUser() {
         performSegue(withIdentifier: "loginIdentifier", sender: nil)
-        BrewiskeyAnalytics().loginScreen()
+        BrewiskeyAnalytics().track(event: .loginScreen)
     }
     
     func signupWithFacebook() {
@@ -184,49 +184,144 @@ extension IntroductionScreenViewController: BaseOnboardingScreenDelegate {
                         print("Failed to get access token")
                         return
                     }
-                    
                     let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
                     
-                    Auth.auth().signIn(with: credential, completion: { (user, error) in
-                        if let error = error {
-                            let onboardingCheckUtils = OnboardingCheckUtils(presentingViewController: self)
-                            onboardingCheckUtils.displayError(error.localizedDescription)
-                            return
-                        }
-                        DispatchQueue.main.async {
-                            
-                            FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, error: String?) in
-                                guard let userId = user?.uid else {return}
-                                guard let link = shortLink else {
-                                    self.showAlert(title: "Error", message: "link found nil", actionTitle: "OK")
-                                    return
-                                }
+                    if !UserDefaults.standard.bool(forKey: kUserInfo.isUsedReferralCode) {
+                        
+                        //referred user convert it to facebook login
+                        if let user = Auth.auth().currentUser {
+                            user.link(with: credential, completion: { (user, error) in
                                 if let error = error {
-                                    self.showAlert(title: "Error", message: error, actionTitle: "OK")
+                                    self.showAlert(title: "Error", message: error.localizedDescription, actionTitle: "OK")
                                     return
                                 }
                                 
-                                let userDefault = UserDefaults.standard
+                                Auth.auth().signIn(with: credential, completion: { (user, error) in
+                                    if let error = error {
+                                        let onboardingCheckUtils = OnboardingCheckUtils(presentingViewController: self)
+                                        onboardingCheckUtils.displayError(error.localizedDescription)
+                                        return
+                                    }
+                                    DispatchQueue.main.async {
+                                        
+                                        FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, error: String?) in
+                                            guard let userId = user?.uid else {return}
+                                            guard let link = shortLink else {
+                                                self.showAlert(title: "Error", message: "link found nil", actionTitle: "OK")
+                                                return
+                                            }
+                                            if let error = error {
+                                                self.showAlert(title: "Error", message: error, actionTitle: "OK")
+                                                return
+                                            }
+                                            
+                                            let userDefault = UserDefaults.standard
+                                            
+                                            if UserDefaults.standard.url(forKey: kUserInfo.kReferralLink) == nil {
+                                                userDefault.set(link, forKey: kUserInfo.kReferralLink)
+                                            }
+                                            
+                                            userDefault.set(true, forKey: kUserInfo.kLoginStatus)
+                                            userDefault.set(userId, forKey: kUserInfo.kUserId)
+                                            userDefault.set(firstName, forKey: kUserInfo.kFirstName)
+                                            userDefault.set(lastName, forKey: kUserInfo.kLastName)
+                                            userDefault.set(email, forKey: kUserInfo.kEmail)
+                                            userDefault.set(true, forKey: kUserInfo.kNewUser)
+                                            userDefault.set(true, forKey: kUserInfo.isUsedReferralCode)
+                                            
+                                            let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": imageURL, "referral_Link": link.absoluteString]
+                                            
+                                            self.registerUserIntoDatabaseAndLogin(userId, values: values as [String : AnyObject])
+                                            BrewiskeyAnalytics().track(event: .loginWithFacebook)
+                                        })
+                                    }
+                                })
                                 
-                                if UserDefaults.standard.url(forKey: kUserInfo.kReferralLink) == nil {
-                                    userDefault.set(link, forKey: kUserInfo.kReferralLink)
+                            })
+                        } else {
+                            Auth.auth().signIn(with: credential, completion: { (user, error) in
+                                if let error = error {
+                                    let onboardingCheckUtils = OnboardingCheckUtils(presentingViewController: self)
+                                    onboardingCheckUtils.displayError(error.localizedDescription)
+                                    return
                                 }
-                                
-                                userDefault.set(true, forKey: kUserInfo.kLoginStatus)
-                                userDefault.set(userId, forKey: kUserInfo.kUserId)
-                                userDefault.set(firstName, forKey: kUserInfo.kFirstName)
-                                userDefault.set(lastName, forKey: kUserInfo.kLastName)
-                                userDefault.set(email, forKey: kUserInfo.kEmail)
-                                userDefault.set(true, forKey: kUserInfo.kNewUser)
-                                
-                                let values = ["firstName": firstName, "lastName": lastName, "email": email, "profileImageUrl": imageURL, "ReferralLink": link.absoluteString]
-                                
-                                self.registerUserIntoDatabaseAndLogin(userId, values: values as [String : AnyObject])
-                                BrewiskeyAnalytics().signupOrLoginWithFacebook()
+                                DispatchQueue.main.async {
+                                    
+                                    FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, error: String?) in
+                                        guard let userId = user?.uid else {return}
+                                        guard let link = shortLink else {
+                                            self.showAlert(title: "Error", message: "link found nil", actionTitle: "OK")
+                                            return
+                                        }
+                                        if let error = error {
+                                            self.showAlert(title: "Error", message: error, actionTitle: "OK")
+                                            return
+                                        }
+                                        
+                                        let userDefault = UserDefaults.standard
+                                        
+                                        if UserDefaults.standard.url(forKey: kUserInfo.kReferralLink) == nil {
+                                            userDefault.set(link, forKey: kUserInfo.kReferralLink)
+                                        }
+                                        
+                                        userDefault.set(true, forKey: kUserInfo.kLoginStatus)
+                                        userDefault.set(userId, forKey: kUserInfo.kUserId)
+                                        userDefault.set(firstName, forKey: kUserInfo.kFirstName)
+                                        userDefault.set(lastName, forKey: kUserInfo.kLastName)
+                                        userDefault.set(email, forKey: kUserInfo.kEmail)
+                                        userDefault.set(true, forKey: kUserInfo.kNewUser)
+                                        userDefault.set(true, forKey: kUserInfo.isUsedReferralCode)
+                                        
+                                        let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": imageURL, "referral_Link": link.absoluteString]
+                                        
+                                        self.registerUserIntoDatabaseAndLogin(userId, values: values as [String : AnyObject])
+                                        BrewiskeyAnalytics().track(event: .loginWithFacebook)
+                                    })
+                                }
                             })
                         }
-                    })
-                    
+                    } else {
+                        Auth.auth().signIn(with: credential, completion: { (user, error) in
+                            if let error = error {
+                                let onboardingCheckUtils = OnboardingCheckUtils(presentingViewController: self)
+                                onboardingCheckUtils.displayError(error.localizedDescription)
+                                return
+                            }
+                            DispatchQueue.main.async {
+                                
+                                FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, error: String?) in
+                                    guard let userId = user?.uid else {return}
+                                    guard let link = shortLink else {
+                                        self.showAlert(title: "Error", message: "link found nil", actionTitle: "OK")
+                                        return
+                                    }
+                                    if let error = error {
+                                        self.showAlert(title: "Error", message: error, actionTitle: "OK")
+                                        return
+                                    }
+                                    
+                                    let userDefault = UserDefaults.standard
+                                    
+                                    if UserDefaults.standard.url(forKey: kUserInfo.kReferralLink) == nil {
+                                        userDefault.set(link, forKey: kUserInfo.kReferralLink)
+                                    }
+                                    
+                                    userDefault.set(true, forKey: kUserInfo.kLoginStatus)
+                                    userDefault.set(userId, forKey: kUserInfo.kUserId)
+                                    userDefault.set(firstName, forKey: kUserInfo.kFirstName)
+                                    userDefault.set(lastName, forKey: kUserInfo.kLastName)
+                                    userDefault.set(email, forKey: kUserInfo.kEmail)
+                                    userDefault.set(true, forKey: kUserInfo.kNewUser)
+                                    
+                                    let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": imageURL, "referral_Link": link.absoluteString]
+                                    
+                                    self.registerUserIntoDatabaseAndLogin(userId, values: values as [String : AnyObject])
+                                    BrewiskeyAnalytics().track(event: .loginWithFacebook)
+                                })
+                            }
+                        })
+                    }
+   
                 })
             }
         }

@@ -79,60 +79,121 @@ class RegisterViewController: UIViewController {
             return
         }
         
-        Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
-            
-            if let error = error {
-                onboardingCheckUtils.displayError(error.localizedDescription)
-                return
-            }
-            
-            guard let uid = user?.uid else {return}
-            
-            //successfully authenticated user now upload picture to storage.
-            let imageName = NSUUID().uuidString
-            let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName).png")
-            
-            guard let profileImage = self.uploadPictureImageView.image else {return}
-            
-            //compresses the image
-            if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {
-                storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
-                    
-                    if let error = error {
-                        print(error)
-                        return
-                    }
-                    DispatchQueue.main.async {
-                        guard let profileImageURL = metadata?.downloadURL()?.absoluteString else {
+        //link anonymous user that came in with referral link to an account with email/password
+        if let user = Auth.auth().currentUser {
+            let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+            user.link(with: credential) { (user, error) in
+                if let error = error {
+                    self.showAlert(title: "Error", message: error.localizedDescription, actionTitle: "OK")
+                    return
+                }
+                guard let uid = user?.uid else {return}
+                
+                //successfully authenticated user now upload picture to storage.
+                let imageName = NSUUID().uuidString
+                let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName).png")
+                
+                guard let profileImage = self.uploadPictureImageView.image else {return}
+                
+                //compresses the image
+                if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {
+                    storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                        
+                        if let error = error {
+                            print(error)
                             return
                         }
-                    
-                        FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, error: String?) in
-                            if let error = error {
-                                self.showAlert(title: "Error", message: error, actionTitle: "OK")
-                                return
-                            }
-                            guard let link = shortLink else {
-                                self.showAlert(title: "Error", message: "Referal Link nil", actionTitle: "OK")
+                        DispatchQueue.main.async {
+                            guard let profileImageURL = metadata?.downloadURL()?.absoluteString else {
                                 return
                             }
                             
-                            let values = ["firstName": firstName, "lastName": lastName, "email": email, "profileImageUrl": profileImageURL, "ReferralLink": link.absoluteString]
+                            FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, error: String?) in
+                                if let error = error {
+                                    self.showAlert(title: "Error", message: error, actionTitle: "OK")
+                                    return
+                                }
+                                guard let link = shortLink else {
+                                    self.showAlert(title: "Error", message: "Referal Link nil", actionTitle: "OK")
+                                    return
+                                }
+                                
+                                let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": profileImageURL, "referral_Link": link.absoluteString]
+                                
+                                let userDefault = UserDefaults.standard
+                                userDefault.set(true, forKey: kUserInfo.kLoginStatus)
+                                userDefault.set(uid, forKey: kUserInfo.kUserId)
+                                userDefault.set(true, forKey: kUserInfo.kNewUser)
+                                userDefault.set(firstName, forKey: kUserInfo.kFirstName)
+                                userDefault.set(lastName, forKey: kUserInfo.kLastName)
+                                userDefault.set(email, forKey: kUserInfo.kEmail)
+                                userDefault.set(shortLink, forKey: kUserInfo.kReferralLink)
+                                
+                                self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
+                                BrewiskeyAnalytics().track(event: .userSignupEmail)
+                                BrewiskeyAnalytics().track(event: .signupWithReferral)
+                            })
+                        }
+                    })
+                }
+            }
+            
+        } else {
+            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+                
+                if let error = error {
+                    onboardingCheckUtils.displayError(error.localizedDescription)
+                    return
+                }
+                
+                guard let uid = user?.uid else {return}
+                
+                //successfully authenticated user now upload picture to storage.
+                let imageName = NSUUID().uuidString
+                let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName).png")
+                
+                guard let profileImage = self.uploadPictureImageView.image else {return}
+                
+                //compresses the image
+                if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {
+                    storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                        
+                        if let error = error {
+                            print(error)
+                            return
+                        }
+                        DispatchQueue.main.async {
+                            guard let profileImageURL = metadata?.downloadURL()?.absoluteString else {
+                                return
+                            }
                             
-                            let userDefault = UserDefaults.standard
-                            userDefault.set(true, forKey: kUserInfo.kLoginStatus)
-                            userDefault.set(uid, forKey: kUserInfo.kUserId)
-                            userDefault.set(true, forKey: kUserInfo.kNewUser)
-                            userDefault.set(firstName, forKey: kUserInfo.kFirstName)
-                            userDefault.set(lastName, forKey: kUserInfo.kLastName)
-                            userDefault.set(email, forKey: kUserInfo.kEmail)
-                            userDefault.set(shortLink, forKey: kUserInfo.kReferralLink)
-                            
-                            self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
-                            BrewiskeyAnalytics().signupEmail()
-                        })
-                    }
-                })
+                            FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, error: String?) in
+                                if let error = error {
+                                    self.showAlert(title: "Error", message: error, actionTitle: "OK")
+                                    return
+                                }
+                                guard let link = shortLink else {
+                                    self.showAlert(title: "Error", message: "Referal Link nil", actionTitle: "OK")
+                                    return
+                                }
+                                
+                                let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": profileImageURL, "referral_Link": link.absoluteString]
+                                
+                                let userDefault = UserDefaults.standard
+                                userDefault.set(true, forKey: kUserInfo.kLoginStatus)
+                                userDefault.set(uid, forKey: kUserInfo.kUserId)
+                                userDefault.set(true, forKey: kUserInfo.kNewUser)
+                                userDefault.set(firstName, forKey: kUserInfo.kFirstName)
+                                userDefault.set(lastName, forKey: kUserInfo.kLastName)
+                                userDefault.set(email, forKey: kUserInfo.kEmail)
+                                userDefault.set(shortLink, forKey: kUserInfo.kReferralLink)
+                                
+                                self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
+                                BrewiskeyAnalytics().track(event: .userSignupEmail)
+                            })
+                        }
+                    })
+                }
             }
         }
     }

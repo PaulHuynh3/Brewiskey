@@ -161,7 +161,7 @@ class EditProfileTableViewController: UITableViewController {
                             return
                         }
                        
-                        let values = ["firstName": editedFirstName, "lastName": editedLastName, "profileImageUrl": profileImageURL, "age": editedAge, "streetNumber": editedNumber, "unitNumber": editedUnitNumber, "street": editedStreet, "city": editedCity, "province": editedProvince, "postalCode": editedPostalCode]
+                        let values = ["first_name": editedFirstName, "last_name": editedLastName, "profile_image_url": profileImageURL, "age": editedAge, "street_number": editedNumber, "unit_number": editedUnitNumber, "street": editedStreet, "city": editedCity, "province": editedProvince, "postal_code": editedPostalCode]
                         
                         let userDefault = UserDefaults.standard
                         userDefault.set(editedFirstName, forKey: kUserInfo.kFirstName)
