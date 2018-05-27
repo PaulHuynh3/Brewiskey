@@ -16,10 +16,6 @@
 		DA13D002203E0A7D0021EB7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA13D000203E0A7D0021EB7E /* Main.storyboard */; };
 		DA13D004203E0A7D0021EB7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA13D003203E0A7D0021EB7E /* Assets.xcassets */; };
 		DA13D007203E0A7D0021EB7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA13D005203E0A7D0021EB7E /* LaunchScreen.storyboard */; };
-		DA1C6CE820B3371500911E64 /* HeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA1C6CE720B3371500911E64 /* HeaderCell.xib */; };
-		DA1C6CEA20B3373700911E64 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CE920B3373700911E64 /* HeaderCell.swift */; };
-		DA1C6CEC20B3386D00911E64 /* ParamTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA1C6CEB20B3386D00911E64 /* ParamTableViewCell.swift */; };
-		DA1C6CEE20B33B8600911E64 /* ParamTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA1C6CED20B33B8600911E64 /* ParamTableViewCell.xib */; };
 		DA2C31F4204DC4C400FF6444 /* MarketNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C31F3204DC4C400FF6444 /* MarketNavController.swift */; };
 		DA2C31F6204E313A00FF6444 /* ShoppingCartContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C31F5204E313A00FF6444 /* ShoppingCartContainerViewController.swift */; };
 		DA2E85DD2043A7B40057C4C6 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E85DC2043A7B40057C4C6 /* MoreTableViewController.swift */; };
@@ -75,10 +71,6 @@
 		DA13D003203E0A7D0021EB7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA13D006203E0A7D0021EB7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA13D008203E0A7D0021EB7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		DA1C6CE720B3371500911E64 /* HeaderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HeaderCell.xib; sourceTree = "<group>"; };
-		DA1C6CE920B3373700911E64 /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
-		DA1C6CEB20B3386D00911E64 /* ParamTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParamTableViewCell.swift; sourceTree = "<group>"; };
-		DA1C6CED20B33B8600911E64 /* ParamTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ParamTableViewCell.xib; sourceTree = "<group>"; };
 		DA2C31F3204DC4C400FF6444 /* MarketNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketNavController.swift; sourceTree = "<group>"; };
 		DA2C31F5204E313A00FF6444 /* ShoppingCartContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartContainerViewController.swift; sourceTree = "<group>"; };
 		DA2E85DC2043A7B40057C4C6 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
@@ -241,10 +233,6 @@
 				DA91AEBB20A8F2C400BEF84B /* LeftLabelCell.xib */,
 				DA5EF4DF20AA0C4A0070BD5D /* ImageLabelCell.swift */,
 				DA5EF4E120AA0C5F0070BD5D /* ImageLabelCell.xib */,
-				DA1C6CE920B3373700911E64 /* HeaderCell.swift */,
-				DA1C6CE720B3371500911E64 /* HeaderCell.xib */,
-				DA1C6CEB20B3386D00911E64 /* ParamTableViewCell.swift */,
-				DA1C6CED20B33B8600911E64 /* ParamTableViewCell.xib */,
 			);
 			path = UITableVIewCell;
 			sourceTree = "<group>";
@@ -412,12 +400,10 @@
 				DA13D004203E0A7D0021EB7E /* Assets.xcassets in Resources */,
 				DA5EF4E220AA0C5F0070BD5D /* ImageLabelCell.xib in Resources */,
 				DA9F41D7207719E00004797B /* OnboardingView2.xib in Resources */,
-				DA1C6CE820B3371500911E64 /* HeaderCell.xib in Resources */,
 				DA9F41D920771B7C0004797B /* OnboardingView3.xib in Resources */,
 				DADC7B75203E17E100F87438 /* Login.storyboard in Resources */,
 				DA13D002203E0A7D0021EB7E /* Main.storyboard in Resources */,
 				DA91AEBC20A8F2C400BEF84B /* LeftLabelCell.xib in Resources */,
-				DA1C6CEE20B33B8600911E64 /* ParamTableViewCell.xib in Resources */,
 				DA9F41DB20771B890004797B /* OnboardingView4.xib in Resources */,
 				DAE169FD20769AE200B21D30 /* OnboardingView0.xib in Resources */,
 				DA07068820B5CCA800362EFE /* GoogleService-Info.plist in Resources */,
@@ -503,8 +489,6 @@
 				DA5F352E2077C79D00A64FA0 /* Constants.swift in Sources */,
 				DAC4EC8B2094499800EE07A0 /* ChangeEmailViewController.swift in Sources */,
 				DAB62863209035EC00A5890D /* UserDefaultsUtils.swift in Sources */,
-				DA1C6CEC20B3386D00911E64 /* ParamTableViewCell.swift in Sources */,
-				DA1C6CEA20B3373700911E64 /* HeaderCell.swift in Sources */,
 				DAC462442091168500673189 /* BrewiskeyAnalytics.swift in Sources */,
 				DA56C62220A1599300DB38A4 /* PromoCodeViewController.swift in Sources */,
 				DA2E85DF2043C62E0057C4C6 /* FirebaseAPI.swift in Sources */,

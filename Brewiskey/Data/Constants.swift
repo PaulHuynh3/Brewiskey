@@ -18,4 +18,5 @@ struct kUserInfo {
     static let kReferralLink = "referralLink"
     static let kReferredBy = "referredBy"
     static let isUsedReferralCode = "isUsedReferralCode"
+    static let kBrewFriendReferral10 = "brewFriendReferral10"
 }

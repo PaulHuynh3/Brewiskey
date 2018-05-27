@@ -68,7 +68,6 @@ class SettingsTableViewController: UITableViewController {
               self?.user = user
             }
         }
-
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

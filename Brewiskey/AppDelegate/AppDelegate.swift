@@ -88,7 +88,7 @@ extension AppDelegate {
                     let userRecord = Database.database().reference().child("users").child(user.uid)
                     UserDefaults.standard.set(invitedBy, forKey: kUserInfo.kReferredBy)
                     userRecord.child("referred_by").setValue(invitedBy)
-                    
+                    UserDefaults.standard.set("BrewFriend10", forKey: kUserInfo.kBrewFriendReferral10)
                 }
             }
         }
