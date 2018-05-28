@@ -59,7 +59,7 @@ class NewCreditCardTableViewController: UITableViewController {
         alertController.addAction(okAction)
         self.present(alertController, animated: true, completion: nil)
     }
-    
+    // https://stackoverflow.com/questions/23888682/validate-credit-card-number
     //TODO: perform more advance checks later
     fileprivate func isUserErrorFree() -> Bool {
         if isValidCreditCard() && isValidExpirationDate() && isValidCVC() && isValidPostalCode() {

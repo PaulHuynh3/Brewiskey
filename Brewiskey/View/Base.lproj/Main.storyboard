@@ -515,7 +515,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="3Hh-5d-yHK" kind="show" id="orY-Jd-ZOf"/>
+                                            <segue destination="3Hh-5d-yHK" kind="show" identifier="editCreditCard" id="orY-Jd-ZOf"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -780,13 +780,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="leading" contentVerticalAlignment="center" text="mastercard" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="EOk-Le-2DX">
-                                <rect key="frame" x="16" y="276" width="343" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dG9-8h-6Sl">
                                 <rect key="frame" x="0.0" y="315" width="375" height="1"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -799,20 +792,39 @@
                                 <state key="normal" title="UPDATE CARD">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="updateCardTapped:" destination="3Hh-5d-yHK" eventType="touchUpInside" id="ckT-SR-1fe"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XqE-3z-g87">
                                 <rect key="frame" x="11" y="377" width="353" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="DELETE CARD" backgroundImage="BlueRectangle"/>
+                                <connections>
+                                    <action selector="deleteCardTapped:" destination="3Hh-5d-yHK" eventType="touchUpInside" id="2lM-82-S4Z"/>
+                                </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="visacard" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ylh-eF-N3m">
+                                <rect key="frame" x="16" y="281" width="337" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="u9T-wh-NhO"/>
                     </view>
+                    <connections>
+                        <outlet property="currentCreditCardLabel" destination="fxq-EP-xWW" id="brT-o2-ZPF"/>
+                        <outlet property="expirationDateTextfield" destination="EJm-qj-FcW" id="0wY-FV-kIu"/>
+                        <outlet property="postalCodeTextfield" destination="UL9-yd-S9Q" id="mw1-kU-ydt"/>
+                        <outlet property="typeOfCardLabel" destination="ylh-eF-N3m" id="I0J-yF-TyD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QT1-lr-R6u" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2111" y="4039"/>
+            <point key="canvasLocation" x="2109.5999999999999" y="4038.530734632684"/>
         </scene>
         <!--Promo Code View Controller-->
         <scene sceneID="vQD-Y3-QTQ">

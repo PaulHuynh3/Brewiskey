@@ -12,6 +12,7 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     let cellIdentifier = "ImageLabelCellIdentifier"
     var user = User()
+    let editCreditCardSegue = "editCreditCard"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,7 +39,10 @@ class PaymentViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
+        if segue.identifier == editCreditCardSegue {
+            let updateCreditCardViewController = segue.destination as? UpdateCreditCardViewController
+            updateCreditCardViewController?.user = self.user
+        }
     }
     
 }
@@ -83,9 +87,9 @@ extension PaymentViewController: UITableViewDelegate, UITableViewDataSource {
         return imageLabelCell
     }
     
-
-    
-// https://stackoverflow.com/questions/23888682/validate-credit-card-number
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: editCreditCardSegue, sender: nil)
+    }
     
 }
 
