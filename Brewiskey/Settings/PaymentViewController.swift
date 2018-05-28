@@ -33,7 +33,8 @@ class PaymentViewController: UIViewController {
     }
 
     @IBAction func addNewPaymentTapped(_ sender: Any) {
-        
+        let addNewCard = "addNewCardSegue"
+        performSegue(withIdentifier: addNewCard, sender: nil)
     }
 }
 
@@ -53,7 +54,7 @@ extension PaymentViewController: UITableViewDelegate, UITableViewDataSource {
         
         if let userCreditCards = user.creditCards {
             for creditCard in userCreditCards {
-                if creditCard.hasPrefix("4") {
+                if let visacard = creditCard.number?.hasPrefix("4") {
                     return displayVisaCard(indexPath: indexPath)
                 } else {
                     return displayMasterCard(indexPath: indexPath)
@@ -69,12 +70,16 @@ extension PaymentViewController: UITableViewDelegate, UITableViewDataSource {
     
     fileprivate func displayMasterCard(indexPath: IndexPath) -> UITableViewCell {
         let imageLabelCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! ImageLabelCell
+        imageLabelCell.leftImage.image = #imageLiteral(resourceName: "mastercard")
+        imageLabelCell.middleLabel.text = "mastercard"
         
         return imageLabelCell
     }
     
     fileprivate func displayVisaCard(indexPath: IndexPath) -> UITableViewCell {
         let imageLabelCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! ImageLabelCell
+        imageLabelCell.leftImage.image = #imageLiteral(resourceName: "visacard")
+        imageLabelCell.middleLabel.text = "visacard"
         
         return imageLabelCell
     }
@@ -82,7 +87,6 @@ extension PaymentViewController: UITableViewDelegate, UITableViewDataSource {
 
     
 // https://stackoverflow.com/questions/23888682/validate-credit-card-number
-// http://www.allappsdevelopers.com/TopicDetail.aspx?TopicID=2f904d05-ff22-457f-814e-0d0287524d64
     
 }
 
