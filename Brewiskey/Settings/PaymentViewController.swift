@@ -36,32 +36,31 @@ class PaymentViewController: UIViewController {
         let addNewCard = "addNewCardSegue"
         performSegue(withIdentifier: addNewCard, sender: nil)
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+    }
+    
 }
 
 extension PaymentViewController: UITableViewDelegate, UITableViewDataSource {
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let creditCards = user.creditCards?.count {
-            return creditCards
-        } else {
-            return 1
-        }
+        return 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let imageLabelCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifier) as! ImageLabelCell
-        
-        if let userCreditCards = user.creditCards {
-            for creditCard in userCreditCards {
-                if let visacard = creditCard.number?.hasPrefix("4") {
-                    return displayVisaCard(indexPath: indexPath)
-                } else {
-                    return displayMasterCard(indexPath: indexPath)
-                }
+        if let cardNumber = user.creditCard.number {
+            if cardNumber.hasPrefix("4") {
+                return displayVisaCard(indexPath: indexPath)
+            } else {
+                return displayMasterCard(indexPath: indexPath)
             }
         }
         return imageLabelCell
+
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

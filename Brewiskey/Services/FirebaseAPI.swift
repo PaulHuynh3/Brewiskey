@@ -13,7 +13,7 @@ import Firebase
 class FirebaseAPI: NSObject {
     //may not need these api calls...
     
-    class func fetchDatabaseCurrentUser(uid:String, completion:@escaping (_ user:User) -> Void){
+    class func fetchDatabaseCurrentUser(uid:String, completion:@escaping (_ user:User) -> Void) {
         
         Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -35,6 +35,14 @@ class FirebaseAPI: NSObject {
                 user.address.city = dictionary["city"] as? String
                 user.address.province = dictionary["province"] as? String
                 user.address.postalCode = dictionary["postal_code"] as? String
+                
+                    if let creditCardDict = dictionary["credit_card"] as? [String: AnyObject] {
+                        user.creditCard.number = creditCardDict["number"] as? String
+                        user.creditCard.expirationDate = creditCardDict["expiration_date"] as? String
+                        user.creditCard.cvcNumber = creditCardDict["cvc"] as? String
+                        user.creditCard.postalCode = creditCardDict["postal_code"] as? String
+                        user.creditCard.nickname = creditCardDict["nick_name"] as? String
+                    }
                 }
             }
         })

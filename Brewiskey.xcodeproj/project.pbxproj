@@ -32,6 +32,7 @@
 		DA5F3530207825D400A64FA0 /* EmailSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F352F207825D400A64FA0 /* EmailSentViewController.swift */; };
 		DA620DF3209561710026E4A5 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA620DF2209561710026E4A5 /* ChangePasswordViewController.swift */; };
 		DA620DF5209589620026E4A5 /* ReferralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA620DF4209589620026E4A5 /* ReferralViewController.swift */; };
+		DA6F829920BB8029005E7862 /* NewCreditCardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6F829820BB8029005E7862 /* NewCreditCardTableViewController.swift */; };
 		DA70A9E62089495F00D3F2C3 /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA70A9E52089495F00D3F2C3 /* EditProfileTableViewController.swift */; };
 		DA91AEBC20A8F2C400BEF84B /* LeftLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA91AEBB20A8F2C400BEF84B /* LeftLabelCell.xib */; };
 		DA91AEBE20A8F2F500BEF84B /* LeftLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91AEBD20A8F2F500BEF84B /* LeftLabelCell.swift */; };
@@ -87,6 +88,7 @@
 		DA5F352F207825D400A64FA0 /* EmailSentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSentViewController.swift; sourceTree = "<group>"; };
 		DA620DF2209561710026E4A5 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		DA620DF4209589620026E4A5 /* ReferralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralViewController.swift; sourceTree = "<group>"; };
+		DA6F829820BB8029005E7862 /* NewCreditCardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCreditCardTableViewController.swift; sourceTree = "<group>"; };
 		DA70A9E52089495F00D3F2C3 /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		DA7E7D58209ABC2100882FCA /* Brewiskey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Brewiskey.entitlements; sourceTree = "<group>"; };
 		DA91AEBB20A8F2C400BEF84B /* LeftLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftLabelCell.xib; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 				DA620DF4209589620026E4A5 /* ReferralViewController.swift */,
 				DA56C62120A1599300DB38A4 /* PromoCodeViewController.swift */,
 				DAD934BC20A2A80900BA6FFD /* PaymentViewController.swift */,
+				DA6F829820BB8029005E7862 /* NewCreditCardTableViewController.swift */,
 				DAD934B920A2A5E400BA6FFD /* UpdateCreditCardViewController.swift */,
 			);
 			path = Settings;
@@ -504,6 +507,7 @@
 				DA620DF3209561710026E4A5 /* ChangePasswordViewController.swift in Sources */,
 				DA2E85DD2043A7B40057C4C6 /* MoreTableViewController.swift in Sources */,
 				DA2C31F4204DC4C400FF6444 /* MarketNavController.swift in Sources */,
+				DA6F829920BB8029005E7862 /* NewCreditCardTableViewController.swift in Sources */,
 				DA620DF5209589620026E4A5 /* ReferralViewController.swift in Sources */,
 				DA056E85203FC7A6007EECAE /* DataModel.swift in Sources */,
 				DA91AEBE20A8F2F500BEF84B /* LeftLabelCell.swift in Sources */,

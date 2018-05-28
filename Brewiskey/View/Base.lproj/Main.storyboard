@@ -560,11 +560,11 @@
             </objects>
             <point key="canvasLocation" x="1124" y="3551.8740629685162"/>
         </scene>
-        <!--Table View Controller-->
+        <!--New Credit Card Table View Controller-->
         <scene sceneID="YEX-bs-1ec">
             <objects>
-                <tableViewController id="Pds-47-qHo" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mHe-Dl-cbI">
+                <tableViewController id="Pds-47-qHo" customClass="NewCreditCardTableViewController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="mHe-Dl-cbI">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -604,13 +604,13 @@
                                                     <rect key="frame" x="16" y="6" width="159" height="38"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" keyboardType="numberPad" smartDashesType="yes"/>
                                                 </textField>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CVC" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QYJ-9b-aJu">
                                                     <rect key="frame" x="200" y="1" width="153" height="42.5"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="numberPad" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                                                 </textField>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e1v-Ms-0iJ" userLabel="line">
                                                     <rect key="frame" x="187" y="0.0" width="0.5" height="44"/>
@@ -646,7 +646,7 @@
                                                     <rect key="frame" x="16" y="1" width="341" height="39"/>
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="postal-code"/>
+                                                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="yes" smartInsertDeleteType="no" smartQuotesType="no" textContentType="postal-code"/>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -692,6 +692,9 @@
                                                     <state key="normal" title="ADD CARD">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="addNewCreditCardTapped:" destination="Pds-47-qHo" eventType="touchUpInside" id="3eY-Yk-nYa"/>
+                                                    </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brewiskey gives you access to alcohol 24/7!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XVl-Kd-BMO">
                                                     <rect key="frame" x="34" y="58" width="317" height="65"/>
@@ -721,6 +724,13 @@
                             <outlet property="delegate" destination="Pds-47-qHo" id="lKQ-IA-ZlW"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="creditCardNumberTextfield" destination="vDP-pV-aws" id="fmo-hJ-zuQ"/>
+                        <outlet property="cvcTextfield" destination="QYJ-9b-aJu" id="eUJ-ui-HwK"/>
+                        <outlet property="expirationDateTextfield" destination="Q3c-dz-NM1" id="5I8-Cc-KQC"/>
+                        <outlet property="nickNameTextfield" destination="T4s-8E-WEE" id="U77-dM-IBp"/>
+                        <outlet property="postalCodeTextfield" destination="xUE-lG-Ipw" id="Z14-kY-zX0"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qj8-Fz-Zs1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
