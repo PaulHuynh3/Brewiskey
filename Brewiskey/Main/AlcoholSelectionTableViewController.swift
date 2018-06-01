@@ -26,24 +26,35 @@ class AlcoholSelectionTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if beerMode == true{
-            let firstBeerOption = "Single Beer " + (beer?.singleCanPrice)! + " " + (beer?.singleCanContent)!
-            let secondBeerOption = "Six Pack Can " + (beer?.sixPackCanPrice)! + " " + (beer?.singleCanContent)! + " x6"
-            
-            beerSelection = [firstBeerOption, secondBeerOption, (beer?.singleBottlePrice)!, (beer?.sixPackBottlePrice)!]
+            if let canPrice = beer?.singleCanPrice, let singleCanContent = beer?.singleCanContent, let sixPackCanPrice = beer?.sixPackCanPrice, let singleBottlePrice = beer?.singleBottlePrice, let sixPackBottlePrice = beer?.sixPackBottlePrice {
+                let firstBeerOption = "Single Beer\(canPrice)\(singleCanContent)"
+                let secondBeerOption = "Six Pack Can\(sixPackCanPrice)\(singleCanContent) x6"
+                beerSelection = [firstBeerOption, secondBeerOption, singleBottlePrice, sixPackBottlePrice] as! [String]
+            }
         }
         if wineMode == true {
             //1 size
-            let firstWineOption = (wine?.bottlePrice)! + " " + (wine?.bottleContent)!
-            wineSelection = [firstWineOption]
+            if let wineBottlePrice = wine?.bottlePrice, let wineBottleContent = wine?.bottleContent {
+                let firstWineOption = "\(wineBottlePrice) \(wineBottleContent)"
+                wineSelection = [firstWineOption]
+            }
         }
         
         if spiritMode == true {
             //3 sizes
-            let firstSpiritOption = (spirit?.smallBottlePrice)! + " " + (spirit?.smallBottleContent)!
-            let secondSpiritOption = (spirit?.mediumBottlePrice)! + " " + (spirit?.mediumBottleContent)!
-            let thirdSpiritOption = (spirit?.largeBottlePrice)! + " " + (spirit?.largeBottleContent)!
+            if let smallBottlePrice = spirit?.smallBottlePrice, let smallBottleContent = spirit?.smallBottleContent {
+                let firstSpiritOption = "\(smallBottlePrice) \(smallBottleContent)"
+                spiritSelection.append(firstSpiritOption)
+            }
+            if let mediumBottlePrice = spirit?.mediumBottlePrice, let mediumBottleContent = spirit?.mediumBottleContent {
+                let secondSpiritOption = "\(mediumBottlePrice) \(mediumBottleContent)"
+                spiritSelection.append(secondSpiritOption)
+            }
+            if let largeBottlePrice = spirit?.largeBottlePrice, let largeBottleContent = spirit?.largeBottleContent {
+                let thirdSpiritOption = "\(largeBottlePrice) \(largeBottleContent)"
+                spiritSelection.append(thirdSpiritOption)
+            }
             
-            spiritSelection = [firstSpiritOption, secondSpiritOption, thirdSpiritOption]
         }
         
         //initialize the array

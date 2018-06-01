@@ -382,7 +382,7 @@
                                             <rect key="frame" x="20" y="11" width="44" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="My account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFr-ce-MH0">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Example" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CFr-ce-MH0">
                                             <rect key="frame" x="16" y="11" width="346" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -409,6 +409,7 @@
                         <segue destination="mbm-el-bSa" kind="show" identifier="promoCodeSegue" id="AoP-Hv-a8Q"/>
                         <segue destination="ZOU-eA-6Uu" kind="show" identifier="paymentSegue" id="b9Z-Gp-JrE"/>
                         <segue destination="ENh-cU-joC" kind="show" identifier="referralSegue" id="aKU-Aq-P3g"/>
+                        <segue destination="qWx-do-iMa" kind="show" identifier="pastOrdersSegue" id="EyC-nk-dsP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fG6-Hc-Hm8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -735,6 +736,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qj8-Fz-Zs1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2117.5999999999999" y="3348.5757121439283"/>
+        </scene>
+        <!--Past Orders Table View Controller-->
+        <scene sceneID="3EH-Jc-Hje">
+            <objects>
+                <tableViewController id="qWx-do-iMa" customClass="PastOrdersTableViewController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="sBn-2m-3i5">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="pFp-HP-5sb">
+                                <rect key="frame" x="0.0" y="28" width="375" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pFp-HP-5sb" id="Hf7-oP-XXc">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="qWx-do-iMa" id="uk7-Ut-ZXr"/>
+                            <outlet property="delegate" destination="qWx-do-iMa" id="b0L-sg-aLD"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wCw-4Z-6Wh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-666" y="3527"/>
         </scene>
         <!--Update Credit Card View Controller-->
         <scene sceneID="ijb-JP-AM3">

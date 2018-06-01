@@ -40,6 +40,9 @@
 		DA9F41D920771B7C0004797B /* OnboardingView3.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F41D820771B7C0004797B /* OnboardingView3.xib */; };
 		DA9F41DB20771B890004797B /* OnboardingView4.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F41DA20771B890004797B /* OnboardingView4.xib */; };
 		DAA23AD22040B08900D481E2 /* MarketTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA23AD12040B08900D481E2 /* MarketTableViewController.swift */; };
+		DAA9C49820C0E9320075F4B3 /* PastOrdersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9C49720C0E9320075F4B3 /* PastOrdersTableViewController.swift */; };
+		DAA9C49A20C0E97D0075F4B3 /* PastOrdersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA9C49920C0E97D0075F4B3 /* PastOrdersCell.swift */; };
+		DAA9C49C20C0E9C30075F4B3 /* PastOrdersCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAA9C49B20C0E9C30075F4B3 /* PastOrdersCell.xib */; };
 		DAB177B120421771009F0B45 /* MarketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB177B020421771009F0B45 /* MarketTableViewCell.swift */; };
 		DAB62860208FDC1B00A5890D /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB6285F208FDC1B00A5890D /* ProfileTableViewController.swift */; };
 		DAB62863209035EC00A5890D /* UserDefaultsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB62862209035EC00A5890D /* UserDefaultsUtils.swift */; };
@@ -97,6 +100,9 @@
 		DA9F41D820771B7C0004797B /* OnboardingView3.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView3.xib; sourceTree = "<group>"; };
 		DA9F41DA20771B890004797B /* OnboardingView4.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView4.xib; sourceTree = "<group>"; };
 		DAA23AD12040B08900D481E2 /* MarketTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketTableViewController.swift; sourceTree = "<group>"; };
+		DAA9C49720C0E9320075F4B3 /* PastOrdersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastOrdersTableViewController.swift; sourceTree = "<group>"; };
+		DAA9C49920C0E97D0075F4B3 /* PastOrdersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastOrdersCell.swift; sourceTree = "<group>"; };
+		DAA9C49B20C0E9C30075F4B3 /* PastOrdersCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PastOrdersCell.xib; sourceTree = "<group>"; };
 		DAB177B020421771009F0B45 /* MarketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketTableViewCell.swift; sourceTree = "<group>"; };
 		DAB6285F208FDC1B00A5890D /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		DAB62862209035EC00A5890D /* UserDefaultsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsUtils.swift; sourceTree = "<group>"; };
@@ -223,6 +229,7 @@
 				DA620DF4209589620026E4A5 /* ReferralViewController.swift */,
 				DA56C62120A1599300DB38A4 /* PromoCodeViewController.swift */,
 				DAD934BC20A2A80900BA6FFD /* PaymentViewController.swift */,
+				DAA9C49720C0E9320075F4B3 /* PastOrdersTableViewController.swift */,
 				DA6F829820BB8029005E7862 /* NewCreditCardTableViewController.swift */,
 				DAD934B920A2A5E400BA6FFD /* UpdateCreditCardViewController.swift */,
 			);
@@ -236,6 +243,8 @@
 				DA91AEBB20A8F2C400BEF84B /* LeftLabelCell.xib */,
 				DA5EF4DF20AA0C4A0070BD5D /* ImageLabelCell.swift */,
 				DA5EF4E120AA0C5F0070BD5D /* ImageLabelCell.xib */,
+				DAA9C49920C0E97D0075F4B3 /* PastOrdersCell.swift */,
+				DAA9C49B20C0E9C30075F4B3 /* PastOrdersCell.xib */,
 			);
 			path = UITableVIewCell;
 			sourceTree = "<group>";
@@ -402,6 +411,7 @@
 				DA13D007203E0A7D0021EB7E /* LaunchScreen.storyboard in Resources */,
 				DA13D004203E0A7D0021EB7E /* Assets.xcassets in Resources */,
 				DA5EF4E220AA0C5F0070BD5D /* ImageLabelCell.xib in Resources */,
+				DAA9C49C20C0E9C30075F4B3 /* PastOrdersCell.xib in Resources */,
 				DA9F41D7207719E00004797B /* OnboardingView2.xib in Resources */,
 				DA9F41D920771B7C0004797B /* OnboardingView3.xib in Resources */,
 				DADC7B75203E17E100F87438 /* Login.storyboard in Resources */,
@@ -506,11 +516,13 @@
 				DAE169FF20769B3B00B21D30 /* BaseOnboardingView.swift in Sources */,
 				DA620DF3209561710026E4A5 /* ChangePasswordViewController.swift in Sources */,
 				DA2E85DD2043A7B40057C4C6 /* MoreTableViewController.swift in Sources */,
+				DAA9C49820C0E9320075F4B3 /* PastOrdersTableViewController.swift in Sources */,
 				DA2C31F4204DC4C400FF6444 /* MarketNavController.swift in Sources */,
 				DA6F829920BB8029005E7862 /* NewCreditCardTableViewController.swift in Sources */,
 				DA620DF5209589620026E4A5 /* ReferralViewController.swift in Sources */,
 				DA056E85203FC7A6007EECAE /* DataModel.swift in Sources */,
 				DA91AEBE20A8F2F500BEF84B /* LeftLabelCell.swift in Sources */,
+				DAA9C49A20C0E97D0075F4B3 /* PastOrdersCell.swift in Sources */,
 				DAD934BD20A2A80900BA6FFD /* PaymentViewController.swift in Sources */,
 				DA2E85E22043C8110057C4C6 /* Extensions.swift in Sources */,
 				DA056E88203FC982007EECAE /* ForgotPasswordViewController.swift in Sources */,

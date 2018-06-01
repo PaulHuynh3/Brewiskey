@@ -57,6 +57,9 @@ class SettingsTableViewController: UITableViewController {
     fileprivate func navigateToPromoCode() {
         performSegue(withIdentifier: "promoCodeSegue", sender: nil)
     }
+    fileprivate func navigateToPastOrders() {
+        performSegue(withIdentifier: "pastOrdersSegue", sender: nil)
+    }
     
     fileprivate func navigateToPayment() {
         performSegue(withIdentifier: "paymentSegue", sender: nil)
@@ -162,7 +165,7 @@ class SettingsTableViewController: UITableViewController {
         case 0: navigateToMyAccount()
         case 1: navigateToReferFriend()
         case 2: navigateToPromoCode()
-        case 3: print("past orders")
+        case 3: navigateToPastOrders()
         case 4: navigateToPayment()
         case 5: webPortalHelpPage()
         case 6: handleLogout()

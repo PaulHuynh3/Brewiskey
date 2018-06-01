@@ -76,18 +76,18 @@ class FirebaseAPI: NSObject {
                 beer.percent = dictionary["alcoholPercent"] as? String
                 
                 if let singleCan = dictionary["singleCan"] as? NSDictionary{
-                beer.singleCanPrice = singleCan["price"] as? String
-                beer.singleCanContent = singleCan["content"] as? String
+                beer.singleCanPrice = singleCan["price"] as? Double
+                beer.singleCanContent = singleCan["content"] as? Double
                 }
                 if let singleBottle = dictionary["singleBottle"] as? NSDictionary{
-                beer.singleBottlePrice = singleBottle["price"] as? String
-                beer.singleBottleContent = singleBottle["content"] as? String
+                beer.singleBottlePrice = singleBottle["price"] as? Double
+                beer.singleBottleContent = singleBottle["content"] as? Double
                 }
                 if let sickPackCan = dictionary["sixPackCan"] as? NSDictionary{
-                beer.sixPackCanPrice = sickPackCan["price"] as? String
+                beer.sixPackCanPrice = sickPackCan["price"] as? Double
                 }
                 if let sixPackBottle = dictionary["sixPackBottle"] as? NSDictionary{
-                beer.sixPackBottlePrice = sixPackBottle["price"] as? String
+                beer.sixPackBottlePrice = sixPackBottle["price"] as? Double
                 }
                 completion(beer)
             }
@@ -105,16 +105,16 @@ class FirebaseAPI: NSObject {
                 spirit.country = dictionary["country"] as? String
                 
                 if let largeBottleDict = dictionary["1140Bottle"] as? NSDictionary{
-                    spirit.largeBottlePrice = largeBottleDict["price"] as? String
-                    spirit.largeBottleContent = largeBottleDict["content"] as? String
+                    spirit.largeBottlePrice = largeBottleDict["price"] as? Double
+                    spirit.largeBottleContent = largeBottleDict["content"] as? Double
                 }
                 if let mediumBottleDict = dictionary["750Bottle"] as? NSDictionary {
-                    spirit.mediumBottlePrice = mediumBottleDict["price"] as? String
-                    spirit.mediumBottleContent = mediumBottleDict["content"] as? String
+                    spirit.mediumBottlePrice = mediumBottleDict["price"] as? Double
+                    spirit.mediumBottleContent = mediumBottleDict["content"] as? Double
                 }
                 if let smallBottleDict = dictionary["375Bottle"] as? NSDictionary{
-                    spirit.smallBottlePrice = smallBottleDict["price"] as? String
-                    spirit.smallBottleContent = smallBottleDict["content"] as? String
+                    spirit.smallBottlePrice = smallBottleDict["price"] as? Double
+                    spirit.smallBottleContent = smallBottleDict["content"] as? Double
                 }
                 completion(spirit)
             }
@@ -132,8 +132,8 @@ class FirebaseAPI: NSObject {
                 wine.percent = dictionary["alcoholPercent"] as? String
                 
                 if let mediumBottleDict = dictionary["750Bottle"] as? NSDictionary{
-                    wine.bottlePrice = mediumBottleDict["price"] as? String
-                    wine.bottleContent = mediumBottleDict["content"] as? String
+                    wine.bottlePrice = mediumBottleDict["price"] as? Double
+                    wine.bottleContent = mediumBottleDict["content"] as? Double
                 }
                 completion(wine)
             }
