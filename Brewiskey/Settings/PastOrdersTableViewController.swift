@@ -44,7 +44,6 @@ class PastOrdersTableViewController: UITableViewController {
     
     fileprivate func totalSpiritPrice(indexPath: IndexPath) -> Double {
         var totalSpiritPrice = 0.00
-        
         if let smallSpiritPrice = alcohols[indexPath.row].spirit.smallBottlePrice {
             totalSpiritPrice = smallSpiritPrice
         }
@@ -54,17 +53,14 @@ class PastOrdersTableViewController: UITableViewController {
         if let largeSpiritPrice = alcohols[indexPath.row].spirit.largeBottlePrice {
             totalSpiritPrice = totalSpiritPrice + largeSpiritPrice
         }
-        
         return totalSpiritPrice
     }
     
     fileprivate func totalWinePrice(indexPath: IndexPath) -> Double {
         var totalWinePrice = 0.00
-        
         if let winePrice = alcohols[indexPath.row].wine.bottlePrice {
             totalWinePrice = winePrice
         }
-        
         return totalWinePrice
     }
 
@@ -73,35 +69,23 @@ class PastOrdersTableViewController: UITableViewController {
 extension PastOrdersTableViewController {
     
     override func numberOfSections(in tableView: UITableView) -> Int {
-        
         return 1
     }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return alcohols.count
     }
-    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: customCellIdentifier, for: indexPath) as! PastOrdersCell
-        
         let purchasedDate = alcohols[indexPath.row].purchasedDate
-        
         let totalAlcoholPrice = totalBeerPrice(indexPath: indexPath) + totalSpiritPrice(indexPath: indexPath) + totalWinePrice(indexPath: indexPath)
-        
         let image = #imageLiteral(resourceName: "partyHard")
-        
         cell.alcoholImage.image = image
         cell.dateLabel.text = purchasedDate
         cell.priceLabel.text = "$\(totalAlcoholPrice)"
-        
         return cell
     }
-    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let height: CGFloat = 100
-        
         return height
     }
     
