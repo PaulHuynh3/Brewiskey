@@ -78,16 +78,20 @@ class FirebaseAPI: NSObject {
                 if let singleCan = dictionary["singleCan"] as? NSDictionary{
                 beer.singleCanPrice = singleCan["price"] as? Double
                 beer.singleCanContent = singleCan["content"] as? Double
+                beer.singleCanImageUrl = singleCan["imageUrl"] as? String
                 }
                 if let singleBottle = dictionary["singleBottle"] as? NSDictionary{
                 beer.singleBottlePrice = singleBottle["price"] as? Double
                 beer.singleBottleContent = singleBottle["content"] as? Double
+                beer.singleBottleImageUrl = singleBottle["imageUrl"] as? String
                 }
                 if let sickPackCan = dictionary["sixPackCan"] as? NSDictionary{
                 beer.sixPackCanPrice = sickPackCan["price"] as? Double
+                beer.sixPackCanImageUrl = sickPackCan["imageUrl"] as? String
                 }
                 if let sixPackBottle = dictionary["sixPackBottle"] as? NSDictionary{
                 beer.sixPackBottlePrice = sixPackBottle["price"] as? Double
+                beer.sixPackBottleImageUrl = sixPackBottle["imageUrl"] as? String
                 }
                 completion(beer)
             }

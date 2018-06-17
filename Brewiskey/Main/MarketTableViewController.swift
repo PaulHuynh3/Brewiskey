@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import Firebase
 
-
 class MarketTableViewController: UITableViewController {
     var uid: String?
     var beers = NSMutableArray()
@@ -35,7 +34,7 @@ class MarketTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     }
     
-    func fetchAlcoholBrandsAndSetupTableview() {
+    fileprivate func fetchAlcoholBrandsAndSetupTableview() {
         FirebaseAPI.fetchAllBeerBrandAndImages{ [weak self] (beer) in
             self?.beers.add(beer)
             
@@ -59,14 +58,13 @@ class MarketTableViewController: UITableViewController {
         }
     }
     
-    func checkIfUserIsLoggedIn(){
+    fileprivate func checkIfUserIsLoggedIn(){
         if Auth.auth().currentUser?.uid == nil {
          handleLogout()
         }
-        
     }
     
-    func handleLogout() {
+    fileprivate func handleLogout() {
         do {
             try Auth.auth().signOut()
         } catch let logoutError {
@@ -82,7 +80,6 @@ class MarketTableViewController: UITableViewController {
     
     // MARK: - Tableview data source
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
     
@@ -139,14 +136,11 @@ class MarketTableViewController: UITableViewController {
            print("Spirit object selected")
             
         }
-        
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
         if segue.identifier == "beerDetailedViewSegue"{
-            let detailedTableView = segue.destination as? DetailedTableViewController
+            let detailedTableView = segue.destination as? DetailedViewController
             //the sender was set in indexpath.
             let beer = sender as? Beer
             detailedTableView?.beer = beer
@@ -154,23 +148,19 @@ class MarketTableViewController: UITableViewController {
         }
         
         if segue.identifier == "wineDetailedViewSegue"{
-            let detailedTableView = segue.destination as? DetailedTableViewController
+            let detailedTableView = segue.destination as? DetailedViewController
             let wine = sender as? Wine
             detailedTableView?.wine = wine
             detailedTableView?.wineMode = true
         }
         
         if segue.identifier == "spiritDetailedViewSegue"{
-            let detailedTableView = segue.destination as? DetailedTableViewController
+            let detailedTableView = segue.destination as? DetailedViewController
             let spirit = sender as? Spirit
             detailedTableView?.spirit = spirit
             detailedTableView?.spiritMode = true
         }
         
     }
-    
 
 }
-
-
-

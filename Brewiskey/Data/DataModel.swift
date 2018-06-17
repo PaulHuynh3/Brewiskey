@@ -86,11 +86,15 @@ class Beer {
     
     var singleCanPrice: Double?
     var singleCanContent: Double?
+    var singleCanImageUrl: String?
     
     var singleBottlePrice: Double?
     var singleBottleContent: Double?
+    var singleBottleImageUrl: String?
     
     var sixPackCanPrice: Double?
-    var sixPackBottlePrice: Double?
+    var sixPackCanImageUrl: String?
     
+    var sixPackBottlePrice: Double?
+    var sixPackBottleImageUrl: String?
 }

@@ -8,3 +8,7 @@
 
 import UIKit
 
+class MarketPlaceCollectionViewCell: UICollectionViewCell {
+    
+    
+}

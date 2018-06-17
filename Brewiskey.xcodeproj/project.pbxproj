@@ -21,12 +21,13 @@
 		DA2E85DD2043A7B40057C4C6 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E85DC2043A7B40057C4C6 /* MoreTableViewController.swift */; };
 		DA2E85DF2043C62E0057C4C6 /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E85DE2043C62E0057C4C6 /* FirebaseAPI.swift */; };
 		DA2E85E22043C8110057C4C6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E85E12043C8110057C4C6 /* Extensions.swift */; };
-		DA2E916420487F9F00AF0247 /* DetailedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E916320487F9F00AF0247 /* DetailedTableViewController.swift */; };
+		DA2E916420487F9F00AF0247 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E916320487F9F00AF0247 /* DetailedViewController.swift */; };
 		DA2E91662048FF7900AF0247 /* AlcoholSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E91652048FF7900AF0247 /* AlcoholSelectionTableViewController.swift */; };
 		DA389A7C20774763009F3CE8 /* OnboardingCheckUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA389A7B20774763009F3CE8 /* OnboardingCheckUtils.swift */; };
 		DA56C62220A1599300DB38A4 /* PromoCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA56C62120A1599300DB38A4 /* PromoCodeViewController.swift */; };
 		DA57BD4820D0BF2600C1CAAF /* MarketPlaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA57BD4720D0BF2600C1CAAF /* MarketPlaceCollectionViewCell.swift */; };
 		DA57BD4A20D0BF4500C1CAAF /* MarketPlaceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA57BD4920D0BF4500C1CAAF /* MarketPlaceCollectionViewCell.xib */; };
+		DA57BD4C20D0C06E00C1CAAF /* MarketPlaceCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA57BD4B20D0C06E00C1CAAF /* MarketPlaceCollectionViewController.swift */; };
 		DA5EF4E020AA0C4A0070BD5D /* ImageLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5EF4DF20AA0C4A0070BD5D /* ImageLabelCell.swift */; };
 		DA5EF4E220AA0C5F0070BD5D /* ImageLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA5EF4E120AA0C5F0070BD5D /* ImageLabelCell.xib */; };
 		DA5F352C2077C46100A64FA0 /* FacebookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F352B2077C46100A64FA0 /* FacebookAPI.swift */; };
@@ -82,12 +83,13 @@
 		DA2E85DC2043A7B40057C4C6 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		DA2E85DE2043C62E0057C4C6 /* FirebaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
 		DA2E85E12043C8110057C4C6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		DA2E916320487F9F00AF0247 /* DetailedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTableViewController.swift; sourceTree = "<group>"; };
+		DA2E916320487F9F00AF0247 /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
 		DA2E91652048FF7900AF0247 /* AlcoholSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlcoholSelectionTableViewController.swift; sourceTree = "<group>"; };
 		DA389A7B20774763009F3CE8 /* OnboardingCheckUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCheckUtils.swift; sourceTree = "<group>"; };
 		DA56C62120A1599300DB38A4 /* PromoCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoCodeViewController.swift; sourceTree = "<group>"; };
 		DA57BD4720D0BF2600C1CAAF /* MarketPlaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaceCollectionViewCell.swift; sourceTree = "<group>"; };
 		DA57BD4920D0BF4500C1CAAF /* MarketPlaceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketPlaceCollectionViewCell.xib; sourceTree = "<group>"; };
+		DA57BD4B20D0C06E00C1CAAF /* MarketPlaceCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaceCollectionViewController.swift; sourceTree = "<group>"; };
 		DA5EF4DF20AA0C4A0070BD5D /* ImageLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelCell.swift; sourceTree = "<group>"; };
 		DA5EF4E120AA0C5F0070BD5D /* ImageLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageLabelCell.xib; sourceTree = "<group>"; };
 		DA5F352B2077C46100A64FA0 /* FacebookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAPI.swift; sourceTree = "<group>"; };
@@ -312,10 +314,11 @@
 		DADC7B73203E179600F87438 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				DA57BD4B20D0C06E00C1CAAF /* MarketPlaceCollectionViewController.swift */,
 				DA2C31F3204DC4C400FF6444 /* MarketNavController.swift */,
 				DAA23AD12040B08900D481E2 /* MarketTableViewController.swift */,
 				DAB177B020421771009F0B45 /* MarketTableViewCell.swift */,
-				DA2E916320487F9F00AF0247 /* DetailedTableViewController.swift */,
+				DA2E916320487F9F00AF0247 /* DetailedViewController.swift */,
 				DA2E91652048FF7900AF0247 /* AlcoholSelectionTableViewController.swift */,
 				DA2C31F5204E313A00FF6444 /* ShoppingCartContainerViewController.swift */,
 				DA2E85DC2043A7B40057C4C6 /* MoreTableViewController.swift */,
@@ -521,6 +524,7 @@
 				DA5EF4E020AA0C4A0070BD5D /* ImageLabelCell.swift in Sources */,
 				DA70A9E62089495F00D3F2C3 /* EditProfileTableViewController.swift in Sources */,
 				DAE169FF20769B3B00B21D30 /* BaseOnboardingView.swift in Sources */,
+				DA57BD4C20D0C06E00C1CAAF /* MarketPlaceCollectionViewController.swift in Sources */,
 				DA620DF3209561710026E4A5 /* ChangePasswordViewController.swift in Sources */,
 				DA2E85DD2043A7B40057C4C6 /* MoreTableViewController.swift in Sources */,
 				DAA9C49820C0E9320075F4B3 /* PastOrdersTableViewController.swift in Sources */,
@@ -540,7 +544,7 @@
 				DA2C31F6204E313A00FF6444 /* ShoppingCartContainerViewController.swift in Sources */,
 				DA57BD4820D0BF2600C1CAAF /* MarketPlaceCollectionViewCell.swift in Sources */,
 				DA13CFFF203E0A7D0021EB7E /* LoginViewController.swift in Sources */,
-				DA2E916420487F9F00AF0247 /* DetailedTableViewController.swift in Sources */,
+				DA2E916420487F9F00AF0247 /* DetailedViewController.swift in Sources */,
 				DA389A7C20774763009F3CE8 /* OnboardingCheckUtils.swift in Sources */,
 				DA13CFFD203E0A7D0021EB7E /* AppDelegate.swift in Sources */,
 				DAD28C6820859E8100D5037D /* SettingsTableViewController.swift in Sources */,
