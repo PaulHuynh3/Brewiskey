@@ -93,7 +93,9 @@ class FirebaseAPI: NSObject {
                 beer.sixPackBottlePrice = sixPackBottle["price"] as? Double
                 beer.sixPackBottleImageUrl = sixPackBottle["imageUrl"] as? String
                 }
-                completion(beer)
+                DispatchQueue.main.async {
+                   completion(beer)
+                }
             }
         }, withCancel: nil)
     }
@@ -120,7 +122,9 @@ class FirebaseAPI: NSObject {
                     spirit.smallBottlePrice = smallBottleDict["price"] as? Double
                     spirit.smallBottleContent = smallBottleDict["content"] as? Double
                 }
-                completion(spirit)
+                DispatchQueue.main.async {
+                    completion(spirit)
+                }
             }
         }, withCancel: nil)
     }
@@ -139,7 +143,9 @@ class FirebaseAPI: NSObject {
                     wine.bottlePrice = mediumBottleDict["price"] as? Double
                     wine.bottleContent = mediumBottleDict["content"] as? Double
                 }
-                completion(wine)
+                DispatchQueue.main.async {
+                    completion(wine)
+                }
             }
         }, withCancel: nil)
     }
