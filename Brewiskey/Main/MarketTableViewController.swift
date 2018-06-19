@@ -19,7 +19,8 @@ class MarketTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
-        fetchAlcoholBrandsAndSetupTableview()
+        fetchAlcoholProducts()
+        tableView.isScrollEnabled = true
         UserDefaults.standard.set(false, forKey: kUserInfo.kNewUser)
     }
 
@@ -34,26 +35,50 @@ class MarketTableViewController: UITableViewController {
         self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
     }
     
-    fileprivate func fetchAlcoholBrandsAndSetupTableview() {
-        FirebaseAPI.fetchAllBeerBrandAndImages{ [weak self] (beer) in
-            self?.beers.add(beer)
-            
+    fileprivate func fetchAllBeerProducts(completion:@escaping (Bool) -> Void) {
+        FirebaseAPI().fetchAllBeerBrandAndImages{ [weak self] (beer) in
             DispatchQueue.main.async {
-                self?.tableView.reloadData()
+                self?.beers.add(beer)
+                completion(true)
             }
         }
-        FirebaseAPI.fetchAllWineBrandAndImages { [weak self] (wine) in
-            self?.wines.add(wine)
-            
+    }
+    fileprivate func fetchAllWineProducts(completion:@escaping (Bool) -> Void) {
+        FirebaseAPI().fetchAllWineBrandAndImages { [weak self] (wine) in
             DispatchQueue.main.async {
-                self?.tableView.reloadData()
+                self?.wines.add(wine)
+                completion(true)
             }
         }
-        FirebaseAPI.fetchAllSpiritBrandAndImages { [weak self] (spirit) in
-            self?.spirits.add(spirit)
-            
+    }
+    fileprivate func fetchAllSpiritProducts(completion:@escaping (Bool) -> Void) {
+        FirebaseAPI().fetchAllSpiritBrandAndImages { [weak self] (spirit) in
             DispatchQueue.main.async {
-                self?.tableView.reloadData()
+                self?.spirits.add(spirit)
+                completion(true)
+            }
+        }
+    }
+    fileprivate func fetchAlcoholProducts() {
+        fetchAllBeerProducts { (isFinish: Bool) in
+            DispatchQueue.main.async {
+                if isFinish {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        fetchAllSpiritProducts { (isFinish) in
+            DispatchQueue.main.async {
+                if isFinish {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+        fetchAllWineProducts { (isFinish) in
+            DispatchQueue.main.async {
+                if isFinish {
+                    self.tableView.reloadData()
+                }
             }
         }
     }

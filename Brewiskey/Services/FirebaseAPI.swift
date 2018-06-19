@@ -64,7 +64,7 @@ class FirebaseAPI: NSObject {
             
         }, withCancel: nil)
     }
-    class func fetchAllBeerBrandAndImages(completion:@escaping (_ beer: Beer) -> Void){
+    func fetchAllBeerBrandAndImages(completion:@escaping (_ beer: Beer) -> Void){
         //put this network call into a for loop statement so it doesnt need to constantly reload the table?
         Database.database().reference().child("beers").observe(.childAdded, with: { (snapshot) in
             
@@ -94,12 +94,12 @@ class FirebaseAPI: NSObject {
                 beer.sixPackBottleImageUrl = sixPackBottle["imageUrl"] as? String
                 }
                 DispatchQueue.main.async {
-                   completion(beer)
+                    completion(beer)
                 }
             }
         }, withCancel: nil)
     }
-    class func fetchAllSpiritBrandAndImages(completion:@escaping (_ spirit: Spirit) -> Void){
+    func fetchAllSpiritBrandAndImages(completion:@escaping (_ spirit: Spirit) -> Void){
         
         Database.database().reference().child("spirits").observe(.childAdded, with: { (snapshot) in
             
@@ -128,7 +128,7 @@ class FirebaseAPI: NSObject {
             }
         }, withCancel: nil)
     }
-    class func fetchAllWineBrandAndImages(completion:@escaping (_ wine: Wine) -> Void){
+    func fetchAllWineBrandAndImages(completion:@escaping (_ wine: Wine) -> Void){
         
         Database.database().reference().child("wines").observe(.childAdded, with: { (snapshot) in
             
@@ -150,7 +150,7 @@ class FirebaseAPI: NSObject {
         }, withCancel: nil)
     }
     
-    class func loadImageFromUrl(url: URL, completion: @escaping (UIImage) -> Void) {
+    func loadImageFromUrl(url: URL, completion: @escaping (UIImage) -> Void) {
         let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             
             if let error = error {
