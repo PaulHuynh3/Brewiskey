@@ -173,18 +173,4 @@ class AlcoholSelectionTableViewController: UITableViewController {
         }
   
   }
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "shoppingCartSegue"{
-            let shoppingCartViewController = segue.destination as! ShoppingCartContainerViewController
-            //setting the variable as this view controller so it wont be nil when called in shoppingcartvc.
-            shoppingCartViewController.alcoholSelectionTableView = self
-            
-        }
-        
-    }
-    
-    
-    
 }

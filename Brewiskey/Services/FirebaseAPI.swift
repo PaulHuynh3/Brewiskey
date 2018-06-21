@@ -66,32 +66,47 @@ class FirebaseAPI: NSObject {
     }
     func fetchAllBeerBrandAndImages(completion:@escaping (_ beer: Beer) -> Void){
         //put this network call into a for loop statement so it doesnt need to constantly reload the table?
+        let beerName = "name"
+        let imageUrl = "imageUrl"
+        let country = "country"
+        let alcoholPercent = "alcoholPercent"
+        let singleCan = "singleCan"
+        let singleBottle = "singleBottle"
+        let sixPackCan = "sixPackCan"
+        let sixPackBottle = "sixPackBottle"
+        let price = "price"
+        let content = "content"
+        let type = "type"
         Database.database().reference().child("beers").observe(.childAdded, with: { (snapshot) in
             
             if let dictionary = snapshot.value as? [String:AnyObject]{
                 let beer = Beer()
-                beer.name = dictionary["name"] as? String
-                beer.imageUrl = dictionary["imageUrl"] as? String
-                beer.country = dictionary["country"] as? String
-                beer.percent = dictionary["alcoholPercent"] as? String
+                beer.name = dictionary[beerName] as? String
+                beer.imageUrl = dictionary[imageUrl] as? String
+                beer.country = dictionary[country] as? String
+                beer.percent = dictionary[alcoholPercent] as? String
                 
-                if let singleCan = dictionary["singleCan"] as? NSDictionary{
-                beer.singleCanPrice = singleCan["price"] as? Double
-                beer.singleCanContent = singleCan["content"] as? Double
-                beer.singleCanImageUrl = singleCan["imageUrl"] as? String
+                if let singleCan = dictionary[singleCan] as? NSDictionary{
+                    beer.singleCanPrice = singleCan[price] as? String
+                    beer.singleCanContent = singleCan[content] as? String
+                    beer.singleCanImageUrl = singleCan[imageUrl] as? String
+                    beer.singleCanType = singleCan[type] as? String
                 }
-                if let singleBottle = dictionary["singleBottle"] as? NSDictionary{
-                beer.singleBottlePrice = singleBottle["price"] as? Double
-                beer.singleBottleContent = singleBottle["content"] as? Double
-                beer.singleBottleImageUrl = singleBottle["imageUrl"] as? String
+                if let singleBottle = dictionary[singleBottle] as? NSDictionary{
+                    beer.singleBottlePrice = singleBottle[price] as? String
+                    beer.singleBottleContent = singleBottle[content] as? String
+                    beer.singleBottleImageUrl = singleBottle[imageUrl] as? String
+                    beer.singleBottleType = singleBottle[type] as? String
                 }
-                if let sickPackCan = dictionary["sixPackCan"] as? NSDictionary{
-                beer.sixPackCanPrice = sickPackCan["price"] as? Double
-                beer.sixPackCanImageUrl = sickPackCan["imageUrl"] as? String
+                if let sixPackCan = dictionary[sixPackCan] as? NSDictionary{
+                    beer.sixPackCanPrice = sixPackCan[price] as? String
+                    beer.sixPackCanImageUrl = sixPackCan[imageUrl] as? String
+                    beer.sixPackCanType = sixPackCan[type] as? String
                 }
-                if let sixPackBottle = dictionary["sixPackBottle"] as? NSDictionary{
-                beer.sixPackBottlePrice = sixPackBottle["price"] as? Double
-                beer.sixPackBottleImageUrl = sixPackBottle["imageUrl"] as? String
+                if let sixPackBottle = dictionary[sixPackBottle] as? NSDictionary{
+                    beer.sixPackBottlePrice = sixPackBottle[price] as? String
+                    beer.sixPackBottleImageUrl = sixPackBottle[imageUrl] as? String
+                    beer.sixPackBottleType = sixPackBottle[type] as? String
                 }
                 DispatchQueue.main.async {
                     completion(beer)

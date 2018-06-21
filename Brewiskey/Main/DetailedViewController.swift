@@ -16,14 +16,15 @@ class DetailedViewController: UIViewController {
     var beer: Beer?
     var wine: Wine?
     var spirit: Spirit?
-    
+    fileprivate var headerLabel: UILabel!
+    fileprivate var footerLabel: UILabel!
     @IBOutlet weak var alcoholNameLabel: UILabel!
-    
     @IBOutlet weak var selectionOneImageview: UIImageView!
     @IBOutlet weak var selectionTwoImageview: UIImageView!
     @IBOutlet weak var selectionThreeImageview: UIImageView!
     @IBOutlet weak var selectionFourImageview: UIImageView!
     fileprivate var isFullScreen = false
+    let lightBlue = UIColor(red: 138.0/255.0, green: 241.0/255.0, blue: 255.0/255.0, alpha: 1)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,7 +33,7 @@ class DetailedViewController: UIViewController {
     }
     
     fileprivate func configureAndSetUpName() {
-        if beerMode == true{
+        if beerMode == true {
            configureBeerMode()
         }
         else if wineMode == true {
@@ -63,6 +64,81 @@ class DetailedViewController: UIViewController {
 }
 
 extension DetailedViewController {
+    //specific setup for selections
+    fileprivate func setupTypeLabelSelectionOne() {
+        if beerMode && isFullScreen {
+            if let beerType = beer?.singleBottleType {
+                let bottlePriceWidth: CGFloat = 100
+                let bottlePriceHeight: CGFloat = 100
+                let xPosition = headerLabel.frame.midX
+                let yPosition = headerLabel.frame.minY
+                let beerTypeLabel = UILabel(frame: CGRect(x: xPosition, y: yPosition, width: bottlePriceWidth, height: bottlePriceHeight))
+                beerTypeLabel.center = headerLabel.center
+                beerTypeLabel.text = beerType
+                headerLabel.addSubview(beerTypeLabel)
+            }
+        }
+    }
+
+}
+
+extension DetailedViewController {
+    //setup for all selections
+    fileprivate func setupHeaderLabel(_ selectionImageview: UIImageView) {
+        if isFullScreen {
+            let labelWidth = selectionImageview.frame.width
+            let labelHeight: CGFloat = 60
+            let xPosition = selectionImageview.frame.minX
+            let yPosition = selectionImageview.frame.minY
+     
+            headerLabel = UILabel(frame: CGRect(x: xPosition, y: yPosition, width: labelWidth, height: labelHeight))
+            headerLabel.backgroundColor = .white
+            selectionImageview.addSubview(headerLabel)
+        }
+    }
+    
+    fileprivate func setupFooterLabel(_ selectionImageview: UIImageView) {
+        if isFullScreen {
+            let labelWidth = selectionImageview.frame.width
+            let labelHeight: CGFloat = 70
+            let xPosition = selectionImageview.frame.minX
+            let yPosition = selectionImageview.frame.maxY - labelHeight
+            footerLabel = UILabel(frame: CGRect(x: xPosition, y: yPosition, width: labelWidth, height: labelHeight))
+            footerLabel.backgroundColor = lightBlue
+            selectionImageview.addSubview(footerLabel)
+        }
+    }
+    
+    fileprivate func setupCheckoutButton(_ selectionImageview: UIImageView) {
+        if isFullScreen {
+            let checkoutButtonWidth: CGFloat = 100
+            let checkoutButtonHeight: CGFloat = 100
+            let xPosition = headerLabel.frame.width - checkoutButtonWidth
+            let yPosition: CGFloat = 0
+            let checkoutButton = UIButton(frame: CGRect(x: xPosition, y: yPosition, width: checkoutButtonWidth, height: checkoutButtonHeight))
+            checkoutButton.imageView?.image = #imageLiteral(resourceName: "partyHard")
+            
+            headerLabel.addSubview(checkoutButton)
+        }
+    }
+}
+
+extension DetailedViewController {
+    
+    fileprivate func isFullScreen(hideImageview: UIImageView, hideImageviewOne: UIImageView, hideImageviewTwo: UIImageView) -> Bool {
+        if !isFullScreen {
+            tabBarController?.tabBar.isHidden = true
+            navigationController?.navigationBar.isHidden = true
+            isFullScreen = true
+            hideImageview.isHidden = true
+            hideImageviewOne.isHidden = true
+            hideImageviewTwo.isHidden = true
+            return isFullScreen
+        } else {
+            isFullScreen = false
+            return isFullScreen
+        }
+    }
     
     fileprivate func setupTapGesture() {
         let selectionOneTapped = UITapGestureRecognizer(target: self, action: #selector(selectionOneSelected))
@@ -83,54 +159,55 @@ extension DetailedViewController {
     }
     
     @objc fileprivate func selectionOneSelected() {
-        if !isFullScreen {
+        if isFullScreen(hideImageview: selectionTwoImageview, hideImageviewOne: selectionThreeImageview, hideImageviewTwo: selectionFourImageview) {
             image(selectedImageview: selectionOneImageview)
-            selectionTwoImageview.isHidden = true
-            selectionThreeImageview.isHidden = true
-            selectionFourImageview.isHidden = true
-            isFullScreen = true
+            setupFooterLabel(selectionOneImageview)
+            setupHeaderLabel(selectionOneImageview)
+            setupTypeLabelSelectionOne()
+            setupCheckoutButton(selectionOneImageview)
         } else {
+            tabBarController?.tabBar.isHidden = false
+            navigationController?.navigationBar.isHidden = false
             dismissSelectionOneFullImage()
-            isFullScreen = false
         }
     }
     
     @objc fileprivate func selectionTwoSelected() {
-        if !isFullScreen {
+        if isFullScreen(hideImageview: selectionOneImageview, hideImageviewOne: selectionThreeImageview, hideImageviewTwo: selectionFourImageview) {
             image(selectedImageview: selectionTwoImageview)
-            selectionOneImageview.isHidden = true
-            selectionThreeImageview.isHidden = true
-            selectionFourImageview.isHidden = true
-            isFullScreen = true
+            setupFooterLabel(selectionTwoImageview)
+            setupHeaderLabel(selectionTwoImageview)
+            
         } else {
+            tabBarController?.tabBar.isHidden = false
+            navigationController?.navigationBar.isHidden = false
             dismissSelectionTwoFullImage()
-            isFullScreen = false
         }
     }
     
     @objc fileprivate func selectionThreeSelected() {
-        if !isFullScreen {
+        if isFullScreen(hideImageview: selectionOneImageview, hideImageviewOne: selectionTwoImageview, hideImageviewTwo: selectionFourImageview) {
             image(selectedImageview: selectionThreeImageview)
-            selectionOneImageview.isHidden = true
-            selectionTwoImageview.isHidden = true
-            selectionFourImageview.isHidden = true
-            isFullScreen = true
+            setupFooterLabel(selectionThreeImageview)
+            setupHeaderLabel(selectionThreeImageview)
+            
         } else {
+            tabBarController?.tabBar.isHidden = false
+            navigationController?.navigationBar.isHidden = false
             dismissSelectionThreeFullImage()
-            isFullScreen = false
         }
     }
     
     @objc fileprivate func selectionFourSelected() {
-        if !isFullScreen {
+        if isFullScreen(hideImageview: selectionOneImageview, hideImageviewOne: selectionTwoImageview, hideImageviewTwo: selectionThreeImageview) {
             image(selectedImageview: selectionFourImageview)
-            selectionOneImageview.isHidden = true
-            selectionTwoImageview.isHidden = true
-            selectionThreeImageview.isHidden = true
-            isFullScreen = true
+            setupFooterLabel(selectionFourImageview)
+            setupHeaderLabel(selectionFourImageview)
+            
         } else {
+            tabBarController?.tabBar.isHidden = false
+            navigationController?.navigationBar.isHidden = false
             dismissSelectionFourFullImage()
-            isFullScreen = false
         }
     }
     
@@ -148,6 +225,8 @@ extension DetailedViewController {
         selectionTwoImageview.isHidden = false
         selectionThreeImageview.isHidden = false
         selectionFourImageview.isHidden = false
+        headerLabel.isHidden = true
+        footerLabel.isHidden = true
     }
     fileprivate func dismissSelectionTwoFullImage() {
         selectionTwoImageview.frame.origin.x = 191
@@ -157,6 +236,8 @@ extension DetailedViewController {
         selectionOneImageview.isHidden = false
         selectionThreeImageview.isHidden = false
         selectionFourImageview.isHidden = false
+        headerLabel.isHidden = true
+        footerLabel.isHidden = true
     }
     fileprivate func dismissSelectionThreeFullImage() {
         selectionThreeImageview.frame.origin.x = 9
@@ -166,6 +247,8 @@ extension DetailedViewController {
         selectionOneImageview.isHidden = false
         selectionTwoImageview.isHidden = false
         selectionFourImageview.isHidden = false
+        headerLabel.isHidden = true
+        footerLabel.isHidden = true
     }
     fileprivate func dismissSelectionFourFullImage() {
         selectionFourImageview.frame.origin.x = 191
@@ -175,5 +258,7 @@ extension DetailedViewController {
         selectionOneImageview.isHidden = false
         selectionTwoImageview.isHidden = false
         selectionThreeImageview.isHidden = false
+        headerLabel.isHidden = true
+        footerLabel.isHidden = true
     }
 }

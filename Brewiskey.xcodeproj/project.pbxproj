@@ -16,9 +16,8 @@
 		DA13D002203E0A7D0021EB7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA13D000203E0A7D0021EB7E /* Main.storyboard */; };
 		DA13D004203E0A7D0021EB7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA13D003203E0A7D0021EB7E /* Assets.xcassets */; };
 		DA13D007203E0A7D0021EB7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DA13D005203E0A7D0021EB7E /* LaunchScreen.storyboard */; };
+		DA21EBB220DBF3DB004D4DEB /* SelectionOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA21EBB120DBF3DB004D4DEB /* SelectionOneViewController.swift */; };
 		DA2C31F4204DC4C400FF6444 /* MarketNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C31F3204DC4C400FF6444 /* MarketNavController.swift */; };
-		DA2C31F6204E313A00FF6444 /* ShoppingCartContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2C31F5204E313A00FF6444 /* ShoppingCartContainerViewController.swift */; };
-		DA2E85DD2043A7B40057C4C6 /* MoreTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E85DC2043A7B40057C4C6 /* MoreTableViewController.swift */; };
 		DA2E85DF2043C62E0057C4C6 /* FirebaseAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E85DE2043C62E0057C4C6 /* FirebaseAPI.swift */; };
 		DA2E85E22043C8110057C4C6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E85E12043C8110057C4C6 /* Extensions.swift */; };
 		DA2E916420487F9F00AF0247 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E916320487F9F00AF0247 /* DetailedViewController.swift */; };
@@ -78,9 +77,8 @@
 		DA13D003203E0A7D0021EB7E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA13D006203E0A7D0021EB7E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DA13D008203E0A7D0021EB7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DA21EBB120DBF3DB004D4DEB /* SelectionOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionOneViewController.swift; sourceTree = "<group>"; };
 		DA2C31F3204DC4C400FF6444 /* MarketNavController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketNavController.swift; sourceTree = "<group>"; };
-		DA2C31F5204E313A00FF6444 /* ShoppingCartContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingCartContainerViewController.swift; sourceTree = "<group>"; };
-		DA2E85DC2043A7B40057C4C6 /* MoreTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreTableViewController.swift; sourceTree = "<group>"; };
 		DA2E85DE2043C62E0057C4C6 /* FirebaseAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseAPI.swift; sourceTree = "<group>"; };
 		DA2E85E12043C8110057C4C6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DA2E916320487F9F00AF0247 /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
@@ -214,6 +212,14 @@
 			path = Helper/Utility;
 			sourceTree = "<group>";
 		};
+		DA21EBB020DBF3B3004D4DEB /* Detailed Selection */ = {
+			isa = PBXGroup;
+			children = (
+				DA21EBB120DBF3DB004D4DEB /* SelectionOneViewController.swift */,
+			);
+			path = "Detailed Selection";
+			sourceTree = "<group>";
+		};
 		DA2E85E02043C7F90057C4C6 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,9 +325,8 @@
 				DAA23AD12040B08900D481E2 /* MarketTableViewController.swift */,
 				DAB177B020421771009F0B45 /* MarketTableViewCell.swift */,
 				DA2E916320487F9F00AF0247 /* DetailedViewController.swift */,
+				DA21EBB020DBF3B3004D4DEB /* Detailed Selection */,
 				DA2E91652048FF7900AF0247 /* AlcoholSelectionTableViewController.swift */,
-				DA2C31F5204E313A00FF6444 /* ShoppingCartContainerViewController.swift */,
-				DA2E85DC2043A7B40057C4C6 /* MoreTableViewController.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -512,6 +517,7 @@
 				DA5F352E2077C79D00A64FA0 /* Constants.swift in Sources */,
 				DAC4EC8B2094499800EE07A0 /* ChangeEmailViewController.swift in Sources */,
 				DAB62863209035EC00A5890D /* UserDefaultsUtils.swift in Sources */,
+				DA21EBB220DBF3DB004D4DEB /* SelectionOneViewController.swift in Sources */,
 				DAC462442091168500673189 /* BrewiskeyAnalytics.swift in Sources */,
 				DA56C62220A1599300DB38A4 /* PromoCodeViewController.swift in Sources */,
 				DA2E85DF2043C62E0057C4C6 /* FirebaseAPI.swift in Sources */,
@@ -526,7 +532,6 @@
 				DAE169FF20769B3B00B21D30 /* BaseOnboardingView.swift in Sources */,
 				DA57BD4C20D0C06E00C1CAAF /* MarketPlaceCollectionViewController.swift in Sources */,
 				DA620DF3209561710026E4A5 /* ChangePasswordViewController.swift in Sources */,
-				DA2E85DD2043A7B40057C4C6 /* MoreTableViewController.swift in Sources */,
 				DAA9C49820C0E9320075F4B3 /* PastOrdersTableViewController.swift in Sources */,
 				DA2C31F4204DC4C400FF6444 /* MarketNavController.swift in Sources */,
 				DA6F829920BB8029005E7862 /* NewCreditCardTableViewController.swift in Sources */,
@@ -541,7 +546,6 @@
 				DAD934BA20A2A5E400BA6FFD /* UpdateCreditCardViewController.swift in Sources */,
 				DADC7B77203E6A4900F87438 /* RegisterViewController.swift in Sources */,
 				DAC4EC89209442EE00EE07A0 /* MyAccountTableViewController.swift in Sources */,
-				DA2C31F6204E313A00FF6444 /* ShoppingCartContainerViewController.swift in Sources */,
 				DA57BD4820D0BF2600C1CAAF /* MarketPlaceCollectionViewCell.swift in Sources */,
 				DA13CFFF203E0A7D0021EB7E /* LoginViewController.swift in Sources */,
 				DA2E916420487F9F00AF0247 /* DetailedViewController.swift in Sources */,

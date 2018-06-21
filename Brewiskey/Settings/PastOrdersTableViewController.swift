@@ -28,16 +28,16 @@ class PastOrdersTableViewController: UITableViewController {
         var totalBeerPrice = 0.00
         
         if let singleCanPrice = alcohols[indexPath.row].beer.singleCanPrice {
-            totalBeerPrice = singleCanPrice
+            totalBeerPrice = Double(singleCanPrice)!
         }
         if let singleBottlePrice = alcohols[indexPath.row].beer.singleBottlePrice {
-            totalBeerPrice = totalBeerPrice + singleBottlePrice
+            totalBeerPrice = totalBeerPrice + Double(singleBottlePrice)!
         }
         if let sixCanPrice = alcohols[indexPath.row].beer.sixPackCanPrice {
-            totalBeerPrice = totalBeerPrice + sixCanPrice
+            totalBeerPrice = totalBeerPrice + Double(sixCanPrice)!
         }
         if let sixBottlePrice = alcohols[indexPath.row].beer.sixPackBottlePrice {
-            totalBeerPrice = totalBeerPrice + sixBottlePrice
+            totalBeerPrice = totalBeerPrice + Double(sixBottlePrice)!
         }
         return totalBeerPrice
     }
