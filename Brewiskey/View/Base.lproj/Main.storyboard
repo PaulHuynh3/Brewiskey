@@ -1527,20 +1527,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iMS-Nm-HAO" userLabel="SelectionOne">
-                                <rect key="frame" x="9" y="132" width="174" height="153"/>
+                                <rect key="frame" x="9" y="170" width="174" height="153"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AlcoholBackground1" translatesAutoresizingMaskIntoConstraints="NO" id="Wc6-vV-IEn" userLabel="SelectionTwo">
-                                <rect key="frame" x="191" y="132" width="174" height="153"/>
+                                <rect key="frame" x="191" y="170" width="174" height="153"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AlcoholBackground3" translatesAutoresizingMaskIntoConstraints="NO" id="fCV-aA-zSf" userLabel="SelectionThree">
-                                <rect key="frame" x="9" y="305" width="174" height="153"/>
+                                <rect key="frame" x="9" y="370" width="174" height="164"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AlcoholBackground2" translatesAutoresizingMaskIntoConstraints="NO" id="BV0-zC-mwv" userLabel="SelectionFour">
-                                <rect key="frame" x="191" y="305" width="174" height="153"/>
+                                <rect key="frame" x="191" y="370" width="174" height="164"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -1559,15 +1559,15 @@
             </objects>
             <point key="canvasLocation" x="1272.8" y="-591.45427286356824"/>
         </scene>
-        <!--Selection One View Controller-->
+        <!--Selection View Controller-->
         <scene sceneID="re9-fd-Izd">
             <objects>
-                <viewController id="VkX-bo-ZMz" customClass="SelectionOneViewController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SelectionViewController" id="VkX-bo-ZMz" customClass="SelectionViewController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wti-c6-9Ry">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZQy-n6-PjF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZQy-n6-PjF">
                                 <rect key="frame" x="0.0" y="66" width="375" height="349"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1624,11 +1624,12 @@
                         <outlet property="itemQuantityLabel" destination="gqt-2O-3uS" id="h79-Jg-c5N"/>
                         <outlet property="itemTypeLabel" destination="Aa1-Fw-0eE" id="MzV-t9-gtt"/>
                         <outlet property="priceLabel" destination="WaW-Z7-L8w" id="KLC-nh-aRj"/>
+                        <outlet property="quantityStepper" destination="3g2-K9-XEc" id="JV8-0u-ymZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IQ4-a6-T1l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2168.8000000000002" y="-899.10044977511257"/>
+            <point key="canvasLocation" x="2178" y="-591"/>
         </scene>
     </scenes>
     <resources>

@@ -40,7 +40,6 @@ extension UIImageView {
             }
         })
         task.resume()
-        
     }
 }
 
@@ -72,6 +71,21 @@ extension UIViewController {
         alert.preferredAction = preferredAction
         present(alert, animated: true, completion: nil)
     }
+    
+    /**
+     Initialize a view controller. The storuyboard name and the identifier are option.
+     If the identifier is missing, it is assuming it is the same as the name of the class.
+     */
+    class func fromStoryboard<T : UIViewController>(name storyboardName: String, withIdentifier identifier:String = "") -> T {
+        var controllerIdentifier = identifier
+        if controllerIdentifier == "" {
+            controllerIdentifier = String(describing: self)
+        }
+        
+        let storyboard = UIStoryboard(name: storyboardName, bundle: nil)
+        return storyboard.instantiateViewController(withIdentifier: controllerIdentifier) as! T
+    }
+    
 }
 
 extension UIColor {

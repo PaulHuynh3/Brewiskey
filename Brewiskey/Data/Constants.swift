@@ -20,3 +20,8 @@ struct kUserInfo {
     static let isUsedReferralCode = "isUsedReferralCode"
     static let kBrewFriendReferral10 = "brewFriendReferral10"
 }
+
+struct Storyboard {
+    static let Login = "Login"
+    static let Main = "Main"
+}
