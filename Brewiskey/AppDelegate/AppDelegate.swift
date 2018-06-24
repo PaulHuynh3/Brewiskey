@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func transitionToMarketPlace(){
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let tabController = mainStoryboard.instantiateViewController(withIdentifier: "MarketPlace") as! UITabBarController
+        let tabController = mainStoryboard.instantiateViewController(withIdentifier: "MainTabBar") as! UITabBarController
         UIView.transition(with: self.window!, duration: 0.5, options: UIViewAnimationOptions.transitionFlipFromRight, animations: {
             self.window?.rootViewController = tabController}, completion: nil)
         }
@@ -50,7 +50,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }, completion: nil)
         
     }
-    
 }
 extension AppDelegate {
     

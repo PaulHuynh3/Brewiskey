@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SelectionViewController: UIViewController {
+class DetailedSelectionViewController: UIViewController {
     var beer: Beer?
     @IBOutlet weak var alcoholImageView: UIImageView!
     @IBOutlet weak var itemTypeLabel: UILabel!
@@ -19,13 +19,18 @@ class SelectionViewController: UIViewController {
     var isSelectionThree = false
     var isSelectionFour = false
     @IBOutlet weak var quantityStepper: UIStepper!
-    var oldValue: Double!
+    @IBOutlet weak var cartItemCounterLabel: UILabel!
+    var currentValue: Double!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupBeerScreen()
         quantityStepper.value = 1.0
-        oldValue = quantityStepper.value
+        currentValue = quantityStepper.value
+        let itemCount = UserDefaults.standard.double(forKey: kUserInfo.kCheckoutOrderQuantity)
+        if itemCount > 0 {
+            cartItemCounterLabel.text = String(Int(itemCount))
+        }
     }
     
     fileprivate func setupBeerScreen() {
@@ -72,19 +77,22 @@ class SelectionViewController: UIViewController {
         
     }
     
+}
+
+extension DetailedSelectionViewController {
+    //Actions
     @IBAction func stepperTapped(_ sender: Any) {
         
-        if quantityStepper.value > oldValue {
-            oldValue = oldValue + 1
+        if quantityStepper.value > currentValue {
+            currentValue = currentValue + 1
         } else {
-            if oldValue == 1 {
+            if currentValue == 1 {
                 return
             }
-            oldValue = oldValue - 1
+            currentValue = currentValue - 1
         }
-        itemQuantityLabel.text = String(Int(oldValue))
+        itemQuantityLabel.text = String(Int(currentValue))
     }
-    
     
     @IBAction func dismissButtonTapped(_ sender: Any) {
         isSelectionOne = false
@@ -95,10 +103,23 @@ class SelectionViewController: UIViewController {
     }
     
     @IBAction func checkoutButtonTapped(_ sender: Any) {
-        
+        let checkOutIndex = 1
+        let loginStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let checkOutTabBarController = loginStoryboard.instantiateViewController(withIdentifier: "MainTabBar") as! UITabBarController
+        checkOutTabBarController.selectedIndex = checkOutIndex
+        present(checkOutTabBarController, animated: true, completion: nil)
     }
     
-
-
-
+    @IBAction func addToOrderTapped(_ sender: Any) {
+        let title = ""
+        let message = "Added to your Cart"
+        let actionTitle = "OK"
+        
+        let pastItems = UserDefaults.standard.double(forKey: kUserInfo.kCheckoutOrderQuantity)
+        let totalItems = pastItems + currentValue
+        UserDefaults.standard.set(totalItems, forKey: kUserInfo.kCheckoutOrderQuantity)
+        cartItemCounterLabel.text = String(Int(totalItems))
+        showAlert(title: title, message: message, actionTitle: actionTitle)
+    }
+    
 }

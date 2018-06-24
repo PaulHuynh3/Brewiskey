@@ -155,20 +155,20 @@
             </objects>
             <point key="canvasLocation" x="-666" y="-591"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Checkout Table View Controller-->
         <scene sceneID="XvZ-3W-qIr">
             <objects>
-                <tableViewController id="6an-mr-Vcu" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CheckoutTableViewController" id="6an-mr-Vcu" customClass="CheckoutTableViewController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="bp6-mK-X9C">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="83" id="W9c-94-QaV">
-                                <rect key="frame" x="0.0" y="28" width="375" height="83"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="61" id="W9c-94-QaV">
+                                <rect key="frame" x="0.0" y="28" width="375" height="61"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="W9c-94-QaV" id="Ehr-Mn-PX8">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="82.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -1123,7 +1123,7 @@
         <!--Check Out-->
         <scene sceneID="Iqd-aN-axb">
             <objects>
-                <navigationController id="uCG-0J-stP" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="checkoutNavigationController" id="uCG-0J-stP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Check Out" image="shopping-cart" id="SEn-1d-HdS"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5re-Za-6gM">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
@@ -1141,7 +1141,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="9Cc-Gh-RkK">
             <objects>
-                <tabBarController storyboardIdentifier="MarketPlace" automaticallyAdjustsScrollViewInsets="NO" id="mB6-NC-9VT" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBar" automaticallyAdjustsScrollViewInsets="NO" id="mB6-NC-9VT" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="H3S-h9-Z6E">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -1526,20 +1526,20 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iMS-Nm-HAO" userLabel="SelectionOne">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="beer_single_bottle" translatesAutoresizingMaskIntoConstraints="NO" id="iMS-Nm-HAO" userLabel="SelectionOne">
                                 <rect key="frame" x="9" y="170" width="174" height="153"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AlcoholBackground1" translatesAutoresizingMaskIntoConstraints="NO" id="Wc6-vV-IEn" userLabel="SelectionTwo">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="beer_single_can" translatesAutoresizingMaskIntoConstraints="NO" id="Wc6-vV-IEn" userLabel="SelectionTwo">
                                 <rect key="frame" x="191" y="170" width="174" height="153"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AlcoholBackground3" translatesAutoresizingMaskIntoConstraints="NO" id="fCV-aA-zSf" userLabel="SelectionThree">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="beer_six_pack_bottles" translatesAutoresizingMaskIntoConstraints="NO" id="fCV-aA-zSf" userLabel="SelectionThree">
                                 <rect key="frame" x="9" y="370" width="174" height="164"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="AlcoholBackground2" translatesAutoresizingMaskIntoConstraints="NO" id="BV0-zC-mwv" userLabel="SelectionFour">
+                            <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="beer_six_pack_cans" translatesAutoresizingMaskIntoConstraints="NO" id="BV0-zC-mwv" userLabel="SelectionFour">
                                 <rect key="frame" x="191" y="370" width="174" height="164"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1559,15 +1559,15 @@
             </objects>
             <point key="canvasLocation" x="1272.8" y="-591.45427286356824"/>
         </scene>
-        <!--Selection View Controller-->
+        <!--Detailed Selection View Controller-->
         <scene sceneID="re9-fd-Izd">
             <objects>
-                <viewController storyboardIdentifier="SelectionViewController" id="VkX-bo-ZMz" customClass="SelectionViewController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DetailedSelectionViewController" id="VkX-bo-ZMz" customClass="DetailedSelectionViewController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Wti-c6-9Ry">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZQy-n6-PjF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="beer_single_bottle" translatesAutoresizingMaskIntoConstraints="NO" id="ZQy-n6-PjF">
                                 <rect key="frame" x="0.0" y="66" width="375" height="349"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -1578,14 +1578,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YT6-ko-2Hq">
-                                <rect key="frame" x="330" y="16" width="29" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="shopping-cart"/>
-                                <connections>
-                                    <action selector="checkoutButtonTapped:" destination="VkX-bo-ZMz" eventType="touchUpInside" id="Nc2-Og-lsT"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fUB-Fu-7V7">
                                 <rect key="frame" x="16" y="20" width="20" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1615,12 +1607,40 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UFF-Dq-N0r">
+                                <rect key="frame" x="0.0" y="625" width="375" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.2901960784" green="0.2901960784" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="GeezaPro" family="Geeza Pro" pointSize="15"/>
+                                <state key="normal" title="Add To Order">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="addToOrderTapped:" destination="VkX-bo-ZMz" eventType="touchUpInside" id="aaz-zO-6OA"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VQP-BZ-Fff">
+                                <rect key="frame" x="352" y="16" width="23" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.035302712734035624" blue="0.097923101940501134" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YT6-ko-2Hq">
+                                <rect key="frame" x="315" y="4" width="29" height="55"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="shopping-cart"/>
+                                <connections>
+                                    <action selector="checkoutButtonTapped:" destination="VkX-bo-ZMz" eventType="touchUpInside" id="Nc2-Og-lsT"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="XY3-ki-EbS"/>
                     </view>
                     <connections>
                         <outlet property="alcoholImageView" destination="ZQy-n6-PjF" id="k4O-Sj-L3F"/>
+                        <outlet property="cartItemCounterLabel" destination="VQP-BZ-Fff" id="d2G-jE-mnx"/>
                         <outlet property="itemQuantityLabel" destination="gqt-2O-3uS" id="h79-Jg-c5N"/>
                         <outlet property="itemTypeLabel" destination="Aa1-Fw-0eE" id="MzV-t9-gtt"/>
                         <outlet property="priceLabel" destination="WaW-Z7-L8w" id="KLC-nh-aRj"/>
@@ -1629,16 +1649,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IQ4-a6-T1l" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2178" y="-591"/>
+            <point key="canvasLocation" x="2176.8000000000002" y="-591.45427286356824"/>
         </scene>
     </scenes>
     <resources>
-        <image name="AlcoholBackground1" width="768" height="768"/>
-        <image name="AlcoholBackground2" width="2560" height="1600"/>
-        <image name="AlcoholBackground3" width="1023" height="694"/>
         <image name="BlueRectangle" width="335" height="52"/>
         <image name="More" width="15" height="15"/>
         <image name="ProfileDefault" width="72" height="72"/>
+        <image name="beer_single_bottle" width="960" height="1280"/>
+        <image name="beer_single_can" width="650" height="750"/>
+        <image name="beer_six_pack_bottles" width="1183" height="1390"/>
+        <image name="beer_six_pack_cans" width="259" height="194"/>
         <image name="crossImage" width="20" height="20"/>
         <image name="imageView:B1n-gH-kd9:image" width="9" height="17">
             <mutableData key="keyedArchiveRepresentation">

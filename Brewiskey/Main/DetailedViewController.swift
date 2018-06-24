@@ -145,7 +145,7 @@ extension DetailedViewController {
     
     @objc fileprivate func selectionOneSelected() {
         let isSelectionOne = true
-        let selectionViewController = SelectionViewController.fromStoryboard(name: Storyboard.Main) as! SelectionViewController
+        let selectionViewController = DetailedSelectionViewController.fromStoryboard(name: Storyboard.Main) as! DetailedSelectionViewController
         if beerMode && isSelectionOne {
             if let beer = beer {
                 selectionViewController.beer = beer
@@ -157,7 +157,7 @@ extension DetailedViewController {
     
     @objc fileprivate func selectionTwoSelected() {
         let isSelectionTwo = true
-        let selectionViewController = SelectionViewController.fromStoryboard(name: Storyboard.Main) as! SelectionViewController
+        let selectionViewController = DetailedSelectionViewController.fromStoryboard(name: Storyboard.Main) as! DetailedSelectionViewController
         if beerMode && isSelectionTwo {
             if let beer = beer {
                 selectionViewController.beer = beer
@@ -170,7 +170,7 @@ extension DetailedViewController {
     
     @objc fileprivate func selectionThreeSelected() {
         let isSelectionThree = true
-        let selectionViewController = SelectionViewController.fromStoryboard(name: Storyboard.Main) as! SelectionViewController
+        let selectionViewController = DetailedSelectionViewController.fromStoryboard(name: Storyboard.Main) as! DetailedSelectionViewController
         if beerMode && isSelectionThree {
             if let beer = beer {
                 selectionViewController.beer = beer
@@ -182,7 +182,7 @@ extension DetailedViewController {
     
     @objc fileprivate func selectionFourSelected() {
         let isSelectionFour = true
-        let selectionViewController = SelectionViewController.fromStoryboard(name: Storyboard.Main) as! SelectionViewController
+        let selectionViewController = DetailedSelectionViewController.fromStoryboard(name: Storyboard.Main) as! DetailedSelectionViewController
         if beerMode && isSelectionFour {
             if let beer = beer {
                 selectionViewController.beer = beer
