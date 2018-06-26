@@ -63,6 +63,8 @@
 		DAE169FF20769B3B00B21D30 /* BaseOnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE169FE20769B3B00B21D30 /* BaseOnboardingView.swift */; };
 		DAE16A0320769C9B00B21D30 /* OnboardingView1.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE16A0220769C9B00B21D30 /* OnboardingView1.xib */; };
 		DAE16A052076A0B300B21D30 /* IntroductionScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAE16A042076A0B300B21D30 /* IntroductionScreenViewController.swift */; };
+		DAF2024E20E1E2DC001D96FD /* EmptyCartView.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAF2024D20E1E2DC001D96FD /* EmptyCartView.xib */; };
+		DAF2025020E1E2E8001D96FD /* EmptyCartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAF2024F20E1E2E8001D96FD /* EmptyCartView.swift */; };
 		DDA4E6EB6D878ECD74290C15 /* Pods_Brewiskey.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6018CC304C6E50FF5E034F2A /* Pods_Brewiskey.framework */; };
 /* End PBXBuildFile section */
 
@@ -128,6 +130,8 @@
 		DAE169FE20769B3B00B21D30 /* BaseOnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseOnboardingView.swift; sourceTree = "<group>"; };
 		DAE16A0220769C9B00B21D30 /* OnboardingView1.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView1.xib; sourceTree = "<group>"; };
 		DAE16A042076A0B300B21D30 /* IntroductionScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionScreenViewController.swift; sourceTree = "<group>"; };
+		DAF2024D20E1E2DC001D96FD /* EmptyCartView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmptyCartView.xib; sourceTree = "<group>"; };
+		DAF2024F20E1E2E8001D96FD /* EmptyCartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyCartView.swift; sourceTree = "<group>"; };
 		F894043FE0F9A2676D6EDB6C /* Pods-Brewiskey.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brewiskey.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Brewiskey/Pods-Brewiskey.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -205,6 +209,7 @@
 				DA2E85E02043C7F90057C4C6 /* Helper */,
 				DA1C6CEF20B33CAD00911E64 /* Utility */,
 				DA91AEBA20A8F25200BEF84B /* ReuseableCell */,
+				DAF2024C20E1E2B4001D96FD /* ReuseableView */,
 				DA056E86203FC8DB007EECAE /* Supporting Files */,
 			);
 			path = Brewiskey;
@@ -332,6 +337,15 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		DAF2024C20E1E2B4001D96FD /* ReuseableView */ = {
+			isa = PBXGroup;
+			children = (
+				DAF2024F20E1E2E8001D96FD /* EmptyCartView.swift */,
+				DAF2024D20E1E2DC001D96FD /* EmptyCartView.xib */,
+			);
+			path = ReuseableView;
+			sourceTree = "<group>";
+		};
 		FE9E7D2D697B8090B543F272 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -428,6 +442,7 @@
 				DA13D004203E0A7D0021EB7E /* Assets.xcassets in Resources */,
 				DA5EF4E220AA0C5F0070BD5D /* ImageLabelCell.xib in Resources */,
 				DA57BD4A20D0BF4500C1CAAF /* MarketPlaceCollectionViewCell.xib in Resources */,
+				DAF2024E20E1E2DC001D96FD /* EmptyCartView.xib in Resources */,
 				DAA9C49C20C0E9C30075F4B3 /* PastOrdersCell.xib in Resources */,
 				DA9F41D7207719E00004797B /* OnboardingView2.xib in Resources */,
 				DA9F41D920771B7C0004797B /* OnboardingView3.xib in Resources */,
@@ -537,6 +552,7 @@
 				DA57BD4C20D0C06E00C1CAAF /* MarketPlaceCollectionViewController.swift in Sources */,
 				DA620DF3209561710026E4A5 /* ChangePasswordViewController.swift in Sources */,
 				DAA9C49820C0E9320075F4B3 /* PastOrdersTableViewController.swift in Sources */,
+				DAF2025020E1E2E8001D96FD /* EmptyCartView.swift in Sources */,
 				DA2C31F4204DC4C400FF6444 /* MarketNavController.swift in Sources */,
 				DA6F829920BB8029005E7862 /* NewCreditCardTableViewController.swift in Sources */,
 				DA620DF5209589620026E4A5 /* ReferralViewController.swift in Sources */,

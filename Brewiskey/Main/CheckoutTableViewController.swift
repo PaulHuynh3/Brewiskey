@@ -10,12 +10,13 @@ import UIKit
 
 class CheckoutTableViewController: UITableViewController {
     
-    var selectedAlcohols: NSMutableArray?
+    var selectedAlcohols: Array<Beer>?
     let customCellIdentifier = "CheckoutCellIdentifier"
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNibTableViewCell()
+        navigationController?.navigationBar.isHidden = true
     }
 
     fileprivate func setupNibTableViewCell() {
@@ -23,28 +24,42 @@ class CheckoutTableViewController: UITableViewController {
         let cell = UINib(nibName: nibName, bundle: nil)
         tableView.register(cell, forCellReuseIdentifier: customCellIdentifier)
     }
+    
+    fileprivate func updateEmptyView() {
+        let emptyViewNibName = "EmptyCartView"
+        if let emptyView = Bundle.main.loadNibNamed(emptyViewNibName, owner: nil, options: nil)?.first as? EmptyCartView {
+            self.tableView.backgroundView = emptyView
+            self.tableView.separatorStyle = .none
+        }
+    }
 
-    // MARK: - Table view data source
+
+}
+extension CheckoutTableViewController {
+    // MARK: - Tableview datasource
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
         if let alcoholItems = selectedAlcohols {
             return alcoholItems.count
         } else {
-             return 1
+            updateEmptyView()
+            return 0
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let checkoutCell =  tableView.dequeueReusableCell(withIdentifier: customCellIdentifier) as! CheckoutCell
         checkoutCell.accessoryType = .disclosureIndicator
-        if let alcohol = selectedAlcohols?[indexPath.row] {
+        if let alcoholBeer = selectedAlcohols?[indexPath.row] {
             
+            checkoutCell.costLabel.text = alcoholBeer.singleBottlePrice
+            checkoutCell.quantityTypeLabel.text = alcoholBeer.name
         }
-
+        
+        
         return checkoutCell
     }
     
@@ -56,5 +71,4 @@ class CheckoutTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
     }
-
 }

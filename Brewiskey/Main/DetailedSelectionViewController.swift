@@ -31,7 +31,13 @@ class DetailedSelectionViewController: UIViewController {
         if itemCount > 0 {
             cartItemCounterLabel.text = String(Int(itemCount))
         }
+        //handle notification
+//        let notificationCenter = NotificationCenter.default.addObserver(self, selector: #selector(listenToNotification), name: .didReceiveData, object: nil)
     }
+    
+//    @objc func listenToNotification() {
+//
+//    }
     
     fileprivate func setupBeerScreen() {
         if isSelectionOne {
@@ -111,10 +117,17 @@ extension DetailedSelectionViewController {
     }
     
     @IBAction func addToOrderTapped(_ sender: Any) {
+        trackCheckoutCount()
+        addItemToCheckout()
+    }
+}
+
+extension DetailedSelectionViewController {
+    
+    fileprivate func trackCheckoutCount() {
         let title = ""
         let message = "Added to your Cart"
         let actionTitle = "OK"
-        
         let pastItems = UserDefaults.standard.double(forKey: kUserInfo.kCheckoutOrderQuantity)
         let totalItems = pastItems + currentValue
         UserDefaults.standard.set(totalItems, forKey: kUserInfo.kCheckoutOrderQuantity)
@@ -122,4 +135,21 @@ extension DetailedSelectionViewController {
         showAlert(title: title, message: message, actionTitle: actionTitle)
     }
     
+    fileprivate func addItemToCheckout() {
+        //use core data or realm..
+        //create a class for checkoutitems that match properties of the other alcohol models
+        
+//        trackAlcoholsArray = Array()
+//        trackAlcoholsArray.append(beer!)
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let checkoutCart = storyboard.instantiateViewController(withIdentifier: "CheckoutTableViewController") as! CheckoutTableViewController
+//        checkoutCart.selectedAlcohols = trackAlcoholsArray
+//        self.present(checkoutCart, animated: true, completion: nil)
+    }
+}
+
+extension Notification.Name {
+    static let didReceiveData = Notification.Name("didRecieveData")
+    static let didCompleteTask = Notification.Name("didCompleteTask")
+    static let completedDownload = Notification.Name("completedDownload")
 }

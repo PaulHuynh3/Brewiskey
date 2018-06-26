@@ -1123,7 +1123,7 @@
         <!--Check Out-->
         <scene sceneID="Iqd-aN-axb">
             <objects>
-                <navigationController storyboardIdentifier="checkoutNavigationController" id="uCG-0J-stP" sceneMemberID="viewController">
+                <navigationController id="uCG-0J-stP" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Check Out" image="shopping-cart" id="SEn-1d-HdS"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="5re-Za-6gM">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
