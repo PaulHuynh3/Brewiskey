@@ -93,9 +93,7 @@ class SettingsTableViewController: UITableViewController {
             print(logoutError)
             return
         }
-        
-        let userDefaultUtils = UserDefaultsUtils()
-        userDefaultUtils.clearUserDefaults()
+        UserDefaultsUtils().deleteAllUserDefaults()
         let fbsdkLogin = FBSDKLoginManager()
         fbsdkLogin.logOut()
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
@@ -103,12 +101,10 @@ class SettingsTableViewController: UITableViewController {
     }
     
     //Mark: Tableview Datasource
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         let section = 1
         return section
     }
-    
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let rows = 7

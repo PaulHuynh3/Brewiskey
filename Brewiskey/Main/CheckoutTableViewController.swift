@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CheckoutTableViewController: UITableViewController {
     
@@ -17,6 +18,7 @@ class CheckoutTableViewController: UITableViewController {
         super.viewDidLoad()
         setupNibTableViewCell()
         navigationController?.navigationBar.isHidden = true
+        fetchItemsInCart()
     }
 
     fileprivate func setupNibTableViewCell() {
@@ -32,9 +34,39 @@ class CheckoutTableViewController: UITableViewController {
             self.tableView.separatorStyle = .none
         }
     }
+    
+    fileprivate func fetchItemsInCart() {
+        guard let userID = FirebaseConstants.userID else {return}
+        let database = FirebaseConstants.database
+        let user = FirebaseConstants.usersChild
+//        let cart = "cart"
+        
+        database.child(user).child(userID).observe(.childAdded, with: { (snapshot) in
+            
+            let checkoutItem = CheckoutItem()
+            
+            if let userIdDictionary = snapshot.value as? [String: AnyObject] {
+                print("PASSSED IT")
+                //why does it not detect the cart.. in firebase need to check it.
+                if let cart = userIdDictionary["cart"] as? [String: AnyObject] {
+                    print(cart)
+                }
+                
+                if let order6 = userIdDictionary["order_6"] as? [String:AnyObject] {
+                    print(order6)
+                }
+                
+                
+            }
+            
 
-
+            
+        }, withCancel: nil)
+        
+    }
+    
 }
+
 extension CheckoutTableViewController {
     // MARK: - Tableview datasource
     override func numberOfSections(in tableView: UITableView) -> Int {

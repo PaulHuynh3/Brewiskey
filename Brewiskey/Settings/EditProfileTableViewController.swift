@@ -167,8 +167,6 @@ class EditProfileTableViewController: UITableViewController {
                         userDefault.set(editedFirstName, forKey: kUserInfo.kFirstName)
                         userDefault.set(editedLastName, forKey: kUserInfo.kLastName)
                         
-                     
-                        
                       self?.updateUserIntoDatabase(uid, values: values as [String : AnyObject])
                         
                     }

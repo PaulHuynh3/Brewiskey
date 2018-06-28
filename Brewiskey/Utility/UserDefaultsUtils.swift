@@ -19,6 +19,14 @@ class UserDefaultsUtils {
         userDefault.set(nil, forKey: kUserInfo.kLastName)
         userDefault.set(false, forKey: kUserInfo.kNewUser)
         userDefault.set(nil, forKey: kUserInfo.kCheckoutOrderQuantity)
+        userDefault.set(nil, forKey: kUserInfo.kOrderNumber)
     }
+    
+    func deleteAllUserDefaults() {
+        for key in UserDefaults.standard.dictionaryRepresentation().keys {
+            UserDefaults.standard.removeObject(forKey: key)
+        }
+    }
+    
 
 }

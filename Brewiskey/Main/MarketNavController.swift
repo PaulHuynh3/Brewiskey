@@ -16,7 +16,4 @@ class MarketNavController: UINavigationController {
         super.viewDidLoad()
         user = User()
     }
-
-
-
 }

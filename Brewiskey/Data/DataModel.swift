@@ -102,3 +102,10 @@ class Beer {
     var sixPackBottleImageUrl: String?
     var sixPackBottleType: String?
 }
+
+class CheckoutItem {
+    var imageUrl: String?
+    var price: String?
+    var quantity: Int?
+    var type: String?
+}

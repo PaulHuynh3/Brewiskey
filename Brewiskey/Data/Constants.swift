@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Firebase
 
 struct kUserInfo {
     static let kFirstName = "firstName"
@@ -20,9 +21,24 @@ struct kUserInfo {
     static let isUsedReferralCode = "isUsedReferralCode"
     static let kBrewFriendReferral10 = "brewFriendReferral10"
     static let kCheckoutOrderQuantity = "kCheckoutOrderQuantity"
+    static let kOrderNumber = "kOrderNumber"
 }
 
 struct Storyboard {
     static let Login = "Login"
     static let Main = "Main"
+}
+
+struct UIAlertConstants {
+    static let titleError = "Error"
+    static let actionOk = "OK"
+}
+
+struct FirebaseConstants {
+    static let database = Database.database().reference()
+    static let userID = Auth.auth().currentUser?.uid
+    static let usersChild = "users"
+    static let wineChild = "wine"
+    static let spiritsChild = "spirits"
+    static let beersChild = "beers"
 }

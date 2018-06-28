@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class DetailedSelectionViewController: UIViewController {
     var beer: Beer?
@@ -21,25 +22,20 @@ class DetailedSelectionViewController: UIViewController {
     @IBOutlet weak var quantityStepper: UIStepper!
     @IBOutlet weak var cartItemCounterLabel: UILabel!
     var currentValue: Double!
+    var orderNumber: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupBeerScreen()
+        loadSelectedItem()
         quantityStepper.value = 1.0
         currentValue = quantityStepper.value
         let itemCount = UserDefaults.standard.double(forKey: kUserInfo.kCheckoutOrderQuantity)
         if itemCount > 0 {
             cartItemCounterLabel.text = String(Int(itemCount))
         }
-        //handle notification
-//        let notificationCenter = NotificationCenter.default.addObserver(self, selector: #selector(listenToNotification), name: .didReceiveData, object: nil)
     }
     
-//    @objc func listenToNotification() {
-//
-//    }
-    
-    fileprivate func setupBeerScreen() {
+    fileprivate func loadSelectedItem() {
         if isSelectionOne {
             if let beer = beer {
                 guard let imageUrl = beer.singleBottleImageUrl else {return}
@@ -47,6 +43,7 @@ class DetailedSelectionViewController: UIViewController {
                 itemTypeLabel.text = beer.singleBottleType
                 priceLabel.text = beer.singleBottlePrice
             }
+            //if let wine = wine etc
         }
         if isSelectionTwo {
             if let beer = beer {
@@ -74,15 +71,6 @@ class DetailedSelectionViewController: UIViewController {
         }
 
     }
-    
-    fileprivate func setupWineScreen() {
-        
-    }
-    
-    fileprivate func setupSpiritScreen() {
-        
-    }
-    
 }
 
 extension DetailedSelectionViewController {
@@ -117,7 +105,6 @@ extension DetailedSelectionViewController {
     }
     
     @IBAction func addToOrderTapped(_ sender: Any) {
-        trackCheckoutCount()
         addItemToCheckout()
     }
 }
@@ -138,13 +125,84 @@ extension DetailedSelectionViewController {
     fileprivate func addItemToCheckout() {
         //use core data or realm..
         //create a class for checkoutitems that match properties of the other alcohol models
+        if isSelectionOne {
+            if let beer = beer {
+                guard let imageUrl = beer.singleBottleImageUrl else {return}
+                guard let itemType = beer.singleBottleType else {return}
+                guard let itemPrice = beer.singleBottlePrice else {return}
+                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+                itemTypeLabel.text = itemType
+                priceLabel.text = itemPrice
+                
+                updateUserCartOnFirebase(imageUrl: imageUrl, type: itemType, price:itemPrice, quantity: Int(currentValue))
+            }
+        }
+        if isSelectionTwo {
+            if let beer = beer {
+                guard let imageUrl = beer.singleCanImageUrl else {return}
+                guard let itemType = beer.singleCanType else {return}
+                guard let itemPrice = beer.singleCanPrice else {return}
+                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+                itemTypeLabel.text = itemType
+                priceLabel.text = itemPrice
+                
+                updateUserCartOnFirebase(imageUrl: imageUrl, type: itemType, price:itemPrice, quantity: Int(currentValue))
+            }
+        }
+        if isSelectionThree {
+            if let beer = beer {
+                guard let imageUrl = beer.sixPackBottleImageUrl else {return}
+                guard let itemType = beer.sixPackBottleType else {return}
+                guard let itemPrice = beer.sixPackBottlePrice else {return}
+                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+                itemTypeLabel.text = itemType
+                priceLabel.text = itemPrice
+                
+                updateUserCartOnFirebase(imageUrl: imageUrl, type: itemType, price:itemPrice, quantity: Int(currentValue))
+            }
+        }
+        if isSelectionFour {
+            if let beer = beer {
+                guard let imageUrl = beer.sixPackCanImageUrl else {return}
+                guard let itemType = beer.sixPackCanType else {return}
+                guard let itemPrice = beer.sixPackCanPrice else {return}
+                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+                itemTypeLabel.text = itemType
+                priceLabel.text = itemPrice
+                
+                updateUserCartOnFirebase(imageUrl: imageUrl, type: itemType, price:itemPrice, quantity: Int(currentValue))
+            }
+        }
+    }
+    
+    fileprivate func updateUserCartOnFirebase(imageUrl: String, type: String, price: String, quantity: Int) {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let userReference = Database.database().reference().child("users").child(uid).child("cart").child("order_\(provideOrderNumber())")
+        let values = ["imageUrl" : imageUrl, "type" : type, "price": price, "quantity": quantity] as [String: AnyObject]
         
-//        trackAlcoholsArray = Array()
-//        trackAlcoholsArray.append(beer!)
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//        let checkoutCart = storyboard.instantiateViewController(withIdentifier: "CheckoutTableViewController") as! CheckoutTableViewController
-//        checkoutCart.selectedAlcohols = trackAlcoholsArray
-//        self.present(checkoutCart, animated: true, completion: nil)
+        userReference.updateChildValues(values) { [weak self] (error, databaseRef) in
+            guard let strongSelf = self else {return}
+            DispatchQueue.main.async {
+                if let error = error {
+                    strongSelf.showAlert(title: UIAlertConstants.titleError, message: error.localizedDescription, actionTitle: UIAlertConstants.actionOk)
+                    return
+                }
+                strongSelf.trackCheckoutCount()
+            }
+        }
+    }
+    
+    fileprivate func provideOrderNumber() -> Int {
+        orderNumber = UserDefaults.standard.integer(forKey: kUserInfo.kOrderNumber)
+        if var orderNumber = orderNumber {
+            orderNumber = orderNumber + 1
+            UserDefaults.standard.set(orderNumber, forKey: kUserInfo.kOrderNumber)
+            return orderNumber
+        } else {
+            orderNumber = 0
+            UserDefaults.standard.set(orderNumber, forKey: kUserInfo.kOrderNumber)
+            return orderNumber!
+        }
     }
 }
 

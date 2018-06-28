@@ -26,7 +26,6 @@
 		DA56C62220A1599300DB38A4 /* PromoCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA56C62120A1599300DB38A4 /* PromoCodeViewController.swift */; };
 		DA57BD4820D0BF2600C1CAAF /* MarketPlaceCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA57BD4720D0BF2600C1CAAF /* MarketPlaceCollectionViewCell.swift */; };
 		DA57BD4A20D0BF4500C1CAAF /* MarketPlaceCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA57BD4920D0BF4500C1CAAF /* MarketPlaceCollectionViewCell.xib */; };
-		DA57BD4C20D0C06E00C1CAAF /* MarketPlaceCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA57BD4B20D0C06E00C1CAAF /* MarketPlaceCollectionViewController.swift */; };
 		DA5EF4E020AA0C4A0070BD5D /* ImageLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5EF4DF20AA0C4A0070BD5D /* ImageLabelCell.swift */; };
 		DA5EF4E220AA0C5F0070BD5D /* ImageLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA5EF4E120AA0C5F0070BD5D /* ImageLabelCell.xib */; };
 		DA5F352C2077C46100A64FA0 /* FacebookAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F352B2077C46100A64FA0 /* FacebookAPI.swift */; };
@@ -92,7 +91,6 @@
 		DA56C62120A1599300DB38A4 /* PromoCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoCodeViewController.swift; sourceTree = "<group>"; };
 		DA57BD4720D0BF2600C1CAAF /* MarketPlaceCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaceCollectionViewCell.swift; sourceTree = "<group>"; };
 		DA57BD4920D0BF4500C1CAAF /* MarketPlaceCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MarketPlaceCollectionViewCell.xib; sourceTree = "<group>"; };
-		DA57BD4B20D0C06E00C1CAAF /* MarketPlaceCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketPlaceCollectionViewController.swift; sourceTree = "<group>"; };
 		DA5EF4DF20AA0C4A0070BD5D /* ImageLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelCell.swift; sourceTree = "<group>"; };
 		DA5EF4E120AA0C5F0070BD5D /* ImageLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageLabelCell.xib; sourceTree = "<group>"; };
 		DA5F352B2077C46100A64FA0 /* FacebookAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FacebookAPI.swift; sourceTree = "<group>"; };
@@ -325,7 +323,6 @@
 		DADC7B73203E179600F87438 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				DA57BD4B20D0C06E00C1CAAF /* MarketPlaceCollectionViewController.swift */,
 				DA2C31F3204DC4C400FF6444 /* MarketNavController.swift */,
 				DAA23AD12040B08900D481E2 /* MarketTableViewController.swift */,
 				DAB177B020421771009F0B45 /* MarketTableViewCell.swift */,
@@ -549,7 +546,6 @@
 				DA5EF4E020AA0C4A0070BD5D /* ImageLabelCell.swift in Sources */,
 				DA70A9E62089495F00D3F2C3 /* EditProfileTableViewController.swift in Sources */,
 				DAE169FF20769B3B00B21D30 /* BaseOnboardingView.swift in Sources */,
-				DA57BD4C20D0C06E00C1CAAF /* MarketPlaceCollectionViewController.swift in Sources */,
 				DA620DF3209561710026E4A5 /* ChangePasswordViewController.swift in Sources */,
 				DAA9C49820C0E9320075F4B3 /* PastOrdersTableViewController.swift in Sources */,
 				DAF2025020E1E2E8001D96FD /* EmptyCartView.swift in Sources */,
