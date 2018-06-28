@@ -10,7 +10,8 @@ import UIKit
 
 class CheckoutCell: UITableViewCell {
  
-    @IBOutlet weak var quantityTypeLabel: UILabel!
+    @IBOutlet weak var quantityLabel: UILabel!
+    @IBOutlet weak var nameTypeLabel: UILabel!
     @IBOutlet weak var costLabel: UILabel!
     
 }

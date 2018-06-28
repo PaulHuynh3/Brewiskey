@@ -104,6 +104,7 @@ class Beer {
 }
 
 class CheckoutItem {
+    var name: String?
     var imageUrl: String?
     var price: String?
     var quantity: Int?

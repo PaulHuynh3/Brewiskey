@@ -130,11 +130,12 @@ extension DetailedSelectionViewController {
                 guard let imageUrl = beer.singleBottleImageUrl else {return}
                 guard let itemType = beer.singleBottleType else {return}
                 guard let itemPrice = beer.singleBottlePrice else {return}
+                guard let name = beer.name else {return}
                 alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
                 itemTypeLabel.text = itemType
                 priceLabel.text = itemPrice
                 
-                updateUserCartOnFirebase(imageUrl: imageUrl, type: itemType, price:itemPrice, quantity: Int(currentValue))
+                updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price:itemPrice, quantity: Int(currentValue))
             }
         }
         if isSelectionTwo {
@@ -142,11 +143,12 @@ extension DetailedSelectionViewController {
                 guard let imageUrl = beer.singleCanImageUrl else {return}
                 guard let itemType = beer.singleCanType else {return}
                 guard let itemPrice = beer.singleCanPrice else {return}
+                guard let name = beer.name else {return}
                 alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
                 itemTypeLabel.text = itemType
                 priceLabel.text = itemPrice
                 
-                updateUserCartOnFirebase(imageUrl: imageUrl, type: itemType, price:itemPrice, quantity: Int(currentValue))
+                updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price:itemPrice, quantity: Int(currentValue))
             }
         }
         if isSelectionThree {
@@ -154,11 +156,12 @@ extension DetailedSelectionViewController {
                 guard let imageUrl = beer.sixPackBottleImageUrl else {return}
                 guard let itemType = beer.sixPackBottleType else {return}
                 guard let itemPrice = beer.sixPackBottlePrice else {return}
+                guard let name = beer.name else {return}
                 alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
                 itemTypeLabel.text = itemType
                 priceLabel.text = itemPrice
                 
-                updateUserCartOnFirebase(imageUrl: imageUrl, type: itemType, price:itemPrice, quantity: Int(currentValue))
+                updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price:itemPrice, quantity: Int(currentValue))
             }
         }
         if isSelectionFour {
@@ -166,19 +169,20 @@ extension DetailedSelectionViewController {
                 guard let imageUrl = beer.sixPackCanImageUrl else {return}
                 guard let itemType = beer.sixPackCanType else {return}
                 guard let itemPrice = beer.sixPackCanPrice else {return}
+                guard let name = beer.name else {return}
                 alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
                 itemTypeLabel.text = itemType
                 priceLabel.text = itemPrice
                 
-                updateUserCartOnFirebase(imageUrl: imageUrl, type: itemType, price:itemPrice, quantity: Int(currentValue))
+                updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price:itemPrice, quantity: Int(currentValue))
             }
         }
     }
     
-    fileprivate func updateUserCartOnFirebase(imageUrl: String, type: String, price: String, quantity: Int) {
+    fileprivate func updateUserCartOnFirebase(name: String, imageUrl: String, type: String, price: String, quantity: Int) {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let userReference = Database.database().reference().child("users").child(uid).child("cart").child("order_\(provideOrderNumber())")
-        let values = ["imageUrl" : imageUrl, "type" : type, "price": price, "quantity": quantity] as [String: AnyObject]
+        let values = ["name": name, "imageUrl" : imageUrl, "type" : type, "price": price, "quantity": quantity] as [String: AnyObject]
         
         userReference.updateChildValues(values) { [weak self] (error, databaseRef) in
             guard let strongSelf = self else {return}

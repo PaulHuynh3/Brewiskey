@@ -18,25 +18,45 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="69.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Coors Light Single Beer" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XM-UV-fyK">
-                        <rect key="frame" x="16" y="12" width="172" height="47"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2x" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4ZO-Z5-VrZ">
+                        <rect key="frame" x="16" y="25" width="18.5" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="$50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tr1-xz-hhB">
-                        <rect key="frame" x="246" y="25" width="70" height="21"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="$50" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tr1-xz-hhB">
+                        <rect key="frame" x="269" y="25" width="90" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="90" id="Rsc-hV-Mdn"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coors Light Six Pack beer" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3XM-UV-fyK">
+                        <rect key="frame" x="56" y="8" width="177" height="52"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="177" id="0tR-YE-PCj"/>
+                            <constraint firstAttribute="height" constant="52" id="ttS-2p-IuL"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="4ZO-Z5-VrZ" firstAttribute="top" secondItem="iAg-T5-YI4" secondAttribute="top" constant="25" id="FIa-Xr-WK0"/>
+                    <constraint firstItem="Tr1-xz-hhB" firstAttribute="leading" secondItem="3XM-UV-fyK" secondAttribute="trailing" constant="36" id="LNx-f1-ybS"/>
+                    <constraint firstItem="4ZO-Z5-VrZ" firstAttribute="leading" secondItem="iAg-T5-YI4" secondAttribute="leading" constant="16" id="TMa-L3-LHv"/>
+                    <constraint firstItem="3XM-UV-fyK" firstAttribute="top" secondItem="iAg-T5-YI4" secondAttribute="top" constant="8" id="dQk-6q-zxl"/>
+                    <constraint firstItem="Tr1-xz-hhB" firstAttribute="top" secondItem="iAg-T5-YI4" secondAttribute="top" constant="25" id="gSf-w4-zTt"/>
+                    <constraint firstItem="3XM-UV-fyK" firstAttribute="leading" secondItem="4ZO-Z5-VrZ" secondAttribute="trailing" constant="21.5" id="zZd-XA-wIX"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="costLabel" destination="Tr1-xz-hhB" id="ZIT-ea-LK9"/>
-                <outlet property="quantityTypeLabel" destination="3XM-UV-fyK" id="uZq-9a-qLf"/>
+                <outlet property="nameTypeLabel" destination="3XM-UV-fyK" id="WR3-Dm-N75"/>
+                <outlet property="quantityLabel" destination="4ZO-Z5-VrZ" id="fAr-Ml-8es"/>
             </connections>
             <point key="canvasLocation" x="-127.5" y="-283"/>
         </tableViewCell>

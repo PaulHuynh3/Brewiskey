@@ -11,16 +11,34 @@ import Firebase
 
 class CheckoutTableViewController: UITableViewController {
     
-    var selectedAlcohols: Array<Beer>?
+    var cartItems = Array <CheckoutItem>()
     let customCellIdentifier = "CheckoutCellIdentifier"
+    var emptyView: UIView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNibTableViewCell()
         navigationController?.navigationBar.isHidden = true
-        fetchItemsInCart()
+        fetchCartItems()
     }
+    
+    //set delegate to refresh table when items are added into cart..
+    fileprivate func fetchCartItems() {
+        
+        FirebaseAPI().fetchItemsInCart { [weak self] (checkoutItem: CheckoutItem?, error: String?) in
+            guard let strongSelf = self else {return}
+            if let error = error {
+                strongSelf.showAlert(title: UIAlertConstants.titleError, message: error, actionTitle: UIAlertConstants.actionOk)
+                return
+            }
+            guard let item = checkoutItem else {return}
+            
+            strongSelf.cartItems.append(item)
+            strongSelf.tableView.reloadData()
+        }
 
+    }
+    
     fileprivate func setupNibTableViewCell() {
         let nibName = "CheckoutCell"
         let cell = UINib(nibName: nibName, bundle: nil)
@@ -29,42 +47,13 @@ class CheckoutTableViewController: UITableViewController {
     
     fileprivate func updateEmptyView() {
         let emptyViewNibName = "EmptyCartView"
-        if let emptyView = Bundle.main.loadNibNamed(emptyViewNibName, owner: nil, options: nil)?.first as? EmptyCartView {
+        emptyView = UIView()
+        emptyView = Bundle.main.loadNibNamed(emptyViewNibName, owner: nil, options: nil)?.first as? EmptyCartView
             self.tableView.backgroundView = emptyView
             self.tableView.separatorStyle = .none
-        }
-    }
-    
-    fileprivate func fetchItemsInCart() {
-        guard let userID = FirebaseConstants.userID else {return}
-        let database = FirebaseConstants.database
-        let user = FirebaseConstants.usersChild
-//        let cart = "cart"
         
-        database.child(user).child(userID).observe(.childAdded, with: { (snapshot) in
-            
-            let checkoutItem = CheckoutItem()
-            
-            if let userIdDictionary = snapshot.value as? [String: AnyObject] {
-                print("PASSSED IT")
-                //why does it not detect the cart.. in firebase need to check it.
-                if let cart = userIdDictionary["cart"] as? [String: AnyObject] {
-                    print(cart)
-                }
-                
-                if let order6 = userIdDictionary["order_6"] as? [String:AnyObject] {
-                    print(order6)
-                }
-                
-                
-            }
-            
+    }
 
-            
-        }, withCancel: nil)
-        
-    }
-    
 }
 
 extension CheckoutTableViewController {
@@ -74,8 +63,10 @@ extension CheckoutTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let alcoholItems = selectedAlcohols {
-            return alcoholItems.count
+        if cartItems.count > 0 {
+            tableView.separatorStyle = .singleLine
+            emptyView?.isHidden = true
+            return cartItems.count
         } else {
             updateEmptyView()
             return 0
@@ -85,12 +76,19 @@ extension CheckoutTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let checkoutCell =  tableView.dequeueReusableCell(withIdentifier: customCellIdentifier) as! CheckoutCell
         checkoutCell.accessoryType = .disclosureIndicator
-        if let alcoholBeer = selectedAlcohols?[indexPath.row] {
-            
-            checkoutCell.costLabel.text = alcoholBeer.singleBottlePrice
-            checkoutCell.quantityTypeLabel.text = alcoholBeer.name
+        let item = cartItems[indexPath.row]
+        if let quantity = item.quantity {
+            checkoutCell.quantityLabel.text = "\(String(quantity))x"
         }
-        
+        if let name = item.name, let type = item.type {
+            checkoutCell.nameTypeLabel.text = "\(name) - \(type)"
+        }
+        if let price = item.price, let quantity = item.quantity {
+            
+//            let perItemTotalCost = Int(price)! * quantity
+//            
+//            checkoutCell.costLabel.text = String(perItemTotalCost)
+        }
         
         return checkoutCell
     }
