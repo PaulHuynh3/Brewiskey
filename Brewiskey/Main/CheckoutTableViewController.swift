@@ -85,9 +85,10 @@ extension CheckoutTableViewController {
         }
         if let price = item.price, let quantity = item.quantity {
             
-//            let perItemTotalCost = Int(price)! * quantity
-//            
-//            checkoutCell.costLabel.text = String(perItemTotalCost)
+            if let priceDouble = Double(price) {
+                let perItemTotalCost = priceDouble * Double(quantity)
+                checkoutCell.costLabel.text = "\(String(perItemTotalCost))$"
+            }
         }
         
         return checkoutCell
