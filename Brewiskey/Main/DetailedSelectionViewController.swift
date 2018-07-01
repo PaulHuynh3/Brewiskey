@@ -41,7 +41,9 @@ class DetailedSelectionViewController: UIViewController {
                 guard let imageUrl = beer.singleBottleImageUrl else {return}
                 alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
                 itemTypeLabel.text = beer.singleBottleType
-                priceLabel.text = beer.singleBottlePrice
+                if let beerSingleBottlePrice = beer.singleBottlePrice {
+                    priceLabel.text = String(beerSingleBottlePrice)
+                }
             }
             //if let wine = wine etc
         }
@@ -50,7 +52,9 @@ class DetailedSelectionViewController: UIViewController {
                 guard let imageUrl = beer.singleCanImageUrl else {return}
                 alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
                 itemTypeLabel.text = beer.singleCanType
-                priceLabel.text = beer.singleCanPrice
+                if let beerSingleCanPrice = beer.singleCanPrice {
+                    priceLabel.text = String(beerSingleCanPrice)
+                }
             }
         }
         if isSelectionThree {
@@ -58,7 +62,10 @@ class DetailedSelectionViewController: UIViewController {
                 guard let imageUrl = beer.sixPackBottleImageUrl else {return}
                 alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
                 itemTypeLabel.text = beer.sixPackBottleType
-                priceLabel.text = beer.sixPackBottlePrice
+                
+                if let sixPackBottlePrice = beer.sixPackBottlePrice {
+                    priceLabel.text = String(sixPackBottlePrice)
+                }
             }
         }
         if isSelectionFour {
@@ -66,7 +73,9 @@ class DetailedSelectionViewController: UIViewController {
                 guard let imageUrl = beer.sixPackCanImageUrl else {return}
                 alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
                 itemTypeLabel.text = beer.sixPackCanType
-                priceLabel.text = beer.sixPackCanPrice
+                if let sixPackCanPrice = beer.sixPackCanPrice {
+                    priceLabel.text = String(sixPackCanPrice)
+                }
             }
         }
 
@@ -123,8 +132,6 @@ extension DetailedSelectionViewController {
     }
     
     fileprivate func addItemToCheckout() {
-        //use core data or realm..
-        //create a class for checkoutitems that match properties of the other alcohol models
         if isSelectionOne {
             if let beer = beer {
                 guard let imageUrl = beer.singleBottleImageUrl else {return}
@@ -133,9 +140,9 @@ extension DetailedSelectionViewController {
                 guard let name = beer.name else {return}
                 alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
                 itemTypeLabel.text = itemType
-                priceLabel.text = itemPrice
+                priceLabel.text = String(itemPrice)
                 
-                updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price:itemPrice, quantity: Int(currentValue))
+                updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price: itemPrice, quantity: Int(currentValue))
             }
         }
         if isSelectionTwo {
@@ -146,9 +153,9 @@ extension DetailedSelectionViewController {
                 guard let name = beer.name else {return}
                 alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
                 itemTypeLabel.text = itemType
-                priceLabel.text = itemPrice
+                priceLabel.text = String(itemPrice)
                 
-                updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price:itemPrice, quantity: Int(currentValue))
+                updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price: itemPrice, quantity: Int(currentValue))
             }
         }
         if isSelectionThree {
@@ -159,9 +166,9 @@ extension DetailedSelectionViewController {
                 guard let name = beer.name else {return}
                 alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
                 itemTypeLabel.text = itemType
-                priceLabel.text = itemPrice
+                priceLabel.text = String(itemPrice)
                 
-                updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price:itemPrice, quantity: Int(currentValue))
+                updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price: itemPrice, quantity: Int(currentValue))
             }
         }
         if isSelectionFour {
@@ -172,14 +179,14 @@ extension DetailedSelectionViewController {
                 guard let name = beer.name else {return}
                 alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
                 itemTypeLabel.text = itemType
-                priceLabel.text = itemPrice
+                priceLabel.text = String(itemPrice)
                 
-                updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price:itemPrice, quantity: Int(currentValue))
+                updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price: itemPrice, quantity: Int(currentValue))
             }
         }
     }
     
-    fileprivate func updateUserCartOnFirebase(name: String, imageUrl: String, type: String, price: String, quantity: Int) {
+    fileprivate func updateUserCartOnFirebase(name: String, imageUrl: String, type: String, price: Double, quantity: Int) {
         guard let uid = Auth.auth().currentUser?.uid else {return}
         let userReference = Database.database().reference().child("users").child(uid).child("cart").child("order_\(provideOrderNumber())")
         let values = ["name": name, "imageUrl" : imageUrl, "type" : type, "price": price, "quantity": quantity] as [String: AnyObject]

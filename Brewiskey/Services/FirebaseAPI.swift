@@ -82,29 +82,28 @@ class FirebaseAPI: NSObject {
             if let dictionary = snapshot.value as? [String:AnyObject]{
                 let beer = Beer()
                 beer.name = dictionary[beerName] as? String
-                beer.imageUrl = dictionary[imageUrl] as? String
                 beer.country = dictionary[country] as? String
                 beer.percent = dictionary[alcoholPercent] as? String
                 
                 if let singleCan = dictionary[singleCan] as? NSDictionary{
-                    beer.singleCanPrice = singleCan[price] as? String
-                    beer.singleCanContent = singleCan[content] as? String
+                    beer.singleCanPrice = singleCan[price] as? Double
+                    beer.singleCanContent = singleCan[content] as? Int
                     beer.singleCanImageUrl = singleCan[imageUrl] as? String
                     beer.singleCanType = singleCan[type] as? String
                 }
                 if let singleBottle = dictionary[singleBottle] as? NSDictionary{
-                    beer.singleBottlePrice = singleBottle[price] as? String
-                    beer.singleBottleContent = singleBottle[content] as? String
+                    beer.singleBottlePrice = singleBottle[price] as? Double
+                    beer.singleBottleContent = singleBottle[content] as? Int
                     beer.singleBottleImageUrl = singleBottle[imageUrl] as? String
                     beer.singleBottleType = singleBottle[type] as? String
                 }
                 if let sixPackCan = dictionary[sixPackCan] as? NSDictionary{
-                    beer.sixPackCanPrice = sixPackCan[price] as? String
+                    beer.sixPackCanPrice = sixPackCan[price] as? Double
                     beer.sixPackCanImageUrl = sixPackCan[imageUrl] as? String
                     beer.sixPackCanType = sixPackCan[type] as? String
                 }
                 if let sixPackBottle = dictionary[sixPackBottle] as? NSDictionary{
-                    beer.sixPackBottlePrice = sixPackBottle[price] as? String
+                    beer.sixPackBottlePrice = sixPackBottle[price] as? Double
                     beer.sixPackBottleImageUrl = sixPackBottle[imageUrl] as? String
                     beer.sixPackBottleType = sixPackBottle[type] as? String
                 }
@@ -121,21 +120,23 @@ class FirebaseAPI: NSObject {
             if let dictionary = snapshot.value as? [String:AnyObject]{
                 let spirit = Spirit()
                 spirit.name = dictionary["name"] as? String
-                spirit.imageUrl = dictionary["imageUrl"] as? String
                 spirit.percent = dictionary["alcoholPercent"] as? String
                 spirit.country = dictionary["country"] as? String
                 
                 if let largeBottleDict = dictionary["1140Bottle"] as? NSDictionary{
                     spirit.largeBottlePrice = largeBottleDict["price"] as? Double
-                    spirit.largeBottleContent = largeBottleDict["content"] as? Double
+                    spirit.largeBottleContent = largeBottleDict["content"] as? Int
+                    spirit.largeBottleImageUrl = largeBottleDict["imageUrl"] as? String
                 }
                 if let mediumBottleDict = dictionary["750Bottle"] as? NSDictionary {
                     spirit.mediumBottlePrice = mediumBottleDict["price"] as? Double
-                    spirit.mediumBottleContent = mediumBottleDict["content"] as? Double
+                    spirit.mediumBottleContent = mediumBottleDict["content"] as? Int
+                    spirit.mediumBottleImageUrl = mediumBottleDict["imageUrl"] as? String
                 }
                 if let smallBottleDict = dictionary["375Bottle"] as? NSDictionary{
                     spirit.smallBottlePrice = smallBottleDict["price"] as? Double
-                    spirit.smallBottleContent = smallBottleDict["content"] as? Double
+                    spirit.smallBottleContent = smallBottleDict["content"] as? Int
+                    spirit.smallBottleImageUrl = smallBottleDict["imageUrl"] as? String
                 }
                 DispatchQueue.main.async {
                     completion(spirit)
@@ -156,7 +157,7 @@ class FirebaseAPI: NSObject {
                 
                 if let mediumBottleDict = dictionary["750Bottle"] as? NSDictionary{
                     wine.bottlePrice = mediumBottleDict["price"] as? Double
-                    wine.bottleContent = mediumBottleDict["content"] as? Double
+                    wine.bottleContent = mediumBottleDict["content"] as? Int
                 }
                 DispatchQueue.main.async {
                     completion(wine)

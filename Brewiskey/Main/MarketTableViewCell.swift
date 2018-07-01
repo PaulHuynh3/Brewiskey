@@ -15,7 +15,7 @@ class MarketTableViewCell: UITableViewCell {
     
     func setupBeerNamesAndImages(_ beer: Beer){
         
-        if let imageUrl = beer.imageUrl{
+        if let imageUrl = beer.singleBottleImageUrl{
           alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
         }
         brandNameLabel.text = beer.name
@@ -23,7 +23,7 @@ class MarketTableViewCell: UITableViewCell {
     
     func setupSpiritNamesAndImages(_ spirit: Spirit){
         
-        if let imageUrl = spirit.imageUrl{
+        if let imageUrl = spirit.mediumBottleImageUrl{
             alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
         }
         brandNameLabel.text = spirit.name

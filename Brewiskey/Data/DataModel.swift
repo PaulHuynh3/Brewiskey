@@ -43,7 +43,7 @@ class Address: NSObject {
     var province: String?
     var postalCode: String?
 }
-
+//look this over.
 class purchasedAlcohols {
     var purchasedDate: String?
     var spirit = Spirit()
@@ -55,15 +55,19 @@ class Spirit {
     var name: String?
     var percent: String?
     var country: String?
-    var imageUrl: String?
     var shortDescription: String?
     
     var largeBottlePrice: Double?
-    var largeBottleContent: Double?
+    var largeBottleContent: Int?
+    var largeBottleImageUrl: String?
+    
     var mediumBottlePrice: Double?
-    var mediumBottleContent: Double?
+    var mediumBottleContent: Int?
+    var mediumBottleImageUrl: String?
+    
     var smallBottlePrice: Double?
-    var smallBottleContent: Double?
+    var smallBottleContent: Int?
+    var smallBottleImageUrl: String?
 }
 
 class Wine {
@@ -72,33 +76,31 @@ class Wine {
     var country: String?
     var imageUrl: String?
     var shortDescription: String?
-    
     var bottlePrice: Double?
-    var bottleContent: Double?
+    var bottleContent: Int?
 }
 
 class Beer {
     var name: String?
     var percent: String?
     var country: String?
-    var imageUrl: String?
     var shortDescription: String?
     
-    var singleCanPrice: String?
-    var singleCanContent: String?
+    var singleCanPrice: Double?
+    var singleCanContent: Int?
     var singleCanImageUrl: String?
     var singleCanType: String?
     
-    var singleBottlePrice: String?
-    var singleBottleContent: String?
+    var singleBottlePrice: Double?
+    var singleBottleContent: Int?
     var singleBottleImageUrl: String?
     var singleBottleType: String?
     
-    var sixPackCanPrice: String?
+    var sixPackCanPrice: Double?
     var sixPackCanImageUrl: String?
     var sixPackCanType: String?
     
-    var sixPackBottlePrice: String?
+    var sixPackBottlePrice: Double?
     var sixPackBottleImageUrl: String?
     var sixPackBottleType: String?
 }

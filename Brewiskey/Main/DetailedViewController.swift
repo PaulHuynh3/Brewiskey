@@ -37,11 +37,10 @@ class DetailedViewController: UIViewController {
            configureBeerMode()
         }
         else if wineMode == true {
-            alcoholNameLabel.text = wine?.name
+            configureWineMode()
         }
         else if spiritMode == true {
-    
-            alcoholNameLabel.text = spirit?.name
+            configureSpiritsMode()
         }
     }
     
@@ -60,66 +59,28 @@ class DetailedViewController: UIViewController {
             selectionFourImageview.loadImagesUsingCacheWithUrlString(urlString: selectionFourImage)
         }
     }
-  
-}
-
-extension DetailedViewController {
-    //specific setup for selections
-    fileprivate func setupTypeLabelSelectionOne() {
-        if beerMode && isFullScreen {
-            if let beerType = beer?.singleBottleType {
-                let bottlePriceWidth: CGFloat = 100
-                let bottlePriceHeight: CGFloat = 100
-                let xPosition = headerLabel.frame.midX
-                let yPosition = headerLabel.frame.minY
-                let beerTypeLabel = UILabel(frame: CGRect(x: xPosition, y: yPosition, width: bottlePriceWidth, height: bottlePriceHeight))
-                beerTypeLabel.center = headerLabel.center
-                beerTypeLabel.text = beerType
-                headerLabel.addSubview(beerTypeLabel)
-            }
+    
+    fileprivate func configureWineMode() {
+        alcoholNameLabel.text = wine?.name
+        if let selectionOneImage = wine?.imageUrl {
+            selectionOneImageview.loadImagesUsingCacheWithUrlString(urlString: selectionOneImage)
         }
-    }
-
-}
-
-extension DetailedViewController {
-    //setup for all selections
-    fileprivate func setupHeaderLabel(_ selectionImageview: UIImageView) {
-        if isFullScreen {
-            let labelWidth = selectionImageview.frame.width
-            let labelHeight: CGFloat = 60
-            let xPosition = selectionImageview.frame.minX
-            let yPosition = selectionImageview.frame.minY
-     
-            headerLabel = UILabel(frame: CGRect(x: xPosition, y: yPosition, width: labelWidth, height: labelHeight))
-            headerLabel.backgroundColor = .white
-            selectionImageview.addSubview(headerLabel)
-        }
+        selectionTwoImageview.isHidden = true
+        selectionThreeImageview.isHidden = true
+        selectionFourImageview.isHidden = true
     }
     
-    fileprivate func setupFooterLabel(_ selectionImageview: UIImageView) {
-        if isFullScreen {
-            let labelWidth = selectionImageview.frame.width
-            let labelHeight: CGFloat = 70
-            let xPosition = selectionImageview.frame.minX
-            let yPosition = selectionImageview.frame.maxY - labelHeight
-            footerLabel = UILabel(frame: CGRect(x: xPosition, y: yPosition, width: labelWidth, height: labelHeight))
-            footerLabel.backgroundColor = lightBlue
-            selectionImageview.addSubview(footerLabel)
+    fileprivate func configureSpiritsMode() {
+        if let selectionOneImage = spirit?.smallBottleImageUrl {
+            selectionOneImageview.loadImagesUsingCacheWithUrlString(urlString: selectionOneImage)
         }
-    }
-    
-    fileprivate func setupCheckoutButton(_ selectionImageview: UIImageView) {
-        if isFullScreen {
-            let checkoutButtonWidth: CGFloat = 100
-            let checkoutButtonHeight: CGFloat = 100
-            let xPosition = headerLabel.frame.width - checkoutButtonWidth
-            let yPosition: CGFloat = 0
-            let checkoutButton = UIButton(frame: CGRect(x: xPosition, y: yPosition, width: checkoutButtonWidth, height: checkoutButtonHeight))
-            checkoutButton.imageView?.image = #imageLiteral(resourceName: "partyHard")
-            
-            headerLabel.addSubview(checkoutButton)
+        if let selectionTwoImage = spirit?.mediumBottleImageUrl {
+            selectionTwoImageview.loadImagesUsingCacheWithUrlString(urlString: selectionTwoImage)
         }
+        if let selectionThreeImage = spirit?.largeBottleImageUrl {
+            selectionThreeImageview.loadImagesUsingCacheWithUrlString(urlString: selectionThreeImage)
+        }
+        selectionFourImageview.isHidden = true
     }
 }
 
