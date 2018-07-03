@@ -32,10 +32,8 @@ class SettingsTableViewController: UITableViewController {
     }
     
     fileprivate func setupUI() {
-        tableView.backgroundColor = UIColor.brewiskeyColours.lightGray
-        view.backgroundColor = UIColor.brewiskeyColours.lightGray
         tableView.isScrollEnabled = false
-        self.tableView.tableFooterView = UIView(frame: CGRect(x: 0, y: 0, width: 0, height: 0))
+        self.tableView.tableFooterView = UIView()
     }
     
     fileprivate func navigateToReferFriend() {

@@ -49,6 +49,7 @@
 		DAB177B120421771009F0B45 /* MarketTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB177B020421771009F0B45 /* MarketTableViewCell.swift */; };
 		DAB62860208FDC1B00A5890D /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB6285F208FDC1B00A5890D /* ProfileTableViewController.swift */; };
 		DAB62863209035EC00A5890D /* UserDefaultsUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB62862209035EC00A5890D /* UserDefaultsUtils.swift */; };
+		DAB7630D20EB1419000736AA /* StoreReviewHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAB7630C20EB1419000736AA /* StoreReviewHelper.swift */; };
 		DAC462442091168500673189 /* BrewiskeyAnalytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC462432091168500673189 /* BrewiskeyAnalytics.swift */; };
 		DAC4EC89209442EE00EE07A0 /* MyAccountTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4EC88209442EE00EE07A0 /* MyAccountTableViewController.swift */; };
 		DAC4EC8B2094499800EE07A0 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC4EC8A2094499800EE07A0 /* ChangeEmailViewController.swift */; };
@@ -114,6 +115,7 @@
 		DAB177B020421771009F0B45 /* MarketTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarketTableViewCell.swift; sourceTree = "<group>"; };
 		DAB6285F208FDC1B00A5890D /* ProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		DAB62862209035EC00A5890D /* UserDefaultsUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsUtils.swift; sourceTree = "<group>"; };
+		DAB7630C20EB1419000736AA /* StoreReviewHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreReviewHelper.swift; sourceTree = "<group>"; };
 		DAC462432091168500673189 /* BrewiskeyAnalytics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewiskeyAnalytics.swift; sourceTree = "<group>"; };
 		DAC4EC88209442EE00EE07A0 /* MyAccountTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyAccountTableViewController.swift; sourceTree = "<group>"; };
 		DAC4EC8A2094499800EE07A0 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +166,7 @@
 			children = (
 				DA389A7B20774763009F3CE8 /* OnboardingCheckUtils.swift */,
 				DAB62862209035EC00A5890D /* UserDefaultsUtils.swift */,
+				DAB7630C20EB1419000736AA /* StoreReviewHelper.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -560,6 +563,7 @@
 				DAC4EC89209442EE00EE07A0 /* MyAccountTableViewController.swift in Sources */,
 				DA57BD4820D0BF2600C1CAAF /* MarketPlaceCollectionViewCell.swift in Sources */,
 				DA13CFFF203E0A7D0021EB7E /* LoginViewController.swift in Sources */,
+				DAB7630D20EB1419000736AA /* StoreReviewHelper.swift in Sources */,
 				DA2E916420487F9F00AF0247 /* DetailedViewController.swift in Sources */,
 				DA389A7C20774763009F3CE8 /* OnboardingCheckUtils.swift in Sources */,
 				DA13CFFD203E0A7D0021EB7E /* AppDelegate.swift in Sources */,

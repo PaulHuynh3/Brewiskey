@@ -25,22 +25,6 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Brewiskey/Main/MarketNavController.swift"
-            timestampString = "551855595.181654"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "17"
-            endingLineNumber = "17"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Brewiskey/Main/AlcoholSelectionTableViewController.swift"
             timestampString = "551678354.548586"
             startingColumnNumber = "9223372036854775807"
@@ -115,56 +99,8 @@
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Brewiskey/Main/MarketTableViewController.swift"
-            timestampString = "552270409.208813"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "22"
-            endingLineNumber = "22"
-            landmarkName = "viewDidLoad()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Brewiskey.MarketTableViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "Brewiskey"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/a/Desktop/Projects/Brewiskey/Brewiskey/Main/MarketTableViewController.swift"
-                  timestampString = "551045991.307849"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "22"
-                  endingLineNumber = "22"
-                  offsetFromSymbolStart = "169">
-               </Location>
-               <Location
-                  shouldBeEnabled = "No"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in Brewiskey.MarketTableViewController.viewDidLoad() -&gt; ()"
-                  moduleName = "Brewiskey"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/a/Desktop/Projects/Brewiskey/Brewiskey/Main/MarketTableViewController.swift"
-                  timestampString = "551045991.310228"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "23"
-                  endingLineNumber = "23"
-                  offsetFromSymbolStart = "16">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
             filePath = "Brewiskey/Services/FirebaseAPI.swift"
-            timestampString = "552270409.208955"
+            timestampString = "552281417.770117"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
@@ -180,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/Main/CheckoutTableViewController.swift"
-            timestampString = "552270409.210012"
+            timestampString = "552281417.770207"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "28"
-            endingLineNumber = "28"
+            startingLineNumber = "29"
+            endingLineNumber = "29"
             landmarkName = "fetchCartItems()"
             landmarkType = "7">
             <Locations>
@@ -228,7 +164,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/Main/DetailedSelectionViewController.swift"
-            timestampString = "552270409.210099"
+            timestampString = "552281417.770277"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "178"

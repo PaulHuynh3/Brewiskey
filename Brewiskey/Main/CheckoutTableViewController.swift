@@ -20,6 +20,7 @@ class CheckoutTableViewController: UITableViewController {
         setupNibTableViewCell()
         navigationController?.navigationBar.isHidden = true
         fetchCartItems()
+        self.tableView.tableFooterView = UIView()
     }
     
     //set delegate to refresh table when items are added into cart..
@@ -54,6 +55,9 @@ class CheckoutTableViewController: UITableViewController {
         
     }
 
+    fileprivate func setupFinishButton() {
+        
+    }
 }
 
 extension CheckoutTableViewController {
@@ -88,7 +92,6 @@ extension CheckoutTableViewController {
             let perItemTotalCost = price * Double(quantity)
             checkoutCell.costLabel.text = "\(String(perItemTotalCost))$"
         }
-        
         return checkoutCell
     }
     
