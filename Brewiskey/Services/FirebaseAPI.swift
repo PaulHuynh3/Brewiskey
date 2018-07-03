@@ -127,16 +127,19 @@ class FirebaseAPI: NSObject {
                     spirit.largeBottlePrice = largeBottleDict["price"] as? Double
                     spirit.largeBottleContent = largeBottleDict["content"] as? Int
                     spirit.largeBottleImageUrl = largeBottleDict["imageUrl"] as? String
+                    spirit.largeBottleType = largeBottleDict["type"] as? String
                 }
                 if let mediumBottleDict = dictionary["750Bottle"] as? NSDictionary {
                     spirit.mediumBottlePrice = mediumBottleDict["price"] as? Double
                     spirit.mediumBottleContent = mediumBottleDict["content"] as? Int
                     spirit.mediumBottleImageUrl = mediumBottleDict["imageUrl"] as? String
+                    spirit.mediumBottleType = mediumBottleDict["type"] as? String
                 }
                 if let smallBottleDict = dictionary["375Bottle"] as? NSDictionary{
                     spirit.smallBottlePrice = smallBottleDict["price"] as? Double
                     spirit.smallBottleContent = smallBottleDict["content"] as? Int
                     spirit.smallBottleImageUrl = smallBottleDict["imageUrl"] as? String
+                    spirit.smallBottleType = smallBottleDict["type"] as? String
                 }
                 DispatchQueue.main.async {
                     completion(spirit)
@@ -158,6 +161,7 @@ class FirebaseAPI: NSObject {
                 if let mediumBottleDict = dictionary["750Bottle"] as? NSDictionary{
                     wine.bottlePrice = mediumBottleDict["price"] as? Double
                     wine.bottleContent = mediumBottleDict["content"] as? Int
+                    wine.type = mediumBottleDict["type"] as? String
                 }
                 DispatchQueue.main.async {
                     completion(wine)
@@ -199,7 +203,7 @@ class FirebaseAPI: NSObject {
             if let orderDictionary = snapshot.value as? [String: AnyObject] {
                 let checkoutItem = CheckoutItem()
                 checkoutItem.imageUrl = orderDictionary["imageUrl"] as? String
-                checkoutItem.price = orderDictionary["price"] as? String
+                checkoutItem.price = orderDictionary["price"] as? Double
                 checkoutItem.quantity = orderDictionary["quantity"] as? Int
                 checkoutItem.type = orderDictionary["type"] as? String
                 checkoutItem.name = orderDictionary["name"] as? String

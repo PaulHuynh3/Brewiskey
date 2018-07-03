@@ -100,7 +100,6 @@ class MarketTableViewController: UITableViewController {
             let appDelegate = UIApplication.shared.delegate as? AppDelegate
             appDelegate?.transitionToLogin()
         }
-        
     }
     
     // MARK: - Tableview data source
@@ -169,23 +168,22 @@ class MarketTableViewController: UITableViewController {
             //the sender was set in indexpath.
             let beer = sender as? Beer
             detailedTableView?.beer = beer
-            detailedTableView?.beerMode = true
+            detailedTableView?.isBeerMode = true
         }
         
         if segue.identifier == "wineDetailedViewSegue"{
             let detailedTableView = segue.destination as? DetailedViewController
             let wine = sender as? Wine
             detailedTableView?.wine = wine
-            detailedTableView?.wineMode = true
+            detailedTableView?.isWineMode = true
         }
         
         if segue.identifier == "spiritDetailedViewSegue"{
             let detailedTableView = segue.destination as? DetailedViewController
             let spirit = sender as? Spirit
             detailedTableView?.spirit = spirit
-            detailedTableView?.spiritMode = true
+            detailedTableView?.isSpiritMode = true
         }
-        
     }
 
 }

@@ -9,9 +9,9 @@
 import UIKit
 
 class DetailedViewController: UIViewController {
-    var beerMode = false
-    var wineMode = false
-    var spiritMode = false
+    var isBeerMode = false
+    var isWineMode = false
+    var isSpiritMode = false
     
     var beer: Beer?
     var wine: Wine?
@@ -33,13 +33,13 @@ class DetailedViewController: UIViewController {
     }
     
     fileprivate func configureAndSetUpName() {
-        if beerMode == true {
+        if isBeerMode == true {
            configureBeerMode()
         }
-        else if wineMode == true {
+        else if isWineMode == true {
             configureWineMode()
         }
-        else if spiritMode == true {
+        else if isSpiritMode == true {
             configureSpiritsMode()
         }
     }
@@ -71,6 +71,7 @@ class DetailedViewController: UIViewController {
     }
     
     fileprivate func configureSpiritsMode() {
+        alcoholNameLabel.text = spirit?.name
         if let selectionOneImage = spirit?.smallBottleImageUrl {
             selectionOneImageview.loadImagesUsingCacheWithUrlString(urlString: selectionOneImage)
         }
@@ -105,52 +106,52 @@ extension DetailedViewController {
     }
     
     @objc fileprivate func selectionOneSelected() {
-        let isSelectionOne = true
-        let selectionViewController = DetailedSelectionViewController.fromStoryboard(name: Storyboard.Main) as! DetailedSelectionViewController
-        if beerMode && isSelectionOne {
-            if let beer = beer {
-                selectionViewController.beer = beer
-                selectionViewController.isSelectionOne = isSelectionOne
-            }
-            self.present(selectionViewController, animated: true)
-        }
+        let currentSelection = 1
+        handleSelection(isCorrectMode: isBeerMode, currentSelection: currentSelection)
+        handleSelection(isCorrectMode: isSpiritMode, currentSelection: currentSelection)
+        handleSelection(isCorrectMode: isWineMode, currentSelection: currentSelection)
     }
     
     @objc fileprivate func selectionTwoSelected() {
-        let isSelectionTwo = true
-        let selectionViewController = DetailedSelectionViewController.fromStoryboard(name: Storyboard.Main) as! DetailedSelectionViewController
-        if beerMode && isSelectionTwo {
-            if let beer = beer {
-                selectionViewController.beer = beer
-                selectionViewController.isSelectionTwo = isSelectionTwo
-            }
-            self.present(selectionViewController, animated: true)
-        }
-        
+        let currentSelection = 2
+        handleSelection(isCorrectMode: isBeerMode, currentSelection: currentSelection)
+        handleSelection(isCorrectMode: isSpiritMode, currentSelection: currentSelection)
+        handleSelection(isCorrectMode: isWineMode, currentSelection: currentSelection)
     }
     
     @objc fileprivate func selectionThreeSelected() {
-        let isSelectionThree = true
-        let selectionViewController = DetailedSelectionViewController.fromStoryboard(name: Storyboard.Main) as! DetailedSelectionViewController
-        if beerMode && isSelectionThree {
-            if let beer = beer {
-                selectionViewController.beer = beer
-                selectionViewController.isSelectionThree = isSelectionThree
-            }
-            self.present(selectionViewController, animated: true)
-        }
+        let currentSelection = 3
+        handleSelection(isCorrectMode: isBeerMode, currentSelection: currentSelection)
+        handleSelection(isCorrectMode: isSpiritMode, currentSelection: currentSelection)
+        handleSelection(isCorrectMode: isWineMode, currentSelection: currentSelection)
     }
     
     @objc fileprivate func selectionFourSelected() {
-        let isSelectionFour = true
-        let selectionViewController = DetailedSelectionViewController.fromStoryboard(name: Storyboard.Main) as! DetailedSelectionViewController
-        if beerMode && isSelectionFour {
-            if let beer = beer {
-                selectionViewController.beer = beer
-                selectionViewController.isSelectionFour = isSelectionFour
-            }
-            self.present(selectionViewController, animated: true)
-        }
+        let currentSelection = 4
+        handleSelection(isCorrectMode: isBeerMode, currentSelection: currentSelection)
+        handleSelection(isCorrectMode: isSpiritMode, currentSelection: currentSelection)
+        handleSelection(isCorrectMode: isWineMode, currentSelection: currentSelection)
     }
     
+    fileprivate func handleSelection(isCorrectMode: Bool, currentSelection: Int) {
+        let selectionViewController = DetailedSelectionViewController.fromStoryboard(name: Storyboard.Main) as! DetailedSelectionViewController
+        if isCorrectMode {
+            if let beer = beer {
+                selectionViewController.beer = beer
+                selectionViewController.selectionNumber = currentSelection
+                //TODO present beer/spirits/wine seprarelty because of the layout of 4 beers , 3 spirits and 1 wine.
+                self.present(selectionViewController, animated: true)
+            }
+            if let wine = wine {
+                selectionViewController.wine = wine
+                selectionViewController.selectionNumber = currentSelection
+                self.present(selectionViewController, animated: true)
+            }
+            if let spirit = spirit {
+                selectionViewController.spirit = spirit
+                selectionViewController.selectionNumber = currentSelection
+                self.present(selectionViewController, animated: true)
+            }
+        }
+    }
 }

@@ -11,14 +11,14 @@ import Firebase
 
 class DetailedSelectionViewController: UIViewController {
     var beer: Beer?
+    var wine: Wine?
+    var spirit: Spirit?
+    
     @IBOutlet weak var alcoholImageView: UIImageView!
     @IBOutlet weak var itemTypeLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var itemQuantityLabel: UILabel!
-    var isSelectionOne = false
-    var isSelectionTwo = false
-    var isSelectionThree = false
-    var isSelectionFour = false
+    var selectionNumber = Int()
     @IBOutlet weak var quantityStepper: UIStepper!
     @IBOutlet weak var cartItemCounterLabel: UILabel!
     var currentValue: Double!
@@ -36,18 +36,49 @@ class DetailedSelectionViewController: UIViewController {
     }
     
     fileprivate func loadSelectedItem() {
-        if isSelectionOne {
+        if selectionNumber == 1 {
+            showSelectedItem(selection: selectionNumber)
+        }
+        if selectionNumber == 2 {
+            showSelectedItem(selection: selectionNumber)
+        }
+        if selectionNumber == 3 {
+            showSelectedItem(selection: selectionNumber)
+        }
+        if selectionNumber == 4 {
+            showSelectedItem(selection: selectionNumber)
+        }
+    }
+    
+    fileprivate func showSelectedItem(selection: Int) {
+        if selection == 1 {
             if let beer = beer {
                 guard let imageUrl = beer.singleBottleImageUrl else {return}
                 alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
                 itemTypeLabel.text = beer.singleBottleType
                 if let beerSingleBottlePrice = beer.singleBottlePrice {
-                    priceLabel.text = String(beerSingleBottlePrice)
+                    priceLabel.text = "\(String(beerSingleBottlePrice))$"
                 }
             }
-            //if let wine = wine etc
+            if let wine = wine {
+                guard let imageUrl = wine.imageUrl else {return}
+                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+                itemTypeLabel.text = wine.type
+                if let winePrice = wine.bottlePrice {
+                    priceLabel.text = "\(String(winePrice))$"
+                }
+            }
+            if let spirit = spirit {
+                guard let imageUrl = spirit.smallBottleImageUrl else {return}
+                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+                itemTypeLabel.text = spirit.smallBottleType
+                if let smallBottlePrice = spirit.smallBottlePrice {
+                    priceLabel.text = "\(String(smallBottlePrice))$"
+                }
+            }
         }
-        if isSelectionTwo {
+        
+        if selection == 2 {
             if let beer = beer {
                 guard let imageUrl = beer.singleCanImageUrl else {return}
                 alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
@@ -56,8 +87,16 @@ class DetailedSelectionViewController: UIViewController {
                     priceLabel.text = String(beerSingleCanPrice)
                 }
             }
+            if let spirit = spirit {
+                guard let imageUrl = spirit.mediumBottleImageUrl else {return}
+                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+                itemTypeLabel.text = spirit.mediumBottleType
+                if let mediumBottlePrice = spirit.mediumBottlePrice {
+                    priceLabel.text = "\(String(mediumBottlePrice))$"
+                }
+            }
         }
-        if isSelectionThree {
+        if selection == 3 {
             if let beer = beer {
                 guard let imageUrl = beer.sixPackBottleImageUrl else {return}
                 alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
@@ -67,8 +106,16 @@ class DetailedSelectionViewController: UIViewController {
                     priceLabel.text = String(sixPackBottlePrice)
                 }
             }
+            if let spirit = spirit {
+                guard let imageUrl = spirit.mediumBottleImageUrl else {return}
+                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+                itemTypeLabel.text = spirit.largeBottleType
+                if let largeBottlePrice = spirit.largeBottlePrice {
+                    priceLabel.text = "\(String(largeBottlePrice))$"
+                }
+            }
         }
-        if isSelectionFour {
+        if selection == 4 {
             if let beer = beer {
                 guard let imageUrl = beer.sixPackCanImageUrl else {return}
                 alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
@@ -78,7 +125,6 @@ class DetailedSelectionViewController: UIViewController {
                 }
             }
         }
-
     }
 }
 
@@ -98,10 +144,7 @@ extension DetailedSelectionViewController {
     }
     
     @IBAction func dismissButtonTapped(_ sender: Any) {
-        isSelectionOne = false
-        isSelectionTwo = false
-        isSelectionThree = false
-        isSelectionFour = false
+        selectionNumber = 0
         dismiss(animated: true, completion: nil)
     }
     
@@ -132,54 +175,75 @@ extension DetailedSelectionViewController {
     }
     
     fileprivate func addItemToCheckout() {
-        if isSelectionOne {
+        if selectionNumber == 1 {
             if let beer = beer {
                 guard let imageUrl = beer.singleBottleImageUrl else {return}
                 guard let itemType = beer.singleBottleType else {return}
                 guard let itemPrice = beer.singleBottlePrice else {return}
                 guard let name = beer.name else {return}
-                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
-                itemTypeLabel.text = itemType
-                priceLabel.text = String(itemPrice)
+                
+                updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price: itemPrice, quantity: Int(currentValue))
+            }
+            if let wine = wine {
+                guard let imageUrl = wine.imageUrl else {return}
+                guard let itemType = wine.type else {return}
+                guard let itemPrice = wine.bottlePrice else {return}
+                guard let name = wine.name else {return}
+                
+                updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price: itemPrice, quantity: Int(currentValue))
+            }
+            if let spirit = spirit {
+                guard let imageUrl = spirit.smallBottleImageUrl else {return}
+                guard let itemType = spirit.smallBottleType else {return}
+                guard let itemPrice = spirit.smallBottlePrice else {return}
+                guard let name = spirit.name else {return}
                 
                 updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price: itemPrice, quantity: Int(currentValue))
             }
         }
-        if isSelectionTwo {
+        if selectionNumber == 2 {
             if let beer = beer {
                 guard let imageUrl = beer.singleCanImageUrl else {return}
                 guard let itemType = beer.singleCanType else {return}
                 guard let itemPrice = beer.singleCanPrice else {return}
                 guard let name = beer.name else {return}
-                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
-                itemTypeLabel.text = itemType
-                priceLabel.text = String(itemPrice)
+                
+                updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price: itemPrice, quantity: Int(currentValue))
+            }
+            if let spirit = spirit {
+                guard let imageUrl = spirit.mediumBottleImageUrl else {return}
+                guard let itemType = spirit.mediumBottleType else {return}
+                guard let itemPrice = spirit.mediumBottlePrice else {return}
+                guard let name = spirit.name else {return}
                 
                 updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price: itemPrice, quantity: Int(currentValue))
             }
         }
-        if isSelectionThree {
+        if selectionNumber == 3 {
             if let beer = beer {
                 guard let imageUrl = beer.sixPackBottleImageUrl else {return}
                 guard let itemType = beer.sixPackBottleType else {return}
                 guard let itemPrice = beer.sixPackBottlePrice else {return}
                 guard let name = beer.name else {return}
-                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
-                itemTypeLabel.text = itemType
-                priceLabel.text = String(itemPrice)
+ 
+                updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price: itemPrice, quantity: Int(currentValue))
+            }
+            
+            if let spirit = spirit {
+                guard let imageUrl = spirit.largeBottleImageUrl else {return}
+                guard let itemType = spirit.largeBottleType else {return}
+                guard let itemPrice = spirit.largeBottlePrice else {return}
+                guard let name = spirit.name else {return}
                 
                 updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price: itemPrice, quantity: Int(currentValue))
             }
         }
-        if isSelectionFour {
+        if selectionNumber == 4 {
             if let beer = beer {
                 guard let imageUrl = beer.sixPackCanImageUrl else {return}
                 guard let itemType = beer.sixPackCanType else {return}
                 guard let itemPrice = beer.sixPackCanPrice else {return}
                 guard let name = beer.name else {return}
-                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
-                itemTypeLabel.text = itemType
-                priceLabel.text = String(itemPrice)
                 
                 updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price: itemPrice, quantity: Int(currentValue))
             }
@@ -215,10 +279,4 @@ extension DetailedSelectionViewController {
             return orderNumber!
         }
     }
-}
-
-extension Notification.Name {
-    static let didReceiveData = Notification.Name("didRecieveData")
-    static let didCompleteTask = Notification.Name("didCompleteTask")
-    static let completedDownload = Notification.Name("completedDownload")
 }

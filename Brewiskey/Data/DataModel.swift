@@ -60,14 +60,17 @@ class Spirit {
     var largeBottlePrice: Double?
     var largeBottleContent: Int?
     var largeBottleImageUrl: String?
+    var largeBottleType: String?
     
     var mediumBottlePrice: Double?
     var mediumBottleContent: Int?
     var mediumBottleImageUrl: String?
+    var mediumBottleType: String?
     
     var smallBottlePrice: Double?
     var smallBottleContent: Int?
     var smallBottleImageUrl: String?
+    var smallBottleType: String?
 }
 
 class Wine {
@@ -78,6 +81,7 @@ class Wine {
     var shortDescription: String?
     var bottlePrice: Double?
     var bottleContent: Int?
+    var type: String?
 }
 
 class Beer {
@@ -108,7 +112,7 @@ class Beer {
 class CheckoutItem {
     var name: String?
     var imageUrl: String?
-    var price: String?
+    var price: Double?
     var quantity: Int?
     var type: String?
 }
