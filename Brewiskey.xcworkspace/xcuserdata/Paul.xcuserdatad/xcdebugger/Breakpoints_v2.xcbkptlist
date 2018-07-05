@@ -100,7 +100,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/Services/FirebaseAPI.swift"
-            timestampString = "552281417.770117"
+            timestampString = "552286854.267808"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "95"
@@ -116,7 +116,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/Main/CheckoutTableViewController.swift"
-            timestampString = "552281417.770207"
+            timestampString = "552454871.580303"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "29"
@@ -132,11 +132,11 @@
                   moduleName = "Brewiskey"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/a/Desktop/Projects/Brewiskey/Brewiskey/Main/CheckoutTableViewController.swift"
-                  timestampString = "551912958.167275"
+                  timestampString = "552321316.852102"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
                   offsetFromSymbolStart = "14">
                </Location>
                <Location
@@ -147,11 +147,11 @@
                   moduleName = "Brewiskey"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/a/Desktop/Projects/Brewiskey/Brewiskey/Main/CheckoutTableViewController.swift"
-                  timestampString = "551912958.1701829"
+                  timestampString = "552321316.85513"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "30"
-                  endingLineNumber = "30"
+                  startingLineNumber = "29"
+                  endingLineNumber = "29"
                   offsetFromSymbolStart = "53">
                </Location>
             </Locations>
@@ -164,7 +164,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/Main/DetailedSelectionViewController.swift"
-            timestampString = "552281417.770277"
+            timestampString = "552286854.268268"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "178"
@@ -186,6 +186,38 @@
             startingLineNumber = "26"
             endingLineNumber = "26"
             landmarkName = "deleteAllUserDefaults()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Brewiskey/Main/CheckoutTableViewController.swift"
+            timestampString = "552454871.5901459"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Brewiskey/Main/CheckoutTableViewController.swift"
+            timestampString = "552454871.591235"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
+            landmarkName = "viewDidLoad()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

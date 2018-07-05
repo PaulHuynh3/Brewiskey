@@ -55,8 +55,9 @@ class CheckoutTableViewController: UITableViewController {
         
     }
 
-    fileprivate func setupFinishButton() {
-        
+    @objc fileprivate func proceedButtonTapped() {
+        print("Proceed Button tapped")
+        //navigate to final screen with their information
     }
 }
 
@@ -103,4 +104,47 @@ extension CheckoutTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
     }
+    
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        
+        let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
+        
+        let proceedButton = UIButton(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: footerView.frame.height))
+        proceedButton.setTitle("Proceed To Payment", for: .normal)
+        proceedButton.setTitleColor(.white, for: .normal)
+        proceedButton.backgroundColor = .black
+        proceedButton.addTarget(self, action: #selector(proceedButtonTapped), for: .touchUpInside)
+        
+        footerView.addSubview(proceedButton)
+        return footerView
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == .delete {
+            cartItems.remove(at: indexPath.row)
+             let orderNumber = indexPath.row
+            
+          //deletion from firebase database works but its incorrect indexpath..
+            guard let uid = FirebaseConstants.currentUserID else {return}
+           FirebaseConstants.database.child("users").child(uid).child("cart").child("order_\(orderNumber)").removeValue()
+            
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        }
+    }
+}
+
+extension CheckoutTableViewController {
+    //paginate the Proceed button
+    
+    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        
+    }
+    
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        
+    }
+    
+    
+    
 }

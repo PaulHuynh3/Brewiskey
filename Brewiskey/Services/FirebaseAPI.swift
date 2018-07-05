@@ -192,7 +192,7 @@ class FirebaseAPI: NSObject {
     }
     
     func fetchItemsInCart(completion:@escaping (_ checkoutItems: CheckoutItem?, _ error: String?) -> Void) {
-        guard let userID = FirebaseConstants.userID else {return}
+        guard let userID = FirebaseConstants.currentUserID else {return}
         let database = FirebaseConstants.database
         let user = FirebaseConstants.usersChild
         let cart = "cart"

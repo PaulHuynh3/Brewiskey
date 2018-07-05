@@ -38,7 +38,7 @@ struct UIAlertConstants {
 
 struct FirebaseConstants {
     static let database = Database.database().reference()
-    static let userID = Auth.auth().currentUser?.uid
+    static let currentUserID = Auth.auth().currentUser?.uid
     static let usersChild = "users"
     static let wineChild = "wine"
     static let spiritsChild = "spirits"

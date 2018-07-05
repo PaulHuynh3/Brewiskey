@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,16 +18,23 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="AlcoholBackground1" translatesAutoresizingMaskIntoConstraints="NO" id="1d3-dF-I5K">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_one" translatesAutoresizingMaskIntoConstraints="NO" id="1d3-dF-I5K">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2n-vV-hZ2">
+                    <rect key="frame" x="284" y="44" width="75" height="40"/>
+                    <state key="normal" image="loginBtn"/>
+                    <connections>
+                        <action selector="loginButtonTapped:" destination="G1i-7l-TQO" eventType="touchUpInside" id="YQU-U3-tHK"/>
+                    </connections>
+                </button>
                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="RFy-8G-LHq">
-                    <rect key="frame" x="169.66666666666666" y="580" width="58" height="37"/>
+                    <rect key="frame" x="152" y="665" width="58" height="37"/>
                     <color key="pageIndicatorTintColor" red="1" green="1" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="currentPageIndicatorTintColor" red="0.049917560569999998" green="0.076097820199999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </pageControl>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xBK-PX-HM0">
-                    <rect key="frame" x="16" y="650" width="150" height="48"/>
+                    <rect key="frame" x="16" y="710" width="150" height="48"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="xBK-PX-HM0" secondAttribute="height" multiplier="25:8" id="rBx-f7-dDh"/>
                     </constraints>
@@ -37,7 +44,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8JU-Yt-91E">
-                    <rect key="frame" x="209" y="650" width="150" height="48"/>
+                    <rect key="frame" x="209" y="710" width="150" height="48"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="8JU-Yt-91E" secondAttribute="height" multiplier="25:8" id="2lL-Sg-7j2"/>
                     </constraints>
@@ -46,25 +53,18 @@
                         <action selector="emailButtonTapped:" destination="G1i-7l-TQO" eventType="touchUpInside" id="0rA-CY-3PK"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2n-vV-hZ2">
-                    <rect key="frame" x="284" y="44" width="75" height="40"/>
-                    <state key="normal" image="loginBtn"/>
-                    <connections>
-                        <action selector="loginButtonTapped:" destination="G1i-7l-TQO" eventType="touchUpInside" id="YQU-U3-tHK"/>
-                    </connections>
-                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="RFy-8G-LHq" firstAttribute="centerX" secondItem="4xR-R7-bm2" secondAttribute="centerX" constant="11" id="2yn-Ik-qKQ"/>
-                <constraint firstItem="4xR-R7-bm2" firstAttribute="bottom" secondItem="xBK-PX-HM0" secondAttribute="bottom" constant="80" id="6mh-ej-3fN"/>
+                <constraint firstItem="RFy-8G-LHq" firstAttribute="centerX" secondItem="4xR-R7-bm2" secondAttribute="centerX" constant="-6.5" id="2yn-Ik-qKQ"/>
+                <constraint firstItem="4xR-R7-bm2" firstAttribute="bottom" secondItem="xBK-PX-HM0" secondAttribute="bottom" constant="20" id="6mh-ej-3fN"/>
                 <constraint firstAttribute="trailing" secondItem="1d3-dF-I5K" secondAttribute="trailing" id="9Ic-oD-LVE"/>
                 <constraint firstItem="4xR-R7-bm2" firstAttribute="trailing" secondItem="F2n-vV-hZ2" secondAttribute="trailing" constant="16" id="AKO-h4-wFP"/>
                 <constraint firstItem="F2n-vV-hZ2" firstAttribute="top" secondItem="4xR-R7-bm2" secondAttribute="top" id="KJ0-W4-exh"/>
                 <constraint firstItem="xBK-PX-HM0" firstAttribute="leading" secondItem="4xR-R7-bm2" secondAttribute="leading" constant="16" id="KuJ-PB-Efs"/>
-                <constraint firstItem="4xR-R7-bm2" firstAttribute="bottom" secondItem="8JU-Yt-91E" secondAttribute="bottom" constant="80" id="cRp-1Y-RcS"/>
+                <constraint firstItem="4xR-R7-bm2" firstAttribute="bottom" secondItem="8JU-Yt-91E" secondAttribute="bottom" constant="20" id="cRp-1Y-RcS"/>
                 <constraint firstItem="1d3-dF-I5K" firstAttribute="leading" secondItem="G1i-7l-TQO" secondAttribute="leading" id="dwp-Ih-uap"/>
-                <constraint firstItem="xBK-PX-HM0" firstAttribute="top" secondItem="RFy-8G-LHq" secondAttribute="bottom" constant="33" id="eeP-5o-uRu"/>
+                <constraint firstItem="xBK-PX-HM0" firstAttribute="top" secondItem="RFy-8G-LHq" secondAttribute="bottom" constant="8" id="eeP-5o-uRu"/>
                 <constraint firstItem="4xR-R7-bm2" firstAttribute="trailing" secondItem="8JU-Yt-91E" secondAttribute="trailing" constant="16" id="hiB-Vb-i1y"/>
                 <constraint firstItem="xBK-PX-HM0" firstAttribute="width" secondItem="G1i-7l-TQO" secondAttribute="width" multiplier="0.4" id="jA8-Tc-RcK"/>
                 <constraint firstItem="8JU-Yt-91E" firstAttribute="width" secondItem="xBK-PX-HM0" secondAttribute="width" id="myj-nU-edE"/>
@@ -78,9 +78,9 @@
         </view>
     </objects>
     <resources>
-        <image name="AlcoholBackground1" width="768" height="768"/>
         <image name="fbBtn" width="156" height="48"/>
         <image name="loginBtn" width="72" height="40"/>
+        <image name="onboarding_one" width="6000" height="4008"/>
         <image name="signupBtn" width="156" height="48"/>
     </resources>
 </document>
