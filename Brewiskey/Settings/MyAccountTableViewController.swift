@@ -38,7 +38,6 @@ class MyAccountTableViewController: UITableViewController {
         performSegue(withIdentifier: "passwordSegue", sender: nil)
     }
     
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "profileSegue" {
             let profileTableViewController = segue.destination as! ProfileTableViewController
@@ -47,7 +46,6 @@ class MyAccountTableViewController: UITableViewController {
     }
     
     //Mark: Tableview Datasource
-    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

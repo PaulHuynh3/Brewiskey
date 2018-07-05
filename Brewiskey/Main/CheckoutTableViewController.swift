@@ -49,7 +49,6 @@ class CheckoutTableViewController: UITableViewController {
         let emptyViewNibName = "EmptyCartView"
         emptyView = EmptyCartView()
         emptyView = Bundle.main.loadNibNamed(emptyViewNibName, owner: nil, options: nil)?.first as? EmptyCartView
-//        let emptyCartView = Bundle.main.loadNibNamed(emptyViewNibName, owner: nil, options: nil)?.first as? EmptyCartView
         
         emptyView?.descriptionLabel.text = "Relax.\n We've got you covered\n Add your items and Trust The Process."
             self.tableView.backgroundView = emptyView

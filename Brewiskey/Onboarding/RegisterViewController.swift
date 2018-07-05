@@ -21,8 +21,8 @@ class RegisterViewController: UIViewController {
     @IBOutlet weak var passwordImageView: UIImageView!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var errorCircleImageView: UIImageView!
-    let database = Database.database().reference()
     fileprivate var onboardingCheckUtils: OnboardingCheckUtils?
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,18 +32,19 @@ class RegisterViewController: UIViewController {
         emailTextField.delegate = self
         passwordTextField.delegate = self
         errorCircleImageView.isHidden = true
+        activityIndicatorView.isHidden = true
     }
     
     @IBAction func backArrowTapped(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-
+    
     @IBAction func createAccountTapped(_ sender: Any) {
         //            Auth.auth().currentUser?.sendEmailVerification(completion: { (error) in   }) verifying email... implement later on?
         guard let firstName = firstNameTextfield.text,
-              let lastName = lastNameTextfield.text,
-              let email = emailTextField.text,
-              let password = passwordTextField.text else {
+            let lastName = lastNameTextfield.text,
+            let email = emailTextField.text,
+            let password = passwordTextField.text else {
                 return
         }
         
@@ -88,7 +89,8 @@ class RegisterViewController: UIViewController {
                     return
                 }
                 guard let uid = user?.uid else {return}
-                
+                self.activityIndicatorView.isHidden = false
+                self.activityIndicatorView.startAnimating()
                 //successfully authenticated user now upload picture to storage.
                 let imageName = NSUUID().uuidString
                 let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName).png")
@@ -129,7 +131,9 @@ class RegisterViewController: UIViewController {
                                 userDefault.set(email, forKey: kUserInfo.kEmail)
                                 userDefault.set(shortLink, forKey: kUserInfo.kReferralLink)
                                 
+                                
                                 self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
+                                self.activityIndicatorView.stopAnimating()
                                 BrewiskeyAnalytics().track(event: .userSignupEmail)
                                 BrewiskeyAnalytics().track(event: .signupWithReferral)
                             })
@@ -139,7 +143,7 @@ class RegisterViewController: UIViewController {
             }
             
         } else {
-            Auth.auth().createUser(withEmail: email, password: password) { (user, error) in
+            Auth.auth().createUser(withEmail: email, password: password) {(user, error) in
                 
                 if let error = error {
                     onboardingCheckUtils.displayError(error.localizedDescription)
@@ -147,7 +151,8 @@ class RegisterViewController: UIViewController {
                 }
                 
                 guard let uid = user?.uid else {return}
-                
+                self.activityIndicatorView.isHidden = false
+                self.activityIndicatorView.startAnimating()
                 //successfully authenticated user now upload picture to storage.
                 let imageName = NSUUID().uuidString
                 let storageRef = Storage.storage().reference().child("profile_images").child("\(imageName).png")
@@ -189,6 +194,7 @@ class RegisterViewController: UIViewController {
                                 userDefault.set(shortLink, forKey: kUserInfo.kReferralLink)
                                 
                                 self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
+                                self.activityIndicatorView.stopAnimating()
                                 BrewiskeyAnalytics().track(event: .userSignupEmail)
                             })
                         }
@@ -199,7 +205,7 @@ class RegisterViewController: UIViewController {
     }
     
     private func registerUserIntoDatabaseWithUID(_ uid:String, values: [String:AnyObject]){
-        let userReference = self.database.child("users").child(uid)
+        let userReference = FirebaseConstants.database.child("users").child(uid)
         userReference.updateChildValues(values, withCompletionBlock: { (error, databaseRef) in
             if let error = error {
                 print(error, #line)
