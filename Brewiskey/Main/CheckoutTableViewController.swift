@@ -13,7 +13,8 @@ class CheckoutTableViewController: UITableViewController {
     
     var cartItems = Array <CheckoutItem>()
     let customCellIdentifier = "CheckoutCellIdentifier"
-    var emptyView: UIView?
+    var emptyView: EmptyCartView?
+    var proceedButton: UIButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +26,6 @@ class CheckoutTableViewController: UITableViewController {
     
     //set delegate to refresh table when items are added into cart..
     fileprivate func fetchCartItems() {
-        
         FirebaseAPI().fetchItemsInCart { [weak self] (checkoutItem: CheckoutItem?, error: String?) in
             guard let strongSelf = self else {return}
             if let error = error {
@@ -37,7 +37,6 @@ class CheckoutTableViewController: UITableViewController {
             strongSelf.cartItems.append(item)
             strongSelf.tableView.reloadData()
         }
-
     }
     
     fileprivate func setupNibTableViewCell() {
@@ -48,16 +47,18 @@ class CheckoutTableViewController: UITableViewController {
     
     fileprivate func updateEmptyView() {
         let emptyViewNibName = "EmptyCartView"
-        emptyView = UIView()
+        emptyView = EmptyCartView()
         emptyView = Bundle.main.loadNibNamed(emptyViewNibName, owner: nil, options: nil)?.first as? EmptyCartView
+//        let emptyCartView = Bundle.main.loadNibNamed(emptyViewNibName, owner: nil, options: nil)?.first as? EmptyCartView
+        
+        emptyView?.descriptionLabel.text = "Relax.\n We've got you covered\n Add your items and Trust The Process."
             self.tableView.backgroundView = emptyView
             self.tableView.separatorStyle = .none
-        
     }
 
     @objc fileprivate func proceedButtonTapped() {
         print("Proceed Button tapped")
-        //navigate to final screen with their information
+        //navigate to final screen with their information totalled.
     }
 }
 
@@ -71,9 +72,11 @@ extension CheckoutTableViewController {
         if cartItems.count > 0 {
             tableView.separatorStyle = .singleLine
             emptyView?.isHidden = true
+            proceedButton?.isHidden = false
             return cartItems.count
         } else {
             updateEmptyView()
+            proceedButton?.isHidden = true
             return 0
         }
     }
@@ -101,19 +104,21 @@ extension CheckoutTableViewController {
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
-        
-        let proceedButton = UIButton(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: footerView.frame.height))
+        proceedButton = UIButton(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: footerView.frame.height))
+        if let proceedButton = proceedButton {
         proceedButton.setTitle("Proceed To Payment", for: .normal)
         proceedButton.setTitleColor(.white, for: .normal)
         proceedButton.backgroundColor = .black
         proceedButton.addTarget(self, action: #selector(proceedButtonTapped), for: .touchUpInside)
-        
         footerView.addSubview(proceedButton)
+        }
+        if cartItems.count == 0 {
+            proceedButton?.isHidden = true
+        }
         return footerView
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        
         if editingStyle == .delete {
             guard let orderUuid = cartItems[indexPath.row].orderId else {return}
             guard let uid = FirebaseConstants.currentUserID else {return}
@@ -121,6 +126,7 @@ extension CheckoutTableViewController {
             tableView.deleteRows(at: [indexPath], with: .fade)
             FirebaseConstants.database.child("users").child(uid).child("cart").child(orderUuid).removeValue()
         }
+        
     }
 }
 
