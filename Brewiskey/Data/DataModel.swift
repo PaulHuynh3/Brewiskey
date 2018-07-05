@@ -115,4 +115,5 @@ class CheckoutItem {
     var price: Double?
     var quantity: Int?
     var type: String?
+    var orderId: String?
 }

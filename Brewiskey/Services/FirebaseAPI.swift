@@ -207,6 +207,7 @@ class FirebaseAPI: NSObject {
                 checkoutItem.quantity = orderDictionary["quantity"] as? Int
                 checkoutItem.type = orderDictionary["type"] as? String
                 checkoutItem.name = orderDictionary["name"] as? String
+                checkoutItem.orderId = orderDictionary["orderUuid"] as? String
                 DispatchQueue.main.async {
                     completion(checkoutItem, nil)
                 }

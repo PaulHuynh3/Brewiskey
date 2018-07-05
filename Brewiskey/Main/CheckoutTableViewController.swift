@@ -79,20 +79,13 @@ extension CheckoutTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let item = cartItems[indexPath.row]
+        
         let checkoutCell =  tableView.dequeueReusableCell(withIdentifier: customCellIdentifier) as! CheckoutCell
         checkoutCell.accessoryType = .disclosureIndicator
-        let item = cartItems[indexPath.row]
-        if let quantity = item.quantity {
-            checkoutCell.quantityLabel.text = "\(String(quantity))x"
-        }
-        if let name = item.name, let type = item.type {
-            checkoutCell.nameTypeLabel.text = "\(name) - \(type)"
-        }
-        if let price = item.price, let quantity = item.quantity {
-            
-            let perItemTotalCost = price * Double(quantity)
-            checkoutCell.costLabel.text = "\(String(perItemTotalCost))$"
-        }
+        checkoutCell.item = item
+        checkoutCell.setCheckoutCell()
+
         return checkoutCell
     }
     
@@ -122,14 +115,11 @@ extension CheckoutTableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete {
-            cartItems.remove(at: indexPath.row)
-             let orderNumber = indexPath.row
-            
-          //deletion from firebase database works but its incorrect indexpath..
+            guard let orderUuid = cartItems[indexPath.row].orderId else {return}
             guard let uid = FirebaseConstants.currentUserID else {return}
-           FirebaseConstants.database.child("users").child(uid).child("cart").child("order_\(orderNumber)").removeValue()
-            
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            cartItems.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            FirebaseConstants.database.child("users").child(uid).child("cart").child(orderUuid).removeValue()
         }
     }
 }

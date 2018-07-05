@@ -252,8 +252,9 @@ extension DetailedSelectionViewController {
     
     fileprivate func updateUserCartOnFirebase(name: String, imageUrl: String, type: String, price: Double, quantity: Int) {
         guard let uid = Auth.auth().currentUser?.uid else {return}
-        let userReference = Database.database().reference().child("users").child(uid).child("cart").child("order_\(provideOrderNumber())")
-        let values = ["name": name, "imageUrl" : imageUrl, "type" : type, "price": price, "quantity": quantity] as [String: AnyObject]
+        let orderUuid = UUID().uuidString
+        let userReference = Database.database().reference().child("users").child(uid).child("cart").child(orderUuid)
+        let values = ["name": name, "imageUrl" : imageUrl, "type" : type, "price": price, "quantity": quantity, "orderUuid": orderUuid] as [String: AnyObject]
         
         userReference.updateChildValues(values) { [weak self] (error, databaseRef) in
             guard let strongSelf = self else {return}
