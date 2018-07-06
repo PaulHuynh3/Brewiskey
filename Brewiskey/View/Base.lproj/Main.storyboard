@@ -76,31 +76,31 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To change your password. Type in your old password, then type in your new password twice." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GRN-hQ-YvL">
-                                <rect key="frame" x="29" y="80" width="316" height="61"/>
+                                <rect key="frame" x="37.5" y="80" width="300" height="61"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Old password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="FHu-UM-Mn9">
-                                <rect key="frame" x="37" y="180" width="322" height="17"/>
+                                <rect key="frame" x="37.5" y="180" width="311" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="New password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="frq-1c-uQG">
-                                <rect key="frame" x="37" y="215" width="300" height="17"/>
+                                <rect key="frame" x="37.5" y="215" width="300" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Verify password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Udx-qZ-BEz">
-                                <rect key="frame" x="37" y="252" width="300" height="17"/>
+                                <rect key="frame" x="37.5" y="252" width="300" height="17"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9hA-QA-m1A">
-                                <rect key="frame" x="16" y="296" width="343" height="30"/>
+                                <rect key="frame" x="24" y="296" width="327" height="30"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <state key="normal" title="UPDATE PASSWORD">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -112,19 +112,19 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="FHu-UM-Mn9" firstAttribute="centerX" secondItem="DVs-ZY-C8l" secondAttribute="centerX" constant="10.5" id="0W8-UG-B5z"/>
+                            <constraint firstItem="FHu-UM-Mn9" firstAttribute="centerX" secondItem="DVs-ZY-C8l" secondAttribute="centerX" constant="5.5" id="0W8-UG-B5z"/>
                             <constraint firstItem="GRN-hQ-YvL" firstAttribute="centerX" secondItem="DVs-ZY-C8l" secondAttribute="centerX" id="Fj5-7D-jl1"/>
-                            <constraint firstItem="Udx-qZ-BEz" firstAttribute="width" secondItem="GRN-hQ-YvL" secondAttribute="width" constant="-16" id="JSf-hI-S61"/>
+                            <constraint firstItem="Udx-qZ-BEz" firstAttribute="width" secondItem="GRN-hQ-YvL" secondAttribute="width" id="JSf-hI-S61"/>
                             <constraint firstItem="Udx-qZ-BEz" firstAttribute="centerX" secondItem="DVs-ZY-C8l" secondAttribute="centerX" id="KFh-bP-hNk"/>
                             <constraint firstItem="Udx-qZ-BEz" firstAttribute="top" secondItem="frq-1c-uQG" secondAttribute="bottom" constant="20" id="LT3-GH-iu8"/>
                             <constraint firstItem="9hA-QA-m1A" firstAttribute="width" secondItem="GRN-hQ-YvL" secondAttribute="width" constant="27" id="MBr-aV-40Q"/>
                             <constraint firstItem="9hA-QA-m1A" firstAttribute="top" secondItem="Udx-qZ-BEz" secondAttribute="bottom" constant="27" id="TKZ-Jx-Xv8"/>
-                            <constraint firstItem="frq-1c-uQG" firstAttribute="width" secondItem="GRN-hQ-YvL" secondAttribute="width" constant="-16" id="Tq5-ea-Nq9"/>
-                            <constraint firstItem="FHu-UM-Mn9" firstAttribute="width" secondItem="GRN-hQ-YvL" secondAttribute="width" constant="6" id="Vc2-2B-ex0"/>
+                            <constraint firstItem="frq-1c-uQG" firstAttribute="width" secondItem="GRN-hQ-YvL" secondAttribute="width" id="Tq5-ea-Nq9"/>
+                            <constraint firstItem="FHu-UM-Mn9" firstAttribute="width" secondItem="GRN-hQ-YvL" secondAttribute="width" constant="11" id="Vc2-2B-ex0"/>
                             <constraint firstItem="9hA-QA-m1A" firstAttribute="centerX" secondItem="DVs-ZY-C8l" secondAttribute="centerX" id="alk-tI-Alz"/>
                             <constraint firstItem="GRN-hQ-YvL" firstAttribute="top" secondItem="DVs-ZY-C8l" secondAttribute="top" constant="16" id="dIs-Bg-anJ"/>
                             <constraint firstItem="frq-1c-uQG" firstAttribute="top" secondItem="FHu-UM-Mn9" secondAttribute="bottom" constant="18" id="flS-fG-esx"/>
-                            <constraint firstItem="GRN-hQ-YvL" firstAttribute="width" secondItem="EYT-D6-8tv" secondAttribute="width" multiplier="0.8" constant="16" id="jzo-Ee-j5N"/>
+                            <constraint firstItem="GRN-hQ-YvL" firstAttribute="width" secondItem="EYT-D6-8tv" secondAttribute="width" multiplier="0.8" id="jzo-Ee-j5N"/>
                             <constraint firstItem="FHu-UM-Mn9" firstAttribute="top" secondItem="GRN-hQ-YvL" secondAttribute="bottom" constant="39" id="pSo-k8-6A0"/>
                             <constraint firstItem="frq-1c-uQG" firstAttribute="centerX" secondItem="DVs-ZY-C8l" secondAttribute="centerX" id="soL-Xm-vvh"/>
                         </constraints>
@@ -138,7 +138,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ec0-Tv-YNZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1112.8" y="1420.8395802098951"/>
+            <point key="canvasLocation" x="1111.875" y="1420.7746478873239"/>
         </scene>
         <!--Brewiskey-->
         <scene sceneID="kNi-vm-12u">
@@ -356,7 +356,7 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="446"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="53" id="YsL-nH-Mer">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="53" id="YsL-nH-Mer">
                                         <rect key="frame" x="0.0" y="28" width="375" height="53"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="YsL-nH-Mer" id="txU-LD-jaA">
@@ -877,7 +877,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HmX-5i-zGj">
-                                                    <rect key="frame" x="172" y="11" width="30" height="21"/>
+                                                    <rect key="frame" x="172.5" y="11" width="30" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.52156862749999999" green="0.77647058820000003" blue="0.63921568630000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1620,17 +1620,17 @@
                                 <rect key="frame" x="0.0" y="20" width="375" height="148.5"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="subscriptionText" translatesAutoresizingMaskIntoConstraints="NO" id="2qO-ss-42Q" userLabel="image1">
-                                        <rect key="frame" x="19" y="10" width="338" height="16"/>
+                                        <rect key="frame" x="18.5" y="10" width="338" height="16"/>
                                     </imageView>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" editable="NO" text="https://support.apple.com/en-ca/HT202039" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="BQu-2C-qgN" userLabel="link">
-                                        <rect key="frame" x="19" y="36" width="338" height="35"/>
+                                        <rect key="frame" x="18.5" y="36" width="338" height="35"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <dataDetectorType key="dataDetectorTypes" link="YES"/>
                                     </textView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Hope to see you again one day and have a stunning day!" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5E-Fk-OOu" userLabel="image2">
-                                        <rect key="frame" x="29" y="89" width="338" height="37.5"/>
+                                        <rect key="frame" x="28.5" y="89" width="338" height="37.5"/>
                                         <fontDescription key="fontDescription" name="Roboto-Regular" family="Roboto" pointSize="16"/>
                                         <color key="textColor" red="0.56078431370000004" green="0.56862745100000001" blue="0.60392156860000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
