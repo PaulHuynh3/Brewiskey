@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA02ABF320EFE8BF0063C68A /* TableSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02ABF220EFE8BF0063C68A /* TableSectionHeader.swift */; };
+		DA02ABF520EFE8CB0063C68A /* TableSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA02ABF420EFE8CB0063C68A /* TableSectionHeader.xib */; };
 		DA056E85203FC7A6007EECAE /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA056E84203FC7A6007EECAE /* DataModel.swift */; };
 		DA056E88203FC982007EECAE /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA056E87203FC982007EECAE /* ForgotPasswordViewController.swift */; };
 		DA07068820B5CCA800362EFE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DA07068720B5CCA800362EFE /* GoogleService-Info.plist */; };
@@ -70,6 +72,8 @@
 /* Begin PBXFileReference section */
 		6018CC304C6E50FF5E034F2A /* Pods_Brewiskey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Brewiskey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9331F07D589DD426C72146BB /* Pods-Brewiskey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brewiskey.release.xcconfig"; path = "Pods/Target Support Files/Pods-Brewiskey/Pods-Brewiskey.release.xcconfig"; sourceTree = "<group>"; };
+		DA02ABF220EFE8BF0063C68A /* TableSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionHeader.swift; sourceTree = "<group>"; };
+		DA02ABF420EFE8CB0063C68A /* TableSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableSectionHeader.xib; sourceTree = "<group>"; };
 		DA056E84203FC7A6007EECAE /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
 		DA056E87203FC982007EECAE /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		DA07068720B5CCA800362EFE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -263,6 +267,8 @@
 				DA8D3D1920DEDAFB00682C8D /* CheckoutCell.xib */,
 				DA57BD4720D0BF2600C1CAAF /* MarketPlaceCollectionViewCell.swift */,
 				DA57BD4920D0BF4500C1CAAF /* MarketPlaceCollectionViewCell.xib */,
+				DA02ABF220EFE8BF0063C68A /* TableSectionHeader.swift */,
+				DA02ABF420EFE8CB0063C68A /* TableSectionHeader.xib */,
 			);
 			path = ReuseableCell;
 			sourceTree = "<group>";
@@ -441,6 +447,7 @@
 				DA57BD4A20D0BF4500C1CAAF /* MarketPlaceCollectionViewCell.xib in Resources */,
 				DAF2024E20E1E2DC001D96FD /* EmptyCartView.xib in Resources */,
 				DAA9C49C20C0E9C30075F4B3 /* PastOrdersCell.xib in Resources */,
+				DA02ABF520EFE8CB0063C68A /* TableSectionHeader.xib in Resources */,
 				DA9F41D7207719E00004797B /* OnboardingView2.xib in Resources */,
 				DA9F41D920771B7C0004797B /* OnboardingView3.xib in Resources */,
 				DADC7B75203E17E100F87438 /* Login.storyboard in Resources */,
@@ -564,6 +571,7 @@
 				DA57BD4820D0BF2600C1CAAF /* MarketPlaceCollectionViewCell.swift in Sources */,
 				DA13CFFF203E0A7D0021EB7E /* LoginViewController.swift in Sources */,
 				DAB7630D20EB1419000736AA /* StoreReviewHelper.swift in Sources */,
+				DA02ABF320EFE8BF0063C68A /* TableSectionHeader.swift in Sources */,
 				DA2E916420487F9F00AF0247 /* DetailedViewController.swift in Sources */,
 				DA389A7C20774763009F3CE8 /* OnboardingCheckUtils.swift in Sources */,
 				DA13CFFD203E0A7D0021EB7E /* AppDelegate.swift in Sources */,

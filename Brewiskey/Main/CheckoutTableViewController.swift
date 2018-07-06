@@ -22,6 +22,7 @@ class CheckoutTableViewController: UITableViewController {
         navigationController?.navigationBar.isHidden = true
         fetchCartItems()
         self.tableView.tableFooterView = UIView()
+        registerHeaderNib()
     }
     
     //set delegate to refresh table when items are added into cart..
@@ -37,6 +38,12 @@ class CheckoutTableViewController: UITableViewController {
             strongSelf.cartItems.append(item)
             strongSelf.tableView.reloadData()
         }
+    }
+    
+    fileprivate func registerHeaderNib() {
+        let header = "TableSectionHeader"
+        let nib = UINib(nibName: header, bundle: nil)
+        tableView.register(nib, forHeaderFooterViewReuseIdentifier: header)
     }
     
     fileprivate func setupNibTableViewCell() {
@@ -117,6 +124,21 @@ extension CheckoutTableViewController {
         return footerView
     }
     
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        // Dequeue with the reuse identifier
+        let cell = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeader")
+        let header = cell as! TableSectionHeader
+        
+        header.deleteCart.isHidden = false
+        header.deleteCart.addTarget(self, action: #selector(deleteCartTapped), for: .touchUpInside)
+        
+        if cartItems.count < 1 {
+            header.deleteCart.isHidden = true
+        }
+        return cell
+    }
+    
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             guard let orderUuid = cartItems[indexPath.row].orderId else {return}
@@ -130,8 +152,26 @@ extension CheckoutTableViewController {
 }
 
 extension CheckoutTableViewController {
-    //paginate the Proceed button
+    @objc fileprivate func deleteCartTapped() {
+        let alertController = UIAlertController(title: "Delete", message: "All cart items will be deleted", preferredStyle: .alert)
+        let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
+            guard let uid = FirebaseConstants.currentUserID else {return}
+            
+            for cartItem in self.cartItems {
+                if let orderId = cartItem.orderId{
+                    FirebaseConstants.database.child("users").child(uid).child("cart").child(orderId).removeValue()
+                }
+            }
+            self.cartItems.removeAll()
+            self.tableView.reloadData()
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        alertController.addAction(deleteAction)
+        alertController.addAction(cancelAction)
+        present(alertController, animated: true, completion: nil)
+    }
     
+    //paginate the Proceed button
     override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         
     }
@@ -139,7 +179,6 @@ extension CheckoutTableViewController {
     override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         
     }
-    
     
     
 }
