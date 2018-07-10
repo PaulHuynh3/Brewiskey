@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_two" translatesAutoresizingMaskIntoConstraints="NO" id="bm6-c7-eje">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_two-1" translatesAutoresizingMaskIntoConstraints="NO" id="bm6-c7-eje">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUG-lM-Smg">
@@ -72,7 +72,7 @@
     <resources>
         <image name="fbBtn" width="156" height="48"/>
         <image name="loginBtn" width="72" height="40"/>
-        <image name="onboarding_two" width="6000" height="4000"/>
+        <image name="onboarding_two-1" width="512" height="512"/>
         <image name="signupBtn" width="156" height="48"/>
     </resources>
 </document>

@@ -18,7 +18,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_one" translatesAutoresizingMaskIntoConstraints="NO" id="1d3-dF-I5K">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_three" translatesAutoresizingMaskIntoConstraints="NO" id="1d3-dF-I5K">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F2n-vV-hZ2">
@@ -80,7 +80,7 @@
     <resources>
         <image name="fbBtn" width="156" height="48"/>
         <image name="loginBtn" width="72" height="40"/>
-        <image name="onboarding_one" width="6000" height="4008"/>
+        <image name="onboarding_three" width="6000" height="4000"/>
         <image name="signupBtn" width="156" height="48"/>
     </resources>
 </document>

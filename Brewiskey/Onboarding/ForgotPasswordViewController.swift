@@ -59,12 +59,10 @@ class ForgotPasswordViewController: UIViewController {
                 BrewiskeyAnalytics().track(event: .forgotPasswordTapped)
             }
         }
-        
     }
 }
 
 extension ForgotPasswordViewController: UITextFieldDelegate {
-    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true

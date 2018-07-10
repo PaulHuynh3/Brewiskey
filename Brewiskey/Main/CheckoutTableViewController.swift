@@ -25,7 +25,6 @@ class CheckoutTableViewController: UITableViewController {
         registerHeaderNib()
     }
     
-    //set delegate to refresh table when items are added into cart..
     fileprivate func fetchCartItems() {
         FirebaseAPI().fetchItemsInCart { [weak self] (checkoutItem: CheckoutItem?, error: String?) in
             guard let strongSelf = self else {return}
@@ -57,7 +56,7 @@ class CheckoutTableViewController: UITableViewController {
         emptyView = EmptyCartView()
         emptyView = Bundle.main.loadNibNamed(emptyViewNibName, owner: nil, options: nil)?.first as? EmptyCartView
         
-        emptyView?.descriptionLabel.text = "Relax.\n We've got you covered\n Add your items and Trust The Process."
+        emptyView?.descriptionLabel.text = "Relax.\n We've got you covered\n Add your items and we'll be there."
             self.tableView.backgroundView = emptyView
             self.tableView.separatorStyle = .none
     }
@@ -110,7 +109,7 @@ extension CheckoutTableViewController {
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         
         let footerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
-        proceedButton = UIButton(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: footerView.frame.height))
+        proceedButton = UIButton(frame: CGRect(x: 0, y: 0, width: footerView.frame.width, height: footerView.frame.height))
         if let proceedButton = proceedButton {
         proceedButton.setTitle("Proceed To Payment", for: .normal)
         proceedButton.setTitleColor(.white, for: .normal)
@@ -125,7 +124,7 @@ extension CheckoutTableViewController {
     }
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        
+        tableView.rowHeight = 65
         // Dequeue with the reuse identifier
         let cell = self.tableView.dequeueReusableHeaderFooterView(withIdentifier: "TableSectionHeader")
         let header = cell as! TableSectionHeader
@@ -137,6 +136,10 @@ extension CheckoutTableViewController {
             header.deleteCart.isHidden = true
         }
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 45
     }
     
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
@@ -162,6 +165,7 @@ extension CheckoutTableViewController {
                     FirebaseConstants.database.child("users").child(uid).child("cart").child(orderId).removeValue()
                 }
             }
+            UserDefaults.standard.set(nil, forKey: kUserInfo.kCheckoutOrderQuantity)
             self.cartItems.removeAll()
             self.tableView.reloadData()
         }
@@ -170,15 +174,5 @@ extension CheckoutTableViewController {
         alertController.addAction(cancelAction)
         present(alertController, animated: true, completion: nil)
     }
-    
-    //paginate the Proceed button
-    override func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        
-    }
-    
-    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
-        
-    }
-    
     
 }

@@ -9,11 +9,5 @@
 import UIKit
 
 class TableSectionHeader: UITableViewHeaderFooterView {
-    
     @IBOutlet weak var deleteCart: UIButton!
-    
-    
 }
-
-
-
