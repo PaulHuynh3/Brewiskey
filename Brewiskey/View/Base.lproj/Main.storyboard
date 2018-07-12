@@ -25,7 +25,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ptW-5A-EL0">
-                                <rect key="frame" x="0.0" y="64" width="375" height="565"/>
+                                <rect key="frame" x="0.0" y="102" width="375" height="516"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
@@ -70,14 +70,65 @@
                                     <outlet property="delegate" destination="WE1-ak-Qvd" id="DHU-QM-JIp"/>
                                 </connections>
                             </tableView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dBo-Xe-SSo">
+                                <rect key="frame" x="0.0" y="35" width="375" height="74"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ut1-2W-wGg">
+                                        <rect key="frame" x="8" y="36" width="32" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Beer">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="beerOptionTapped:" destination="WE1-ak-Qvd" eventType="touchUpInside" id="NiE-kO-7cl"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DAq-wm-kgg">
+                                        <rect key="frame" x="89" y="36" width="44" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Spirits">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="spiritsOptionTapped:" destination="WE1-ak-Qvd" eventType="touchUpInside" id="UPF-Wy-pmZ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MhW-5x-0Vc">
+                                        <rect key="frame" x="180" y="36" width="35" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Wine">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="wineOptionTapped:" destination="WE1-ak-Qvd" eventType="touchUpInside" id="Pt0-5B-arQ"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oWs-9Z-OQT">
+                                        <rect key="frame" x="254" y="36" width="113" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Snacks &amp; Mixers">
+                                            <color key="titleColor" red="0.014039929816601788" green="0.016021573604060868" blue="0.014320267422992425" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="snacksOptionTapped:" destination="WE1-ak-Qvd" eventType="touchUpInside" id="JW9-Cl-iC4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="bcd-lg-Vrg"/>
                     </view>
                     <navigationItem key="navigationItem" id="rRN-mQ-EFg"/>
                     <connections>
+                        <outlet property="beerButton" destination="Ut1-2W-wGg" id="dvu-X7-h6T"/>
                         <outlet property="searchDisplayController" destination="ame-yw-hQu" id="A8f-y0-XgA"/>
+                        <outlet property="snacksButton" destination="oWs-9Z-OQT" id="RB3-P1-qHe"/>
+                        <outlet property="spiritsButton" destination="DAq-wm-kgg" id="Tpp-Ub-ICF"/>
                         <outlet property="tableView" destination="ptW-5A-EL0" id="2ND-Pa-CLv"/>
+                        <outlet property="wineButton" destination="MhW-5x-0Vc" id="xBJ-Uq-2gW"/>
                         <segue destination="Za5-bk-FjV" kind="show" identifier="beerDetailedViewSegue" id="Bvo-G5-bvt"/>
                         <segue destination="Za5-bk-FjV" kind="show" identifier="wineDetailedViewSegue" id="il2-bg-Cq8"/>
                         <segue destination="Za5-bk-FjV" kind="show" identifier="spiritDetailedViewSegue" id="Api-gY-m7T"/>
@@ -93,7 +144,7 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="290" y="-591"/>
+            <point key="canvasLocation" x="288.80000000000001" y="-591.45427286356824"/>
         </scene>
         <!--Market Table View Controller-->
         <scene sceneID="dMu-f7-wQn">
@@ -150,6 +201,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cd9-YO-YwM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="289" y="-1321"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="koq-0K-SuF">
+            <objects>
+                <viewController id="m0m-Kw-V9t" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GW6-B9-gVO">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="j5w-Bk-48G"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="100"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JHW-ew-swX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1250" y="-1333"/>
         </scene>
         <!--Change Password View Controller-->
         <scene sceneID="Eqb-m5-Xf8">

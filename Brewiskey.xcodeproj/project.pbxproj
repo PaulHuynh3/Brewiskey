@@ -32,6 +32,7 @@
 		DA5F3530207825D400A64FA0 /* EmailSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F352F207825D400A64FA0 /* EmailSentViewController.swift */; };
 		DA620DF3209561710026E4A5 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA620DF2209561710026E4A5 /* ChangePasswordViewController.swift */; };
 		DA620DF5209589620026E4A5 /* ReferralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA620DF4209589620026E4A5 /* ReferralViewController.swift */; };
+		DA6BE08F20F7A9AF007FA200 /* UserLoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6BE08E20F7A9AF007FA200 /* UserLoginStatus.swift */; };
 		DA6F829920BB8029005E7862 /* NewCreditCardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6F829820BB8029005E7862 /* NewCreditCardTableViewController.swift */; };
 		DA70A9E62089495F00D3F2C3 /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA70A9E52089495F00D3F2C3 /* EditProfileTableViewController.swift */; };
 		DA8D3D1620DED94600682C8D /* CheckoutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA8D3D1520DED94600682C8D /* CheckoutTableViewController.swift */; };
@@ -98,6 +99,7 @@
 		DA5F352F207825D400A64FA0 /* EmailSentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSentViewController.swift; sourceTree = "<group>"; };
 		DA620DF2209561710026E4A5 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		DA620DF4209589620026E4A5 /* ReferralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralViewController.swift; sourceTree = "<group>"; };
+		DA6BE08E20F7A9AF007FA200 /* UserLoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserLoginStatus.swift; path = Brewiskey/Main/UserLoginStatus.swift; sourceTree = SOURCE_ROOT; };
 		DA6F829820BB8029005E7862 /* NewCreditCardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCreditCardTableViewController.swift; sourceTree = "<group>"; };
 		DA70A9E52089495F00D3F2C3 /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		DA7E7D58209ABC2100882FCA /* Brewiskey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Brewiskey.entitlements; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 		DA1C6CEF20B33CAD00911E64 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				DA6BE08E20F7A9AF007FA200 /* UserLoginStatus.swift */,
 			);
 			name = Utility;
 			path = Helper/Utility;
@@ -531,6 +534,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAA23AD22040B08900D481E2 /* MarketTableViewController.swift in Sources */,
+				DA6BE08F20F7A9AF007FA200 /* UserLoginStatus.swift in Sources */,
 				DA5F352E2077C79D00A64FA0 /* Constants.swift in Sources */,
 				DAC4EC8B2094499800EE07A0 /* ChangeEmailViewController.swift in Sources */,
 				DA8D3D1620DED94600682C8D /* CheckoutTableViewController.swift in Sources */,

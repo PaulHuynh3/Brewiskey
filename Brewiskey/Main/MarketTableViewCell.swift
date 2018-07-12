@@ -36,5 +36,5 @@ class MarketTableViewCell: UITableViewCell {
         }
         brandNameLabel.text = wine.name
     }
- 
+    
 }

@@ -65,7 +65,6 @@ class FirebaseAPI: NSObject {
         }, withCancel: nil)
     }
     func fetchAllBeerBrandAndImages(completion:@escaping (_ beer: Beer) -> Void){
-        //put this network call into a for loop statement so it doesnt need to constantly reload the table?
         let beerName = "name"
         let imageUrl = "imageUrl"
         let country = "country"
