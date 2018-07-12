@@ -9,21 +9,24 @@
 import UIKit
 import Firebase
 
-func handleUserState() {
-    if Auth.auth().currentUser?.uid == nil {
-        handleLogout()
-    }
-}
-
-fileprivate func handleLogout() {
-    do {
-        try Auth.auth().signOut()
-    } catch let logoutError {
-        print(logoutError)
+class UserLoginStatus {
+    
+    func handleUserState() {
+        if Auth.auth().currentUser?.uid == nil {
+            handleLogout()
+        }
     }
     
-    DispatchQueue.main.async {
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        appDelegate?.transitionToLogin()
+    fileprivate func handleLogout() {
+        do {
+            try Auth.auth().signOut()
+        } catch let logoutError {
+            print(logoutError)
+        }
+        
+        DispatchQueue.main.async {
+            let appDelegate = UIApplication.shared.delegate as? AppDelegate
+            appDelegate?.transitionToLogin()
+        }
     }
 }
