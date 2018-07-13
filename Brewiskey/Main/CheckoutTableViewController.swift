@@ -63,7 +63,6 @@ class CheckoutTableViewController: UITableViewController {
 
     @objc fileprivate func proceedButtonTapped() {
         print("Proceed Button tapped")
-        //navigate to final screen with their information totalled.
     }
 }
 

@@ -19,7 +19,6 @@ class NewCreditCardTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setTextfieldDelegate()
-
     }
     
     fileprivate func setTextfieldDelegate() {

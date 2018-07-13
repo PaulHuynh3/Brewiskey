@@ -26,7 +26,8 @@
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>com.BrewiskeyApp.Group</string>
-                <string>fb185034152139188</string>
+				<string>fb185034152139188</string>
+				<string>com.BrewiskeyApp.Group.payments</string>
 			</array>
 		</dict>
 	</array>

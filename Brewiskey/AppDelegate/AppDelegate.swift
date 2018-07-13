@@ -9,19 +9,18 @@
 import UIKit
 import Firebase
 import FBSDKCoreKit
+import Braintree
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         FirebaseApp.configure()
         StoreReviewHelper.incrementAppOpenedCount()
         StoreReviewHelper.shouldAllowPromptInAppReview()
-        
         if UserDefaults.standard.bool(forKey: kUserInfo.kLoginStatus) {
             transitionToMarketPlace()
         }
@@ -33,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let sourceApplication = options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String
         let annotation = options[UIApplicationOpenURLOptionsKey.annotation]
         handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url,sourceApplication:sourceApplication , annotation: annotation)
-        
+      
         return handled
     }
     
