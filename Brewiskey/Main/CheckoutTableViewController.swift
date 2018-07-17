@@ -70,9 +70,17 @@ class CheckoutTableViewController: UITableViewController {
 
     @objc fileprivate func proceedButtonTapped() {
         let product = ""
-        let price = 3000
+        var totalPrice: Double = 0
+        for item in cartItems {
+            guard let price = item.price else {return}
+            guard let quantity = item.quantity else {return}
+            
+            totalPrice = totalPrice + price * Double(quantity)
+        }
+        totalPrice = totalPrice * 100
+
         let checkoutViewController = CheckoutViewController(product: product,
-                                                            price: price,
+                                                            price: Int(totalPrice),
                                                             settings: self.settingsVC.settings)
         
         self.navigationController?.pushViewController(checkoutViewController, animated: true)
