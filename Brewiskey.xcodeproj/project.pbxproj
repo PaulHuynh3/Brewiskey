@@ -24,6 +24,9 @@
 		DA2E85E22043C8110057C4C6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E85E12043C8110057C4C6 /* Extensions.swift */; };
 		DA2E916420487F9F00AF0247 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E916320487F9F00AF0247 /* DetailedViewController.swift */; };
 		DA389A7C20774763009F3CE8 /* OnboardingCheckUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA389A7B20774763009F3CE8 /* OnboardingCheckUtils.swift */; };
+		DA4A8E1120FE3E3C00974268 /* StripeAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4A8E1020FE3E3C00974268 /* StripeAPI.swift */; };
+		DA4A8E1420FE5A7700974268 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = DA4A8E1320FE5A7700974268 /* .gitignore */; };
+		DA4A8E1920FE60BE00974268 /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4A8E1820FE60BE00974268 /* SecretKeys.swift */; };
 		DA54E48920F92285009BD9E1 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54E48220F92283009BD9E1 /* CheckoutViewController.swift */; };
 		DA54E48A20F92285009BD9E1 /* PaymentContextFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54E48320F92284009BD9E1 /* PaymentContextFooterView.swift */; };
 		DA54E48B20F92285009BD9E1 /* BrowseProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54E48420F92284009BD9E1 /* BrowseProductsViewController.swift */; };
@@ -97,6 +100,9 @@
 		DA2E85E12043C8110057C4C6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DA2E916320487F9F00AF0247 /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
 		DA389A7B20774763009F3CE8 /* OnboardingCheckUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCheckUtils.swift; sourceTree = "<group>"; };
+		DA4A8E1020FE3E3C00974268 /* StripeAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StripeAPI.swift; sourceTree = "<group>"; };
+		DA4A8E1320FE5A7700974268 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		DA4A8E1820FE60BE00974268 /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
 		DA54E48220F92283009BD9E1 /* CheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		DA54E48320F92284009BD9E1 /* PaymentContextFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentContextFooterView.swift; sourceTree = "<group>"; };
 		DA54E48420F92284009BD9E1 /* BrowseProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseProductsViewController.swift; sourceTree = "<group>"; };
@@ -216,6 +222,8 @@
 				DAC462422091164A00673189 /* AppDelegate */,
 				DADC7B70203E175500F87438 /* Data */,
 				DADC7B71203E176B00F87438 /* View */,
+				DA4A8E1220FE5A2A00974268 /* Git */,
+				DA4A8E1720FE609200974268 /* Secret */,
 				DA06DCE4208063500039D063 /* Utility */,
 				DADC7B72203E178200F87438 /* Onboarding */,
 				DAB628612090222700A5890D /* Services */,
@@ -246,6 +254,22 @@
 				DA07068920B5D94700362EFE /* FirebaseDynamicLinkHelper.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		DA4A8E1220FE5A2A00974268 /* Git */ = {
+			isa = PBXGroup;
+			children = (
+				DA4A8E1320FE5A7700974268 /* .gitignore */,
+			);
+			path = Git;
+			sourceTree = "<group>";
+		};
+		DA4A8E1720FE609200974268 /* Secret */ = {
+			isa = PBXGroup;
+			children = (
+				DA4A8E1820FE60BE00974268 /* SecretKeys.swift */,
+			);
+			path = Secret;
 			sourceTree = "<group>";
 		};
 		DA54E48120F92213009BD9E1 /* Stripe */ = {
@@ -303,6 +327,7 @@
 			children = (
 				DA2E85DE2043C62E0057C4C6 /* FirebaseAPI.swift */,
 				DA5F352B2077C46100A64FA0 /* FacebookAPI.swift */,
+				DA4A8E1020FE3E3C00974268 /* StripeAPI.swift */,
 				DA54E48120F92213009BD9E1 /* Stripe */,
 			);
 			path = Services;
@@ -471,6 +496,7 @@
 				DA8D3D1A20DEDAFB00682C8D /* CheckoutCell.xib in Resources */,
 				DA13D007203E0A7D0021EB7E /* LaunchScreen.storyboard in Resources */,
 				DA13D004203E0A7D0021EB7E /* Assets.xcassets in Resources */,
+				DA4A8E1420FE5A7700974268 /* .gitignore in Resources */,
 				DA5EF4E220AA0C5F0070BD5D /* ImageLabelCell.xib in Resources */,
 				DAF2024E20E1E2DC001D96FD /* EmptyCartView.xib in Resources */,
 				DAA9C49C20C0E9C30075F4B3 /* PastOrdersCell.xib in Resources */,
@@ -582,6 +608,7 @@
 				DA056E85203FC7A6007EECAE /* DataModel.swift in Sources */,
 				DA54E48F20F92285009BD9E1 /* SettingsViewController.swift in Sources */,
 				DA91AEBE20A8F2F500BEF84B /* LeftLabelCell.swift in Sources */,
+				DA4A8E1920FE60BE00974268 /* SecretKeys.swift in Sources */,
 				DAA9C49A20C0E97D0075F4B3 /* PastOrdersCell.swift in Sources */,
 				DAD934BD20A2A80900BA6FFD /* PaymentViewController.swift in Sources */,
 				DA54E48D20F92285009BD9E1 /* Buttons.swift in Sources */,
@@ -591,6 +618,7 @@
 				DAD934BA20A2A5E400BA6FFD /* UpdateCreditCardViewController.swift in Sources */,
 				DADC7B77203E6A4900F87438 /* RegisterViewController.swift in Sources */,
 				DAC4EC89209442EE00EE07A0 /* MyAccountTableViewController.swift in Sources */,
+				DA4A8E1120FE3E3C00974268 /* StripeAPI.swift in Sources */,
 				DABD202820F538240095A03A /* MarketViewController.swift in Sources */,
 				DA13CFFF203E0A7D0021EB7E /* LoginViewController.swift in Sources */,
 				DAB7630D20EB1419000736AA /* StoreReviewHelper.swift in Sources */,
