@@ -24,6 +24,13 @@
 		DA2E85E22043C8110057C4C6 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E85E12043C8110057C4C6 /* Extensions.swift */; };
 		DA2E916420487F9F00AF0247 /* DetailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2E916320487F9F00AF0247 /* DetailedViewController.swift */; };
 		DA389A7C20774763009F3CE8 /* OnboardingCheckUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA389A7B20774763009F3CE8 /* OnboardingCheckUtils.swift */; };
+		DA54E48920F92285009BD9E1 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54E48220F92283009BD9E1 /* CheckoutViewController.swift */; };
+		DA54E48A20F92285009BD9E1 /* PaymentContextFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54E48320F92284009BD9E1 /* PaymentContextFooterView.swift */; };
+		DA54E48B20F92285009BD9E1 /* BrowseProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54E48420F92284009BD9E1 /* BrowseProductsViewController.swift */; };
+		DA54E48C20F92285009BD9E1 /* CheckoutRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54E48520F92284009BD9E1 /* CheckoutRowView.swift */; };
+		DA54E48D20F92285009BD9E1 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54E48620F92284009BD9E1 /* Buttons.swift */; };
+		DA54E48E20F92285009BD9E1 /* MyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54E48720F92285009BD9E1 /* MyAPIClient.swift */; };
+		DA54E48F20F92285009BD9E1 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54E48820F92285009BD9E1 /* SettingsViewController.swift */; };
 		DA56C62220A1599300DB38A4 /* PromoCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA56C62120A1599300DB38A4 /* PromoCodeViewController.swift */; };
 		DA5EF4E020AA0C4A0070BD5D /* ImageLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5EF4DF20AA0C4A0070BD5D /* ImageLabelCell.swift */; };
 		DA5EF4E220AA0C5F0070BD5D /* ImageLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA5EF4E120AA0C5F0070BD5D /* ImageLabelCell.xib */; };
@@ -90,6 +97,13 @@
 		DA2E85E12043C8110057C4C6 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		DA2E916320487F9F00AF0247 /* DetailedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedViewController.swift; sourceTree = "<group>"; };
 		DA389A7B20774763009F3CE8 /* OnboardingCheckUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCheckUtils.swift; sourceTree = "<group>"; };
+		DA54E48220F92283009BD9E1 /* CheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
+		DA54E48320F92284009BD9E1 /* PaymentContextFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentContextFooterView.swift; sourceTree = "<group>"; };
+		DA54E48420F92284009BD9E1 /* BrowseProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseProductsViewController.swift; sourceTree = "<group>"; };
+		DA54E48520F92284009BD9E1 /* CheckoutRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutRowView.swift; sourceTree = "<group>"; };
+		DA54E48620F92284009BD9E1 /* Buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
+		DA54E48720F92285009BD9E1 /* MyAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAPIClient.swift; sourceTree = "<group>"; };
+		DA54E48820F92285009BD9E1 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		DA56C62120A1599300DB38A4 /* PromoCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PromoCodeViewController.swift; sourceTree = "<group>"; };
 		DA5EF4DF20AA0C4A0070BD5D /* ImageLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLabelCell.swift; sourceTree = "<group>"; };
 		DA5EF4E120AA0C5F0070BD5D /* ImageLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ImageLabelCell.xib; sourceTree = "<group>"; };
@@ -234,6 +248,20 @@
 			path = Helper;
 			sourceTree = "<group>";
 		};
+		DA54E48120F92213009BD9E1 /* Stripe */ = {
+			isa = PBXGroup;
+			children = (
+				DA54E48420F92284009BD9E1 /* BrowseProductsViewController.swift */,
+				DA54E48220F92283009BD9E1 /* CheckoutViewController.swift */,
+				DA54E48720F92285009BD9E1 /* MyAPIClient.swift */,
+				DA54E48620F92284009BD9E1 /* Buttons.swift */,
+				DA54E48520F92284009BD9E1 /* CheckoutRowView.swift */,
+				DA54E48320F92284009BD9E1 /* PaymentContextFooterView.swift */,
+				DA54E48820F92285009BD9E1 /* SettingsViewController.swift */,
+			);
+			path = Stripe;
+			sourceTree = "<group>";
+		};
 		DA70A9E42089491A00D3F2C3 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -275,6 +303,7 @@
 			children = (
 				DA2E85DE2043C62E0057C4C6 /* FirebaseAPI.swift */,
 				DA5F352B2077C46100A64FA0 /* FacebookAPI.swift */,
+				DA54E48120F92213009BD9E1 /* Stripe */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -523,13 +552,17 @@
 			files = (
 				DA6BE08F20F7A9AF007FA200 /* UserLoginStatus.swift in Sources */,
 				DA5F352E2077C79D00A64FA0 /* Constants.swift in Sources */,
+				DA54E48920F92285009BD9E1 /* CheckoutViewController.swift in Sources */,
 				DAC4EC8B2094499800EE07A0 /* ChangeEmailViewController.swift in Sources */,
 				DA8D3D1620DED94600682C8D /* CheckoutTableViewController.swift in Sources */,
 				DAB62863209035EC00A5890D /* UserDefaultsUtils.swift in Sources */,
 				DA21EBB220DBF3DB004D4DEB /* DetailedSelectionViewController.swift in Sources */,
 				DAC462442091168500673189 /* BrewiskeyAnalytics.swift in Sources */,
 				DA56C62220A1599300DB38A4 /* PromoCodeViewController.swift in Sources */,
+				DA54E48B20F92285009BD9E1 /* BrowseProductsViewController.swift in Sources */,
 				DA2E85DF2043C62E0057C4C6 /* FirebaseAPI.swift in Sources */,
+				DA54E48E20F92285009BD9E1 /* MyAPIClient.swift in Sources */,
+				DA54E48A20F92285009BD9E1 /* PaymentContextFooterView.swift in Sources */,
 				DAB62860208FDC1B00A5890D /* ProfileTableViewController.swift in Sources */,
 				DA5F352C2077C46100A64FA0 /* FacebookAPI.swift in Sources */,
 				DA07068A20B5D94700362EFE /* FirebaseDynamicLinkHelper.swift in Sources */,
@@ -545,10 +578,13 @@
 				DA2C31F4204DC4C400FF6444 /* MarketNavController.swift in Sources */,
 				DA6F829920BB8029005E7862 /* NewCreditCardTableViewController.swift in Sources */,
 				DA620DF5209589620026E4A5 /* ReferralViewController.swift in Sources */,
+				DA54E48C20F92285009BD9E1 /* CheckoutRowView.swift in Sources */,
 				DA056E85203FC7A6007EECAE /* DataModel.swift in Sources */,
+				DA54E48F20F92285009BD9E1 /* SettingsViewController.swift in Sources */,
 				DA91AEBE20A8F2F500BEF84B /* LeftLabelCell.swift in Sources */,
 				DAA9C49A20C0E97D0075F4B3 /* PastOrdersCell.swift in Sources */,
 				DAD934BD20A2A80900BA6FFD /* PaymentViewController.swift in Sources */,
+				DA54E48D20F92285009BD9E1 /* Buttons.swift in Sources */,
 				DA2E85E22043C8110057C4C6 /* Extensions.swift in Sources */,
 				DA056E88203FC982007EECAE /* ForgotPasswordViewController.swift in Sources */,
 				DA5F3530207825D400A64FA0 /* EmailSentViewController.swift in Sources */,

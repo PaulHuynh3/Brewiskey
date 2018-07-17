@@ -15,14 +15,21 @@ class CheckoutTableViewController: UITableViewController {
     let customCellIdentifier = "CheckoutCellIdentifier"
     var emptyView: EmptyCartView?
     var proceedButton: UIButton?
+    let settingsVC = SettingsViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNibTableViewCell()
-        navigationController?.navigationBar.isHidden = true
         fetchCartItems()
         self.tableView.tableFooterView = UIView()
         registerHeaderNib()
+        
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(showSettings))
+    }
+    
+    @objc func showSettings() {
+        let navController = UINavigationController(rootViewController: settingsVC)
+        self.present(navController, animated: true, completion: nil)
     }
     
     fileprivate func fetchCartItems() {
@@ -62,7 +69,13 @@ class CheckoutTableViewController: UITableViewController {
     }
 
     @objc fileprivate func proceedButtonTapped() {
-        print("Proceed Button tapped")
+        let product = ""
+        let price = 3000
+        let checkoutViewController = CheckoutViewController(product: product,
+                                                            price: price,
+                                                            settings: self.settingsVC.settings)
+        
+        self.navigationController?.pushViewController(checkoutViewController, animated: true)
     }
 }
 

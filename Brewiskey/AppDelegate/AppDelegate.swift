@@ -9,7 +9,7 @@
 import UIKit
 import Firebase
 import FBSDKCoreKit
-import Braintree
+import Stripe
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -32,6 +32,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let sourceApplication = options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String
         let annotation = options[UIApplicationOpenURLOptionsKey.annotation]
         handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url,sourceApplication:sourceApplication , annotation: annotation)
+        //finish this function to detect stripe etc...
+        let stripeHandled = Stripe.handleURLCallback(with: url)
+        if stripeHandled {
+            return true
+        } else {
+            //this was not a stripe url
+        }
       
         return handled
     }
@@ -55,23 +62,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
     
     //Firebase Dynamic links.
+    // This method is where you handle URL opens if you are using univeral link URLs (eg "https://example.com/stripe_ios_callback")
     func application(_ application: UIApplication, continue userActivity: NSUserActivity,
                      restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
-        
-        guard let dynamicLinks = DynamicLinks.dynamicLinks() else {
-            return false
-        }
-        
-        guard let incomingURL = userActivity.webpageURL else {
-            return false
-        }
-        
-        let handled = dynamicLinks.handleUniversalLink(incomingURL) { (dynamiclink, error) in
-            if let url = dynamiclink?.url {
-                self.handleDeepLink(url: url)
+        //stripe url
+//        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
+            if let url = userActivity.webpageURL {
+                let stripeHandled = Stripe.handleURLCallback(with: url)
+                if stripeHandled {
+                    return true
+                } else {
+                    //this was a dynamic link url
+                    if let dynamicLinks = DynamicLinks.dynamicLinks() {
+                        let handled = dynamicLinks.handleUniversalLink(url) { (dynamiclink, error) in
+                            if let url = dynamiclink?.url {
+                                self.handleDeepLink(url: url)
+                            }
+                        }
+                        return handled
+                    }
+                }
             }
-        }
-        return handled
+        return false
+//        }
     }
     
     func handleDeepLink(url: URL){
@@ -82,7 +95,6 @@ extension AppDelegate {
         // link, sign in the user anonymously and record the referrer UID in the
         // user's RTDB record.
         if user == nil && invitedBy != nil {
-           
             Auth.auth().signInAnonymously() { (user, error) in
                 if let user = user {
                     let userRecord = Database.database().reference().child("users").child(user.uid)
@@ -92,8 +104,8 @@ extension AppDelegate {
                 }
             }
         }
-
     }
 
+    
 }
 
