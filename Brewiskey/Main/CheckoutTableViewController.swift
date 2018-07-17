@@ -82,7 +82,6 @@ class CheckoutTableViewController: UITableViewController {
         let checkoutViewController = CheckoutViewController(product: product,
                                                             price: Int(totalPrice),
                                                             settings: self.settingsVC.settings)
-        StripeAPI().createNewCustomer()
         
         self.navigationController?.pushViewController(checkoutViewController, animated: true)
     }

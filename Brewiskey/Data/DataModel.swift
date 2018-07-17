@@ -18,13 +18,19 @@ class User: NSObject {
     var profileImageUrl: String?
     var alcoholItems: NSMutableArray?
     var age: String?
+    var stripeId: String?
     var address = Address()
     override init() {
         //iniatilize the array before it can be used.
         alcoholItems = NSMutableArray()
     }
     var creditCard = CreditCard()
-    
+}
+
+class StripeCustomer {
+    var customerId: String?
+    var delinquent: Bool?
+    var email: String?
 }
 
 class CreditCard {

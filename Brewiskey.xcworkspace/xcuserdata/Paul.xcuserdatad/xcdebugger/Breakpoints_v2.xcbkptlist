@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/Services/FirebaseAPI.swift"
-            timestampString = "553067832.472636"
+            timestampString = "553554796.275527"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "94"
-            endingLineNumber = "94"
+            startingLineNumber = "99"
+            endingLineNumber = "99"
             landmarkName = "fetchAllBeerBrandAndImages(completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -132,7 +132,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/Utility/UserDefaultsUtils.swift"
-            timestampString = "552261547.1592259"
+            timestampString = "553550106.783929"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "26"
@@ -148,7 +148,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/AppDelegate/AppDelegate.swift"
-            timestampString = "553207590.887488"
+            timestampString = "553549236.2942179"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "70"
@@ -164,7 +164,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/Main/CheckoutTableViewController.swift"
-            timestampString = "553538697.427707"
+            timestampString = "553554796.275637"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "78"
@@ -180,7 +180,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/Main/CheckoutTableViewController.swift"
-            timestampString = "553538697.427819"
+            timestampString = "553554796.275692"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "73"
@@ -196,7 +196,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/Services/Stripe/CheckoutViewController.swift"
-            timestampString = "553538697.427878"
+            timestampString = "553554796.275743"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "15"
@@ -212,7 +212,7 @@
                   moduleName = "Brewiskey"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/a/Desktop/Projects/Brewiskey/Brewiskey/Services/Stripe/CheckoutViewController.swift"
-                  timestampString = "553538697.626629"
+                  timestampString = "553554796.614642"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -227,7 +227,7 @@
                   moduleName = "Brewiskey"
                   usesParentBreakpointCondition = "Yes"
                   urlString = "file:///Users/a/Desktop/Projects/Brewiskey/Brewiskey/Services/Stripe/CheckoutViewController.swift"
-                  timestampString = "553538697.632061"
+                  timestampString = "553554796.6170959"
                   startingColumnNumber = "9223372036854775807"
                   endingColumnNumber = "9223372036854775807"
                   startingLineNumber = "15"
@@ -244,7 +244,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/Services/Stripe/CheckoutViewController.swift"
-            timestampString = "553538697.42795"
+            timestampString = "553554796.275789"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "19"
@@ -259,14 +259,14 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Brewiskey/Services/Stripe/CheckoutViewController.swift"
-            timestampString = "553538697.428"
+            filePath = "Brewiskey/Onboarding/RegisterViewController.swift"
+            timestampString = "553554796.275921"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "50"
-            endingLineNumber = "50"
-            landmarkName = "paymentInProgress"
-            landmarkType = "24">
+            startingLineNumber = "190"
+            endingLineNumber = "190"
+            landmarkName = "createAccountTapped(_:)"
+            landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -275,61 +275,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Brewiskey/Services/Stripe/CheckoutViewController.swift"
-            timestampString = "553538697.428058"
+            filePath = "Brewiskey/Main/MarketViewController.swift"
+            timestampString = "553554796.311752"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "51"
-            endingLineNumber = "51"
-            landmarkName = "paymentInProgress"
-            landmarkType = "24">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Brewiskey.CheckoutViewController.paymentInProgress.didset : Swift.Bool"
-                  moduleName = "Brewiskey"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/a/Desktop/Projects/Brewiskey/Brewiskey/Services/Stripe/CheckoutViewController.swift"
-                  timestampString = "553538697.647211"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "51"
-                  endingLineNumber = "51"
-                  offsetFromSymbolStart = "25">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in Brewiskey.CheckoutViewController.paymentInProgress.didset : Swift.Bool"
-                  moduleName = "Brewiskey"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/a/Desktop/Projects/Brewiskey/Brewiskey/Services/Stripe/CheckoutViewController.swift"
-                  timestampString = "553538697.65101"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "52"
-                  endingLineNumber = "52"
-                  offsetFromSymbolStart = "24">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Brewiskey/Services/StripeAPI.swift"
-            timestampString = "553538697.428116"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "20"
-            endingLineNumber = "20"
-            landmarkName = "createNewCustomer()"
+            startingLineNumber = "67"
+            endingLineNumber = "67"
+            landmarkName = "setUpCurrentUser()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

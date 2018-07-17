@@ -26,7 +26,8 @@ class FirebaseAPI: NSObject {
                 user.lastName = dictionary["last_name"] as? String
                 user.email = dictionary["email"] as? String
                 user.profileImageUrl = dictionary["profile_image_url"] as? String
-                    completion(user)
+                user.stripeId = dictionary["stripe_Id"] as? String
+                    
                 //user sets this when they finish registeration by editing their profile.
                 user.age = dictionary["age"] as? String
                 user.address.unitNumber = dictionary["unit_number"] as? String
@@ -43,10 +44,14 @@ class FirebaseAPI: NSObject {
                         user.creditCard.postalCode = creditCardDict["postal_code"] as? String
                         user.creditCard.nickname = creditCardDict["nick_name"] as? String
                     }
+                    
+                    completion(user)
                 }
             }
         })
     }
+    
+    //fetch all users
     class func fetchDatabaseUsers(completion:@escaping (_ user: User) -> Void){
         
         Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in

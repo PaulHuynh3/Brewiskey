@@ -172,6 +172,11 @@ class RegisterViewController: UIViewController {
                                 return
                             }
                             
+                            StripeAPI().createCustomer(email: email, completion: { (stripeCustomerId: String?, error: String? ) in
+                                if let error = error {
+                                    self.showAlert(title: UIAlertConstants.titleError, message: error, actionTitle: UIAlertConstants.actionOk)
+                                }
+                            
                             FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, error: String?) in
                                 if let error = error {
                                     self.showAlert(title: "Error", message: error, actionTitle: "OK")
@@ -182,7 +187,7 @@ class RegisterViewController: UIViewController {
                                     return
                                 }
                                 
-                                let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": profileImageURL, "referral_Link": link.absoluteString]
+                                let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": profileImageURL, "referral_Link": link.absoluteString, "stripe_Id": stripeCustomerId]
                                 
                                 let userDefault = UserDefaults.standard
                                 userDefault.set(true, forKey: kUserInfo.kLoginStatus)
@@ -192,11 +197,13 @@ class RegisterViewController: UIViewController {
                                 userDefault.set(lastName, forKey: kUserInfo.kLastName)
                                 userDefault.set(email, forKey: kUserInfo.kEmail)
                                 userDefault.set(shortLink, forKey: kUserInfo.kReferralLink)
+                                userDefault.set(stripeCustomerId, forKey: kUserInfo.kStripeId)
                                 
                                 self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
                                 self.activityIndicatorView.stopAnimating()
                                 BrewiskeyAnalytics().track(event: .userSignupEmail)
                             })
+                          })
                         }
                     })
                 }

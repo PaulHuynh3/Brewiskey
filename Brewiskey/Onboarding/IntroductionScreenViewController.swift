@@ -289,6 +289,11 @@ extension IntroductionScreenViewController: BaseOnboardingScreenDelegate {
                             }
                             DispatchQueue.main.async {
                                 
+                                StripeAPI().createCustomer(email: email, completion: { (stripeCustomerId: String?, error: String?) in
+                                    if let error = error {
+                                       self.showAlert(title: UIAlertConstants.titleError, message: error, actionTitle: UIAlertConstants.actionOk)
+                                    }
+                                
                                 FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, error: String?) in
                                     guard let userId = user?.uid else {return}
                                     guard let link = shortLink else {
@@ -313,12 +318,15 @@ extension IntroductionScreenViewController: BaseOnboardingScreenDelegate {
                                     userDefault.set(email, forKey: kUserInfo.kEmail)
                                     userDefault.set(true, forKey: kUserInfo.kNewUser)
                                     
-                                    let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": imageURL, "referral_Link": link.absoluteString]
+                                    let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": imageURL, "referral_Link": link.absoluteString, "stripe_Id": stripeCustomerId]
                                     
                                     self.registerUserIntoDatabaseAndLogin(userId, values: values as [String : AnyObject])
                                     BrewiskeyAnalytics().track(event: .loginWithFacebook)
                                 })
+                              })
                             }
+                            
+                            
                         })
                     }
    

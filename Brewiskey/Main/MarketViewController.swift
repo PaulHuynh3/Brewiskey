@@ -39,6 +39,7 @@ class MarketViewController: UIViewController, UISearchControllerDelegate, UISear
         fetchAlcoholProducts()
         tableView.isScrollEnabled = true
         UserDefaults.standard.set(false, forKey: kUserInfo.kNewUser)
+        setUpCurrentUser()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -57,6 +58,14 @@ class MarketViewController: UIViewController, UISearchControllerDelegate, UISear
         searchController.dimsBackgroundDuringPresentation = false
         beerMode = true
         beerButton.isSelected = true
+    }
+    
+    //setup userdefaults here.
+    fileprivate func setUpCurrentUser(){
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        FirebaseAPI.fetchDatabaseCurrentUser(uid: uid) { (user: User?) in
+            UserDefaults.standard.set(user?.stripeId, forKey: kUserInfo.kStripeId)
+        }
     }
     
     fileprivate func highlightSelectedButton(buttonNumber: Int){
