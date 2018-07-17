@@ -11,9 +11,13 @@ import Stripe
 
 class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
 
-    // 1) To get started with this demo, first head to https://dashboard.stripe.com/account/apikeys
-    // and copy your "Test Publishable Key" (it looks like pk_test_abcdef) into the line below.
+    #if DEBUG
+    let stripePublishableKey = "pk_test_J3CBqTLQpONKPwCNrtpSGMO3"
+    #endif
+    
+    #if RELEASE
     let stripePublishableKey = "pk_live_c0QgcOU3ASqjgzthhQqxYHOY"
+    #endif
 
     // 2) Next, optionally, to have this demo save your user's payment details, head to
     // https://github.com/stripe/example-ios-backend/tree/v13.0.3, click "Deploy to Heroku", and follow
@@ -27,7 +31,7 @@ class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
 
     // These values will be shown to the user when they purchase with Apple Pay.
     let companyName = "Brewiskey"
-    let paymentCurrency = "Cdn"
+    let paymentCurrency = "CA"
 
     let paymentContext: STPPaymentContext
 
@@ -143,8 +147,6 @@ class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
         self.theme.primaryBackgroundColor.getRed(&red, green: nil, blue: nil, alpha: nil)
         self.activityIndicator.activityIndicatorViewStyle = red < 0.5 ? .white : .gray
         
-//        self.navigationItem.title = "Emoji Apparel"
-        
         self.productImage.font = UIFont.systemFont(ofSize: 30)
         self.view.addSubview(self.totalRow)
         self.view.addSubview(self.paymentRow)
@@ -190,7 +192,6 @@ class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
     }
 
     // MARK: STPPaymentContextDelegate
-
     func paymentContext(_ paymentContext: STPPaymentContext, didCreatePaymentResult paymentResult: STPPaymentResult, completion: @escaping STPErrorBlock) {
         MyAPIClient.sharedClient.completeCharge(paymentResult,
                                                 amount: self.paymentContext.paymentAmount,

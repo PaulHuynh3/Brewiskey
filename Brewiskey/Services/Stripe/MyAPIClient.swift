@@ -27,10 +27,13 @@ class MyAPIClient: NSObject, STPEphemeralKeyProvider {
                         shippingAddress: STPAddress?,
                         shippingMethod: PKShippingMethod?,
                         completion: @escaping STPErrorBlock) {
+        let currencyType = "CAD"
         let url = self.baseURL.appendingPathComponent("charge")
         var params: [String: Any] = [
-            "source": result.source.stripeID,
-            "amount": amount
+//            "source": result.source.stripeID,
+            "customer": "cus_DFDaYaM9AgJBZL",
+            "amount": amount,
+            "currency": currencyType
         ]
         params["shipping"] = STPAddress.shippingInfoForCharge(with: shippingAddress, shippingMethod: shippingMethod)
         Alamofire.request(url, method: .post, parameters: params)
@@ -49,8 +52,8 @@ class MyAPIClient: NSObject, STPEphemeralKeyProvider {
         let url = self.baseURL.appendingPathComponent("ephemeral_keys")
         Alamofire.request(url, method: .post, parameters: [
             "api_version": apiVersion,
-            //should be created programatically.. and this should be linked to firebase somewhow.
-            "customer_id": "cus_DF6mqngq4xJ6Fp"
+            //should be created programatically.. and this should be linked to firebase somewhow.. Maybe create this stripe customer when user finishes registering for the app.
+            "customer_id": "cus_DFDaYaM9AgJBZL"
             ])
             .validate(statusCode: 200..<300)
             .responseJSON { responseJSON in
