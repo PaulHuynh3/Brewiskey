@@ -49,13 +49,6 @@ class Address: NSObject {
     var province: String?
     var postalCode: String?
 }
-//look this over.
-class purchasedAlcohols {
-    var purchasedDate: String?
-    var spirit = Spirit()
-    var wine = Wine()
-    var beer = Beer()
-}
 
 class Spirit {
     var name: String?
@@ -123,3 +116,13 @@ class CheckoutItem {
     var type: String?
     var orderId: String?
 }
+
+class OrderedItem {
+    var name: String?
+    var imageUrl: String?
+    var price: Double?
+    var quantity: Int?
+    var type: String?
+    var orderId: String?
+}
+

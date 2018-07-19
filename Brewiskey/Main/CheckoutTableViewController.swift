@@ -9,7 +9,16 @@
 import UIKit
 import Firebase
 
-class CheckoutTableViewController: UITableViewController {
+protocol RefreshCheckoutTableDelegate {
+    func removePurchasedItems()
+}
+
+class CheckoutTableViewController: UITableViewController, RefreshCheckoutTableDelegate {
+    
+    func removePurchasedItems() {
+        cartItems.removeAll()
+        tableView.reloadData()
+    }
     
     var cartItems = Array <CheckoutItem>()
     let customCellIdentifier = "CheckoutCellIdentifier"
@@ -82,9 +91,12 @@ class CheckoutTableViewController: UITableViewController {
         let checkoutViewController = CheckoutViewController(product: product,
                                                             price: Int(totalPrice),
                                                             settings: self.settingsVC.settings)
+        checkoutViewController.refreshCheckoutTableDelegate = self
         
         self.navigationController?.pushViewController(checkoutViewController, animated: true)
+       
     }
+
 }
 
 extension CheckoutTableViewController {

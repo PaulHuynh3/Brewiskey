@@ -8,9 +8,12 @@
 
 import UIKit
 import Stripe
+import Firebase
 
 class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
-
+    var checkoutItems = Array<CheckoutItem>()
+    var refreshCheckoutTableDelegate: RefreshCheckoutTableDelegate?
+    
     #if DEBUG
     let stripePublishableKey = "pk_test_J3CBqTLQpONKPwCNrtpSGMO3"
     #endif
@@ -143,6 +146,7 @@ class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        retrieveCurrentOrder()
         self.view.backgroundColor = self.theme.primaryBackgroundColor
         var red: CGFloat = 0
         self.theme.primaryBackgroundColor.getRed(&red, green: nil, blue: nil, alpha: nil)
@@ -211,7 +215,9 @@ class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
             message = error?.localizedDescription ?? ""
         case .success:
             title = "Success"
+            //Pop up big page saying order Successful then reload tableview marketplace to show no items.
             message = "You bought a \(self.product)!"
+            handleSuccessfulPurchase()
         case .userCancellation:
             return
         }
@@ -292,4 +298,76 @@ class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
         }
     }
 
+}
+
+extension CheckoutViewController {
+    
+    fileprivate func handleSuccessfulPurchase(){
+        updatePastOrderHistory()
+        FirebaseAPI().deleteCheckoutItems(checkoutItems)
+        refreshCheckoutTableDelegate?.removePurchasedItems()
+        UserDefaults.standard.set(0, forKey: kUserInfo.kCheckoutOrderQuantity)
+    }
+    
+    fileprivate func retrieveCurrentOrder() {
+        FirebaseAPI().fetchItemsInCart { [weak self] (checkoutItem: CheckoutItem?, error: String?) in
+            guard let strongSelf = self else {return}
+            if let error = error {
+                strongSelf.showAlert(title: UIAlertConstants.titleError, message: error, actionTitle: UIAlertConstants.actionOk)
+                return
+            }
+            if let item = checkoutItem {
+                strongSelf.checkoutItems.append(item)
+            }
+        }
+    }
+    
+    fileprivate func updatePastOrderHistory() {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        let timeStamp = currentGeorgianDate()
+        var orderCount = 0
+         var totalPrice: Double = 0
+        
+        for item in checkoutItems {
+            let orderItemDatabase = Database.database().reference().child("users").child(uid).child("order_history").child("\(timeStamp)").child("item_\(orderCount)")
+            orderCount = orderCount + 1
+            if let name = item.name, let imageUrl = item.imageUrl, let type = item.type, let price = item.price, let quantity = item.quantity, let orderId = item.orderId {
+                totalPrice = totalPrice + price * Double(quantity)
+                
+                     let values = ["name": name, "imageUrl" : imageUrl, "type" : type, "price": price, "quantity": quantity, "orderUuid": orderId] as [String: AnyObject]
+                orderItemDatabase.updateChildValues(values) { (error, databaseRef) in
+                    DispatchQueue.main.async {
+                        if let error = error {
+                            self.showAlert(title: UIAlertConstants.titleError, message: error.localizedDescription, actionTitle: UIAlertConstants.actionOk)
+                            return
+                        }
+                    }
+                }
+
+            }
+        }
+        let timeStampDatabase = Database.database().reference().child("users").child(uid).child("order_history").child("\(timeStamp)")
+        let timestampValues = ["date": "\(timeStamp)", "total_price": totalPrice] as [String : Any]
+        
+        timeStampDatabase.updateChildValues(timestampValues) { (error: Error?, databaseRef: DatabaseReference?) in
+            if let error = error {
+                self.showAlert(title: UIAlertConstants.titleError, message: error.localizedDescription, actionTitle: UIAlertConstants.actionOk)
+                return
+            }
+        }
+    }
+    
+    fileprivate func currentGeorgianDate() -> Date {
+        let date = Date()
+        let calendar = Calendar.current
+        
+        var dateComponents = DateComponents()
+        dateComponents.year = calendar.component(.year, from: date)
+        dateComponents.month = calendar.component(.month, from: date)
+        dateComponents.day = calendar.component(.day, from: date)
+        dateComponents.hour = calendar.component(.hour, from: date)
+        dateComponents.minute = calendar.component(.minute, from: date)
+        
+        return Calendar(identifier: .gregorian).date(from: dateComponents)!
+    }
 }

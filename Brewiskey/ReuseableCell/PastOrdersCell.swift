@@ -15,4 +15,9 @@ class PastOrdersCell: UITableViewCell {
     @IBOutlet weak var alcoholImage: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
     
+    @IBAction func rebuyTapped(_ sender: Any) {
+        
+        
+    }
+    
 }

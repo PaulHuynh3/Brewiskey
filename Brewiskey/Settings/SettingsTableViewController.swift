@@ -173,19 +173,9 @@ extension SettingsTableViewController {
             self.checkoutItems.append(item)
         }
     }
-    
-    fileprivate func deleteCheckoutItems() {
-        guard let uid = Auth.auth().currentUser?.uid else {return}
-        
-        for cartItem in checkoutItems {
-            if let orderId = cartItem.orderId{
-                Database.database().reference().child("users").child(uid).child("cart").child(orderId).removeValue()
-            }
-        }
-    }
    
     private func handleLogout() {
-        deleteCheckoutItems()
+        FirebaseAPI().deleteCheckoutItems(checkoutItems)
         do {
             try Auth.auth().signOut()
         } catch let logoutError{

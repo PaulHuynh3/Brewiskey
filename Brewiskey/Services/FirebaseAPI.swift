@@ -223,4 +223,42 @@ class FirebaseAPI: NSObject {
         }, withCancel: nil)
     }
     
+    func fetchOrderedItems(completion:@escaping (_ orderedItem: OrderedItem?, _ error: String?) -> Void) {
+        guard let userID = Auth.auth().currentUser?.uid else {return}
+        let database = Database.database().reference()
+        let user = FirebaseConstants.usersChild
+        let cart = "order_history"
+        
+        //it observes the childnode added on top of cart and keeps looping till all the node is examined.
+        database.child(user).child(userID).child(cart).observe(.childAdded, with: { (snapshot) in
+            if let orderDictionary = snapshot.value as? [String: AnyObject] {
+                let orderedItem = OrderedItem()
+                orderedItem.imageUrl = orderDictionary["imageUrl"] as? String
+                orderedItem.price = orderDictionary["price"] as? Double
+                orderedItem.quantity = orderDictionary["quantity"] as? Int
+                orderedItem.type = orderDictionary["type"] as? String
+                orderedItem.name = orderDictionary["name"] as? String
+                orderedItem.orderId = orderDictionary["orderUuid"] as? String
+                DispatchQueue.main.async {
+                    completion(orderedItem, nil)
+                }
+            } else {
+                let error = "Error fetching items in cart"
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
+            }
+        }, withCancel: nil)
+    }
+    
+    func deleteCheckoutItems(_ checkoutItems: Array<CheckoutItem>) {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        
+        for cartItem in checkoutItems {
+            if let orderId = cartItem.orderId{
+                Database.database().reference().child("users").child(uid).child("cart").child(orderId).removeValue()
+            }
+        }
+    }
+
 }

@@ -131,10 +131,7 @@ class MarketViewController: UIViewController, UISearchControllerDelegate, UISear
     }
 
     func updateSearchResults(for searchController: UISearchController) {
-        
-        guard let searchText = searchController.searchBar.text else {
-            return
-        }
+        guard let searchText = searchController.searchBar.text else { return }
         if searchController.searchBar.text == nil || searchController.searchBar.text == "" {
             isUsedSearch = false
             tableView.reloadData()
@@ -205,8 +202,6 @@ extension MarketViewController {
         fetchAllSpiritProducts()
         fetchAllWineProducts()
     }
-    
-
 }
 
 extension MarketViewController: UITableViewDataSource, UITableViewDelegate {

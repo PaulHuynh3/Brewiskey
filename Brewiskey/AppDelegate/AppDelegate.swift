@@ -62,11 +62,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
     
     //Firebase Dynamic links.
-    // This method is where you handle URL opens if you are using univeral link URLs (eg "https://example.com/stripe_ios_callback")
     func application(_ application: UIApplication, continue userActivity: NSUserActivity,
                      restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         //stripe url
-//        if userActivity.activityType == NSUserActivityTypeBrowsingWeb {
             if let url = userActivity.webpageURL {
                 let stripeHandled = Stripe.handleURLCallback(with: url)
                 if stripeHandled {
@@ -84,7 +82,6 @@ extension AppDelegate {
                 }
             }
         return false
-//        }
     }
     
     func handleDeepLink(url: URL){
