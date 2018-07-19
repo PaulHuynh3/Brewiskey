@@ -196,14 +196,13 @@ class FirebaseAPI: NSObject {
     }
     
     func fetchItemsInCart(completion:@escaping (_ checkoutItems: CheckoutItem?, _ error: String?) -> Void) {
-        guard let userID = FirebaseConstants.currentUserID else {return}
-        let database = FirebaseConstants.database
+        guard let userID = Auth.auth().currentUser?.uid else {return}
+        let database = Database.database().reference()
         let user = FirebaseConstants.usersChild
         let cart = "cart"
         
         //it observes the childnode added on top of cart and keeps looping till all the node is examined.
         database.child(user).child(userID).child(cart).observe(.childAdded, with: { (snapshot) in
-            
             if let orderDictionary = snapshot.value as? [String: AnyObject] {
                 let checkoutItem = CheckoutItem()
                 checkoutItem.imageUrl = orderDictionary["imageUrl"] as? String

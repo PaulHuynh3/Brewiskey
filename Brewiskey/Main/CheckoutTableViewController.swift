@@ -165,10 +165,10 @@ extension CheckoutTableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             guard let orderUuid = cartItems[indexPath.row].orderId else {return}
-            guard let uid = FirebaseConstants.currentUserID else {return}
+            guard let uid = Auth.auth().currentUser?.uid else {return}
             cartItems.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
-            FirebaseConstants.database.child("users").child(uid).child("cart").child(orderUuid).removeValue()
+            Database.database().reference().child("users").child(uid).child("cart").child(orderUuid).removeValue()
         }
         
     }
@@ -178,11 +178,11 @@ extension CheckoutTableViewController {
     @objc fileprivate func deleteCartTapped() {
         let alertController = UIAlertController(title: "Delete", message: "All cart items will be deleted", preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
-            guard let uid = FirebaseConstants.currentUserID else {return}
+            guard let uid = Auth.auth().currentUser?.uid else {return}
             
             for cartItem in self.cartItems {
                 if let orderId = cartItem.orderId{
-                    FirebaseConstants.database.child("users").child(uid).child("cart").child(orderId).removeValue()
+                    Database.database().reference().child("users").child(uid).child("cart").child(orderId).removeValue()
                 }
             }
             UserDefaults.standard.set(nil, forKey: kUserInfo.kCheckoutOrderQuantity)

@@ -212,7 +212,7 @@ class RegisterViewController: UIViewController {
     }
     
     private func registerUserIntoDatabaseWithUID(_ uid:String, values: [String:AnyObject]){
-        let userReference = FirebaseConstants.database.child("users").child(uid)
+        let userReference = Database.database().reference().child("users").child(uid)
         userReference.updateChildValues(values, withCompletionBlock: { (error, databaseRef) in
             if let error = error {
                 print(error, #line)
@@ -278,6 +278,11 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
         if let selectedImage = selectedImageFromPicker {
             self.uploadPictureImageView.image = selectedImage
             //format picture.
+            uploadPictureImageView.layer.cornerRadius = uploadPictureImageView.frame.size.width / 2
+            uploadPictureImageView.clipsToBounds = true
+            uploadPictureImageView.layer.borderWidth = 3.0
+            uploadPictureImageView.layer.borderColor = UIColor.black.cgColor
+            uploadPictureImageView.contentMode = .scaleToFill
         }
         dismiss(animated: true, completion: nil)
         

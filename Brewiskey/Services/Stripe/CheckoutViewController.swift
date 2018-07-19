@@ -16,7 +16,8 @@ class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
     #endif
     
     #if RELEASE
-    let stripePublishableKey = "pk_live_c0QgcOU3ASqjgzthhQqxYHOY"
+    let stripePublishableKey = "pk_test_J3CBqTLQpONKPwCNrtpSGMO3"
+//    let stripePublishableKey = "pk_live_c0QgcOU3ASqjgzthhQqxYHOY"
     #endif
 
     // 2) Next, optionally, to have this demo save your user's payment details, head to

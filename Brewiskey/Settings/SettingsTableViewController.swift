@@ -17,10 +17,12 @@ class SettingsTableViewController: UITableViewController {
     @IBOutlet weak var profileEmailLabel: UILabel!
     let customCellIdentifier = "ImageLabelCellIdentifier"
     var user = User()
+    var checkoutItems = Array<CheckoutItem>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchUserObject()
+        fetchCheckoutItems()
         setupUI()
         setupNibTableView()
     }
@@ -81,21 +83,6 @@ class SettingsTableViewController: UITableViewController {
             let paymentViewController = segue.destination as! PaymentViewController
             paymentViewController.user = self.user
         }
-    }
-    
-    //handle logout clear nsuserdefaults, clear any data associated with previous user..
-    private func handleLogout() {
-        do {
-            try Auth.auth().signOut()
-        } catch let logoutError{
-            print(logoutError)
-            return
-        }
-        UserDefaultsUtils().deleteAllUserDefaults()
-        let fbsdkLogin = FBSDKLoginManager()
-        fbsdkLogin.logOut()
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
-        appDelegate?.transitionToLogin()
     }
     
     //Mark: Tableview Datasource
@@ -172,4 +159,43 @@ class SettingsTableViewController: UITableViewController {
         return 55
     }
 
+}
+
+extension SettingsTableViewController {
+    //handle logout
+    fileprivate func fetchCheckoutItems() {
+        FirebaseAPI().fetchItemsInCart { (checkoutItem: CheckoutItem?, error: String?) in
+            if let error = error {
+                print(error)
+                return
+            }
+            guard let item = checkoutItem else {return}
+            self.checkoutItems.append(item)
+        }
+    }
+    
+    fileprivate func deleteCheckoutItems() {
+        guard let uid = Auth.auth().currentUser?.uid else {return}
+        
+        for cartItem in checkoutItems {
+            if let orderId = cartItem.orderId{
+                Database.database().reference().child("users").child(uid).child("cart").child(orderId).removeValue()
+            }
+        }
+    }
+   
+    private func handleLogout() {
+        deleteCheckoutItems()
+        do {
+            try Auth.auth().signOut()
+        } catch let logoutError{
+            print(logoutError)
+            return
+        }
+        UserDefaultsUtils().deleteAllUserDefaults()
+        let fbsdkLogin = FBSDKLoginManager()
+        fbsdkLogin.logOut()
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
+        appDelegate?.transitionToLogin()
+    }
 }
