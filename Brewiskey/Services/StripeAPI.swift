@@ -84,7 +84,7 @@ class StripeAPI {
                     let customerObject = customerJSON as! Dictionary <String, Any>
                     stripeCustomer.customerId = customerObject["id"] as? String
                     stripeCustomer.email = customerObject["email"] as? String
-                    //stripecustomer.description = etc..
+                    //set stripe customer description = etc..
                     completion(stripeCustomer, nil)
                 }
             }

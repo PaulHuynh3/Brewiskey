@@ -105,39 +105,48 @@ class RegisterViewController: UIViewController {
                             print(error)
                             return
                         }
-                        DispatchQueue.main.async {
-                            guard let profileImageURL = metadata?.downloadURL()?.absoluteString else {
-                                return
-                            }
-                            
-                            FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, error: String?) in
-                                if let error = error {
-                                    self.showAlert(title: "Error", message: error, actionTitle: "OK")
-                                    return
-                                }
-                                guard let link = shortLink else {
-                                    self.showAlert(title: "Error", message: "Referal Link nil", actionTitle: "OK")
-                                    return
-                                }
-                                
-                                let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": profileImageURL, "referral_Link": link.absoluteString]
-                                
-                                let userDefault = UserDefaults.standard
-                                userDefault.set(true, forKey: kUserInfo.kLoginStatus)
-                                userDefault.set(uid, forKey: kUserInfo.kUserId)
-                                userDefault.set(true, forKey: kUserInfo.kNewUser)
-                                userDefault.set(firstName, forKey: kUserInfo.kFirstName)
-                                userDefault.set(lastName, forKey: kUserInfo.kLastName)
-                                userDefault.set(email, forKey: kUserInfo.kEmail)
-                                userDefault.set(shortLink, forKey: kUserInfo.kReferralLink)
-                                
-                                
-                                self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
-                                self.activityIndicatorView.stopAnimating()
-                                BrewiskeyAnalytics().track(event: .userSignupEmail)
-                                BrewiskeyAnalytics().track(event: .signupWithReferral)
-                            })
+                        guard let profileImageURL = metadata?.downloadURL()?.absoluteString else {
+                            return
                         }
+                        
+                        FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, firebaseError: String?) in
+                            StripeAPI().createCustomer(email: email, completion: { (stripeId: String?, stripeError: String?) in
+                                
+                                DispatchQueue.main.async {
+                                    if let firebaseError = firebaseError {
+                                        self.showAlert(title: "Error", message: firebaseError, actionTitle: "OK")
+                                        return
+                                    }
+                                    if let stripeError = stripeError {
+                                        self.showAlert(title: "Error", message: stripeError, actionTitle: "OK")
+                                        return
+                                    }
+                                    guard let link = shortLink else {
+                                        self.showAlert(title: "Error", message: "Referal Link nil", actionTitle: "OK")
+                                        return
+                                    }
+                                    
+                                    let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": profileImageURL, "referral_Link": link.absoluteString, "stripe_Id": stripeId]
+                                    
+                                    let userDefault = UserDefaults.standard
+                                    userDefault.set(true, forKey: kUserInfo.kLoginStatus)
+                                    userDefault.set(uid, forKey: kUserInfo.kUserId)
+                                    userDefault.set(true, forKey: kUserInfo.kNewUser)
+                                    userDefault.set(firstName, forKey: kUserInfo.kFirstName)
+                                    userDefault.set(lastName, forKey: kUserInfo.kLastName)
+                                    userDefault.set(email, forKey: kUserInfo.kEmail)
+                                    userDefault.set(shortLink, forKey: kUserInfo.kReferralLink)
+                                    userDefault.set(stripeId, forKey: kUserInfo.kStripeId)
+                                    
+                                    
+                                    self.registerUserNavigateMarketPlace(uid, values: values as [String : AnyObject])
+                                    self.activityIndicatorView.stopAnimating()
+                                    BrewiskeyAnalytics().track(event: .userSignupEmail)
+                                    BrewiskeyAnalytics().track(event: .signupWithReferral)
+                                }
+                                
+                            })
+                        })
                     })
                 }
             }
@@ -162,56 +171,50 @@ class RegisterViewController: UIViewController {
                 //compresses the image
                 if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {
                     storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
+                        guard let profileImageURL = metadata?.downloadURL()?.absoluteString else {return}
                         
-                        if let error = error {
-                            print(error)
-                            return
-                        }
-                        DispatchQueue.main.async {
-                            guard let profileImageURL = metadata?.downloadURL()?.absoluteString else {
-                                return
-                            }
-                            
-                            StripeAPI().createCustomer(email: email, completion: { (stripeCustomerId: String?, error: String? ) in
-                                if let error = error {
-                                    self.showAlert(title: UIAlertConstants.titleError, message: error, actionTitle: UIAlertConstants.actionOk)
+                        StripeAPI().createCustomer(email: email, completion: { (stripeCustomerId: String?, stripeError: String? ) in
+                            FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, firebaseError: String?) in
+                                DispatchQueue.main.async {
+                                    
+                                    if let stripeError = stripeError {
+                                        self.showAlert(title: "Error", message: stripeError, actionTitle: "OK")
+                                        return}
+                                    if let firebaseError = firebaseError {
+                                        self.showAlert(title: "Error", message: firebaseError, actionTitle: "OK")
+                                        return
+                                    }
+                                    guard let link = shortLink else {
+                                        self.showAlert(title: "Error", message: "Referal Link nil", actionTitle: "OK")
+                                        return
+                                    }
+                                    
+                                    let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": profileImageURL, "referral_Link": link.absoluteString, "stripe_Id": stripeCustomerId]
+                                    
+                                    let userDefault = UserDefaults.standard
+                                    userDefault.set(true, forKey: kUserInfo.kLoginStatus)
+                                    userDefault.set(uid, forKey: kUserInfo.kUserId)
+                                    userDefault.set(true, forKey: kUserInfo.kNewUser)
+                                    userDefault.set(firstName, forKey: kUserInfo.kFirstName)
+                                    userDefault.set(lastName, forKey: kUserInfo.kLastName)
+                                    userDefault.set(email, forKey: kUserInfo.kEmail)
+                                    userDefault.set(shortLink, forKey: kUserInfo.kReferralLink)
+                                    userDefault.set(stripeCustomerId, forKey: kUserInfo.kStripeId)
+                                    
+                                    self.registerUserNavigateMarketPlace(uid, values: values as [String : AnyObject])
+                                    self.activityIndicatorView.stopAnimating()
+                                    BrewiskeyAnalytics().track(event: .userSignupEmail)
                                 }
-                            
-                            FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, error: String?) in
-                                if let error = error {
-                                    self.showAlert(title: "Error", message: error, actionTitle: "OK")
-                                    return
-                                }
-                                guard let link = shortLink else {
-                                    self.showAlert(title: "Error", message: "Referal Link nil", actionTitle: "OK")
-                                    return
-                                }
-                                
-                                let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": profileImageURL, "referral_Link": link.absoluteString, "stripe_Id": stripeCustomerId]
-                                
-                                let userDefault = UserDefaults.standard
-                                userDefault.set(true, forKey: kUserInfo.kLoginStatus)
-                                userDefault.set(uid, forKey: kUserInfo.kUserId)
-                                userDefault.set(true, forKey: kUserInfo.kNewUser)
-                                userDefault.set(firstName, forKey: kUserInfo.kFirstName)
-                                userDefault.set(lastName, forKey: kUserInfo.kLastName)
-                                userDefault.set(email, forKey: kUserInfo.kEmail)
-                                userDefault.set(shortLink, forKey: kUserInfo.kReferralLink)
-                                userDefault.set(stripeCustomerId, forKey: kUserInfo.kStripeId)
-                                
-                                self.registerUserIntoDatabaseWithUID(uid, values: values as [String : AnyObject])
-                                self.activityIndicatorView.stopAnimating()
-                                BrewiskeyAnalytics().track(event: .userSignupEmail)
                             })
-                          })
-                        }
+                        })
+                        
                     })
                 }
             }
         }
     }
     
-    private func registerUserIntoDatabaseWithUID(_ uid:String, values: [String:AnyObject]){
+    private func registerUserNavigateMarketPlace(_ uid:String, values: [String:AnyObject]){
         let userReference = Database.database().reference().child("users").child(uid)
         userReference.updateChildValues(values, withCompletionBlock: { (error, databaseRef) in
             if let error = error {
@@ -281,7 +284,7 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
             uploadPictureImageView.layer.cornerRadius = uploadPictureImageView.frame.size.width / 2
             uploadPictureImageView.clipsToBounds = true
             uploadPictureImageView.layer.borderWidth = 3.0
-            uploadPictureImageView.layer.borderColor = UIColor.black.cgColor
+            uploadPictureImageView.layer.borderColor = UIColor.white.cgColor
             uploadPictureImageView.contentMode = .scaleToFill
         }
         dismiss(animated: true, completion: nil)

@@ -174,11 +174,9 @@ extension IntroductionScreenViewController: BaseOnboardingScreenDelegate {
                         let lastName = facebookDict[jsonLastName] as? String else {
                             return
                     }
-                    
                     guard let imageURL = ((facebookDict["picture"] as? [String: Any])?["data"] as? [String: Any])?["url"] as? String else {
                         return
                     }
-                    
                     //convert fb Access token to firebase's token.
                     guard let accessToken = FBSDKAccessToken.current() else {
                         print("Failed to get access token")
@@ -187,7 +185,6 @@ extension IntroductionScreenViewController: BaseOnboardingScreenDelegate {
                     let credential = FacebookAuthProvider.credential(withAccessToken: accessToken.tokenString)
                     
                     if !UserDefaults.standard.bool(forKey: kUserInfo.isUsedReferralCode) {
-                        
                         //referred user convert it to facebook login
                         if let user = Auth.auth().currentUser {
                             user.link(with: credential, completion: { (user, error) in
@@ -195,29 +192,82 @@ extension IntroductionScreenViewController: BaseOnboardingScreenDelegate {
                                     self.showAlert(title: "Error", message: error.localizedDescription, actionTitle: "OK")
                                     return
                                 }
+                                Auth.auth().signIn(with: credential, completion: { (user, loginError) in
+                                    StripeAPI().createCustomer(email: email, completion: { (stripeId: String?, stripeError: String?) in
+                                        FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, firebaseError: String?) in
+                                            
+                                            DispatchQueue.main.async {
+                                                guard let userId = user?.uid else {return}
+                                                if let error = loginError {
+                                                    let onboardingCheckUtils = OnboardingCheckUtils(presentingViewController: self)
+                                                    onboardingCheckUtils.displayError(error.localizedDescription)
+                                                    return
+                                                }
+                                                guard let link = shortLink else {
+                                                    self.showAlert(title: "Error", message: "link nil", actionTitle: "OK")
+                                                    return
+                                                }
+                                                if let firebaseError = firebaseError {
+                                                    self.showAlert(title: "Error", message: firebaseError, actionTitle: "OK")
+                                                    return
+                                                }
+                                                if let stripeError = stripeError {
+                                                    self.showAlert(title: "Error", message: stripeError, actionTitle: "OK")
+                                                    return
+                                                }
+                                                
+                                                let userDefault = UserDefaults.standard
+                                                
+                                                if UserDefaults.standard.url(forKey: kUserInfo.kReferralLink) == nil {
+                                                    userDefault.set(link, forKey: kUserInfo.kReferralLink)
+                                                }
+                                                
+                                                userDefault.set(true, forKey: kUserInfo.kLoginStatus)
+                                                userDefault.set(userId, forKey: kUserInfo.kUserId)
+                                                userDefault.set(firstName, forKey: kUserInfo.kFirstName)
+                                                userDefault.set(lastName, forKey: kUserInfo.kLastName)
+                                                userDefault.set(email, forKey: kUserInfo.kEmail)
+                                                userDefault.set(true, forKey: kUserInfo.kNewUser)
+                                                userDefault.set(true, forKey: kUserInfo.isUsedReferralCode)
+                                                userDefault.set(stripeId, forKey: kUserInfo.kStripeId)
+                                                
+                                                let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": imageURL, "referral_Link": link.absoluteString, "stripe_Id": stripeId]
+                                                
+                                                self.registerUserIntoDatabaseAndLogin(userId, values: values as [String : AnyObject])
+                                                BrewiskeyAnalytics().track(event: .loginWithFacebook)
+                                            }
+                                        })
+                                    })
+                                    
+                                })
                                 
-                                Auth.auth().signIn(with: credential, completion: { (user, error) in
-                                    if let error = error {
-                                        let onboardingCheckUtils = OnboardingCheckUtils(presentingViewController: self)
-                                        onboardingCheckUtils.displayError(error.localizedDescription)
-                                        return
-                                    }
-                                    DispatchQueue.main.async {
-                                        
-                                        FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, error: String?) in
+                            })
+                        } else {
+                            Auth.auth().signIn(with: credential, completion: { (user, loginError) in
+                                StripeAPI().createCustomer(email: email, completion: { (stripeId: String?, stripeError: String?) in
+                                    FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, firebaseError: String?) in
+                                        DispatchQueue.main.async {
                                             guard let userId = user?.uid else {return}
+                                            if let error = loginError {
+                                                let onboardingCheckUtils = OnboardingCheckUtils(presentingViewController: self)
+                                                onboardingCheckUtils.displayError(error.localizedDescription)
+                                                return
+                                            }
                                             guard let link = shortLink else {
                                                 self.showAlert(title: "Error", message: "link found nil", actionTitle: "OK")
                                                 return
                                             }
-                                            if let error = error {
-                                                self.showAlert(title: "Error", message: error, actionTitle: "OK")
+                                            if let firebaseError = firebaseError {
+                                                self.showAlert(title: "Error", message: firebaseError, actionTitle: "OK")
+                                                return
+                                            }
+                                            if let stripeError = stripeError {
+                                                self.showAlert(title: "Error", message: stripeError, actionTitle: "OK")
                                                 return
                                             }
                                             
                                             let userDefault = UserDefaults.standard
-                                            
-                                            if UserDefaults.standard.url(forKey: kUserInfo.kReferralLink) == nil {
+                                            if userDefault.url(forKey: kUserInfo.kReferralLink) == nil {
                                                 userDefault.set(link, forKey: kUserInfo.kReferralLink)
                                             }
                                             
@@ -228,39 +278,45 @@ extension IntroductionScreenViewController: BaseOnboardingScreenDelegate {
                                             userDefault.set(email, forKey: kUserInfo.kEmail)
                                             userDefault.set(true, forKey: kUserInfo.kNewUser)
                                             userDefault.set(true, forKey: kUserInfo.isUsedReferralCode)
+                                            userDefault.set(stripeId, forKey: kUserInfo.kStripeId)
                                             
-                                            let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": imageURL, "referral_Link": link.absoluteString]
+                                            let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": imageURL, "referral_Link": link.absoluteString, "stripe_Id": stripeId]
                                             
                                             self.registerUserIntoDatabaseAndLogin(userId, values: values as [String : AnyObject])
                                             BrewiskeyAnalytics().track(event: .loginWithFacebook)
-                                        })
-                                    }
+                                        }
+                                    })
                                 })
                                 
                             })
-                        } else {
-                            Auth.auth().signIn(with: credential, completion: { (user, error) in
-                                if let error = error {
-                                    let onboardingCheckUtils = OnboardingCheckUtils(presentingViewController: self)
-                                    onboardingCheckUtils.displayError(error.localizedDescription)
-                                    return
-                                }
-                                DispatchQueue.main.async {
-                                    
-                                    FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, error: String?) in
+                        }
+                    } else {
+                        Auth.auth().signIn(with: credential, completion: { (user, loginError) in
+                            StripeAPI().createCustomer(email: email, completion: { (stripeId: String?, stripeError: String?) in
+                                FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, firebaseError: String?) in
+                                    DispatchQueue.main.async {
                                         guard let userId = user?.uid else {return}
+                                        if let error = loginError {
+                                            let onboardingCheckUtils = OnboardingCheckUtils(presentingViewController: self)
+                                            onboardingCheckUtils.displayError(error.localizedDescription)
+                                            return
+                                        }
+                                        if let stripeError = stripeError {
+                                            self.showAlert(title: UIAlertConstants.titleError, message: stripeError, actionTitle: UIAlertConstants.actionOk)
+                                            return
+                                        }
+                                        
                                         guard let link = shortLink else {
                                             self.showAlert(title: "Error", message: "link found nil", actionTitle: "OK")
                                             return
                                         }
-                                        if let error = error {
-                                            self.showAlert(title: "Error", message: error, actionTitle: "OK")
+                                        if let firebaseError = firebaseError {
+                                            self.showAlert(title: "Error", message: firebaseError, actionTitle: "OK")
                                             return
                                         }
                                         
                                         let userDefault = UserDefaults.standard
-                                        
-                                        if UserDefaults.standard.url(forKey: kUserInfo.kReferralLink) == nil {
+                                        if userDefault.url(forKey: kUserInfo.kReferralLink) == nil {
                                             userDefault.set(link, forKey: kUserInfo.kReferralLink)
                                         }
                                         
@@ -270,66 +326,18 @@ extension IntroductionScreenViewController: BaseOnboardingScreenDelegate {
                                         userDefault.set(lastName, forKey: kUserInfo.kLastName)
                                         userDefault.set(email, forKey: kUserInfo.kEmail)
                                         userDefault.set(true, forKey: kUserInfo.kNewUser)
-                                        userDefault.set(true, forKey: kUserInfo.isUsedReferralCode)
+                                        userDefault.set(stripeId, forKey: kUserInfo.kStripeId)
                                         
-                                        let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": imageURL, "referral_Link": link.absoluteString]
+                                        let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": imageURL, "referral_Link": link.absoluteString, "stripe_Id": stripeId]
                                         
                                         self.registerUserIntoDatabaseAndLogin(userId, values: values as [String : AnyObject])
                                         BrewiskeyAnalytics().track(event: .loginWithFacebook)
-                                    })
-                                }
-                            })
-                        }
-                    } else {
-                        Auth.auth().signIn(with: credential, completion: { (user, error) in
-                            if let error = error {
-                                let onboardingCheckUtils = OnboardingCheckUtils(presentingViewController: self)
-                                onboardingCheckUtils.displayError(error.localizedDescription)
-                                return
-                            }
-                            DispatchQueue.main.async {
-                                
-                                StripeAPI().createCustomer(email: email, completion: { (stripeCustomerId: String?, error: String?) in
-                                    if let error = error {
-                                       self.showAlert(title: UIAlertConstants.titleError, message: error, actionTitle: UIAlertConstants.actionOk)
                                     }
-                                
-                                FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, error: String?) in
-                                    guard let userId = user?.uid else {return}
-                                    guard let link = shortLink else {
-                                        self.showAlert(title: "Error", message: "link found nil", actionTitle: "OK")
-                                        return
-                                    }
-                                    if let error = error {
-                                        self.showAlert(title: "Error", message: error, actionTitle: "OK")
-                                        return
-                                    }
-                                    
-                                    let userDefault = UserDefaults.standard
-                                    
-                                    if UserDefaults.standard.url(forKey: kUserInfo.kReferralLink) == nil {
-                                        userDefault.set(link, forKey: kUserInfo.kReferralLink)
-                                    }
-                                    
-                                    userDefault.set(true, forKey: kUserInfo.kLoginStatus)
-                                    userDefault.set(userId, forKey: kUserInfo.kUserId)
-                                    userDefault.set(firstName, forKey: kUserInfo.kFirstName)
-                                    userDefault.set(lastName, forKey: kUserInfo.kLastName)
-                                    userDefault.set(email, forKey: kUserInfo.kEmail)
-                                    userDefault.set(true, forKey: kUserInfo.kNewUser)
-                                    
-                                    let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": imageURL, "referral_Link": link.absoluteString, "stripe_Id": stripeCustomerId]
-                                    
-                                    self.registerUserIntoDatabaseAndLogin(userId, values: values as [String : AnyObject])
-                                    BrewiskeyAnalytics().track(event: .loginWithFacebook)
                                 })
-                              })
-                            }
-                            
-                            
+                            })
                         })
                     }
-   
+                    
                 })
             }
         }
