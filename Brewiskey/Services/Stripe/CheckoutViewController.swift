@@ -306,6 +306,8 @@ extension CheckoutViewController {
         updatePastOrderHistory()
         FirebaseAPI().deleteCheckoutItems(checkoutItems)
         refreshCheckoutTableDelegate?.removePurchasedItems()
+        navigationController?.popViewController(animated: true)
+        refreshCheckoutTableDelegate?.showConfirmationPurchased()
         UserDefaults.standard.set(0, forKey: kUserInfo.kCheckoutOrderQuantity)
     }
     

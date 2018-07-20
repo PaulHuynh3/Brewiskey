@@ -92,8 +92,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let rows = 7
-        return rows
+        return 6
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -123,10 +122,6 @@ class SettingsTableViewController: UITableViewController {
             imageLabelCell.middleLabel.text = pastOrders
             imageLabelCell.accessoryType = .disclosureIndicator
         } else if indexPath.row == 4 {
-            imageLabelCell.leftImage.image = #imageLiteral(resourceName: "payment")
-            imageLabelCell.middleLabel.text = payment
-            imageLabelCell.accessoryType = .disclosureIndicator
-        } else if indexPath.row == 5 {
             imageLabelCell.leftImage.image = #imageLiteral(resourceName: "helplogo")
             imageLabelCell.middleLabel.text = help
             imageLabelCell.accessoryType = .none
@@ -147,9 +142,8 @@ class SettingsTableViewController: UITableViewController {
         case 1: navigateToReferFriend()
         case 2: navigateToPromoCode()
         case 3: navigateToPastOrders()
-        case 4: navigateToPayment()
-        case 5: webPortalHelpPage()
-        case 6: handleLogout()
+        case 4: webPortalHelpPage()
+        case 5: handleLogout()
             
         default: print("default")
         }
@@ -158,7 +152,6 @@ class SettingsTableViewController: UITableViewController {
    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat{
         return 55
     }
-
 }
 
 extension SettingsTableViewController {

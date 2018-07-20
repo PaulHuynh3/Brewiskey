@@ -11,6 +11,7 @@ import Firebase
 
 protocol RefreshCheckoutTableDelegate {
     func removePurchasedItems()
+    func showConfirmationPurchased()
 }
 
 class CheckoutTableViewController: UITableViewController, RefreshCheckoutTableDelegate {
@@ -18,6 +19,10 @@ class CheckoutTableViewController: UITableViewController, RefreshCheckoutTableDe
     func removePurchasedItems() {
         cartItems.removeAll()
         tableView.reloadData()
+    }
+    
+    func showConfirmationPurchased() {
+        showAlert(title: "Success", message: "Your Purchase is confirmed. We will be there in less than an hour.", actionTitle: UIAlertConstants.actionOk)
     }
     
     var cartItems = Array <CheckoutItem>()

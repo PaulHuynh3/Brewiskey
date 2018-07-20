@@ -29,7 +29,6 @@
 		DA4A8E1920FE60BE00974268 /* SecretKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA4A8E1820FE60BE00974268 /* SecretKeys.swift */; };
 		DA54E48920F92285009BD9E1 /* CheckoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54E48220F92283009BD9E1 /* CheckoutViewController.swift */; };
 		DA54E48A20F92285009BD9E1 /* PaymentContextFooterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54E48320F92284009BD9E1 /* PaymentContextFooterView.swift */; };
-		DA54E48B20F92285009BD9E1 /* BrowseProductsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54E48420F92284009BD9E1 /* BrowseProductsViewController.swift */; };
 		DA54E48C20F92285009BD9E1 /* CheckoutRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54E48520F92284009BD9E1 /* CheckoutRowView.swift */; };
 		DA54E48D20F92285009BD9E1 /* Buttons.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54E48620F92284009BD9E1 /* Buttons.swift */; };
 		DA54E48E20F92285009BD9E1 /* MyAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA54E48720F92285009BD9E1 /* MyAPIClient.swift */; };
@@ -105,7 +104,6 @@
 		DA4A8E1820FE60BE00974268 /* SecretKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretKeys.swift; sourceTree = "<group>"; };
 		DA54E48220F92283009BD9E1 /* CheckoutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutViewController.swift; sourceTree = "<group>"; };
 		DA54E48320F92284009BD9E1 /* PaymentContextFooterView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaymentContextFooterView.swift; sourceTree = "<group>"; };
-		DA54E48420F92284009BD9E1 /* BrowseProductsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BrowseProductsViewController.swift; sourceTree = "<group>"; };
 		DA54E48520F92284009BD9E1 /* CheckoutRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckoutRowView.swift; sourceTree = "<group>"; };
 		DA54E48620F92284009BD9E1 /* Buttons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Buttons.swift; sourceTree = "<group>"; };
 		DA54E48720F92285009BD9E1 /* MyAPIClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyAPIClient.swift; sourceTree = "<group>"; };
@@ -275,7 +273,6 @@
 		DA54E48120F92213009BD9E1 /* Stripe */ = {
 			isa = PBXGroup;
 			children = (
-				DA54E48420F92284009BD9E1 /* BrowseProductsViewController.swift */,
 				DA54E48220F92283009BD9E1 /* CheckoutViewController.swift */,
 				DA54E48720F92285009BD9E1 /* MyAPIClient.swift */,
 				DA54E48620F92284009BD9E1 /* Buttons.swift */,
@@ -585,7 +582,6 @@
 				DA21EBB220DBF3DB004D4DEB /* DetailedSelectionViewController.swift in Sources */,
 				DAC462442091168500673189 /* BrewiskeyAnalytics.swift in Sources */,
 				DA56C62220A1599300DB38A4 /* PromoCodeViewController.swift in Sources */,
-				DA54E48B20F92285009BD9E1 /* BrowseProductsViewController.swift in Sources */,
 				DA2E85DF2043C62E0057C4C6 /* FirebaseAPI.swift in Sources */,
 				DA54E48E20F92285009BD9E1 /* MyAPIClient.swift in Sources */,
 				DA54E48A20F92285009BD9E1 /* PaymentContextFooterView.swift in Sources */,
