@@ -334,6 +334,7 @@ extension CheckoutViewController {
             if let name = item.name, let imageUrl = item.imageUrl, let type = item.type, let price = item.price, let quantity = item.quantity, let orderId = item.orderId {
                 totalPrice = totalPrice + price * Double(quantity)
                 
+                //CONSIDER CLEARING UP history details.. This is not presented to the users
                      let values = ["name": name, "imageUrl" : imageUrl, "type" : type, "price": price, "quantity": quantity, "orderUuid": orderId] as [String: AnyObject]
                 orderItemDatabase.updateChildValues(values) { (error, databaseRef) in
                     DispatchQueue.main.async {
@@ -347,7 +348,7 @@ extension CheckoutViewController {
             }
         }
         let timeStampDatabase = Database.database().reference().child("users").child(uid).child("order_history").child("\(timeStamp)")
-        let timestampValues = ["date": "\(timeStamp)", "total_price": totalPrice] as [String : Any]
+        let timestampValues = ["date": userFriendlyDate(), "total_price": totalPrice] as [String : Any]
         
         timeStampDatabase.updateChildValues(timestampValues) { (error: Error?, databaseRef: DatabaseReference?) in
             if let error = error {
@@ -358,16 +359,23 @@ extension CheckoutViewController {
     }
     
     fileprivate func currentGeorgianDate() -> Date {
-        let date = Date()
+        let currentDate = Date()
         let calendar = Calendar.current
         
         var dateComponents = DateComponents()
-        dateComponents.year = calendar.component(.year, from: date)
-        dateComponents.month = calendar.component(.month, from: date)
-        dateComponents.day = calendar.component(.day, from: date)
-        dateComponents.hour = calendar.component(.hour, from: date)
-        dateComponents.minute = calendar.component(.minute, from: date)
-        
+        dateComponents.year = calendar.component(.year, from: currentDate)
+        dateComponents.month = calendar.component(.month, from: currentDate)
+        dateComponents.day = calendar.component(.day, from: currentDate)
+        dateComponents.hour = calendar.component(.hour, from: currentDate)
+        dateComponents.minute = calendar.component(.minute, from: currentDate)
         return Calendar(identifier: .gregorian).date(from: dateComponents)!
+    }
+    
+    fileprivate func userFriendlyDate() -> String {
+        let currentDate = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "MMM d, yyyy"
+        let dateString = formatter.string(from: currentDate)
+        return dateString
     }
 }

@@ -15,9 +15,13 @@ class PastOrdersCell: UITableViewCell {
     @IBOutlet weak var alcoholImage: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
     
-    @IBAction func rebuyTapped(_ sender: Any) {
-        
-        
+    
+    func setPastOrderCell(orderDetails: OrderDetails) {
+        if let purchaseDate = orderDetails.purchasedDate, let totalPrice = orderDetails.totalPrice {
+            dateLabel.text = purchaseDate
+            priceLabel.text = "You paid: $\(totalPrice)"
+//            alcoholImage.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+        }
     }
     
 }

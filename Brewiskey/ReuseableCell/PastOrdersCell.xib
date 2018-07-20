@@ -25,40 +25,28 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="249" image="amexcard" translatesAutoresizingMaskIntoConstraints="NO" id="b7x-n2-Sxw">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="249" verticalCompressionResistancePriority="749" image="pastOrderPicture" translatesAutoresizingMaskIntoConstraints="NO" id="b7x-n2-Sxw">
                         <rect key="frame" x="17.5" y="40" width="663" height="123"/>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBF-i4-czL" userLabel="priceLabel">
-                        <rect key="frame" x="244.5" y="171" width="209" height="21"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rBF-i4-czL" userLabel="priceLabel">
+                        <rect key="frame" x="11" y="163" width="296" height="21"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qyd-BX-cPn">
-                        <rect key="frame" x="579" y="167" width="101.5" height="30"/>
-                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <state key="normal" title="Re-order">
-                            <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        </state>
-                        <connections>
-                            <action selector="rebuyTapped:" destination="bAU-KH-anG" eventType="touchUpInside" id="4jQ-ln-yYY"/>
-                        </connections>
-                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="qyd-BX-cPn" firstAttribute="leading" secondItem="rBF-i4-czL" secondAttribute="trailing" constant="125.5" id="8cO-t3-bz1"/>
+                    <constraint firstItem="rBF-i4-czL" firstAttribute="leading" secondItem="zoQ-UG-JGi" secondAttribute="leading" id="8jV-SX-1Ji"/>
                     <constraint firstItem="b7x-n2-Sxw" firstAttribute="top" secondItem="zoQ-UG-JGi" secondAttribute="bottom" constant="8" id="AQQ-p9-N2L"/>
                     <constraint firstItem="zoQ-UG-JGi" firstAttribute="top" secondItem="tWX-ZR-0Tx" secondAttribute="top" constant="11" id="PbM-Yj-hGq"/>
-                    <constraint firstItem="qyd-BX-cPn" firstAttribute="trailing" secondItem="b7x-n2-Sxw" secondAttribute="trailing" id="Qec-kq-ZNS"/>
-                    <constraint firstAttribute="bottom" secondItem="rBF-i4-czL" secondAttribute="bottom" constant="16.5" id="U1A-5Z-tmQ"/>
-                    <constraint firstItem="rBF-i4-czL" firstAttribute="centerX" secondItem="tWX-ZR-0Tx" secondAttribute="centerX" id="WWf-ek-FrP"/>
+                    <constraint firstAttribute="bottom" secondItem="rBF-i4-czL" secondAttribute="bottom" constant="24.5" id="U1A-5Z-tmQ"/>
+                    <constraint firstItem="rBF-i4-czL" firstAttribute="centerX" secondItem="tWX-ZR-0Tx" secondAttribute="centerX" constant="-190" id="WWf-ek-FrP"/>
                     <constraint firstItem="zoQ-UG-JGi" firstAttribute="width" secondItem="tWX-ZR-0Tx" secondAttribute="width" multiplier="0.8" constant="-110" id="Zbe-c3-K9v"/>
-                    <constraint firstItem="rBF-i4-czL" firstAttribute="top" secondItem="b7x-n2-Sxw" secondAttribute="bottom" constant="8" id="cpl-1x-p7k"/>
-                    <constraint firstItem="qyd-BX-cPn" firstAttribute="top" secondItem="b7x-n2-Sxw" secondAttribute="bottom" constant="4" id="iAJ-97-Oja"/>
+                    <constraint firstItem="rBF-i4-czL" firstAttribute="top" secondItem="b7x-n2-Sxw" secondAttribute="bottom" id="cpl-1x-p7k"/>
                     <constraint firstItem="b7x-n2-Sxw" firstAttribute="width" secondItem="tWX-ZR-0Tx" secondAttribute="width" multiplier="0.95" id="mcU-r2-qHT"/>
                     <constraint firstItem="zoQ-UG-JGi" firstAttribute="leading" secondItem="tWX-ZR-0Tx" secondAttribute="leading" constant="11" id="oue-sy-LCF"/>
                     <constraint firstItem="b7x-n2-Sxw" firstAttribute="centerX" secondItem="tWX-ZR-0Tx" secondAttribute="centerX" id="tFq-6f-BMB"/>
-                    <constraint firstItem="rBF-i4-czL" firstAttribute="width" secondItem="tWX-ZR-0Tx" secondAttribute="width" multiplier="0.3" id="ygo-FS-4xs"/>
+                    <constraint firstItem="rBF-i4-czL" firstAttribute="width" secondItem="tWX-ZR-0Tx" secondAttribute="width" multiplier="0.3" constant="86.599999999999994" id="ygo-FS-4xs"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -70,6 +58,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="amexcard" width="48" height="48"/>
+        <image name="pastOrderPicture" width="3988" height="2659"/>
     </resources>
 </document>

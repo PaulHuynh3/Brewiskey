@@ -117,12 +117,9 @@ class CheckoutItem {
     var orderId: String?
 }
 
-class OrderedItem {
-    var name: String?
-    var imageUrl: String?
-    var price: Double?
-    var quantity: Int?
-    var type: String?
-    var orderId: String?
+class OrderDetails {
+    var totalPrice: Double?
+    var purchasedDate: String?
+    var purchasedDetails: String?
 }
 
