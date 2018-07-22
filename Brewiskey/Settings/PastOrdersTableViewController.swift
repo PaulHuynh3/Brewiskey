@@ -12,6 +12,7 @@ class PastOrdersTableViewController: UITableViewController {
     
     fileprivate let customCellIdentifier = "PastOrdersCell"
     var orderedDetails = Array<OrderDetails>()
+    var emptyView: EmptyCartView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +39,17 @@ class PastOrdersTableViewController: UITableViewController {
         let nib = UINib(nibName: nibName, bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: cellIdentifier)
     }
+    
+    fileprivate func updateEmptyView() {
+        let emptyViewNibName = "EmptyCartView"
+        emptyView = EmptyCartView()
+        emptyView = Bundle.main.loadNibNamed(emptyViewNibName, owner: nil, options: nil)?.first as? EmptyCartView
+        
+        emptyView?.titleLabel.text = "Orders Empty"
+        emptyView?.descriptionLabel.text = "Make your first purchase \n Using our Marketplace today."
+        self.tableView.backgroundView = emptyView
+        self.tableView.separatorStyle = .none
+    }
 }
 
 extension PastOrdersTableViewController {
@@ -45,9 +57,18 @@ extension PastOrdersTableViewController {
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return orderedDetails.count
+        if orderedDetails.count > 0 {
+            tableView.separatorStyle = .singleLine
+            emptyView?.isHidden = true
+            return orderedDetails.count
+        } else {
+            updateEmptyView()
+            return 0
+        }
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: customCellIdentifier, for: indexPath) as! PastOrdersCell
         cell.setPastOrderCell(orderDetails: orderedDetails[indexPath.row])
