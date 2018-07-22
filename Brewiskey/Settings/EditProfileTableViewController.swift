@@ -31,6 +31,7 @@ class EditProfileTableViewController: UITableViewController {
     var user = User()
     let database = Database.database().reference()
     fileprivate var onboardCheckUtils: OnboardingCheckUtils?
+    let emailSegueIdentifier = "emailSegue"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -112,7 +113,6 @@ class EditProfileTableViewController: UITableViewController {
     }
     
     fileprivate func isTextfieldEmpty() -> Bool {
-        
         if let number = numberTextfield.text, let street = streetTextfield.text, let city = cityTextfield.text, let province = provinceTextfield.text, let postalCode = postalCodeTextfield.text, let firstName = firstNameTextfield.text, let lastName = lastNameTextfield.text, let age = ageTextfield.text {
             
             if number.trim() == "" || street.trim() == "" || city.trim() == "" || province.trim() == "" || postalCode.trim() == "" || firstName.trim() == "" || lastName.trim() == "" || age.trim() == "" {
@@ -190,11 +190,17 @@ class EditProfileTableViewController: UITableViewController {
     }
     
     @IBAction func changeEmailTapped(_ sender: Any) {
-        performSegue(withIdentifier: "emailSegue", sender: nil)
+        performSegue(withIdentifier: emailSegueIdentifier, sender: nil)
     }
     
+    @IBAction func changePasswordTapped(_ sender: Any) {
+        let passwordSegueIdentifier = "passwordSegue"
+        performSegue(withIdentifier: passwordSegueIdentifier, sender: nil)
+    }
+    
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "emailSegue" {
+        if segue.identifier == emailSegueIdentifier {
             let changeEmailViewController = segue.destination as! ChangeEmailViewController
             changeEmailViewController.updateUserDelegate = self
         }

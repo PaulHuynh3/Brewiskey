@@ -50,7 +50,7 @@ class PromoCodeViewController: UIViewController {
             appliedPromoCodeLabel.text = referralCode
         } else {
             successfullyAppliedCodeLabel.text = "No promo codes applied"
-            appliedPromoCodeLabel.text = ""
+            appliedPromoCodeLabel.text = "**"
         }
     }
     

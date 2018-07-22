@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -18,10 +18,11 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HxQ-Rr-ZXl">
-                        <rect key="frame" x="16" y="5" width="36" height="33"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HxQ-Rr-ZXl">
+                        <rect key="frame" x="16" y="5" width="36" height="36"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="36" id="4MJ-Dy-mIA"/>
+                            <constraint firstAttribute="height" constant="36" id="F3P-aQ-ws1"/>
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TJp-2F-8nF">
@@ -34,9 +35,8 @@
                 <constraints>
                     <constraint firstAttribute="bottom" secondItem="TJp-2F-8nF" secondAttribute="bottom" constant="11.5" id="0gM-hP-FyR"/>
                     <constraint firstItem="TJp-2F-8nF" firstAttribute="leading" secondItem="HxQ-Rr-ZXl" secondAttribute="trailing" constant="24" id="2RE-M8-7Hj"/>
-                    <constraint firstAttribute="bottom" secondItem="HxQ-Rr-ZXl" secondAttribute="bottom" constant="5.5" id="AaX-o0-hae"/>
                     <constraint firstAttribute="trailing" secondItem="TJp-2F-8nF" secondAttribute="trailing" constant="55" id="O8a-sI-Yc3"/>
-                    <constraint firstItem="HxQ-Rr-ZXl" firstAttribute="top" secondItem="tA5-bI-4W1" secondAttribute="top" constant="5" id="jRv-vq-bsW"/>
+                    <constraint firstItem="HxQ-Rr-ZXl" firstAttribute="top" secondItem="tA5-bI-4W1" secondAttribute="top" constant="5" id="PY8-kQ-nWl"/>
                     <constraint firstItem="TJp-2F-8nF" firstAttribute="top" secondItem="tA5-bI-4W1" secondAttribute="top" constant="11" id="kw5-KH-wKJ"/>
                     <constraint firstItem="HxQ-Rr-ZXl" firstAttribute="leading" secondItem="tA5-bI-4W1" secondAttribute="leading" constant="16" id="yZj-Rk-7nP"/>
                 </constraints>

@@ -51,7 +51,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     fileprivate func navigateToMyAccount() {
-        performSegue(withIdentifier: "accountSegue", sender: nil)
+        performSegue(withIdentifier: "profileSegue", sender: nil)
     }
     
     fileprivate func navigateToPromoCode() {
@@ -59,10 +59,6 @@ class SettingsTableViewController: UITableViewController {
     }
     fileprivate func navigateToPastOrders() {
         performSegue(withIdentifier: "pastOrdersSegue", sender: nil)
-    }
-    
-    fileprivate func navigateToPayment() {
-        performSegue(withIdentifier: "paymentSegue", sender: nil)
     }
     
     fileprivate func fetchUserObject() {
@@ -74,14 +70,9 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "accountSegue" {
-            let myAccountTableViewController = segue.destination as! MyAccountTableViewController
-            myAccountTableViewController.user = self.user
-        }
-        
-        if segue.identifier == "paymentSegue" {
-            let paymentViewController = segue.destination as! PaymentViewController
-            paymentViewController.user = self.user
+        if segue.identifier == "profileSegue" {
+            let profileTableViewController = segue.destination as! ProfileTableViewController
+            profileTableViewController.user = self.user
         }
     }
     
@@ -101,7 +92,6 @@ class SettingsTableViewController: UITableViewController {
         let referFriend = "Refer a friend"
         let promoCode = "Promo Code"
         let pastOrders = "Past orders"
-        let payment = "Payment"
         let help = "Help"
         let logout = "Log out"
         
