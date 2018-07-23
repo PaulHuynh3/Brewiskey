@@ -38,12 +38,6 @@ class CheckoutTableViewController: UITableViewController, RefreshCheckoutTableDe
         self.tableView.tableFooterView = UIView()
         registerHeaderNib()
         
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Settings", style: .plain, target: self, action: #selector(showSettings))
-    }
-    
-    @objc func showSettings() {
-        let navController = UINavigationController(rootViewController: settingsVC)
-        self.present(navController, animated: true, completion: nil)
     }
     
     fileprivate func fetchCartItems() {

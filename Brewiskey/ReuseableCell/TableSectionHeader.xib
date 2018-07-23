@@ -22,9 +22,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="o9T-CI-hLG">
-                                <rect key="frame" x="319" y="4" width="48" height="36"/>
+                                <rect key="frame" x="341" y="4" width="26" height="23"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="48" id="ZXT-x9-Mom"/>
+                                    <constraint firstAttribute="width" constant="26" id="ZXT-x9-Mom"/>
                                 </constraints>
                                 <state key="normal" title="Button" image="delete_cart"/>
                                 <connections>
@@ -36,7 +36,7 @@
                         <constraints>
                             <constraint firstItem="o9T-CI-hLG" firstAttribute="top" secondItem="68A-dt-xJO" secondAttribute="top" constant="4" id="Out-qs-EWm"/>
                             <constraint firstAttribute="trailing" secondItem="o9T-CI-hLG" secondAttribute="trailing" constant="8" id="Q97-VF-a8W"/>
-                            <constraint firstAttribute="bottom" secondItem="o9T-CI-hLG" secondAttribute="bottom" constant="4" id="cEp-So-M2F"/>
+                            <constraint firstAttribute="bottom" secondItem="o9T-CI-hLG" secondAttribute="bottom" constant="17" id="cEp-So-M2F"/>
                         </constraints>
                     </view>
                 </subviews>
