@@ -25,12 +25,9 @@ class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
 
     // 2) Next, optionally, to have this demo save your user's payment details, head to
     // https://github.com/stripe/example-ios-backend/tree/v13.0.3, click "Deploy to Heroku", and follow
-    // the instructions (don't worry, it's free). Replace nil on the line below with your
-    // Heroku URL (it looks like https://blazing-sunrise-1234.herokuapp.com ).
     let backendBaseURL: String? = "https://brewiskey.herokuapp.com"
 
     // 3) Optionally, to enable Apple Pay, follow the instructions at https://stripe.com/docs/mobile/apple-pay
-    // to create an Apple Merchant ID. Replace nil on the line below with it (it looks like merchant.com.yourappname).
     let appleMerchantID: String? = "merchant.com.BrewiskeyApp.Group"
 
     // These values will be shown to the user when they purchase with Apple Pay.
@@ -102,13 +99,13 @@ class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
         paymentContext.paymentAmount = price
         paymentContext.paymentCurrency = self.paymentCurrency
 
-        let paymentSelectionFooter = PaymentContextFooterView(text: "You can add custom footer views to the payment selection screen.")
-        paymentSelectionFooter.theme = settings.theme
-        paymentContext.paymentMethodsViewControllerFooterView = paymentSelectionFooter
-
-        let addCardFooter = PaymentContextFooterView(text: "You can add custom footer views to the add card screen.")
-        addCardFooter.theme = settings.theme
-        paymentContext.addCardViewControllerFooterView = addCardFooter
+//        let paymentSelectionFooter = PaymentContextFooterView(text: "You can add custom footer views to the payment selection screen.")
+//        paymentSelectionFooter.theme = settings.theme
+//        paymentContext.paymentMethodsViewControllerFooterView = paymentSelectionFooter
+//
+//        let addCardFooter = PaymentContextFooterView(text: "You can add custom footer views to the add card screen.")
+//        addCardFooter.theme = settings.theme
+//        paymentContext.addCardViewControllerFooterView = addCardFooter
 
         self.paymentContext = paymentContext
 
@@ -216,15 +213,12 @@ class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
         case .success:
             title = "Success"
             //Pop up big page saying order Successful then reload tableview marketplace to show no items.
-            message = "You bought a \(self.product)!"
+            message = "Your Purchase is confirmed. We will be there in less than an hour."
             handleSuccessfulPurchase()
         case .userCancellation:
             return
         }
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
-        alertController.addAction(action)
-        self.present(alertController, animated: true, completion: nil)
+        refreshCheckoutTableDelegate?.showConfirmationPurchased(title: title, message: message)
     }
 
     func paymentContextDidChange(_ paymentContext: STPPaymentContext) {
@@ -307,7 +301,6 @@ extension CheckoutViewController {
         FirebaseAPI().deleteCheckoutItems(checkoutItems)
         refreshCheckoutTableDelegate?.removePurchasedItems()
         navigationController?.popViewController(animated: true)
-        refreshCheckoutTableDelegate?.showConfirmationPurchased()
         UserDefaults.standard.set(0, forKey: kUserInfo.kCheckoutOrderQuantity)
     }
     

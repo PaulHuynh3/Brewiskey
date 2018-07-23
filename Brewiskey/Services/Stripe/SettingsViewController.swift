@@ -25,13 +25,14 @@ class SettingsViewController: UITableViewController {
                         requiredShippingAddressFields: self.requiredShippingAddressFields.stpContactFields,
                         shippingType: self.shippingType.stpShippingType)
     }
-
-    private var theme: Theme = .Default
+    //Set theme options here:
+    private var theme: Theme = .CustomLight
     private var applePay: Switch = .Enabled
     private var requiredBillingAddressFields: RequiredBillingAddressFields = .None
-    private var requiredShippingAddressFields: RequiredShippingAddressFields = .PostalAddressPhone
-    private var shippingType: ShippingType = .Shipping
-
+    private var requiredShippingAddressFields: RequiredShippingAddressFields = .All
+    private var shippingType: ShippingType = .Delivery
+    
+    
     fileprivate enum Section: String {
         case Theme = "Theme"
         case ApplePay = "Apple Pay"
@@ -153,7 +154,7 @@ class SettingsViewController: UITableViewController {
             case .None: return []
             case .Email: return [.emailAddress]
             case .PostalAddressPhone: return [.postalAddress, .phoneNumber]
-            case .All: return [.postalAddress, .phoneNumber, .emailAddress, .name]
+            case .All: return [.postalAddress, .emailAddress, .name, .phoneNumber]
             }
         }
     }

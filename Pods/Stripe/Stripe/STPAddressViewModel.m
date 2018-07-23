@@ -104,7 +104,7 @@
 }
 
 - (void)commonInit {
-    _addressFieldTableViewCountryCode = [[NSLocale autoupdatingCurrentLocale] objectForKey:NSLocaleCountryCode];
+    _addressFieldTableViewCountryCode = @"CA";
     [self updatePostalCodeCellIfNecessary];
 }
 
@@ -189,7 +189,7 @@
     if (self.geocodeInProgress
         || zipCode == nil
         || !zipCell.textField.validText
-        || ![_addressFieldTableViewCountryCode isEqualToString:@"US"]) {
+        || ![_addressFieldTableViewCountryCode isEqualToString:@"CA"]) {
         return;
     }
 
@@ -204,13 +204,15 @@
         }
     }
 
-    if ((cityCell == nil && stateCell == nil)
-        || (cityCell.contents.length > 0 || stateCell.contents.length > 0)) {
-        // Don't auto fill if either have text already
-        // Or if neither are non-nil
-        return;
-    }
-    else {
+//    if ((cityCell == nil && stateCell == nil)
+//        || (cityCell.contents.length > 0 || stateCell.contents.length > 0)) {
+//        // Don't auto fill if either have text already
+//        // Or if neither are non-nil
+//        return;
+//    }
+//    else {
+    cityCell.contents = nil;
+    stateCell.contents = nil;
         self.geocodeInProgress = YES;
         CLGeocoder *geocoder = [CLGeocoder new];
 
@@ -242,7 +244,7 @@
             [geocoder geocodeAddressString:[NSString stringWithFormat:@"%@, %@", zipCode, _addressFieldTableViewCountryCode]
                          completionHandler:onCompletion];
         }
-    }
+//    }
 }
 
 - (void)addressFieldTableViewCellDidUpdateText:(__unused STPAddressFieldTableViewCell *)cell {
@@ -271,7 +273,6 @@
 
 - (void)setAddress:(STPAddress *)address {
     self.addressFieldTableViewCountryCode = address.country;
-
     for (STPAddressFieldTableViewCell *cell in self.addressCells) {
         switch (cell.type) {
             case STPAddressFieldTypeName:
