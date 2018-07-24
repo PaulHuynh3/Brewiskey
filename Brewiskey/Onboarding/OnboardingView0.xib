@@ -28,7 +28,7 @@
                         <action selector="loginButtonTapped:" destination="G1i-7l-TQO" eventType="touchUpInside" id="YQU-U3-tHK"/>
                     </connections>
                 </button>
-                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" translatesAutoresizingMaskIntoConstraints="NO" id="RFy-8G-LHq">
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="RFy-8G-LHq">
                     <rect key="frame" x="152" y="665" width="58" height="37"/>
                     <color key="pageIndicatorTintColor" red="1" green="1" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="currentPageIndicatorTintColor" red="0.049917560569999998" green="0.076097820199999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

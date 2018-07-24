@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_two-1" translatesAutoresizingMaskIntoConstraints="NO" id="bm6-c7-eje">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_one" translatesAutoresizingMaskIntoConstraints="NO" id="bm6-c7-eje">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lUG-lM-Smg">
@@ -27,8 +27,8 @@
                         <action selector="loginButtonTapped:" destination="4Wa-Tr-0kc" eventType="touchUpInside" id="mSX-Ia-p6q"/>
                     </connections>
                 </button>
-                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="5" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZR4-SH-zos">
-                    <rect key="frame" x="152" y="665" width="71" height="37"/>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" currentPage="1" translatesAutoresizingMaskIntoConstraints="NO" id="ZR4-SH-zos">
+                    <rect key="frame" x="168" y="665" width="39" height="37"/>
                     <color key="pageIndicatorTintColor" red="1" green="1" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <color key="currentPageIndicatorTintColor" red="0.049917560569999998" green="0.076097820199999999" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </pageControl>
@@ -72,7 +72,7 @@
     <resources>
         <image name="fbBtn" width="156" height="48"/>
         <image name="loginBtn" width="72" height="40"/>
-        <image name="onboarding_two-1" width="512" height="512"/>
+        <image name="onboarding_one" width="6000" height="4008"/>
         <image name="signupBtn" width="156" height="48"/>
     </resources>
 </document>

@@ -453,8 +453,14 @@
 							com.apple.HomeKit = {
 								enabled = 0;
 							};
+							com.apple.Push = {
+								enabled = 0;
+							};
 							com.apple.SafariKeychain = {
 								enabled = 1;
+							};
+							com.apple.Siri = {
+								enabled = 0;
 							};
 							com.apple.WAC = {
 								enabled = 0;

@@ -20,7 +20,7 @@ class IntroductionScreenViewController: UIViewController {
     
     @IBOutlet weak var onboardingView: UIView!
     var index = 0
-    var kNumberOfOnboardingScreens = 4
+    var kNumberOfOnboardingScreens = 2
     var kRequiredNumberToTapForward = CGFloat(0.3)
     
     override func viewDidLoad() {
