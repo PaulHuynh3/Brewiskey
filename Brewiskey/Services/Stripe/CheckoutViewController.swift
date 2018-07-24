@@ -28,7 +28,7 @@ class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
     let backendBaseURL: String? = "https://brewiskey.herokuapp.com"
 
     // 3) Optionally, to enable Apple Pay, follow the instructions at https://stripe.com/docs/mobile/apple-pay
-    let appleMerchantID: String? = "merchant.com.BrewiskeyApp.Group"
+    let appleMerchantID: String? = "merchant.com.Brewiskey"
 
     // These values will be shown to the user when they purchase with Apple Pay.
     let companyName = "Brewiskey"
