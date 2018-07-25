@@ -73,7 +73,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ptW-5A-EL0">
-                                <rect key="frame" x="0.0" y="102" width="375" height="516"/>
+                                <rect key="frame" x="0.0" y="102" width="375" height="565"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellIdentifier" rowHeight="77" id="BzB-wS-uMT" customClass="MarketTableViewCell" customModule="Brewiskey" customModuleProvider="target">
@@ -143,6 +143,7 @@
                         <segue destination="Za5-bk-FjV" kind="show" identifier="beerDetailedViewSegue" id="Bvo-G5-bvt"/>
                         <segue destination="Za5-bk-FjV" kind="show" identifier="wineDetailedViewSegue" id="il2-bg-Cq8"/>
                         <segue destination="Za5-bk-FjV" kind="show" identifier="spiritDetailedViewSegue" id="Api-gY-m7T"/>
+                        <segue destination="P6v-5I-90g" kind="showDetail" identifier="NetworkUnavailable" id="oVa-mt-ycf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OKS-rx-bUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1511,6 +1512,63 @@
             </objects>
             <point key="canvasLocation" x="2117.5999999999999" y="-591.45427286356824"/>
         </scene>
+        <!--Offline View Controller-->
+        <scene sceneID="E2d-iF-2l0">
+            <objects>
+                <viewController id="P6v-5I-90g" customClass="OfflineViewController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="FWi-fY-bYd">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MLM-9S-F1X">
+                                <rect key="frame" x="67" y="255" width="240" height="157"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="offline" translatesAutoresizingMaskIntoConstraints="NO" id="BQF-0h-tn5">
+                                        <rect key="frame" x="45" y="0.0" width="150" height="145"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="145" id="FbJ-Nl-GxT"/>
+                                            <constraint firstAttribute="width" constant="150" id="Zir-3c-25R"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You are offline, connect to the internet" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nIg-jY-ubZ">
+                                        <rect key="frame" x="0.0" y="123" width="240" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="iDK-2M-nC9"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <color key="textColor" red="0.51433295759999997" green="0.54734961000000004" blue="0.56930343380000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="157" id="3hl-Sb-KFp"/>
+                                    <constraint firstItem="BQF-0h-tn5" firstAttribute="top" secondItem="MLM-9S-F1X" secondAttribute="top" id="AZ4-9n-e6e"/>
+                                    <constraint firstAttribute="trailing" secondItem="BQF-0h-tn5" secondAttribute="trailing" constant="45" id="BgG-gu-GVN"/>
+                                    <constraint firstItem="BQF-0h-tn5" firstAttribute="leading" secondItem="MLM-9S-F1X" secondAttribute="leading" constant="45" id="Cac-u0-sfI"/>
+                                    <constraint firstAttribute="width" constant="240" id="Jbf-Sg-ajc"/>
+                                    <constraint firstItem="nIg-jY-ubZ" firstAttribute="centerX" secondItem="BQF-0h-tn5" secondAttribute="centerX" id="PL8-dL-ZQW"/>
+                                    <constraint firstItem="nIg-jY-ubZ" firstAttribute="leading" secondItem="MLM-9S-F1X" secondAttribute="leading" id="aNi-W8-7ar"/>
+                                    <constraint firstItem="BQF-0h-tn5" firstAttribute="centerX" secondItem="MLM-9S-F1X" secondAttribute="centerX" id="oIa-q0-JfD"/>
+                                    <constraint firstAttribute="bottom" secondItem="nIg-jY-ubZ" secondAttribute="bottom" id="xr7-Co-GeU"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="MLM-9S-F1X" firstAttribute="centerY" secondItem="FWi-fY-bYd" secondAttribute="centerY" id="0nf-Uu-ZQf"/>
+                            <constraint firstItem="MLM-9S-F1X" firstAttribute="centerX" secondItem="FWi-fY-bYd" secondAttribute="centerX" id="o2A-Fx-aaQ"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BVc-9O-qVs"/>
+                    </view>
+                    <connections>
+                        <segue destination="5se-Ej-YMD" kind="showDetail" identifier="MainController" id="eVZ-zB-dJi"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="xc4-Y8-LgP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="289" y="-1399"/>
+        </scene>
     </scenes>
     <resources>
         <image name="BlueRectangle" width="335" height="52"/>
@@ -1838,11 +1896,13 @@ RidOJ1EnYydmJ2sAAAAAAAACAQAAAAAAAABZAAAAAAAAAAAAAAAAAAAnbQ
 </mutableData>
         </image>
         <image name="leftNavy" width="9" height="17"/>
+        <image name="offline" width="150" height="145"/>
         <image name="rightNavy" width="9" height="17"/>
         <image name="shopping-cart" width="29" height="30"/>
         <image name="water-bottle" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Api-gY-m7T"/>
+        <segue reference="eVZ-zB-dJi"/>
     </inferredMetricsTieBreakers>
 </document>
