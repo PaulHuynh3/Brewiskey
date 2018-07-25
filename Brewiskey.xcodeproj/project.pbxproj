@@ -49,7 +49,7 @@
 		DA8D3D1A20DEDAFB00682C8D /* CheckoutCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA8D3D1920DEDAFB00682C8D /* CheckoutCell.xib */; };
 		DA91AEBC20A8F2C400BEF84B /* LeftLabelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA91AEBB20A8F2C400BEF84B /* LeftLabelCell.xib */; };
 		DA91AEBE20A8F2F500BEF84B /* LeftLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA91AEBD20A8F2F500BEF84B /* LeftLabelCell.swift */; };
-		DA973B922107BD91008FB9B1 /* InternetSyncServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA973B912107BD91008FB9B1 /* InternetSyncServices.swift */; };
+		DA973B922107BD91008FB9B1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA973B912107BD91008FB9B1 /* NetworkManager.swift */; };
 		DA9F41D7207719E00004797B /* OnboardingView2.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F41D6207719E00004797B /* OnboardingView2.xib */; };
 		DA9F41D920771B7C0004797B /* OnboardingView3.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F41D820771B7C0004797B /* OnboardingView3.xib */; };
 		DA9F41DB20771B890004797B /* OnboardingView4.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA9F41DA20771B890004797B /* OnboardingView4.xib */; };
@@ -125,7 +125,7 @@
 		DA8D3D1920DEDAFB00682C8D /* CheckoutCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CheckoutCell.xib; sourceTree = "<group>"; };
 		DA91AEBB20A8F2C400BEF84B /* LeftLabelCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LeftLabelCell.xib; sourceTree = "<group>"; };
 		DA91AEBD20A8F2F500BEF84B /* LeftLabelCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftLabelCell.swift; sourceTree = "<group>"; };
-		DA973B912107BD91008FB9B1 /* InternetSyncServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternetSyncServices.swift; sourceTree = "<group>"; };
+		DA973B912107BD91008FB9B1 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		DA9F41D6207719E00004797B /* OnboardingView2.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView2.xib; sourceTree = "<group>"; };
 		DA9F41D820771B7C0004797B /* OnboardingView3.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView3.xib; sourceTree = "<group>"; };
 		DA9F41DA20771B890004797B /* OnboardingView4.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView4.xib; sourceTree = "<group>"; };
@@ -324,7 +324,7 @@
 				DA2E85DE2043C62E0057C4C6 /* FirebaseAPI.swift */,
 				DA5F352B2077C46100A64FA0 /* FacebookAPI.swift */,
 				DA4A8E1020FE3E3C00974268 /* StripeAPI.swift */,
-				DA973B912107BD91008FB9B1 /* InternetSyncServices.swift */,
+				DA973B912107BD91008FB9B1 /* NetworkManager.swift */,
 				DA54E48120F92213009BD9E1 /* Stripe */,
 			);
 			path = Services;
@@ -532,6 +532,7 @@
 				"${BUILT_PRODUCTS_DIR}/FBSDKShareKit/FBSDKShareKit.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework",
+				"${BUILT_PRODUCTS_DIR}/ReachabilitySwift/Reachability.framework",
 				"${BUILT_PRODUCTS_DIR}/Stripe/Stripe.framework",
 				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
@@ -545,6 +546,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FBSDKShareKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleToolboxForMac.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Reachability.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Stripe.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
@@ -594,7 +596,7 @@
 				DAB62860208FDC1B00A5890D /* ProfileTableViewController.swift in Sources */,
 				DA5F352C2077C46100A64FA0 /* FacebookAPI.swift in Sources */,
 				DA07068A20B5D94700362EFE /* FirebaseDynamicLinkHelper.swift in Sources */,
-				DA973B922107BD91008FB9B1 /* InternetSyncServices.swift in Sources */,
+				DA973B922107BD91008FB9B1 /* NetworkManager.swift in Sources */,
 				DA8D3D1820DEDAEB00682C8D /* CheckoutCell.swift in Sources */,
 				DAE16A052076A0B300B21D30 /* IntroductionScreenViewController.swift in Sources */,
 				DAB177B120421771009F0B45 /* MarketTableViewCell.swift in Sources */,

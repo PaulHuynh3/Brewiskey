@@ -13,4 +13,5 @@ target 'Brewiskey' do
     pod 'FBSDKLoginKit'
     pod 'Stripe'
     pod 'Alamofire'
+    pod 'ReachabilitySwift'
 end
