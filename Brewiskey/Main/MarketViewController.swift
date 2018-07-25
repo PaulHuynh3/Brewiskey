@@ -11,8 +11,6 @@ import Firebase
 
 class MarketViewController: UIViewController, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
     
-    let network: NetworkManager = NetworkManager.sharedInstance
-    
     var uid: String?
     var beers = Array<Beer>()
     var wines = Array<Wine>()
@@ -37,24 +35,11 @@ class MarketViewController: UIViewController, UISearchControllerDelegate, UISear
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        UserLoginStatus().handleUserState()
-        NetworkManager.isUnreachable { _ in
-            self.showOfflinePage()
-        }
-        network.reachability.whenUnreachable = { _ in
-            self.showOfflinePage()
-        }
         setupUI()
         fetchAlcoholProducts()
         tableView.isScrollEnabled = true
         UserDefaults.standard.set(false, forKey: kUserInfo.kNewUser)
         setUpCurrentUser()
-    }
-    
-    private func showOfflinePage() -> Void {
-        DispatchQueue.main.async {
-            self.performSegue(withIdentifier: "NetworkUnavailable", sender: self)
-        }
     }
     
     fileprivate func setupUI() {

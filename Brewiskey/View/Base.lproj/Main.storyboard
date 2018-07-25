@@ -73,7 +73,7 @@
                                 </constraints>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ptW-5A-EL0">
-                                <rect key="frame" x="0.0" y="102" width="375" height="565"/>
+                                <rect key="frame" x="0.0" y="102" width="375" height="516"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="cellIdentifier" rowHeight="77" id="BzB-wS-uMT" customClass="MarketTableViewCell" customModule="Brewiskey" customModuleProvider="target">
@@ -143,7 +143,6 @@
                         <segue destination="Za5-bk-FjV" kind="show" identifier="beerDetailedViewSegue" id="Bvo-G5-bvt"/>
                         <segue destination="Za5-bk-FjV" kind="show" identifier="wineDetailedViewSegue" id="il2-bg-Cq8"/>
                         <segue destination="Za5-bk-FjV" kind="show" identifier="spiritDetailedViewSegue" id="Api-gY-m7T"/>
-                        <segue destination="P6v-5I-90g" kind="showDetail" identifier="NetworkUnavailable" id="oVa-mt-ycf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OKS-rx-bUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1009,10 +1008,10 @@
             </objects>
             <point key="canvasLocation" x="-666" y="201"/>
         </scene>
-        <!--Tab Bar Controller-->
+        <!--Main Tab Bar View Controller-->
         <scene sceneID="9Cc-Gh-RkK">
             <objects>
-                <tabBarController storyboardIdentifier="MainTabBar" automaticallyAdjustsScrollViewInsets="NO" id="mB6-NC-9VT" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="MainTabBar" automaticallyAdjustsScrollViewInsets="NO" id="mB6-NC-9VT" customClass="MainTabBarViewController" customModule="Brewiskey" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="H3S-h9-Z6E">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -1023,6 +1022,7 @@
                         <segue destination="5se-Ej-YMD" kind="relationship" relationship="viewControllers" id="gCg-gj-GCA"/>
                         <segue destination="uCG-0J-stP" kind="relationship" relationship="viewControllers" id="bVn-C3-ZuQ"/>
                         <segue destination="1lV-as-MZX" kind="relationship" relationship="viewControllers" id="TK4-xh-QQQ"/>
+                        <segue destination="P6v-5I-90g" kind="showDetail" identifier="NetworkUnavailable" id="2hF-Sx-gda"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gaJ-wE-1XZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1562,12 +1562,12 @@
                         <viewLayoutGuide key="safeArea" id="BVc-9O-qVs"/>
                     </view>
                     <connections>
-                        <segue destination="5se-Ej-YMD" kind="showDetail" identifier="MainController" id="eVZ-zB-dJi"/>
+                        <segue destination="mB6-NC-9VT" kind="showDetail" identifier="MainController" id="dGI-yu-uFQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xc4-Y8-LgP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="289" y="-1399"/>
+            <point key="canvasLocation" x="289" y="-1346"/>
         </scene>
     </scenes>
     <resources>
@@ -1902,7 +1902,7 @@ RidOJ1EnYydmJ2sAAAAAAAACAQAAAAAAAABZAAAAAAAAAAAAAAAAAAAnbQ
         <image name="water-bottle" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="2hF-Sx-gda"/>
         <segue reference="Api-gY-m7T"/>
-        <segue reference="eVZ-zB-dJi"/>
     </inferredMetricsTieBreakers>
 </document>
