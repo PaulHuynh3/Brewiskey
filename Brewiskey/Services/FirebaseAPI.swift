@@ -11,7 +11,6 @@ import UIKit
 import Firebase
 
 class FirebaseAPI: NSObject {
-    //may not need these api calls...
     
     class func fetchDatabaseCurrentUser(uid:String, completion:@escaping (_ user:User) -> Void) {
         

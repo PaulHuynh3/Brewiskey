@@ -30,5 +30,4 @@ class MainTabBarViewController: UITabBarController {
             self.performSegue(withIdentifier: "NetworkUnavailable", sender: self)
         }
     }
-
 }
