@@ -132,11 +132,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/Main/CheckoutTableViewController.swift"
-            timestampString = "554062527.83319"
+            timestampString = "554311646.544682"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
+            startingLineNumber = "93"
+            endingLineNumber = "93"
             landmarkName = "proceedButtonTapped()"
             landmarkType = "7">
          </BreakpointContent>
@@ -148,11 +148,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/Main/CheckoutTableViewController.swift"
-            timestampString = "554062527.8333"
+            timestampString = "554311646.54476"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "81"
-            endingLineNumber = "81"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
             landmarkName = "proceedButtonTapped()"
             landmarkType = "7">
          </BreakpointContent>

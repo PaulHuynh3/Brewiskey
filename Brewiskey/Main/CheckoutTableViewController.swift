@@ -22,7 +22,13 @@ class CheckoutTableViewController: UITableViewController, RefreshCheckoutTableDe
     }
     
     func showConfirmationPurchased(title: String, message: String) {
-        showAlert(title: title, message: message, actionTitle: UIAlertConstants.actionOk)
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: UIAlertConstants.actionOk, style: .default) { (_) in
+                StoreReviewHelper.checkAndAskForReview()
+            }
+        alertController.addAction(okAction)
+        present(alertController, animated: true)
     }
     
     var cartItems = Array <CheckoutItem>()

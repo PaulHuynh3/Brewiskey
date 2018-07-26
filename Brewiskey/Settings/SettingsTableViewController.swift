@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import FBSDKLoginKit
+import Stripe
 
 class SettingsTableViewController: UITableViewController {
 
@@ -170,5 +171,10 @@ extension SettingsTableViewController {
         fbsdkLogin.logOut()
         let appDelegate = UIApplication.shared.delegate as? AppDelegate
         appDelegate?.transitionToLogin()
+        
+        //crash the app to clear the CC customer's info from ephermal key.. lol
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+           fatalError()
+        }
     }
 }
