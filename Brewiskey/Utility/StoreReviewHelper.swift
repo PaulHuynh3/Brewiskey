@@ -34,7 +34,7 @@ struct StoreReviewHelper {
             UserDefaults.standard.set(1, forKey: kUserInfo.kAppOpenedCount)
             return
         }
-        if UserDefaults.standard.bool(forKey: kUserInfo.kShouldAskForReview) && appOpenCount > 1 {
+        if UserDefaults.standard.bool(forKey: kUserInfo.kShouldAskForReview) && appOpenCount > 0 {
             //ask user one time for review
             UserDefaults.standard.set(false, forKey: kUserInfo.kShouldAskForReview)
             StoreReviewHelper().requestReview()
