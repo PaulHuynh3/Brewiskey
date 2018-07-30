@@ -13,6 +13,7 @@ class DetailedSelectionViewController: UIViewController {
     var beer: Beer?
     var wine: Wine?
     var spirit: Spirit?
+    var snack: Snacks?
     
     @IBOutlet weak var alcoholImageView: UIImageView!
     @IBOutlet weak var itemTypeLabel: UILabel!
@@ -74,6 +75,14 @@ class DetailedSelectionViewController: UIViewController {
                 itemTypeLabel.text = spirit.smallBottleType
                 if let smallBottlePrice = spirit.smallBottlePrice {
                     priceLabel.text = "\(String(smallBottlePrice))$"
+                }
+            }
+            if let snack = snack {
+                guard let imageUrl = snack.imageUrl else {return}
+                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+                itemTypeLabel.text = snack.type
+                if let snackPrice = snack.price {
+                    priceLabel.text = "\(String(snackPrice))$"
                 }
             }
         }
@@ -199,6 +208,14 @@ extension DetailedSelectionViewController {
                 guard let name = spirit.name else {return}
                 
                 updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price: itemPrice, quantity: Int(currentValue))
+            }
+            if let snack = snack {
+                guard let imageUrl = snack.imageUrl else {return}
+                guard let type = snack.type else {return}
+                guard let price = snack.price else {return}
+                guard let name = snack.name else {return}
+                
+                updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: type, price: price, quantity: Int(currentValue))
             }
         }
         if selectionNumber == 2 {

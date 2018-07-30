@@ -15,10 +15,12 @@ class MarketViewController: UIViewController, UISearchControllerDelegate, UISear
     var beers = Array<Beer>()
     var wines = Array<Wine>()
     var spirits = Array<Spirit>()
+    var snacks = Array<Snacks>()
     
     var searchedBeers = Array<Beer>()
     var searchedWines = Array<Wine>()
     var searchedSpirits = Array<Spirit>()
+    var searchedSnacks = Array<Snacks>()
     
     var beerMode: Bool?
     var spiritMode: Bool?
@@ -166,6 +168,17 @@ class MarketViewController: UIViewController, UISearchControllerDelegate, UISear
                 }
             }
         }
+        
+        if snacksMode == true {
+            searchedSnacks.removeAll()
+            for specificSnack in snacks {
+                if specificSnack.name?.range(of: searchText) != nil {
+                    isUsedSearch = true
+                    searchedSnacks.append(specificSnack)
+                    tableView.reloadData()
+                }
+            }
+        }
     }
 }
 
@@ -193,10 +206,20 @@ extension MarketViewController {
             }
         }
     }
+    fileprivate func fetchSnackProducts() {
+        FirebaseAPI().fetchSnacksFromDatabase { [weak self] (snack) in
+            DispatchQueue.main.async {
+                guard let strongSelf = self else {return}
+                strongSelf.snacks.append(snack)
+            }
+        }
+    }
+    
     fileprivate func fetchAlcoholProducts() {
         fetchAllBeerProducts()
         fetchAllSpiritProducts()
         fetchAllWineProducts()
+        fetchSnackProducts()
     }
 }
 
@@ -213,16 +236,20 @@ extension MarketViewController: UITableViewDataSource, UITableViewDelegate {
                 return searchedBeers.count
             } else if spiritMode == true {
                 return searchedSpirits.count
-            } else  {
+            } else if wineMode == true  {
                 return searchedWines.count
+            } else {
+                return searchedSnacks.count
             }
             
         } else if beerMode == true {
             return beers.count
         } else if spiritMode == true {
             return spirits.count
-        } else {
+        } else if wineMode == true {
             return wines.count
+        } else {
+            return snacks.count
         }
     }
     
@@ -241,9 +268,12 @@ extension MarketViewController: UITableViewDataSource, UITableViewDelegate {
             } else if spiritMode == true {
                 let searchedSpirit = searchedSpirits[indexPath.row]
                 cell.setupSpiritNamesAndImages(searchedSpirit)
-            } else  {
+            } else if wineMode == true {
                 let searchedWine = searchedWines[indexPath.row]
                 cell.setupWineNamesAndImages(searchedWine)
+            } else {
+                let searchedSnack = searchedSnacks[indexPath.row]
+                cell.setupSnackNamesAndImages(searchedSnack)
             }
         } else if beerMode == true {
             let beer = beers[indexPath.row]
@@ -251,9 +281,12 @@ extension MarketViewController: UITableViewDataSource, UITableViewDelegate {
         } else if spiritMode == true {
             let spirit = spirits[indexPath.row]
             cell.setupSpiritNamesAndImages(spirit)
-        } else {
+        } else if wineMode == true {
             let wine = wines[indexPath.row]
             cell.setupWineNamesAndImages(wine)
+        } else {
+            let snack = snacks[indexPath.row]
+            cell.setupSnackNamesAndImages(snack)
         }
         
         return cell
@@ -269,9 +302,12 @@ extension MarketViewController: UITableViewDataSource, UITableViewDelegate {
             } else if spiritMode == true {
                 let searchedSpirit = searchedSpirits[indexPath.row]
                 performSegue(withIdentifier: "spiritDetailedViewSegue", sender: searchedSpirit)
-            } else  {
+            } else if wineMode == true {
                 let searchedWine = searchedWines[indexPath.row]
                  performSegue(withIdentifier: "wineDetailedViewSegue", sender: searchedWine)
+            } else {
+                let searchedSnack = searchedSnacks[indexPath.row]
+                performSegue(withIdentifier: "snacksDetailedViewSegue", sender: searchedSnack)
             }
         } else if beerMode == true {
             let beer = beers[indexPath.row]
@@ -279,9 +315,12 @@ extension MarketViewController: UITableViewDataSource, UITableViewDelegate {
         } else if spiritMode == true {
             let spirit = spirits[indexPath.row]
             performSegue(withIdentifier: "spiritDetailedViewSegue", sender: spirit)
-        } else {
+        } else if wineMode == true {
             let wine = wines[indexPath.row]
             performSegue(withIdentifier: "wineDetailedViewSegue", sender: wine)
+        } else {
+            let snack = snacks[indexPath.row]
+            performSegue(withIdentifier: "snacksDetailedViewSegue", sender: snack)
         }
      
     }
@@ -307,6 +346,13 @@ extension MarketViewController: UITableViewDataSource, UITableViewDelegate {
             let spirit = sender as? Spirit
             detailedTableView?.spirit = spirit
             detailedTableView?.isSpiritMode = true
+        }
+        
+        if segue.identifier == "snacksDetailedViewSegue"{
+            let detailedTableView = segue.destination as? DetailedViewController
+            let snack = sender as? Snacks
+            detailedTableView?.snack = snack
+            detailedTableView?.isSnackMode = true
         }
     }
 }

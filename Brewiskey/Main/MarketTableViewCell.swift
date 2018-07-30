@@ -37,4 +37,12 @@ class MarketTableViewCell: UITableViewCell {
         brandNameLabel.text = wine.name
     }
     
+    func setupSnackNamesAndImages(_ snack: Snacks){
+        
+        if let imageUrl = snack.imageUrl{
+            alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+        }
+        brandNameLabel.text = snack.name
+    }
+    
 }

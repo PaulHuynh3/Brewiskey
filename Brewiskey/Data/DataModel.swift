@@ -83,6 +83,14 @@ class Wine {
     var type: String?
 }
 
+class Snacks {
+    var name: String?
+    var price: Double?
+    var type: String?
+    var shortDescription: String?
+    var imageUrl: String?
+}
+
 class Beer {
     var name: String?
     var percent: String?

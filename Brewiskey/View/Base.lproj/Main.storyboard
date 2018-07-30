@@ -143,6 +143,7 @@
                         <segue destination="Za5-bk-FjV" kind="show" identifier="beerDetailedViewSegue" id="Bvo-G5-bvt"/>
                         <segue destination="Za5-bk-FjV" kind="show" identifier="wineDetailedViewSegue" id="il2-bg-Cq8"/>
                         <segue destination="Za5-bk-FjV" kind="show" identifier="spiritDetailedViewSegue" id="Api-gY-m7T"/>
+                        <segue destination="Za5-bk-FjV" kind="show" identifier="snacksDetailedViewSegue" id="ZP1-EL-3K7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OKS-rx-bUC" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1903,6 +1904,6 @@ RidOJ1EnYydmJ2sAAAAAAAACAQAAAAAAAABZAAAAAAAAAAAAAAAAAAAnbQ
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2hF-Sx-gda"/>
-        <segue reference="Api-gY-m7T"/>
+        <segue reference="ZP1-EL-3K7"/>
     </inferredMetricsTieBreakers>
 </document>

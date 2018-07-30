@@ -173,6 +173,24 @@ class FirebaseAPI: NSObject {
         }, withCancel: nil)
     }
     
+    func fetchSnacksFromDatabase(completion:@escaping (_ snacks: Snacks) -> Void){
+        
+        Database.database().reference().child("snacks").observe(.childAdded, with: { (snapshot) in
+            
+            if let dictionary = snapshot.value as? [String:AnyObject]{
+                let snacks = Snacks()
+                snacks.name = dictionary["name"] as? String
+                snacks.price = dictionary["price"] as? Double
+                snacks.type = dictionary["type"] as? String
+                snacks.imageUrl = dictionary["imageUrl"] as? String
+
+                DispatchQueue.main.async {
+                    completion(snacks)
+                }
+            }
+        }, withCancel: nil)
+    }
+    
     func loadImageFromUrl(url: URL, completion: @escaping (UIImage) -> Void) {
         let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
             

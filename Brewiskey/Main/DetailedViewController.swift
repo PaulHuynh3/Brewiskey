@@ -12,10 +12,13 @@ class DetailedViewController: UIViewController {
     var isBeerMode = false
     var isWineMode = false
     var isSpiritMode = false
+    var isSnackMode = false
     
     var beer: Beer?
     var wine: Wine?
     var spirit: Spirit?
+    var snack: Snacks?
+    
     fileprivate var headerLabel: UILabel!
     fileprivate var footerLabel: UILabel!
     @IBOutlet weak var alcoholNameLabel: UILabel!
@@ -41,6 +44,8 @@ class DetailedViewController: UIViewController {
         }
         else if isSpiritMode == true {
             configureSpiritsMode()
+        } else {
+            configureSnackMode()
         }
     }
     
@@ -83,6 +88,16 @@ class DetailedViewController: UIViewController {
         }
         selectionFourImageview.isHidden = true
     }
+    
+    fileprivate func configureSnackMode() {
+        alcoholNameLabel.text = snack?.name
+        if let selectionOneImage = snack?.imageUrl {
+            selectionOneImageview.loadImagesUsingCacheWithUrlString(urlString: selectionOneImage)
+        }
+        selectionTwoImageview.isHidden = true
+        selectionThreeImageview.isHidden = true
+        selectionFourImageview.isHidden = true
+    }
 }
 
 extension DetailedViewController {
@@ -110,27 +125,28 @@ extension DetailedViewController {
         handleSelection(isCorrectMode: isBeerMode, currentSelection: currentSelection)
         handleSelection(isCorrectMode: isSpiritMode, currentSelection: currentSelection)
         handleSelection(isCorrectMode: isWineMode, currentSelection: currentSelection)
+        handleSelection(isCorrectMode: isSnackMode, currentSelection: currentSelection)
     }
     
     @objc fileprivate func selectionTwoSelected() {
         let currentSelection = 2
         handleSelection(isCorrectMode: isBeerMode, currentSelection: currentSelection)
         handleSelection(isCorrectMode: isSpiritMode, currentSelection: currentSelection)
-        handleSelection(isCorrectMode: isWineMode, currentSelection: currentSelection)
+//        handleSelection(isCorrectMode: isWineMode, currentSelection: currentSelection)
     }
     
     @objc fileprivate func selectionThreeSelected() {
         let currentSelection = 3
         handleSelection(isCorrectMode: isBeerMode, currentSelection: currentSelection)
         handleSelection(isCorrectMode: isSpiritMode, currentSelection: currentSelection)
-        handleSelection(isCorrectMode: isWineMode, currentSelection: currentSelection)
+//        handleSelection(isCorrectMode: isWineMode, currentSelection: currentSelection)
     }
     
     @objc fileprivate func selectionFourSelected() {
         let currentSelection = 4
         handleSelection(isCorrectMode: isBeerMode, currentSelection: currentSelection)
-        handleSelection(isCorrectMode: isSpiritMode, currentSelection: currentSelection)
-        handleSelection(isCorrectMode: isWineMode, currentSelection: currentSelection)
+//        handleSelection(isCorrectMode: isSpiritMode, currentSelection: currentSelection)
+//        handleSelection(isCorrectMode: isWineMode, currentSelection: currentSelection)
     }
     
     fileprivate func handleSelection(isCorrectMode: Bool, currentSelection: Int) {
@@ -149,6 +165,11 @@ extension DetailedViewController {
             }
             if let spirit = spirit {
                 selectionViewController.spirit = spirit
+                selectionViewController.selectionNumber = currentSelection
+                self.present(selectionViewController, animated: true)
+            }
+            if let snack = snack {
+                selectionViewController.snack = snack
                 selectionViewController.selectionNumber = currentSelection
                 self.present(selectionViewController, animated: true)
             }
