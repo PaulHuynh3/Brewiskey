@@ -44,7 +44,15 @@ class SettingsTableViewController: UITableViewController {
     }
     
     fileprivate func webPortalHelpPage() {
-        let link = "http://brewiskey.com/support/"
+        let link = "https://brewiskey.com/support/"
+        guard let url = URL(string: link) else {
+            return
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
+    fileprivate func webPortalPrivacyPage() {
+        let link = "https://brewiskey.com/privacy-policy/"
         guard let url = URL(string: link) else {
             return
         }
@@ -84,7 +92,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 6
+        return 7
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -94,6 +102,7 @@ class SettingsTableViewController: UITableViewController {
         let promoCode = "Promo Code"
         let pastOrders = "Past orders"
         let help = "Help"
+        let privacy = "Privacy"
         let logout = "Log out"
         
         if indexPath.row == 0 {
@@ -116,6 +125,10 @@ class SettingsTableViewController: UITableViewController {
             imageLabelCell.leftImage.image = #imageLiteral(resourceName: "helplogo")
             imageLabelCell.middleLabel.text = help
             imageLabelCell.accessoryType = .none
+        } else if indexPath.row == 5 {
+            imageLabelCell.leftImage.image = #imageLiteral(resourceName: "privacy")
+            imageLabelCell.middleLabel.text = privacy
+            imageLabelCell.accessoryType = .none
         } else {
             imageLabelCell.leftImage.image = #imageLiteral(resourceName: "logout")
             imageLabelCell.middleLabel.text = logout
@@ -134,7 +147,8 @@ class SettingsTableViewController: UITableViewController {
         case 2: navigateToPromoCode()
         case 3: navigateToPastOrders()
         case 4: webPortalHelpPage()
-        case 5: handleLogout()
+        case 5: webPortalPrivacyPage()
+        case 6: handleLogout()
             
         default: print("default")
         }

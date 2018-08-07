@@ -228,6 +228,14 @@ class RegisterViewController: UIViewController {
         })
     }
     
+    @IBAction func privacyPolicyLinkTapped(_ sender: Any) {
+        let link = "https://brewiskey.com/privacy-policy/"
+        guard let url = URL(string: link) else {
+            return
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
 }
 
 extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

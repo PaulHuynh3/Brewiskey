@@ -95,6 +95,14 @@ class LoginViewController: UIViewController {
         BrewiskeyAnalytics().track(event: .forgotPasswordScreen)
     }
     
+    @IBAction func privacyPolicyTapped(_ sender: Any) {
+        let link = "https://brewiskey.com/privacy-policy/"
+        guard let url = URL(string: link) else {
+            return
+        }
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+    
 }
 
 extension LoginViewController: UITextFieldDelegate {
