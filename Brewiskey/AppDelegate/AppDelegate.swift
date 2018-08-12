@@ -88,6 +88,9 @@ extension AppDelegate {
         let queryItems = URLComponents(url: url, resolvingAgainstBaseURL: true)?.queryItems
         let invitedBy = queryItems?.filter({(item) in item.name == "invitedby"}).first?.value
         let user = Auth.auth().currentUser
+        
+        let referralPromo = UserDefaults.standard.string(forKey: kUserInfo.kBrewFriendReferral10)
+        
         // If the user isn't signed in and the app was opened via an invitation
         // link, sign in the user anonymously and record the referrer UID in the
         // user's RTDB record.
@@ -99,6 +102,14 @@ extension AppDelegate {
                     userRecord.child("referred_by").setValue(invitedBy)
                     UserDefaults.standard.set("BrewFriend10", forKey: kUserInfo.kBrewFriendReferral10)
                 }
+            }
+            //user already signed in but they never got referred before
+        } else if referralPromo == nil {
+            if let user = user {
+                let userRecord = Database.database().reference().child("users").child(user.uid)
+                UserDefaults.standard.set(invitedBy, forKey: kUserInfo.kReferredBy)
+                userRecord.child("referred_by").setValue(invitedBy)
+                UserDefaults.standard.set("BrewFriend10", forKey: kUserInfo.kBrewFriendReferral10)
             }
         }
     }
