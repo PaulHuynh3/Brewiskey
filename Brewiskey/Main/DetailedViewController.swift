@@ -132,21 +132,17 @@ extension DetailedViewController {
         let currentSelection = 2
         handleSelection(isCorrectMode: isBeerMode, currentSelection: currentSelection)
         handleSelection(isCorrectMode: isSpiritMode, currentSelection: currentSelection)
-//        handleSelection(isCorrectMode: isWineMode, currentSelection: currentSelection)
     }
     
     @objc fileprivate func selectionThreeSelected() {
         let currentSelection = 3
         handleSelection(isCorrectMode: isBeerMode, currentSelection: currentSelection)
         handleSelection(isCorrectMode: isSpiritMode, currentSelection: currentSelection)
-//        handleSelection(isCorrectMode: isWineMode, currentSelection: currentSelection)
     }
     
     @objc fileprivate func selectionFourSelected() {
         let currentSelection = 4
         handleSelection(isCorrectMode: isBeerMode, currentSelection: currentSelection)
-//        handleSelection(isCorrectMode: isSpiritMode, currentSelection: currentSelection)
-//        handleSelection(isCorrectMode: isWineMode, currentSelection: currentSelection)
     }
     
     fileprivate func handleSelection(isCorrectMode: Bool, currentSelection: Int) {

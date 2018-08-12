@@ -22,6 +22,7 @@ class DetailedSelectionViewController: UIViewController {
     var selectionNumber = Int()
     @IBOutlet weak var quantityStepper: UIStepper!
     @IBOutlet weak var cartItemCounterLabel: UILabel!
+    @IBOutlet weak var shoppingCartButton: UIButton!
     var currentValue: Double!
     var orderNumber: Int?
     
