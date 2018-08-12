@@ -14,4 +14,5 @@ target 'Brewiskey' do
     pod 'Stripe'
     pod 'Alamofire'
     pod 'ReachabilitySwift'
+    pod 'IQKeyboardManagerSwift'
 end

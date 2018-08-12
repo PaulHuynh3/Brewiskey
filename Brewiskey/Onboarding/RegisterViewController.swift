@@ -9,8 +9,7 @@
 import UIKit
 import Firebase
 
-class RegisterViewController: UIViewController {
-    
+class RegisterViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var uploadPictureImageView: UIImageView!
     @IBOutlet weak var firstNameImageview: UIImageView!
     @IBOutlet weak var firstNameTextfield: UITextField!
@@ -243,6 +242,11 @@ class RegisterViewController: UIViewController {
         UIApplication.shared.open(url, options: [:], completionHandler: nil)
     }
     
+    //Textfield delegates
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 
 extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -347,11 +351,3 @@ extension RegisterViewController {
         return true
     }
 }
-
-extension RegisterViewController: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
-    }
-}
-

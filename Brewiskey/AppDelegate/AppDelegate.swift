@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import FBSDKCoreKit
 import Stripe
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -24,6 +25,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UserDefaults.standard.bool(forKey: kUserInfo.kLoginStatus) {
             transitionToMarketPlace()
         }
+        //Keyboard blocking textfield
+        IQKeyboardManager.shared.enable = true
+        
         return true
     }
     
