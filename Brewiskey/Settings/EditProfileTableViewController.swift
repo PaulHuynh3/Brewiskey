@@ -150,25 +150,34 @@ class EditProfileTableViewController: UITableViewController {
             
             //compresses the image
             if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {
-                storageRef.putData(uploadData, metadata: nil, completion: {[weak self] (metadata, error) in
-                    
-                    if let error = error {
-                        print(error)
-                        return
-                    }
-                    DispatchQueue.main.async {
-                        guard let profileImageURL = metadata?.downloadURL()?.absoluteString else {
+                    storageRef.putData(uploadData, metadata: nil, completion: {[weak self] (metadata, putError) in
+                        storageRef.downloadURL { (imageUrl, imageError) in
+                        guard let strongSelf = self else {return}
+                        if let putError = putError {
+                            print(putError)
                             return
                         }
-                       
-                        let values = ["first_name": editedFirstName, "last_name": editedLastName, "profile_image_url": profileImageURL, "age": editedAge, "street_number": editedNumber, "unit_number": editedUnitNumber, "street": editedStreet, "city": editedCity, "province": editedProvince, "postal_code": editedPostalCode]
-                        
-                        let userDefault = UserDefaults.standard
-                        userDefault.set(editedFirstName, forKey: kUserInfo.kFirstName)
-                        userDefault.set(editedLastName, forKey: kUserInfo.kLastName)
-                        
-                      self?.updateUserIntoDatabase(uid, values: values as [String : AnyObject])
-                        
+                        if let imageError = imageError {
+                                strongSelf.showAlert(title: "Error", message: imageError.localizedDescription, actionTitle: "OK")
+                                print(imageError.localizedDescription)
+                                strongSelf.activityIndicatorView.isHidden = true
+                                return
+                        }
+                        DispatchQueue.main.async {
+                            guard let profileimageURL = imageUrl?.absoluteString else {
+                                strongSelf.showAlert(title: "ProfileImageUploadError", message: "Please try again", actionTitle: "OK")
+                                return
+                            }
+                            
+                            let values = ["first_name": editedFirstName, "last_name": editedLastName, "profile_image_url": profileimageURL, "age": editedAge, "street_number": editedNumber, "unit_number": editedUnitNumber, "street": editedStreet, "city": editedCity, "province": editedProvince, "postal_code": editedPostalCode]
+                            
+                            let userDefault = UserDefaults.standard
+                            userDefault.set(editedFirstName, forKey: kUserInfo.kFirstName)
+                            userDefault.set(editedLastName, forKey: kUserInfo.kLastName)
+                            
+                            strongSelf.updateUserIntoDatabase(uid, values: values as [String : AnyObject])
+                            
+                        }
                     }
                 })
             }

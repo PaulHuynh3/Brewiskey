@@ -82,12 +82,12 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         if let user = Auth.auth().currentUser {
             if user.isAnonymous {
                 let credential = EmailAuthProvider.credential(withEmail: email, password: password)
-                user.link(with: credential) { (user, error) in
+                user.linkAndRetrieveData(with: credential) { (authDataResult, error) in
                     if let error = error {
                         self.showAlert(title: "Error", message: error.localizedDescription, actionTitle: "OK")
                         return
                     }
-                    guard let uid = user?.uid else {return}
+                    guard let uid = authDataResult?.user.uid else {return}
                     self.activityIndicatorView.isHidden = false
                     self.activityIndicatorView.startAnimating()
                     //successfully authenticated user now upload picture to storage.
@@ -104,14 +104,21 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                                 print(error)
                                 return
                             }
-                            guard let profileImageURL = metadata?.downloadURL()?.absoluteString else {
-                                return
-                            }
-                            
+
+                            storageRef.downloadURL(completion: { (imageUrl, downloadError) in
                             FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, firebaseError: String?) in
                                 StripeAPI().createCustomer(email: email, completion: { (stripeId: String?, stripeError: String?) in
                                     
                                     DispatchQueue.main.async {
+                                        var profileImageURL = "imageUrl"
+                                        if let error = downloadError {
+                                            print(error.localizedDescription)
+                                            return
+                                        }
+                                        if let url = imageUrl {
+                                            profileImageURL = url.absoluteString
+                                        }
+                                        
                                         if let firebaseError = firebaseError {
                                             self.showAlert(title: "Error", message: firebaseError, actionTitle: "OK")
                                             return
@@ -147,6 +154,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                                 })
                             })
                         })
+                    })
                     }
                 }
             } else {
@@ -160,13 +168,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
     private func registerNewUser(email: String, password: String, firstName: String, lastName: String) {
         let onboardingCheckUtils = OnboardingCheckUtils(presentingViewController: self)
         
-        Auth.auth().createUser(withEmail: email, password: password) {(user, error) in
+        Auth.auth().createUser(withEmail: email, password: password) {(authDataResult, error) in
             if let error = error {
                 onboardingCheckUtils.displayError(error.localizedDescription)
                 return
             }
             
-            guard let uid = user?.uid else {return}
+            guard let uid = authDataResult?.user.uid else {return}
             self.activityIndicatorView.isHidden = false
             self.activityIndicatorView.startAnimating()
             //successfully authenticated user now upload picture to storage.
@@ -178,40 +186,54 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             //compresses the image
             if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {
                 storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
-                    guard let profileImageURL = metadata?.downloadURL()?.absoluteString else {return}
                     
-                    StripeAPI().createCustomer(email: email, completion: { (stripeCustomerId: String?, stripeError: String? ) in
+                    storageRef.downloadURL(completion: { (imageUrl, downloadError) in
                         FirebaseDynamicLinkHelper().createReferralDynamicLink(completion: { (shortLink: URL?, firebaseError: String?) in
-                            DispatchQueue.main.async {
+                            StripeAPI().createCustomer(email: email, completion: { (stripeId: String?, stripeError: String?) in
                                 
-                                if let stripeError = stripeError {
-                                    self.showAlert(title: "Error", message: stripeError, actionTitle: "OK")
-                                    return}
-                                if let firebaseError = firebaseError {
-                                    self.showAlert(title: "Error", message: firebaseError, actionTitle: "OK")
-                                    return
+                                DispatchQueue.main.async {
+                                    var profileImageURL = "imageUrl"
+                                    if let error = downloadError {
+                                        print(error.localizedDescription)
+                                        return
+                                    }
+                                    if let url = imageUrl {
+                                        profileImageURL = url.absoluteString
+                                    }
+                                    
+                                    if let firebaseError = firebaseError {
+                                        self.showAlert(title: "Error", message: firebaseError, actionTitle: "OK")
+                                        return
+                                    }
+                                    if let stripeError = stripeError {
+                                        self.showAlert(title: "Error", message: stripeError, actionTitle: "OK")
+                                        return
+                                    }
+                                    guard let link = shortLink else {
+                                        self.showAlert(title: "Error", message: "Referal Link nil", actionTitle: "OK")
+                                        return
+                                    }
+                                    
+                                    let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": profileImageURL, "referral_Link": link.absoluteString, "stripe_Id": stripeId]
+                                    
+                                    let userDefault = UserDefaults.standard
+                                    userDefault.set(true, forKey: kUserInfo.kLoginStatus)
+                                    userDefault.set(uid, forKey: kUserInfo.kUserId)
+                                    userDefault.set(true, forKey: kUserInfo.kNewUser)
+                                    userDefault.set(firstName, forKey: kUserInfo.kFirstName)
+                                    userDefault.set(lastName, forKey: kUserInfo.kLastName)
+                                    userDefault.set(email, forKey: kUserInfo.kEmail)
+                                    userDefault.set(shortLink, forKey: kUserInfo.kReferralLink)
+                                    userDefault.set(stripeId, forKey: kUserInfo.kStripeId)
+                                    
+                                    
+                                    self.registerUserNavigateMarketPlace(uid, values: values as [String : AnyObject])
+                                    self.activityIndicatorView.stopAnimating()
+                                    BrewiskeyAnalytics().track(event: .userSignupEmail)
+                                    BrewiskeyAnalytics().track(event: .signupWithReferral)
                                 }
-                                guard let link = shortLink else {
-                                    self.showAlert(title: "Error", message: "Referal Link nil", actionTitle: "OK")
-                                    return
-                                }
                                 
-                                let values = ["first_name": firstName, "last_name": lastName, "email": email, "profile_image_url": profileImageURL, "referral_Link": link.absoluteString, "stripe_Id": stripeCustomerId]
-                                
-                                let userDefault = UserDefaults.standard
-                                userDefault.set(true, forKey: kUserInfo.kLoginStatus)
-                                userDefault.set(uid, forKey: kUserInfo.kUserId)
-                                userDefault.set(true, forKey: kUserInfo.kNewUser)
-                                userDefault.set(firstName, forKey: kUserInfo.kFirstName)
-                                userDefault.set(lastName, forKey: kUserInfo.kLastName)
-                                userDefault.set(email, forKey: kUserInfo.kEmail)
-                                userDefault.set(shortLink, forKey: kUserInfo.kReferralLink)
-                                userDefault.set(stripeCustomerId, forKey: kUserInfo.kStripeId)
-                                
-                                self.registerUserNavigateMarketPlace(uid, values: values as [String : AnyObject])
-                                self.activityIndicatorView.stopAnimating()
-                                BrewiskeyAnalytics().track(event: .userSignupEmail)
-                            }
+                            })
                         })
                     })
                     

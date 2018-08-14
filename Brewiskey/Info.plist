@@ -22,10 +22,9 @@
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
 			<key>CFBundleURLName</key>
-			<string>Bundle ID</string>
+			<string></string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.BrewiskeyApp.Group</string>
 				<string>fb185034152139188</string>
 			</array>
 		</dict>

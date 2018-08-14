@@ -69,22 +69,21 @@ extension AppDelegate {
     func application(_ application: UIApplication, continue userActivity: NSUserActivity,
                      restorationHandler: @escaping ([Any]?) -> Void) -> Bool {
         //stripe url
-            if let url = userActivity.webpageURL {
-                let stripeHandled = Stripe.handleURLCallback(with: url)
-                if stripeHandled {
-                    return true
-                } else {
-                    //this was a dynamic link url
-                    if let dynamicLinks = DynamicLinks.dynamicLinks() {
-                        let handled = dynamicLinks.handleUniversalLink(url) { (dynamiclink, error) in
-                            if let url = dynamiclink?.url {
-                                self.handleDeepLink(url: url)
-                            }
-                        }
-                        return handled
+        if let url = userActivity.webpageURL {
+            let stripeHandled = Stripe.handleURLCallback(with: url)
+            if stripeHandled {
+                return true
+            } else {
+                //this was a dynamic link url
+                let dynamicLinks = DynamicLinks.dynamicLinks() 
+                let handled = dynamicLinks.handleUniversalLink(url) { (dynamiclink, error) in
+                    if let url = dynamiclink?.url {
+                        self.handleDeepLink(url: url)
                     }
                 }
+                return handled
             }
+        }
         return false
     }
     
@@ -99,9 +98,9 @@ extension AppDelegate {
         // link, sign in the user anonymously and record the referrer UID in the
         // user's RTDB record.
         if user == nil && invitedBy != nil {
-            Auth.auth().signInAnonymously() { (user, error) in
-                if let user = user {
-                    let userRecord = Database.database().reference().child("users").child(user.uid)
+            Auth.auth().signInAnonymously() { (authDataResult, error) in
+                if let authDataResult = authDataResult {
+                    let userRecord = Database.database().reference().child("users").child(authDataResult.user.uid)
                     UserDefaults.standard.set(invitedBy, forKey: kUserInfo.kReferredBy)
                     userRecord.child("referred_by").setValue(invitedBy)
                     UserDefaults.standard.set("BrewFriend10", forKey: kUserInfo.kBrewFriendReferral10)

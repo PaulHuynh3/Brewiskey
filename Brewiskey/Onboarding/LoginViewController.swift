@@ -44,12 +44,12 @@ class LoginViewController: UIViewController {
         }
         
         if let email = emailTextField.text, let password = passwordTextfield.text{
-            Auth.auth().signIn(withEmail: email, password: password, completion: { (user, error) in
+            Auth.auth().signIn(withEmail: email, password: password, completion: { (authDataResult, error) in
 
-                if let user = user {
+                if let authDataResult = authDataResult {
                     let userDefault = UserDefaults.standard
                     userDefault.set(true, forKey: kUserInfo.kLoginStatus)
-                    userDefault.set(user.uid, forKey: kUserInfo.kUserId)
+                    userDefault.set(authDataResult.user.uid, forKey: kUserInfo.kUserId)
                     userDefault.set(false, forKey: kUserInfo.kNewUser)
                     userDefault.set(email, forKey: kUserInfo.kEmail)
                     
