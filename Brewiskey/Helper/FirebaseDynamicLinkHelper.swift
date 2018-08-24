@@ -19,7 +19,7 @@ enum Params: String {
     case term = "If app is shared"
     case content = "$10 inside."
     //Important
-    case link = "http://www.brewiskey.com/10promo/"
+    case link = "https://brewiskey.com/referral-bonus/"
     case bundleID = "com.BrewiskeyApp.Group"
     case fallbackURL = "http://www.brewiskey.com"
     case minimumAppVersion = "1.0"
@@ -43,7 +43,7 @@ class FirebaseDynamicLinkHelper {
     
         func createReferralDynamicLink(completion: @escaping (_ shortLink: URL?, _ error: String?) -> Void) {
         if let uid = Auth.auth().currentUser?.uid {
-            let linkString = "http://www.brewiskey.com/10promo/?invitedby=\(uid)"
+            let linkString = "https://brewiskey.com/referral-bonus/?invitedby=\(uid)"
             
             if let link = URL(string: linkString) {
                 let components = DynamicLinkComponents(link: link, domain: FirebaseDynamicLinkHelper.DYNAMIC_LINK_DOMAIN)

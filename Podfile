@@ -1,8 +1,8 @@
 platform :ios, '10.0'
 
 target 'Brewiskey' do
-  use_frameworks!
-   
+    use_frameworks!
+    
     pod 'Firebase'
     pod 'Firebase/Auth'
     pod 'Firebase/Database'

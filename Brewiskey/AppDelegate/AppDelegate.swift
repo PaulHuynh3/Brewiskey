@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         } else {
             //this was not a stripe url
         }
-      
+
         return handled
     }
     
