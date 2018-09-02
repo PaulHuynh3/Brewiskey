@@ -120,7 +120,7 @@
 		DA5F352F207825D400A64FA0 /* EmailSentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSentViewController.swift; sourceTree = "<group>"; };
 		DA620DF2209561710026E4A5 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		DA620DF4209589620026E4A5 /* ReferralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralViewController.swift; sourceTree = "<group>"; };
-		DA6BE08E20F7A9AF007FA200 /* UserLoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserLoginStatus.swift; path = Brewiskey/Main/UserLoginStatus.swift; sourceTree = SOURCE_ROOT; };
+		DA6BE08E20F7A9AF007FA200 /* UserLoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserLoginStatus.swift; path = Brewiskey/Utility/UserLoginStatus.swift; sourceTree = SOURCE_ROOT; };
 		DA6F829820BB8029005E7862 /* NewCreditCardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCreditCardTableViewController.swift; sourceTree = "<group>"; };
 		DA70A9E52089495F00D3F2C3 /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
 		DA7E7D58209ABC2100882FCA /* Brewiskey.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Brewiskey.entitlements; sourceTree = "<group>"; };
@@ -194,6 +194,7 @@
 				DAB62862209035EC00A5890D /* UserDefaultsUtils.swift */,
 				DAB7630C20EB1419000736AA /* StoreReviewHelper.swift */,
 				DA54B094213BBB520051C23E /* UpdateCartUtils.swift */,
+				DA6BE08E20F7A9AF007FA200 /* UserLoginStatus.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -246,7 +247,6 @@
 		DA1C6CEF20B33CAD00911E64 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				DA6BE08E20F7A9AF007FA200 /* UserLoginStatus.swift */,
 			);
 			name = Utility;
 			path = Helper/Utility;
