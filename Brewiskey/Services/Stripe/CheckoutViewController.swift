@@ -302,6 +302,7 @@ extension CheckoutViewController {
         refreshCheckoutTableDelegate?.removePurchasedItems()
         navigationController?.popViewController(animated: true)
         UserDefaults.standard.set(0, forKey: kUserInfo.kCheckoutOrderQuantity)
+        UpdateCartUtils().deleteCartItems()
     }
     
     fileprivate func retrieveCurrentOrder() {

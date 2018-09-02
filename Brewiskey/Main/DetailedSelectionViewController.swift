@@ -181,6 +181,7 @@ extension DetailedSelectionViewController {
         let totalItems = pastItems + currentValue
         UserDefaults.standard.set(totalItems, forKey: kUserInfo.kCheckoutOrderQuantity)
         cartItemCounterLabel.text = String(Int(totalItems))
+        UpdateCartUtils().updateItemsForCart(items: Int(totalItems))
         showAlert(title: title, message: message, actionTitle: actionTitle)
     }
     

@@ -28,7 +28,7 @@ class BrewiskeyAnalytics {
         case signupEmailScreen = "signup_email_screen"
         case loginWithFacebook = "login_with_facebook"
         case loginWithEmail = "login_with_email"
-        
+        case anonymousLogin = "anonymous_login"
     }
     
 }

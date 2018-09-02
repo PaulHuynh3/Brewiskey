@@ -196,7 +196,7 @@ extension CheckoutTableViewController {
         let alertController = UIAlertController(title: "Delete", message: "All cart items will be deleted", preferredStyle: .alert)
         let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (_) in
             guard let uid = Auth.auth().currentUser?.uid else {return}
-            
+            UpdateCartUtils().deleteCartItems()
             for cartItem in self.cartItems {
                 if let orderId = cartItem.orderId{
                     Database.database().reference().child("users").child(uid).child("cart").child(orderId).removeValue()
