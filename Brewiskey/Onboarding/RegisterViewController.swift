@@ -225,7 +225,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                                     userDefault.set(email, forKey: kUserInfo.kEmail)
                                     userDefault.set(shortLink, forKey: kUserInfo.kReferralLink)
                                     userDefault.set(stripeId, forKey: kUserInfo.kStripeId)
-                                    
+                                    userDefault.set(false, forKey: kUserInfo.kIsAnonymousUser)
                                     
                                     self.registerUserNavigateMarketPlace(uid, values: values as [String : AnyObject])
                                     self.activityIndicatorView.stopAnimating()
@@ -242,7 +242,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
         }
     }
     
-    private func registerUserNavigateMarketPlace(_ uid:String, values: [String:AnyObject]){
+    func registerUserNavigateMarketPlace(_ uid:String, values: [String:AnyObject]){
         let userReference = Database.database().reference().child("users").child(uid)
         userReference.updateChildValues(values, withCompletionBlock: { (error, databaseRef) in
             if let error = error {

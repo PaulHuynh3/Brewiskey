@@ -25,6 +25,7 @@ struct kUserInfo {
     static let kAppOpenedCount = "kAppOpenedCount"
     static let kShouldAskForReview = "kShouldAskForReview"
     static let kStripeId = "kStripeId"
+    static let kIsAnonymousUser = "kIsAnonymousUser"
 }
 
 struct Storyboard {

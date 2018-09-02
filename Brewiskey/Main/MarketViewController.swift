@@ -61,8 +61,12 @@ class MarketViewController: UIViewController, UISearchControllerDelegate, UISear
     //setup userdefaults here.
     fileprivate func setUpCurrentUser(){
         guard let uid = Auth.auth().currentUser?.uid else {return}
-        FirebaseAPI.fetchDatabaseCurrentUser(uid: uid) { (user: User?) in
-            UserDefaults.standard.set(user?.stripeId, forKey: kUserInfo.kStripeId)
+        if UserDefaults.standard.bool(forKey: kUserInfo.kIsAnonymousUser) {
+            return
+        } else {
+            FirebaseAPI.fetchDatabaseCurrentUser(uid: uid) { (user: User?) in
+                UserDefaults.standard.set(user?.stripeId, forKey: kUserInfo.kStripeId)
+            }
         }
     }
     
