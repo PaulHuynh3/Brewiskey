@@ -180,13 +180,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		DA056E86203FC8DB007EECAE /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "Supporting Files";
-			sourceTree = "<group>";
-		};
 		DA06DCE4208063500039D063 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,20 +229,10 @@
 				DADC7B73203E179600F87438 /* Main */,
 				DA70A9E42089491A00D3F2C3 /* Settings */,
 				DA2E85E02043C7F90057C4C6 /* Helper */,
-				DA1C6CEF20B33CAD00911E64 /* Utility */,
 				DA91AEBA20A8F25200BEF84B /* ReuseableCell */,
 				DAF2024C20E1E2B4001D96FD /* ReuseableView */,
-				DA056E86203FC8DB007EECAE /* Supporting Files */,
 			);
 			path = Brewiskey;
-			sourceTree = "<group>";
-		};
-		DA1C6CEF20B33CAD00911E64 /* Utility */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Utility;
-			path = Helper/Utility;
 			sourceTree = "<group>";
 		};
 		DA2E85E02043C7F90057C4C6 /* Helper */ = {
