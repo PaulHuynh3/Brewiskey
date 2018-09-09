@@ -23,7 +23,18 @@
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BWH-gD-qWP" userLabel="IndividualOnboardingView">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIY-7v-xh9">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                    </scrollView>
+                                </subviews>
                                 <color key="backgroundColor" red="0.2901960784" green="0.2901960784" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="gIY-7v-xh9" firstAttribute="leading" secondItem="BWH-gD-qWP" secondAttribute="leading" id="NKB-ZA-j8n"/>
+                                    <constraint firstAttribute="trailing" secondItem="gIY-7v-xh9" secondAttribute="trailing" id="VfP-zV-Tsv"/>
+                                    <constraint firstAttribute="bottom" secondItem="gIY-7v-xh9" secondAttribute="bottom" id="Xtf-Ed-IEh"/>
+                                    <constraint firstItem="gIY-7v-xh9" firstAttribute="top" secondItem="BWH-gD-qWP" secondAttribute="top" id="ygt-et-EOu"/>
+                                </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -36,6 +47,7 @@
                         <viewLayoutGuide key="safeArea" id="dwn-lR-qbg"/>
                     </view>
                     <connections>
+                        <outlet property="onboardingScrollView" destination="gIY-7v-xh9" id="Kso-bs-nTX"/>
                         <outlet property="onboardingView" destination="BWH-gD-qWP" id="eZ6-f1-Ocd"/>
                         <segue destination="J4k-Yr-FuW" kind="show" identifier="signUpIdentifier" id="sAg-Ub-9Y2"/>
                         <segue destination="i4k-UV-IBx" kind="show" identifier="loginIdentifier" id="M6h-xr-PPh"/>
@@ -43,7 +55,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4xn-13-rBe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1223.2" y="29.55665024630542"/>
+            <point key="canvasLocation" x="-1223.2" y="29.23538230884558"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="eTu-KC-ltc">
