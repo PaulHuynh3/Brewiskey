@@ -8,9 +8,5 @@
 	<array>
 		<string>applinks:tba7j.app.goo.gl</string>
 	</array>
-	<key>com.apple.developer.in-app-payments</key>
-	<array>
-		<string>merchant.com.Brewiskey</string>
-	</array>
 </dict>
 </plist>
