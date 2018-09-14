@@ -13,7 +13,8 @@ struct StoreReviewHelper {
     
     //For existing users of the app.
     static func shouldAllowPromptInAppReview() {
-        if UserDefaults.standard.integer(forKey: kUserInfo.kAppOpenedCount) < 2 {
+        StoreReviewHelper.incrementAppOpenedCount()
+        if UserDefaults.standard.integer(forKey: kUserInfo.kAppOpenedCount) < 2 || UserDefaults.standard.integer(forKey: kUserInfo.kAppOpenedCount) % 3 == 0 {
             UserDefaults.standard.set(true, forKey: kUserInfo.kShouldAskForReview)
         }
     }
@@ -29,12 +30,7 @@ struct StoreReviewHelper {
     
     static func checkAndAskForReview() {
         // this will not be shown everytime. Apple has some internal logic on how to show this.
-        
-        guard let appOpenCount = UserDefaults.standard.value(forKey: kUserInfo.kAppOpenedCount) as? Int else {
-            UserDefaults.standard.set(1, forKey: kUserInfo.kAppOpenedCount)
-            return
-        }
-        if UserDefaults.standard.bool(forKey: kUserInfo.kShouldAskForReview) && appOpenCount > 0 {
+        if UserDefaults.standard.bool(forKey: kUserInfo.kShouldAskForReview) {
             //ask user one time for review
             UserDefaults.standard.set(false, forKey: kUserInfo.kShouldAskForReview)
             StoreReviewHelper().requestReview()

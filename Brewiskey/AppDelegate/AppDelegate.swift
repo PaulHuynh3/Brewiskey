@@ -20,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         FirebaseApp.configure()
-        StoreReviewHelper.incrementAppOpenedCount()
         StoreReviewHelper.shouldAllowPromptInAppReview()
         if UserDefaults.standard.bool(forKey: kUserInfo.kLoginStatus) {
             transitionToMarketPlace()
@@ -29,6 +28,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         IQKeyboardManager.shared.enable = true
         
         return true
+    }
+    
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        StoreReviewHelper.shouldAllowPromptInAppReview()
     }
     
     func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
