@@ -42,6 +42,7 @@
 		DA5F3530207825D400A64FA0 /* EmailSentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5F352F207825D400A64FA0 /* EmailSentViewController.swift */; };
 		DA620DF3209561710026E4A5 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA620DF2209561710026E4A5 /* ChangePasswordViewController.swift */; };
 		DA620DF5209589620026E4A5 /* ReferralViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA620DF4209589620026E4A5 /* ReferralViewController.swift */; };
+		DA647FE7216C34D200E50D3E /* TrackOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA647FE6216C34D200E50D3E /* TrackOrderViewController.swift */; };
 		DA6BE08F20F7A9AF007FA200 /* UserLoginStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6BE08E20F7A9AF007FA200 /* UserLoginStatus.swift */; };
 		DA6F829920BB8029005E7862 /* NewCreditCardTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA6F829820BB8029005E7862 /* NewCreditCardTableViewController.swift */; };
 		DA70A9E62089495F00D3F2C3 /* EditProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA70A9E52089495F00D3F2C3 /* EditProfileTableViewController.swift */; };
@@ -120,6 +121,7 @@
 		DA5F352F207825D400A64FA0 /* EmailSentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailSentViewController.swift; sourceTree = "<group>"; };
 		DA620DF2209561710026E4A5 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		DA620DF4209589620026E4A5 /* ReferralViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReferralViewController.swift; sourceTree = "<group>"; };
+		DA647FE6216C34D200E50D3E /* TrackOrderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackOrderViewController.swift; sourceTree = "<group>"; };
 		DA6BE08E20F7A9AF007FA200 /* UserLoginStatus.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserLoginStatus.swift; path = Brewiskey/Utility/UserLoginStatus.swift; sourceTree = SOURCE_ROOT; };
 		DA6F829820BB8029005E7862 /* NewCreditCardTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewCreditCardTableViewController.swift; sourceTree = "<group>"; };
 		DA70A9E52089495F00D3F2C3 /* EditProfileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileTableViewController.swift; sourceTree = "<group>"; };
@@ -287,6 +289,7 @@
 				DAA9C49720C0E9320075F4B3 /* PastOrdersTableViewController.swift */,
 				DA6F829820BB8029005E7862 /* NewCreditCardTableViewController.swift */,
 				DAD934B920A2A5E400BA6FFD /* UpdateCreditCardViewController.swift */,
+				DA647FE6216C34D200E50D3E /* TrackOrderViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 				DA21EBB220DBF3DB004D4DEB /* DetailedSelectionViewController.swift in Sources */,
 				DAC462442091168500673189 /* BrewiskeyAnalytics.swift in Sources */,
 				DA56C62220A1599300DB38A4 /* PromoCodeViewController.swift in Sources */,
+				DA647FE7216C34D200E50D3E /* TrackOrderViewController.swift in Sources */,
 				DA54B095213BBB520051C23E /* UpdateCartUtils.swift in Sources */,
 				DA2E85DF2043C62E0057C4C6 /* FirebaseAPI.swift in Sources */,
 				DA54E48E20F92285009BD9E1 /* MyAPIClient.swift in Sources */,

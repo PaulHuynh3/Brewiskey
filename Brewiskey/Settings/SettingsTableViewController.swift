@@ -69,6 +69,9 @@ class SettingsTableViewController: UITableViewController {
     fileprivate func navigateToPastOrders() {
         performSegue(withIdentifier: "pastOrdersSegue", sender: nil)
     }
+    fileprivate func navigateToTrackOrder() {
+        performSegue(withIdentifier: "trackOrderSegue", sender: nil)
+    }
     
     fileprivate func fetchUserObject() {
         if let uid = Auth.auth().currentUser?.uid {
@@ -101,6 +104,7 @@ class SettingsTableViewController: UITableViewController {
         let referFriend = "Refer a friend"
         let promoCode = "Promo Code"
         let pastOrders = "Past orders"
+        let trackOrder = "Track Order"
         let help = "Help"
         let privacy = "Privacy"
         let logout = "Log out"
@@ -122,10 +126,14 @@ class SettingsTableViewController: UITableViewController {
             imageLabelCell.middleLabel.text = pastOrders
             imageLabelCell.accessoryType = .disclosureIndicator
         } else if indexPath.row == 4 {
+            imageLabelCell.leftImage.image = UIImage(named: "trackIcon")
+            imageLabelCell.middleLabel.text = trackOrder
+            imageLabelCell.accessoryType = .none
+        } else if indexPath.row == 5 {
             imageLabelCell.leftImage.image = #imageLiteral(resourceName: "helplogo")
             imageLabelCell.middleLabel.text = help
             imageLabelCell.accessoryType = .none
-        } else if indexPath.row == 5 {
+        } else if indexPath.row == 6 {
             imageLabelCell.leftImage.image = #imageLiteral(resourceName: "privacy")
             imageLabelCell.middleLabel.text = privacy
             imageLabelCell.accessoryType = .none
@@ -146,9 +154,10 @@ class SettingsTableViewController: UITableViewController {
         case 1: navigateToReferFriend()
         case 2: navigateToPromoCode()
         case 3: navigateToPastOrders()
-        case 4: webPortalHelpPage()
-        case 5: webPortalPrivacyPage()
-        case 6: handleLogout()
+        case 4: navigateToTrackOrder()
+        case 5: webPortalHelpPage()
+        case 6: webPortalPrivacyPage()
+        case 7: handleLogout()
             
         default: print("default")
         }
