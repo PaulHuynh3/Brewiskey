@@ -42,6 +42,7 @@ class MarketViewController: UIViewController, UISearchControllerDelegate, UISear
         tableView.isScrollEnabled = true
         UserDefaults.standard.set(false, forKey: kUserInfo.kNewUser)
         setUpCurrentUser()
+        LocationManagerUtils.locationManager.requestAlwaysAuthorization()
     }
     
     fileprivate func setupUI() {

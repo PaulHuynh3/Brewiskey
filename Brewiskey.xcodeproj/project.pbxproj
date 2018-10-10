@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DA00DDB6216E463300F12F9C /* DeliveryAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA00DDB5216E463300F12F9C /* DeliveryAnnotation.swift */; };
+		DA00DDB8216E5AD600F12F9C /* LocationManagerUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA00DDB7216E5AD600F12F9C /* LocationManagerUtils.swift */; };
 		DA02ABF320EFE8BF0063C68A /* TableSectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA02ABF220EFE8BF0063C68A /* TableSectionHeader.swift */; };
 		DA02ABF520EFE8CB0063C68A /* TableSectionHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = DA02ABF420EFE8CB0063C68A /* TableSectionHeader.xib */; };
 		DA056E85203FC7A6007EECAE /* DataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA056E84203FC7A6007EECAE /* DataModel.swift */; };
@@ -84,6 +86,8 @@
 /* Begin PBXFileReference section */
 		6018CC304C6E50FF5E034F2A /* Pods_Brewiskey.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Brewiskey.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9331F07D589DD426C72146BB /* Pods-Brewiskey.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Brewiskey.release.xcconfig"; path = "Pods/Target Support Files/Pods-Brewiskey/Pods-Brewiskey.release.xcconfig"; sourceTree = "<group>"; };
+		DA00DDB5216E463300F12F9C /* DeliveryAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeliveryAnnotation.swift; sourceTree = "<group>"; };
+		DA00DDB7216E5AD600F12F9C /* LocationManagerUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerUtils.swift; sourceTree = "<group>"; };
 		DA02ABF220EFE8BF0063C68A /* TableSectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableSectionHeader.swift; sourceTree = "<group>"; };
 		DA02ABF420EFE8CB0063C68A /* TableSectionHeader.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TableSectionHeader.xib; sourceTree = "<group>"; };
 		DA056E84203FC7A6007EECAE /* DataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataModel.swift; sourceTree = "<group>"; };
@@ -190,6 +194,7 @@
 				DAB7630C20EB1419000736AA /* StoreReviewHelper.swift */,
 				DA54B094213BBB520051C23E /* UpdateCartUtils.swift */,
 				DA6BE08E20F7A9AF007FA200 /* UserLoginStatus.swift */,
+				DA00DDB7216E5AD600F12F9C /* LocationManagerUtils.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -290,6 +295,7 @@
 				DA6F829820BB8029005E7862 /* NewCreditCardTableViewController.swift */,
 				DAD934B920A2A5E400BA6FFD /* UpdateCreditCardViewController.swift */,
 				DA647FE6216C34D200E50D3E /* TrackOrderViewController.swift */,
+				DA00DDB5216E463300F12F9C /* DeliveryAnnotation.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -598,6 +604,7 @@
 				DA973B922107BD91008FB9B1 /* NetworkManager.swift in Sources */,
 				DA8D3D1820DEDAEB00682C8D /* CheckoutCell.swift in Sources */,
 				DAE16A052076A0B300B21D30 /* IntroductionScreenViewController.swift in Sources */,
+				DA00DDB6216E463300F12F9C /* DeliveryAnnotation.swift in Sources */,
 				DAB177B120421771009F0B45 /* MarketTableViewCell.swift in Sources */,
 				DA5EF4E020AA0C4A0070BD5D /* ImageLabelCell.swift in Sources */,
 				DA70A9E62089495F00D3F2C3 /* EditProfileTableViewController.swift in Sources */,
@@ -611,6 +618,7 @@
 				DA54E48C20F92285009BD9E1 /* CheckoutRowView.swift in Sources */,
 				DA056E85203FC7A6007EECAE /* DataModel.swift in Sources */,
 				DA8CA6F62108124000EDBC0D /* OfflineViewController.swift in Sources */,
+				DA00DDB8216E5AD600F12F9C /* LocationManagerUtils.swift in Sources */,
 				DA54E48F20F92285009BD9E1 /* SettingsViewController.swift in Sources */,
 				DA91AEBE20A8F2F500BEF84B /* LeftLabelCell.swift in Sources */,
 				DA8CA6F821081E5700EDBC0D /* MainTabBarViewController.swift in Sources */,
