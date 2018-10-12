@@ -18,6 +18,7 @@ class TrackOrderViewController: UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
+        LocationManagerUtils.locationManager.delegate = self
         checkUserLocationAccess()
         registerAnnotationView()
 //        addLocationAndZoomIn()
@@ -60,10 +61,12 @@ class TrackOrderViewController: UIViewController, CLLocationManagerDelegate {
     }
     
     fileprivate func zoomToCurrentLocation() {
-        let userCoordinate = CLLocationCoordinate2D(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
-        let span = MKCoordinateSpanMake(0.05, 0.05)
-        let region = MKCoordinateRegionMake(userCoordinate, span)
-        mapView.setRegion(region, animated: true)
+        if let coordinateLatitude = locationManager.location?.coordinate.latitude, let coordinateLongtitude = locationManager.location?.coordinate.longitude {
+            let userCoordinate = CLLocationCoordinate2D(latitude: coordinateLatitude, longitude: coordinateLongtitude)
+            let span = MKCoordinateSpanMake(0.05, 0.05)
+            let region = MKCoordinateRegionMake(userCoordinate, span)
+            mapView.setRegion(region, animated: true)
+        }
     }
     
     fileprivate func addLocationAndZoomIn() {
