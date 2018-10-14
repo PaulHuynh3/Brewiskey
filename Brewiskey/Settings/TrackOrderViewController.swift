@@ -21,7 +21,7 @@ class TrackOrderViewController: UIViewController, CLLocationManagerDelegate {
         LocationManagerUtils.locationManager.delegate = self
         checkUserLocationAccess()
         registerAnnotationView()
-//        addLocationAndZoomIn()
+        addBrewiskeyLocations()
     }
     
     fileprivate func checkUserLocationAccess() {
@@ -57,7 +57,6 @@ class TrackOrderViewController: UIViewController, CLLocationManagerDelegate {
     
     fileprivate func registerAnnotationView() {
         mapView.register(MKMarkerAnnotationView.self, forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-
     }
     
     fileprivate func zoomToCurrentLocation() {
@@ -69,11 +68,13 @@ class TrackOrderViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    fileprivate func addLocationAndZoomIn() {
-        let mitCoordinate = CLLocationCoordinate2D(latitude: 42.3601, longitude: -71.0942)
-        let mitAnnotation = DeliveryAnnotation(coordinate: mitCoordinate, title: "The Harvard school", subTitle: "This is where it should be")
-        mapView.addAnnotation(mitAnnotation)
-        mapView.setRegion(mitAnnotation.region, animated: true)
+    fileprivate func addBrewiskeyLocations() {
+        let brewiskeyHQCoordinate = CLLocationCoordinate2D(latitude: 43.6594, longitude: -79.3884)
+        let brewiskeyOtherCoordinate = CLLocationCoordinate2D(latitude: 43.6779, longitude: -79.3326)
+        let brewiskeyHeadQuerter = DeliveryAnnotation(coordinate: brewiskeyHQCoordinate, title: "Brewiskey HQ", subTitle: "Relax..We've got you covered")
+        let otherBrewiskeyLocatiionAnnotation = DeliveryAnnotation(coordinate: brewiskeyOtherCoordinate, title: "Brewiskey F1", subTitle: "Relax..We've got you covered")
+        mapView.addAnnotation(brewiskeyHeadQuerter)
+        mapView.addAnnotation(otherBrewiskeyLocatiionAnnotation)
     }
     
 }

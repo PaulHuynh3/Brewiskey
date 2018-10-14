@@ -24,8 +24,8 @@ class CheckoutTableViewController: UITableViewController, RefreshCheckoutTableDe
     func showConfirmationPurchased(title: String, message: String) {
         
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let okAction = UIAlertAction(title: UIAlertConstants.actionOk, style: .default) { (_) in
-                StoreReviewHelper.checkAndAskForReview()
+        let okAction = UIAlertAction(title: "Track Order!", style: .default) { (_) in
+            self.navigateToTrackOrder()
             }
         alertController.addAction(okAction)
         present(alertController, animated: true)
@@ -44,6 +44,15 @@ class CheckoutTableViewController: UITableViewController, RefreshCheckoutTableDe
         self.tableView.tableFooterView = UIView()
         registerHeaderNib()
         
+    }
+    
+    fileprivate func navigateToTrackOrder() {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let trackOrderViewController = storyboard.instantiateViewController(withIdentifier: "TrackOrderViewController")
+        
+        present(trackOrderViewController, animated: true) {
+            StoreReviewHelper.checkAndAskForReview()
+        }
     }
     
     fileprivate func fetchCartItems() {
