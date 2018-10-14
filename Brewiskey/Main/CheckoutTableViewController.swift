@@ -48,12 +48,11 @@ class CheckoutTableViewController: UITableViewController, RefreshCheckoutTableDe
     
     fileprivate func navigateToTrackOrder() {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let trackOrderViewController = storyboard.instantiateViewController(withIdentifier: "TrackOrderViewController")
-        
-        present(trackOrderViewController, animated: true) {
-            StoreReviewHelper.checkAndAskForReview()
-        }
+        let trackOrderViewController = storyboard.instantiateViewController(withIdentifier: "TrackOrderViewController") as! TrackOrderViewController
+        trackOrderViewController.shouldShowReview = true
+        self.navigationController?.pushViewController(trackOrderViewController, animated: true)
     }
+    
     
     fileprivate func fetchCartItems() {
         FirebaseAPI().fetchItemsInCart { [weak self] (checkoutItem: CheckoutItem?, error: String?) in

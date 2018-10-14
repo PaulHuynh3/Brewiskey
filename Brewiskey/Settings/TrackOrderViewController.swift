@@ -14,6 +14,7 @@ class TrackOrderViewController: UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
+    var shouldShowReview = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +23,13 @@ class TrackOrderViewController: UIViewController, CLLocationManagerDelegate {
         checkUserLocationAccess()
         registerAnnotationView()
         addBrewiskeyLocations()
+        
+        if shouldShowReview {
+            StoreReviewHelper.checkAndAskForReview()
+            shouldShowReview = false
+        }
     }
-    
+
     fileprivate func checkUserLocationAccess() {
         if CLLocationManager.locationServicesEnabled() {
             switch CLLocationManager.authorizationStatus() {
@@ -70,7 +76,7 @@ class TrackOrderViewController: UIViewController, CLLocationManagerDelegate {
     
     fileprivate func addBrewiskeyLocations() {
         let brewiskeyHQCoordinate = CLLocationCoordinate2D(latitude: 43.6594, longitude: -79.3884)
-        let brewiskeyOtherCoordinate = CLLocationCoordinate2D(latitude: 43.6779, longitude: -79.3326)
+        let brewiskeyOtherCoordinate = CLLocationCoordinate2D(latitude: 43.6779, longitude: -79.3583)
         let brewiskeyHeadQuerter = DeliveryAnnotation(coordinate: brewiskeyHQCoordinate, title: "Brewiskey HQ", subTitle: "Relax..We've got you covered")
         let otherBrewiskeyLocatiionAnnotation = DeliveryAnnotation(coordinate: brewiskeyOtherCoordinate, title: "Brewiskey F1", subTitle: "Relax..We've got you covered")
         mapView.addAnnotation(brewiskeyHeadQuerter)
