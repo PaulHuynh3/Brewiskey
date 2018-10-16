@@ -10,26 +10,59 @@ import UIKit
 import CoreLocation
 import MapKit
 
-class TrackOrderViewController: UIViewController, CLLocationManagerDelegate {
+class TrackOrderViewController: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     
     @IBOutlet weak var mapView: MKMapView!
     let locationManager = CLLocationManager()
     var shouldShowReview = false
-    
+    let brewiskeyHQCoordinate = CLLocationCoordinate2D(latitude: 43.6594, longitude: -79.3884)
+    let brewiskeyOtherCoordinate = CLLocationCoordinate2D(latitude: 43.6779, longitude: -79.3583)
     override func viewDidLoad() {
         super.viewDidLoad()
         locationManager.delegate = self
-        LocationManagerUtils.locationManager.delegate = self
+        mapView.delegate = self
         checkUserLocationAccess()
         registerAnnotationView()
-        addBrewiskeyLocations()
-        
+        addBrewiskeyAnnotations()
+        createDirectionToDestintation()
         if shouldShowReview {
             StoreReviewHelper.checkAndAskForReview()
             shouldShowReview = false
         }
     }
-
+    
+    fileprivate func createDirectionToDestintation() {
+        let destCoordinates = brewiskeyOtherCoordinate
+        
+        guard let sourceCoordinates = locationManager.location?.coordinate else {
+            return
+        }
+        let sourcePlacemark = MKPlacemark(coordinate: sourceCoordinates)
+        let destPlacemark = MKPlacemark(coordinate: destCoordinates)
+        
+        let sourceItem = MKMapItem(placemark: sourcePlacemark)
+        let destItem = MKMapItem(placemark: destPlacemark)
+        
+        let directionRequest = MKDirectionsRequest()
+        directionRequest.source = sourceItem
+        directionRequest.destination = destItem
+        directionRequest.transportType = .walking
+        
+        let directions = MKDirections(request: directionRequest)
+        directions.calculate { (response: MKDirections.Response?, error: Error?) in
+            if let error = error {
+                print(error.localizedDescription)
+            }
+            
+            let route = response?.routes[0]
+            guard let directionRoute = route?.polyline else {return}
+            self.mapView.add(directionRoute, level: .aboveRoads)
+            
+            guard let rect = route?.polyline.boundingMapRect else {return}
+            self.mapView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
+        }
+    }
+    
     fileprivate func checkUserLocationAccess() {
         if CLLocationManager.locationServicesEnabled() {
             switch CLLocationManager.authorizationStatus() {
@@ -39,8 +72,8 @@ class TrackOrderViewController: UIViewController, CLLocationManagerDelegate {
             case .authorizedAlways, .authorizedWhenInUse:
                 print("Access")
                 locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters
-                locationManager.requestLocation()
-                zoomToCurrentLocation()
+                locationManager.startUpdatingLocation()
+//                zoomToCurrentLocation()
             }
         } else {
             print("Location services are not enabled")
@@ -74,18 +107,14 @@ class TrackOrderViewController: UIViewController, CLLocationManagerDelegate {
         }
     }
     
-    fileprivate func addBrewiskeyLocations() {
-        let brewiskeyHQCoordinate = CLLocationCoordinate2D(latitude: 43.6594, longitude: -79.3884)
-        let brewiskeyOtherCoordinate = CLLocationCoordinate2D(latitude: 43.6779, longitude: -79.3583)
+    fileprivate func addBrewiskeyAnnotations() {
         let brewiskeyHeadQuerter = DeliveryAnnotation(coordinate: brewiskeyHQCoordinate, title: "Brewiskey HQ", subTitle: "Relax..We've got you covered")
         let otherBrewiskeyLocatiionAnnotation = DeliveryAnnotation(coordinate: brewiskeyOtherCoordinate, title: "Brewiskey F1", subTitle: "Relax..We've got you covered")
         mapView.addAnnotation(brewiskeyHeadQuerter)
         mapView.addAnnotation(otherBrewiskeyLocatiionAnnotation)
     }
     
-}
-
-extension TrackOrderViewController: MKMapViewDelegate {
+    //Mark MKMapViewDelegate
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         if let deliveryAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? MKMarkerAnnotationView {
             
@@ -98,6 +127,13 @@ extension TrackOrderViewController: MKMapViewDelegate {
         return nil
     }
     
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        //Shows the direction line on the map
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = UIColor.blue
+        renderer.lineWidth = 5.0
+        return renderer
+    }
 }
 
 extension TrackOrderViewController {

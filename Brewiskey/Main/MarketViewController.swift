@@ -8,9 +8,10 @@
 
 import UIKit
 import Firebase
+import CoreLocation
 
-class MarketViewController: UIViewController, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
-    
+class MarketViewController: UIViewController, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate, CLLocationManagerDelegate {
+    let locationManager = CLLocationManager()
     var uid: String?
     var beers = Array<Beer>()
     var wines = Array<Wine>()
@@ -42,7 +43,7 @@ class MarketViewController: UIViewController, UISearchControllerDelegate, UISear
         tableView.isScrollEnabled = true
         UserDefaults.standard.set(false, forKey: kUserInfo.kNewUser)
         setUpCurrentUser()
-        LocationManagerUtils.locationManager.requestAlwaysAuthorization()
+        locationManager.requestAlwaysAuthorization()
     }
     
     fileprivate func setupUI() {
