@@ -46,6 +46,11 @@ class MarketViewController: UIViewController, UISearchControllerDelegate, UISear
         locationManager.requestAlwaysAuthorization()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        animateTable()
+    }
+    
     fileprivate func setupUI() {
         tableView.tableFooterView = UIView()
         searchController = UISearchController(searchResultsController:  nil)
@@ -110,28 +115,28 @@ class MarketViewController: UIViewController, UISearchControllerDelegate, UISear
         highlightSelectedButton(buttonNumber: 0)
             let mode = "Beer"
             configureMode(mode: mode)
-            tableView.reloadData()
+            animateTable()
     }
     
     @IBAction func spiritsOptionTapped(_ sender: Any) {
         highlightSelectedButton(buttonNumber: 1)
             let mode = "Spirits"
             configureMode(mode: mode)
-            tableView.reloadData()
+            animateTable()
     }
     
     @IBAction func wineOptionTapped(_ sender: Any) {
         highlightSelectedButton(buttonNumber: 2)
             let mode = "Wine"
             configureMode(mode: mode)
-            tableView.reloadData()
+            animateTable()
     }
     
     @IBAction func snacksOptionTapped(_ sender: Any) {
         highlightSelectedButton(buttonNumber: 3)
         let mode = "Snack"
             configureMode(mode: mode)
-            tableView.reloadData()
+            animateTable()
     }
 
     func updateSearchResults(for searchController: UISearchController) {
@@ -359,6 +364,23 @@ extension MarketViewController: UITableViewDataSource, UITableViewDelegate {
             let snack = sender as? Snacks
             detailedTableView?.snack = snack
             detailedTableView?.isSnackMode = true
+        }
+    }
+    
+    fileprivate func animateTable() {
+        tableView.reloadData()
+        let cells = tableView.visibleCells
+        let tableViewHeight = tableView.bounds.height
+        
+        for cell in cells {
+            cell.transform = CGAffineTransform(translationX: 0, y: tableViewHeight)
+        }
+        var delayCounter = 0.0
+        for cell in cells {
+            UIView.animate(withDuration: 1.75, delay: delayCounter * 0.05 , usingSpringWithDamping: 0.8, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
+                cell.transform = CGAffineTransform.identity
+            }, completion: nil)
+        delayCounter += 1
         }
     }
 }
