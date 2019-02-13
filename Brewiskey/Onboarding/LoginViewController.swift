@@ -47,24 +47,25 @@ class LoginViewController: UIViewController {
         
         if let email = emailTextField.text, let password = passwordTextfield.text{
             Auth.auth().signIn(withEmail: email, password: password, completion: { (authDataResult, error) in
-
-                if let authDataResult = authDataResult {
-                    let userDefault = UserDefaults.standard
-                    userDefault.set(true, forKey: kUserInfo.kLoginStatus)
-                    userDefault.set(authDataResult.user.uid, forKey: kUserInfo.kUserId)
-                    userDefault.set(false, forKey: kUserInfo.kNewUser)
-                    userDefault.set(email, forKey: kUserInfo.kEmail)
-                    userDefault.set(false, forKey: kUserInfo.kIsAnonymousUser)
-                    
-                    BrewiskeyAnalytics().track(event: .loginWithEmail)
-                    self.navigateToMarketPlace()
-                    
-                } else {
-                    let errorMessage = "Username or password is incorrect"
-                    self.onboardingCheckUtils?.displayError(errorMessage)
-                    return
-                }
-                
+                StripeAPI().createCustomer(email: email, completion: { (stripeId: String?, error: String?) in
+                    if let authDataResult = authDataResult {
+                        let userDefault = UserDefaults.standard
+                        userDefault.set(true, forKey: kUserInfo.kLoginStatus)
+                        userDefault.set(authDataResult.user.uid, forKey: kUserInfo.kUserId)
+                        userDefault.set(stripeId, forKey: kUserInfo.kStripeId)
+                        userDefault.set(false, forKey: kUserInfo.kNewUser)
+                        userDefault.set(email, forKey: kUserInfo.kEmail)
+                        userDefault.set(false, forKey: kUserInfo.kIsAnonymousUser)
+                        
+                        BrewiskeyAnalytics().track(event: .loginWithEmail)
+                        self.navigateToMarketPlace()
+                        
+                    } else {
+                        let errorMessage = "Username or password is incorrect"
+                        self.onboardingCheckUtils?.displayError(errorMessage)
+                        return
+                    }
+                })
             })
             
         }

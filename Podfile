@@ -11,7 +11,7 @@ target 'Brewiskey' do
     pod 'FBSDKCoreKit'
     pod 'FBSDKShareKit'
     pod 'FBSDKLoginKit'
-    pod 'Stripe'
+    pod 'Stripe', '~> 13.0.3'
     pod 'Alamofire'
     pod 'ReachabilitySwift'
     pod 'IQKeyboardManagerSwift'

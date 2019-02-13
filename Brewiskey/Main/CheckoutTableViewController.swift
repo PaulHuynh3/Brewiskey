@@ -187,7 +187,7 @@ extension CheckoutTableViewController {
         return 45
     }
     
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             guard let orderUuid = cartItems[indexPath.row].orderId else {return}
             guard let uid = Auth.auth().currentUser?.uid else {return}

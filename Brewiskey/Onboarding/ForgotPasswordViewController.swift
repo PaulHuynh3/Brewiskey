@@ -45,7 +45,7 @@ class ForgotPasswordViewController: UIViewController {
         }
         let activityIndicator = UIActivityIndicatorView()
         activityIndicator.hidesWhenStopped = true
-        activityIndicator.activityIndicatorViewStyle = .gray
+        activityIndicator.style = .gray
         view.addSubview(activityIndicator)
         activityIndicator.startAnimating()
         

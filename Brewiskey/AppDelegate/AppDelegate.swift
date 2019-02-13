@@ -17,7 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
         FirebaseApp.configure()
         StoreReviewHelper.shouldAllowPromptInAppReview()
@@ -34,33 +34,39 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         StoreReviewHelper.shouldAllowPromptInAppReview()
     }
     
-    func application(_ app: UIApplication, open url: URL, options: [UIApplicationOpenURLOptionsKey : Any] = [:]) -> Bool {
-        var handled = false
-        let sourceApplication = options[UIApplicationOpenURLOptionsKey.sourceApplication] as? String
-        let annotation = options[UIApplicationOpenURLOptionsKey.annotation]
-        handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url,sourceApplication:sourceApplication , annotation: annotation)
-        //finish this function to detect stripe etc...
-        let stripeHandled = Stripe.handleURLCallback(with: url)
-        if stripeHandled {
+    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+        if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: url) {
+            if let dynamicLinkUrl = dynamicLink.url {
+                self.handleDeepLink(url: dynamicLinkUrl)
+            }
             return true
         } else {
-            //this was not a stripe url
+            let sourceApplication = options[.sourceApplication] as? String
+            let annotation = options[.annotation]
+            let handled = FBSDKApplicationDelegate.sharedInstance().application(app, open: url,sourceApplication:sourceApplication , annotation: annotation)
+            //finish this function to detect stripe etc...
+            let stripeHandled = Stripe.handleURLCallback(with: url)
+            if stripeHandled {
+                return true
+            } else {
+                //this was not a stripe url
+            }
+            
+            return handled
         }
-
-        return handled
     }
     
     func transitionToMarketPlace(){
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let tabController = mainStoryboard.instantiateViewController(withIdentifier: "MainTabBar") as! UITabBarController
-        UIView.transition(with: self.window!, duration: 0.5, options: UIViewAnimationOptions.transitionFlipFromRight, animations: {
+        UIView.transition(with: self.window!, duration: 0.5, options: UIView.AnimationOptions.transitionFlipFromRight, animations: {
             self.window?.rootViewController = tabController}, completion: nil)
         }
 
     func transitionToLogin(){
         let loginStoryboard = UIStoryboard(name: "Login", bundle: nil)
         let navController = loginStoryboard.instantiateViewController(withIdentifier: "IntroScreen")
-        UIView.transition(with: self.window!, duration: 0.5, options: UIViewAnimationOptions.transitionFlipFromLeft, animations: {
+        UIView.transition(with: self.window!, duration: 0.5, options: UIView.AnimationOptions.transitionFlipFromLeft, animations: {
         self.window?.rootViewController = navController
         }, completion: nil)
         

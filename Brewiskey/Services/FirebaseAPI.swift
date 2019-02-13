@@ -91,23 +91,23 @@ class FirebaseAPI: NSObject {
                 if let singleCan = dictionary[singleCan] as? NSDictionary{
                     beer.singleCanPrice = singleCan[price] as? Double
                     beer.singleCanContent = singleCan[content] as? Int
-                    beer.singleCanImageUrl = singleCan[imageUrl] as? String
+                    beer.singleCanImageUrlString = singleCan[imageUrl] as? String
                     beer.singleCanType = singleCan[type] as? String
                 }
                 if let singleBottle = dictionary[singleBottle] as? NSDictionary{
                     beer.singleBottlePrice = singleBottle[price] as? Double
                     beer.singleBottleContent = singleBottle[content] as? Int
-                    beer.singleBottleImageUrl = singleBottle[imageUrl] as? String
+                    beer.singleBottleImageUrlString = singleBottle[imageUrl] as? String
                     beer.singleBottleType = singleBottle[type] as? String
                 }
                 if let sixPackCan = dictionary[sixPackCan] as? NSDictionary{
                     beer.sixPackCanPrice = sixPackCan[price] as? Double
-                    beer.sixPackCanImageUrl = sixPackCan[imageUrl] as? String
+                    beer.sixPackCanImageUrlString = sixPackCan[imageUrl] as? String
                     beer.sixPackCanType = sixPackCan[type] as? String
                 }
                 if let sixPackBottle = dictionary[sixPackBottle] as? NSDictionary{
                     beer.sixPackBottlePrice = sixPackBottle[price] as? Double
-                    beer.sixPackBottleImageUrl = sixPackBottle[imageUrl] as? String
+                    beer.sixPackBottleImageUrlString = sixPackBottle[imageUrl] as? String
                     beer.sixPackBottleType = sixPackBottle[type] as? String
                 }
                 DispatchQueue.main.async {

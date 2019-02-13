@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -1110,13 +1110,6 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfileDefault" translatesAutoresizingMaskIntoConstraints="NO" id="qLx-7c-5Sh">
-                                                    <rect key="frame" x="150" y="16" width="75" height="72"/>
-                                                    <gestureRecognizers/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="72" id="JUE-dV-5Yb"/>
-                                                    </constraints>
-                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Age" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7eD-Of-ozJ">
                                                     <rect key="frame" x="279" y="15" width="80" height="21"/>
                                                     <constraints>
@@ -1135,6 +1128,14 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ProfileDefault" translatesAutoresizingMaskIntoConstraints="NO" id="qLx-7c-5Sh">
+                                                    <rect key="frame" x="151.5" y="16" width="72" height="72"/>
+                                                    <gestureRecognizers/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="72" id="JUE-dV-5Yb"/>
+                                                        <constraint firstAttribute="width" constant="72" id="oFa-vn-Stc"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <gestureRecognizers/>
                                             <constraints>
@@ -1142,9 +1143,7 @@
                                                 <constraint firstItem="Wvk-Mw-ISb" firstAttribute="leading" secondItem="CeY-Be-fbi" secondAttribute="leading" id="Hqi-ee-24i"/>
                                                 <constraint firstItem="7eD-Of-ozJ" firstAttribute="top" secondItem="CeY-Be-fbi" secondAttribute="top" constant="15" id="J45-Uy-eIy"/>
                                                 <constraint firstItem="nHV-YW-XhZ" firstAttribute="top" secondItem="Wvk-Mw-ISb" secondAttribute="bottom" constant="1" id="LuO-Gp-qhW"/>
-                                                <constraint firstItem="qLx-7c-5Sh" firstAttribute="leading" secondItem="sCp-d5-7Pf" secondAttribute="trailing" constant="3" id="OfH-9a-DNp"/>
                                                 <constraint firstItem="sCp-d5-7Pf" firstAttribute="top" secondItem="nHV-YW-XhZ" secondAttribute="bottom" constant="6" id="Qof-qa-da7"/>
-                                                <constraint firstItem="qLx-7c-5Sh" firstAttribute="leading" secondItem="Wvk-Mw-ISb" secondAttribute="trailing" constant="3" id="SQV-GG-IQK"/>
                                                 <constraint firstItem="sCp-d5-7Pf" firstAttribute="width" secondItem="Wvk-Mw-ISb" secondAttribute="width" id="TMj-Dl-qRj"/>
                                                 <constraint firstAttribute="trailing" secondItem="7eD-Of-ozJ" secondAttribute="trailing" constant="16" id="YgI-AX-1yC"/>
                                                 <constraint firstItem="baL-Yu-qoK" firstAttribute="leading" secondItem="CeY-Be-fbi" secondAttribute="leading" constant="-2" id="ZEn-Er-SX7"/>
@@ -1400,7 +1399,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zC2-np-vjf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1609" y="796"/>
+            <point key="canvasLocation" x="1608.8" y="795.6521739130435"/>
         </scene>
         <!--Detailed View Controller-->
         <scene sceneID="oi8-2e-6jk">

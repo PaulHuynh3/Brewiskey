@@ -16,14 +16,14 @@ class UpdateCartUtils {
     }
     
     func updateItemsForCart(items: Int) {
-        let tabBarController = UpdateCartUtils.getAppDelegateInstance().window?.rootViewController?.childViewControllers.last?.tabBarController
+        let tabBarController = UpdateCartUtils.getAppDelegateInstance().window?.rootViewController?.children.last?.tabBarController
         guard let tabBarItem = tabBarController?.tabBar.items![1] else {return}
         tabBarItem.badgeColor = UIColor(red:0.36, green:0.36, blue:0.36, alpha:1)
         tabBarItem.badgeValue = String(items)
     }
     
     func deleteCartItems() {
-        let tabBarController = UpdateCartUtils.getAppDelegateInstance().window?.rootViewController?.childViewControllers.last?.tabBarController
+        let tabBarController = UpdateCartUtils.getAppDelegateInstance().window?.rootViewController?.children.last?.tabBarController
         guard let tabBarItem = tabBarController?.tabBar.items![1] else {return}
         tabBarItem.badgeValue = nil
     }

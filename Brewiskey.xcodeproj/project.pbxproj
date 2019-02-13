@@ -71,6 +71,7 @@
 		DAD28C6820859E8100D5037D /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD28C6720859E8100D5037D /* SettingsTableViewController.swift */; };
 		DAD934BA20A2A5E400BA6FFD /* UpdateCreditCardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD934B920A2A5E400BA6FFD /* UpdateCreditCardViewController.swift */; };
 		DAD934BD20A2A80900BA6FFD /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD934BC20A2A80900BA6FFD /* PaymentViewController.swift */; };
+		DAD9C3192214A0B400CC1455 /* NetworkRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAD9C3182214A0B400CC1455 /* NetworkRequest.swift */; };
 		DADC7B75203E17E100F87438 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DADC7B74203E17E100F87438 /* Login.storyboard */; };
 		DADC7B77203E6A4900F87438 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DADC7B76203E6A4900F87438 /* RegisterViewController.swift */; };
 		DAE169FD20769AE200B21D30 /* OnboardingView0.xib in Resources */ = {isa = PBXBuildFile; fileRef = DAE169FC20769AE200B21D30 /* OnboardingView0.xib */; };
@@ -152,6 +153,7 @@
 		DAD28C6720859E8100D5037D /* SettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		DAD934B920A2A5E400BA6FFD /* UpdateCreditCardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateCreditCardViewController.swift; sourceTree = "<group>"; };
 		DAD934BC20A2A80900BA6FFD /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		DAD9C3182214A0B400CC1455 /* NetworkRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRequest.swift; sourceTree = "<group>"; };
 		DADC7B74203E17E100F87438 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		DADC7B76203E6A4900F87438 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		DAE169FC20769AE200B21D30 /* OnboardingView0.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnboardingView0.xib; sourceTree = "<group>"; };
@@ -321,6 +323,7 @@
 				DA5F352B2077C46100A64FA0 /* FacebookAPI.swift */,
 				DA4A8E1020FE3E3C00974268 /* StripeAPI.swift */,
 				DA973B912107BD91008FB9B1 /* NetworkManager.swift */,
+				DAD9C3182214A0B400CC1455 /* NetworkRequest.swift */,
 				DA54E48120F92213009BD9E1 /* Stripe */,
 			);
 			path = Services;
@@ -623,6 +626,7 @@
 				DAD934BD20A2A80900BA6FFD /* PaymentViewController.swift in Sources */,
 				DA54E48D20F92285009BD9E1 /* Buttons.swift in Sources */,
 				DA2E85E22043C8110057C4C6 /* Extensions.swift in Sources */,
+				DAD9C3192214A0B400CC1455 /* NetworkRequest.swift in Sources */,
 				DA056E88203FC982007EECAE /* ForgotPasswordViewController.swift in Sources */,
 				DA5F3530207825D400A64FA0 /* EmailSentViewController.swift in Sources */,
 				DAD934BA20A2A5E400BA6FFD /* UpdateCreditCardViewController.swift in Sources */,

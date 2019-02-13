@@ -100,7 +100,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/Services/FirebaseAPI.swift"
-            timestampString = "557566171.643263"
+            timestampString = "571780056.723688"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
@@ -116,7 +116,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/Main/CheckoutTableViewController.swift"
-            timestampString = "561351337.591766"
+            timestampString = "571780056.72377"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "101"
@@ -132,7 +132,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/Main/CheckoutTableViewController.swift"
-            timestampString = "561351337.591836"
+            timestampString = "571780056.723824"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "96"
@@ -148,7 +148,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/Services/Stripe/CheckoutViewController.swift"
-            timestampString = "554099662.123958"
+            timestampString = "571780056.723875"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "262"
@@ -276,7 +276,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/AppDelegate/AppDelegate.swift"
-            timestampString = "561232941.596419"
+            timestampString = "571780056.724084"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "114"
@@ -292,7 +292,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/AppDelegate/AppDelegate.swift"
-            timestampString = "561232941.596471"
+            timestampString = "571780056.7241319"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "90"
@@ -318,11 +318,11 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/Main/CheckoutTableViewController.swift"
-            timestampString = "561351337.592012"
+            timestampString = "571780056.724203"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "52"
@@ -338,7 +338,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/Settings/TrackOrderViewController.swift"
-            timestampString = "561352313.7491699"
+            timestampString = "571780056.72425"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "103"
@@ -354,12 +354,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Brewiskey/Main/MarketViewController.swift"
-            timestampString = "561668678.033784"
+            timestampString = "571778739.2064"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "49"
             endingLineNumber = "49"
             landmarkName = "viewDidAppear(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Brewiskey/Onboarding/LoginViewController.swift"
+            timestampString = "571780056.7243201"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "56"
+            endingLineNumber = "56"
+            landmarkName = "signinButtonTapped(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Brewiskey/Settings/ProfileTableViewController.swift"
+            timestampString = "571780056.72437"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "36"
+            endingLineNumber = "36"
+            landmarkName = "setupUI()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

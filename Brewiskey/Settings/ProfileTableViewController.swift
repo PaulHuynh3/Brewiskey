@@ -33,6 +33,8 @@ class ProfileTableViewController: UITableViewController {
 //        view.backgroundColor = UIColor.brewiskeyColours.lightGray
         tableView.isScrollEnabled = false
         self.tableView.tableFooterView = UIView()
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.width/2
+        profileImageView.clipsToBounds = true
     }
 
     fileprivate func layoutUserProfile(){
@@ -43,7 +45,16 @@ class ProfileTableViewController: UITableViewController {
             lastNameLabel.text = lastName
         }
         if let profileImageUrl = user.profileImageUrl {
-            profileImageView.loadImagesUsingCacheWithUrlString(urlString: profileImageUrl)
+            NetworkRequest().loadImageFromUrl(urlString: profileImageUrl) { [weak self] (downloadImage: UIImage?, error: String?) in
+                guard let strongSelf = self else {
+                    return
+                }
+                if let error = error {
+                    print(error)
+                    return
+                }
+                strongSelf.profileImageView.image = downloadImage
+            }
             profileImageView.layer.cornerRadius = profileImageView.frame.size.width/2
             profileImageView.clipsToBounds = true
         }

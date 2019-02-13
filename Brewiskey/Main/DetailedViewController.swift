@@ -18,7 +18,7 @@ class DetailedViewController: UIViewController {
     var wine: Wine?
     var spirit: Spirit?
     var snack: Snacks?
-    
+    private let networkRequest = NetworkRequest()
     fileprivate var headerLabel: UILabel!
     fileprivate var footerLabel: UILabel!
     @IBOutlet weak var alcoholNameLabel: UILabel!
@@ -51,24 +51,69 @@ class DetailedViewController: UIViewController {
     
     fileprivate func configureBeerMode() {
         alcoholNameLabel.text = beer?.name
-        if let selectionOneImage = beer?.singleBottleImageUrl {
-            selectionOneImageview.loadImagesUsingCacheWithUrlString(urlString: selectionOneImage)
+        if let selectionOneImage = beer?.singleBottleImageUrlString {
+            networkRequest.loadImageFromUrl(urlString: selectionOneImage) { [weak self] (downloadImage: UIImage?, error: String?) in
+                guard let strongSelf = self else {
+                    return
+                }
+                if let error = error {
+                    print(error)
+                    return
+                }
+                strongSelf.selectionOneImageview.image = downloadImage
+            }
         }
-        if let selectionTwoImage = beer?.singleCanImageUrl {
-            selectionTwoImageview.loadImagesUsingCacheWithUrlString(urlString: selectionTwoImage)
+        if let selectionTwoImage = beer?.singleCanImageUrlString {
+            networkRequest.loadImageFromUrl(urlString: selectionTwoImage) { [weak self] (downloadImage: UIImage?, error: String?) in
+                guard let strongSelf = self else {
+                    return
+                }
+                if let error = error {
+                    print(error)
+                    return
+                }
+                strongSelf.selectionTwoImageview.image = downloadImage
+            }
         }
-        if let selectionThreeImage = beer?.sixPackBottleImageUrl {
-            selectionThreeImageview.loadImagesUsingCacheWithUrlString(urlString: selectionThreeImage)
+        if let selectionThreeImage = beer?.sixPackBottleImageUrlString {
+            networkRequest.loadImageFromUrl(urlString: selectionThreeImage) { [weak self] (downloadImage: UIImage?, error: String?) in
+                guard let strongSelf = self else {
+                    return
+                }
+                if let error = error {
+                    print(error)
+                    return
+                }
+                strongSelf.selectionThreeImageview.image = downloadImage
+            }
         }
-        if let selectionFourImage = beer?.sixPackCanImageUrl {
-            selectionFourImageview.loadImagesUsingCacheWithUrlString(urlString: selectionFourImage)
+        if let selectionFourImage = beer?.sixPackCanImageUrlString {
+            networkRequest.loadImageFromUrl(urlString: selectionFourImage) { [weak self] (downloadImage: UIImage?, error: String?) in
+                guard let strongSelf = self else {
+                    return
+                }
+                if let error = error {
+                    print(error)
+                    return
+                }
+                strongSelf.selectionFourImageview.image = downloadImage
+            }
         }
     }
     
     fileprivate func configureWineMode() {
         alcoholNameLabel.text = wine?.name
         if let selectionOneImage = wine?.imageUrl {
-            selectionOneImageview.loadImagesUsingCacheWithUrlString(urlString: selectionOneImage)
+            networkRequest.loadImageFromUrl(urlString: selectionOneImage) { [weak self] (downloadImage: UIImage?, error: String?) in
+                guard let strongSelf = self else {
+                    return
+                }
+                if let error = error {
+                    print(error)
+                    return
+                }
+                strongSelf.selectionOneImageview.image = downloadImage
+            }
         }
         selectionTwoImageview.isHidden = true
         selectionThreeImageview.isHidden = true
@@ -78,13 +123,40 @@ class DetailedViewController: UIViewController {
     fileprivate func configureSpiritsMode() {
         alcoholNameLabel.text = spirit?.name
         if let selectionOneImage = spirit?.smallBottleImageUrl {
-            selectionOneImageview.loadImagesUsingCacheWithUrlString(urlString: selectionOneImage)
+            networkRequest.loadImageFromUrl(urlString: selectionOneImage) { [weak self] (downloadImage: UIImage?, error: String?) in
+                guard let strongSelf = self else {
+                    return
+                }
+                if let error = error {
+                    print(error)
+                    return
+                }
+                strongSelf.selectionOneImageview.image = downloadImage
+            }
         }
         if let selectionTwoImage = spirit?.mediumBottleImageUrl {
-            selectionTwoImageview.loadImagesUsingCacheWithUrlString(urlString: selectionTwoImage)
+            networkRequest.loadImageFromUrl(urlString: selectionTwoImage) { [weak self] (downloadImage: UIImage?, error: String?) in
+                guard let strongSelf = self else {
+                    return
+                }
+                if let error = error {
+                    print(error)
+                    return
+                }
+                strongSelf.selectionTwoImageview.image = downloadImage
+            }
         }
         if let selectionThreeImage = spirit?.largeBottleImageUrl {
-            selectionThreeImageview.loadImagesUsingCacheWithUrlString(urlString: selectionThreeImage)
+            networkRequest.loadImageFromUrl(urlString: selectionThreeImage) { [weak self] (downloadImage: UIImage?, error: String?) in
+                guard let strongSelf = self else {
+                    return
+                }
+                if let error = error {
+                    print(error)
+                    return
+                }
+                strongSelf.selectionThreeImageview.image = downloadImage
+            }
         }
         selectionFourImageview.isHidden = true
     }
@@ -92,7 +164,16 @@ class DetailedViewController: UIViewController {
     fileprivate func configureSnackMode() {
         alcoholNameLabel.text = snack?.name
         if let selectionOneImage = snack?.imageUrl {
-            selectionOneImageview.loadImagesUsingCacheWithUrlString(urlString: selectionOneImage)
+            networkRequest.loadImageFromUrl(urlString: selectionOneImage) { [weak self] (downloadImage: UIImage?, error: String?) in
+                guard let strongSelf = self else {
+                    return
+                }
+                if let error = error {
+                    print(error)
+                    return
+                }
+                strongSelf.selectionOneImageview.image = downloadImage
+            }
         }
         selectionTwoImageview.isHidden = true
         selectionThreeImageview.isHidden = true

@@ -62,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
 }
 
 + (NSString *)stp_cardErrorDeclinedUserMessage {
-    return STPLocalizedString(@"Your card was declined... This app is for testing only.", @"Error when the card was declined by the credit card networks");
+    return STPLocalizedString(@"Your card was declined", @"Error when the card was declined by the credit card networks");
 }
 
 + (NSString *)stp_unexpectedErrorMessage {

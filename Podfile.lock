@@ -104,7 +104,7 @@ DEPENDENCIES:
   - Firebase/Storage
   - IQKeyboardManagerSwift
   - ReachabilitySwift
-  - Stripe
+  - Stripe (~> 13.0.3)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -155,6 +155,6 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
   Stripe: 76c203e21555089b708e6cbe972a3e3baf1ab4d8
 
-PODFILE CHECKSUM: d6830da34a37e5c931f37370d577269cf0a08a54
+PODFILE CHECKSUM: 42abe3ad15da92af5afe7e47dcd10ca8c3e39d4c
 
 COCOAPODS: 1.5.3

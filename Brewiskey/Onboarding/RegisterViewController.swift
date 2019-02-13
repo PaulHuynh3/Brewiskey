@@ -97,7 +97,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
                     guard let profileImage = self.uploadPictureImageView.image else {return}
                     
                     //compresses the image
-                    if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {
+                    if let uploadData = profileImage.jpegData(compressionQuality: 0.1) {
                         storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                             
                             if let error = error {
@@ -184,7 +184,7 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
             guard let profileImage = self.uploadPictureImageView.image else {return}
             
             //compresses the image
-            if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {
+            if let uploadData = profileImage.jpegData(compressionQuality: 0.1) {
                 storageRef.putData(uploadData, metadata: nil, completion: { (metadata, error) in
                     
                     storageRef.downloadURL(completion: { (imageUrl, downloadError) in
@@ -274,13 +274,13 @@ class RegisterViewController: UIViewController, UITextFieldDelegate {
 extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBAction func uploadPhoto(_ sender: Any) {
-        let alert = UIAlertController(title: "Edit Profile Picture", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alert = UIAlertController(title: "Edit Profile Picture", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
         
-        let firstAction = UIAlertAction(title: "Take Photo", style: UIAlertActionStyle.default) { (actionOne) in
+        let firstAction = UIAlertAction(title: "Take Photo", style: UIAlertAction.Style.default) { (actionOne) in
             let imagePickerController = UIImagePickerController()
             
             if UIImagePickerController.isSourceTypeAvailable(.camera){
-                imagePickerController.sourceType = UIImagePickerControllerSourceType.camera
+                imagePickerController.sourceType = .camera
                 imagePickerController.allowsEditing = true
                 imagePickerController.delegate = self
                 self.present(imagePickerController, animated: true, completion: nil)
@@ -289,16 +289,16 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
             }
         }
         
-        let secondAction = UIAlertAction(title: "Choose photo from library", style: UIAlertActionStyle.default) { (actionTwo) in
+        let secondAction = UIAlertAction(title: "Choose photo from library", style: UIAlertAction.Style.default) { (actionTwo) in
             let imagePickerController = UIImagePickerController()
-            imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            imagePickerController.sourceType = .photoLibrary
             imagePickerController.allowsEditing = true
             imagePickerController.delegate = self
             self.present(imagePickerController, animated: true, completion: nil)
             
         }
         
-        let thirdAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel) { (cancel) in
+        let thirdAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel) { (cancel) in
             
         }
         
@@ -310,12 +310,12 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
         
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         var selectedImageFromPicker: UIImage?
         
-        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage{
+        if let editedImage = info[.editedImage] as? UIImage{
             selectedImageFromPicker = editedImage
-        } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+        } else if let originalImage = info[.originalImage] as? UIImage {
             selectedImageFromPicker = originalImage
         }
         
@@ -329,7 +329,6 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
             uploadPictureImageView.contentMode = .scaleToFill
         }
         dismiss(animated: true, completion: nil)
-        
     }
     
 }

@@ -68,45 +68,41 @@
         toolbar.items = @[flexibleItem, nextItem];
         _inputAccessoryToolbar = toolbar;
         
-//        NSString *countryCode = [[NSLocale autoupdatingCurrentLocale] objectForKey:NSLocaleCountryCode];
-//        NSString *countryCode = @"CA";
-//        NSMutableArray *otherCountryCodes = [[NSLocale ISOCountryCodes] mutableCopy];
-//        NSLocale *locale = [NSLocale currentLocale];
-//        [otherCountryCodes removeObject:countryCode];
-//        [otherCountryCodes sortUsingComparator:^NSComparisonResult(NSString *code1, NSString *code2) {
-//            NSString *localeID1 = [NSLocale localeIdentifierFromComponents:@{NSLocaleCountryCode: code1}];
-//            NSString *localeID2 = [NSLocale localeIdentifierFromComponents:@{NSLocaleCountryCode: code2}];
-//            NSString *name1 = [locale displayNameForKey:NSLocaleIdentifier value:localeID1];
-//            NSString *name2 = [locale displayNameForKey:NSLocaleIdentifier value:localeID2];
-//            return [name1 compare:name2];
-//        }];
-//        if (countryCode) {
-//           _countryCodes = [@[@"", countryCode] arrayByAddingObjectsFromArray:otherCountryCodes];
-//        }
-//        else {
-//           _countryCodes = [@[@""] arrayByAddingObjectsFromArray:otherCountryCodes];
-//        }
-//        UIPickerView *pickerView = [UIPickerView new];
-//        pickerView.dataSource = self;
-//        pickerView.delegate = self;
-//        _countryPickerView = pickerView;
-//
-//        _lastInList = lastInList;
+        NSString *countryCode = [[NSLocale autoupdatingCurrentLocale] objectForKey:NSLocaleCountryCode];
+        NSMutableArray *otherCountryCodes = [[NSLocale ISOCountryCodes] mutableCopy];
+        NSLocale *locale = [NSLocale currentLocale];
+        [otherCountryCodes removeObject:countryCode];
+        [otherCountryCodes sortUsingComparator:^NSComparisonResult(NSString *code1, NSString *code2) {
+            NSString *localeID1 = [NSLocale localeIdentifierFromComponents:@{NSLocaleCountryCode: code1}];
+            NSString *localeID2 = [NSLocale localeIdentifierFromComponents:@{NSLocaleCountryCode: code2}];
+            NSString *name1 = [locale displayNameForKey:NSLocaleIdentifier value:localeID1];
+            NSString *name2 = [locale displayNameForKey:NSLocaleIdentifier value:localeID2];
+            return [name1 compare:name2];
+        }];
+        if (countryCode) {
+           _countryCodes = [@[@"", countryCode] arrayByAddingObjectsFromArray:otherCountryCodes];
+        }
+        else {
+           _countryCodes = [@[@""] arrayByAddingObjectsFromArray:otherCountryCodes];
+        }
+        UIPickerView *pickerView = [UIPickerView new];
+        pickerView.dataSource = self;
+        pickerView.delegate = self;
+        _countryPickerView = pickerView;
+        
+        _lastInList = lastInList;
         _type = type;
         self.textField.text = contents;
 
-//        NSString *ourCountryCode = nil;
-//        if ([self.delegate respondsToSelector:@selector(addressFieldTableViewCountryCode)]) {
-//            ourCountryCode = self.delegate.addressFieldTableViewCountryCode;
-//        }
-//
-//        if (ourCountryCode == nil) {
-//            ourCountryCode = countryCode;
-//        }
-        self.ourCountryCode = @"CA";
+        NSString *ourCountryCode = nil;
+        if ([self.delegate respondsToSelector:@selector(addressFieldTableViewCountryCode)]) {
+            ourCountryCode = self.delegate.addressFieldTableViewCountryCode;
+        }
         
-        [self delegateCountryCodeDidChange: @"CA"];
-        
+        if (ourCountryCode == nil) {
+            ourCountryCode = countryCode;
+        }
+        [self delegateCountryCodeDidChange:ourCountryCode];
         [self updateAppearance];
     }
     return self;
@@ -154,15 +150,12 @@
             if (@available(iOS 10.0, *)) {
                 self.textField.textContentType = UITextContentTypeAddressCity;
             }
-//            self.textField.userInteractionEnabled = false;
             break;
         case STPAddressFieldTypeState:
             self.textField.keyboardType = UIKeyboardTypeDefault;
             if (@available(iOS 10.0, *)) {
                 self.textField.textContentType = UITextContentTypeAddressState;
             }
-            self.textField.text = @"ON";
-            self.textField.userInteractionEnabled = false;
             break;
         case STPAddressFieldTypeZip:
             if ([self countryCodeIsUnitedStates]) { 
@@ -185,18 +178,16 @@
         case STPAddressFieldTypeCountry:
             self.textField.keyboardType = UIKeyboardTypeDefault;
             // Don't set textContentType for Country, because we don't want iOS to skip the UIPickerView for input
-            self.textField.text = @"Canada";
-            self.textField.userInteractionEnabled = false;
-//            self.textField.inputView = self.countryPickerView;
-//            NSInteger index = [self.countryCodes indexOfObject:self.contents];
-//            if (index == NSNotFound) {
-//                self.textField.text = @"";
-//            }
-//            else {
-//                [self.countryPickerView selectRow:index inComponent:0 animated:NO];
-//                self.textField.text = [self pickerView:self.countryPickerView titleForRow:index forComponent:0];
-//            }
-//            self.textField.validText = [self validContents];
+            self.textField.inputView = self.countryPickerView;
+            NSInteger index = [self.countryCodes indexOfObject:self.contents];
+            if (index == NSNotFound) {
+                self.textField.text = @"";
+            }
+            else {
+                [self.countryPickerView selectRow:index inComponent:0 animated:NO];
+                self.textField.text = [self pickerView:self.countryPickerView titleForRow:index forComponent:0];
+            }
+            self.textField.validText = [self validContents];
             break;
         case STPAddressFieldTypePhone:
             self.textField.keyboardType = UIKeyboardTypePhonePad;

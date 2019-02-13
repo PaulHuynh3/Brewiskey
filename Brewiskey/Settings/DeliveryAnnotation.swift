@@ -23,7 +23,7 @@ class DeliveryAnnotation: NSObject, MKAnnotation {
     }
     
     var region : MKCoordinateRegion {
-        let span = MKCoordinateSpanMake(0.05, 0.05)
-        return MKCoordinateRegionMake(coordinate, span)
+        let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        return MKCoordinateRegion(center: coordinate, span: span)
     }
 }

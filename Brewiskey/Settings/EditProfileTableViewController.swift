@@ -82,7 +82,16 @@ class EditProfileTableViewController: UITableViewController {
             lastNameTextfield.text = lastName
         }
         if let profileImageUrl = user.profileImageUrl {
-            profileImageView.loadImagesUsingCacheWithUrlString(urlString: profileImageUrl)
+            NetworkRequest().loadImageFromUrl(urlString: profileImageUrl) { [weak self] (downloadImage: UIImage?, error: String?) in
+                guard let strongSelf = self else {
+                    return
+                }
+                if let error = error {
+                    print(error)
+                    return
+                }
+                strongSelf.profileImageView.image = downloadImage
+            }
             profileImageView.layer.cornerRadius = profileImageView.frame.size.width/2
             profileImageView.clipsToBounds = true
         }
@@ -149,7 +158,7 @@ class EditProfileTableViewController: UITableViewController {
             guard let profileImage = self.profileImageView.image else {return}
             
             //compresses the image
-            if let uploadData = UIImageJPEGRepresentation(profileImage, 0.1) {
+            if let uploadData = profileImage.jpegData(compressionQuality: 0.1) {
                     storageRef.putData(uploadData, metadata: nil, completion: {[weak self] (metadata, putError) in
                         storageRef.downloadURL { (imageUrl, imageError) in
                         guard let strongSelf = self else {return}
@@ -247,13 +256,13 @@ extension EditProfileTableViewController: UIImagePickerControllerDelegate, UINav
     
     @objc func profileImageTapped(_ sender: Any) {
         showSaveButton()
-        let alert = UIAlertController(title: "Edit Profile Picture", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+        let alert = UIAlertController(title: "Edit Profile Picture", message: nil, preferredStyle: .actionSheet)
         
-        let firstAction = UIAlertAction(title: "Take Photo", style: UIAlertActionStyle.default) { (actionOne) in
+        let firstAction = UIAlertAction(title: "Take Photo", style: UIAlertAction.Style.default) { (actionOne) in
             let imagePickerController = UIImagePickerController()
             
             if UIImagePickerController.isSourceTypeAvailable(.camera){
-                imagePickerController.sourceType = UIImagePickerControllerSourceType.camera
+                imagePickerController.sourceType = .camera
                 imagePickerController.allowsEditing = true
                 imagePickerController.delegate = self
                 self.present(imagePickerController, animated: true, completion: nil)
@@ -262,15 +271,15 @@ extension EditProfileTableViewController: UIImagePickerControllerDelegate, UINav
             }
         }
         
-        let secondAction = UIAlertAction(title: "Choose photo from library", style: UIAlertActionStyle.default) { (actionTwo) in
+        let secondAction = UIAlertAction(title: "Choose photo from library", style: UIAlertAction.Style.default) { (actionTwo) in
             let imagePickerController = UIImagePickerController()
-            imagePickerController.sourceType = UIImagePickerControllerSourceType.photoLibrary
+            imagePickerController.sourceType = .photoLibrary
             imagePickerController.allowsEditing = true
             imagePickerController.delegate = self
             self.present(imagePickerController, animated: true, completion: nil)
         }
         
-        let thirdAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel)
+        let thirdAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel)
         
         alert.addAction(firstAction)
         alert.addAction(secondAction)
@@ -280,12 +289,12 @@ extension EditProfileTableViewController: UIImagePickerControllerDelegate, UINav
         
     }
     
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         var selectedImageFromPicker: UIImage?
         
-        if let editedImage = info["UIImagePickerControllerEditedImage"] as? UIImage{
+        if let editedImage = info[.editedImage] as? UIImage{
             selectedImageFromPicker = editedImage
-        } else if let originalImage = info["UIImagePickerControllerOriginalImage"] as? UIImage {
+        } else if let originalImage = info[.originalImage] as? UIImage {
             selectedImageFromPicker = originalImage
         }
         
@@ -295,5 +304,4 @@ extension EditProfileTableViewController: UIImagePickerControllerDelegate, UINav
         }
         dismiss(animated: true, completion: nil)
     }
-    
 }

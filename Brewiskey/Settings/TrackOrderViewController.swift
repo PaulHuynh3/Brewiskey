@@ -43,7 +43,7 @@ class TrackOrderViewController: UIViewController, CLLocationManagerDelegate, MKM
         let sourceItem = MKMapItem(placemark: sourcePlacemark)
         let destItem = MKMapItem(placemark: destPlacemark)
         
-        let directionRequest = MKDirectionsRequest()
+        let directionRequest = MKDirections.Request()
         directionRequest.source = sourceItem
         directionRequest.destination = destItem
         directionRequest.transportType = .walking
@@ -56,10 +56,10 @@ class TrackOrderViewController: UIViewController, CLLocationManagerDelegate, MKM
             
             let route = response?.routes[0]
             guard let directionRoute = route?.polyline else {return}
-            self.mapView.add(directionRoute, level: .aboveRoads)
+            self.mapView.addOverlay(directionRoute, level: .aboveRoads)
             
             guard let rect = route?.polyline.boundingMapRect else {return}
-            self.mapView.setRegion(MKCoordinateRegionForMapRect(rect), animated: true)
+            self.mapView.setRegion(MKCoordinateRegion(rect), animated: true)
         }
     }
     
@@ -84,7 +84,7 @@ class TrackOrderViewController: UIViewController, CLLocationManagerDelegate, MKM
         let alertController = UIAlertController(title: "Background Location Access Disabled", message: "Please enable location so we can deliver your product", preferredStyle: .alert)
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         let openAction = UIAlertAction(title: "Open Settings", style: .default) { (openAction) in
-            if let url = URL(string: UIApplicationOpenSettingsURLString) {
+            if let url = URL(string: UIApplication.openSettingsURLString) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
             }
         }
@@ -101,8 +101,8 @@ class TrackOrderViewController: UIViewController, CLLocationManagerDelegate, MKM
     fileprivate func zoomToCurrentLocation() {
         if let coordinateLatitude = locationManager.location?.coordinate.latitude, let coordinateLongtitude = locationManager.location?.coordinate.longitude {
             let userCoordinate = CLLocationCoordinate2D(latitude: coordinateLatitude, longitude: coordinateLongtitude)
-            let span = MKCoordinateSpanMake(0.05, 0.05)
-            let region = MKCoordinateRegionMake(userCoordinate, span)
+            let span = MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05)
+            let region = MKCoordinateRegion(center: userCoordinate, span: span)
             mapView.setRegion(region, animated: true)
         }
     }

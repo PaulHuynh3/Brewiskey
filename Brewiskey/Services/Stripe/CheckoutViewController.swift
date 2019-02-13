@@ -43,7 +43,7 @@ class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
     let buyButton: BuyButton
     let rowHeight: CGFloat = 44
     let productImage = UILabel()
-    let activityIndicator = UIActivityIndicatorView(activityIndicatorStyle: .gray)
+    let activityIndicator = UIActivityIndicatorView(style: .gray)
     let numberFormatter: NumberFormatter
     let shippingString: String
     var product = ""
@@ -147,7 +147,7 @@ class CheckoutViewController: UIViewController, STPPaymentContextDelegate {
         self.view.backgroundColor = self.theme.primaryBackgroundColor
         var red: CGFloat = 0
         self.theme.primaryBackgroundColor.getRed(&red, green: nil, blue: nil, alpha: nil)
-        self.activityIndicator.activityIndicatorViewStyle = red < 0.5 ? .white : .gray
+        self.activityIndicator.style = red < 0.5 ? .white : .gray
         
         self.productImage.font = UIFont.systemFont(ofSize: 30)
         self.view.addSubview(self.totalRow)

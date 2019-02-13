@@ -99,20 +99,20 @@ class Beer {
     
     var singleCanPrice: Double?
     var singleCanContent: Int?
-    var singleCanImageUrl: String?
+    var singleCanImageUrlString: String?
     var singleCanType: String?
     
     var singleBottlePrice: Double?
     var singleBottleContent: Int?
-    var singleBottleImageUrl: String?
+    var singleBottleImageUrlString: String?
     var singleBottleType: String?
     
     var sixPackCanPrice: Double?
-    var sixPackCanImageUrl: String?
+    var sixPackCanImageUrlString: String?
     var sixPackCanType: String?
     
     var sixPackBottlePrice: Double?
-    var sixPackBottleImageUrl: String?
+    var sixPackBottleImageUrlString: String?
     var sixPackBottleType: String?
 }
 

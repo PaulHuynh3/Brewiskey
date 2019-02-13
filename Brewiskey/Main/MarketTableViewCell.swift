@@ -13,36 +13,69 @@ class MarketTableViewCell: UITableViewCell {
     @IBOutlet weak var alcoholImageView: UIImageView!
     @IBOutlet weak var brandNameLabel: UILabel!
     
+    let networkRequest = NetworkRequest()
+    
     func setupBeerNamesAndImages(_ beer: Beer){
-        
-        if let imageUrl = beer.singleBottleImageUrl{
-          alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+        if let imageUrlString = beer.singleBottleImageUrlString{
+            networkRequest.loadImageFromUrl(urlString: imageUrlString) { [weak self] (downloadImage: UIImage?, error: String?) in
+                guard let strongSelf = self else {
+                    return
+                }
+                if let error = error {
+                    print(error)
+                    return
+                }
+                strongSelf.alcoholImageView.image = downloadImage
+            }
         }
         brandNameLabel.text = beer.name
     }
     
     func setupSpiritNamesAndImages(_ spirit: Spirit){
-        
-        if let imageUrl = spirit.mediumBottleImageUrl{
-            alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+        if let imageUrlString = spirit.mediumBottleImageUrl{
+            networkRequest.loadImageFromUrl(urlString: imageUrlString) { [weak self] (downloadImage: UIImage?, error: String?) in
+                guard let strongSelf = self else {
+                    return
+                }
+                if let error = error {
+                    print(error)
+                    return
+                }
+                strongSelf.alcoholImageView.image = downloadImage
+            }
         }
         brandNameLabel.text = spirit.name
     }
     
     func setupWineNamesAndImages(_ wine: Wine){
-        
-        if let imageUrl = wine.imageUrl{
-            alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+        if let imageUrlString = wine.imageUrl {
+            networkRequest.loadImageFromUrl(urlString: imageUrlString) { [weak self] (downloadImage: UIImage?, error: String?) in
+                guard let strongSelf = self else {
+                    return
+                }
+                if let error = error {
+                    print(error)
+                    return
+                }
+                strongSelf.alcoholImageView.image = downloadImage
+            }
         }
         brandNameLabel.text = wine.name
     }
     
     func setupSnackNamesAndImages(_ snack: Snacks){
-        
-        if let imageUrl = snack.imageUrl{
-            alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+        if let imageUrlString = snack.imageUrl {
+            networkRequest.loadImageFromUrl(urlString: imageUrlString) { [weak self] (downloadImage: UIImage?, error: String?) in
+                guard let strongSelf = self else {
+                    return
+                }
+                if let error = error {
+                    print(error)
+                    return
+                }
+                strongSelf.alcoholImageView.image = downloadImage
+            }
         }
         brandNameLabel.text = snack.name
     }
-    
 }

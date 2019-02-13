@@ -14,6 +14,7 @@ class DetailedSelectionViewController: UIViewController {
     var wine: Wine?
     var spirit: Spirit?
     var snack: Snacks?
+    let networkRequest = NetworkRequest()
     
     @IBOutlet weak var alcoholImageView: UIImageView!
     @IBOutlet weak var itemTypeLabel: UILabel!
@@ -55,32 +56,68 @@ class DetailedSelectionViewController: UIViewController {
     fileprivate func showSelectedItem(selection: Int) {
         if selection == 1 {
             if let beer = beer {
-                guard let imageUrl = beer.singleBottleImageUrl else {return}
-                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+                guard let imageUrlString = beer.singleBottleImageUrlString else {return}
+                networkRequest.loadImageFromUrl(urlString: imageUrlString) { [weak self] (downloadImage: UIImage?, error: String?) in
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    if let error = error {
+                        print(error)
+                        return
+                    }
+                    strongSelf.alcoholImageView.image = downloadImage
+                }
                 itemTypeLabel.text = beer.singleBottleType
                 if let beerSingleBottlePrice = beer.singleBottlePrice {
                     priceLabel.text = "\(String(beerSingleBottlePrice))$"
                 }
             }
             if let wine = wine {
-                guard let imageUrl = wine.imageUrl else {return}
-                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+                guard let imageUrlString = wine.imageUrl else {return}
+                networkRequest.loadImageFromUrl(urlString: imageUrlString) { [weak self] (downloadImage: UIImage?, error: String?) in
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    if let error = error {
+                        print(error)
+                        return
+                    }
+                    strongSelf.alcoholImageView.image = downloadImage
+                }
                 itemTypeLabel.text = wine.type
                 if let winePrice = wine.bottlePrice {
                     priceLabel.text = "\(String(winePrice))$"
                 }
             }
             if let spirit = spirit {
-                guard let imageUrl = spirit.smallBottleImageUrl else {return}
-                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+                guard let imageUrlString = spirit.smallBottleImageUrl else {return}
+                networkRequest.loadImageFromUrl(urlString: imageUrlString) { [weak self] (downloadImage: UIImage?, error: String?) in
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    if let error = error {
+                        print(error)
+                        return
+                    }
+                    strongSelf.alcoholImageView.image = downloadImage
+                }
                 itemTypeLabel.text = spirit.smallBottleType
                 if let smallBottlePrice = spirit.smallBottlePrice {
                     priceLabel.text = "\(String(smallBottlePrice))$"
                 }
             }
             if let snack = snack {
-                guard let imageUrl = snack.imageUrl else {return}
-                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+                guard let imageUrlString = snack.imageUrl else {return}
+                networkRequest.loadImageFromUrl(urlString: imageUrlString) { [weak self] (downloadImage: UIImage?, error: String?) in
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    if let error = error {
+                        print(error)
+                        return
+                    }
+                    strongSelf.alcoholImageView.image = downloadImage
+                }
                 itemTypeLabel.text = snack.type
                 if let snackPrice = snack.price {
                     priceLabel.text = "\(String(snackPrice))$"
@@ -90,16 +127,34 @@ class DetailedSelectionViewController: UIViewController {
         
         if selection == 2 {
             if let beer = beer {
-                guard let imageUrl = beer.singleCanImageUrl else {return}
-                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+                guard let imageUrlString = beer.singleCanImageUrlString else {return}
+                networkRequest.loadImageFromUrl(urlString: imageUrlString) { [weak self] (downloadImage: UIImage?, error: String?) in
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    if let error = error {
+                        print(error)
+                        return
+                    }
+                    strongSelf.alcoholImageView.image = downloadImage
+                }
                 itemTypeLabel.text = beer.singleCanType
                 if let beerSingleCanPrice = beer.singleCanPrice {
                     priceLabel.text = String(beerSingleCanPrice)
                 }
             }
             if let spirit = spirit {
-                guard let imageUrl = spirit.mediumBottleImageUrl else {return}
-                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+                guard let imageUrlString = spirit.mediumBottleImageUrl else {return}
+                networkRequest.loadImageFromUrl(urlString: imageUrlString) { [weak self] (downloadImage: UIImage?, error: String?) in
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    if let error = error {
+                        print(error)
+                        return
+                    }
+                    strongSelf.alcoholImageView.image = downloadImage
+                }
                 itemTypeLabel.text = spirit.mediumBottleType
                 if let mediumBottlePrice = spirit.mediumBottlePrice {
                     priceLabel.text = "\(String(mediumBottlePrice))$"
@@ -108,8 +163,17 @@ class DetailedSelectionViewController: UIViewController {
         }
         if selection == 3 {
             if let beer = beer {
-                guard let imageUrl = beer.sixPackBottleImageUrl else {return}
-                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+                guard let imageUrlString = beer.sixPackBottleImageUrlString else {return}
+                networkRequest.loadImageFromUrl(urlString: imageUrlString) { [weak self] (downloadImage: UIImage?, error: String?) in
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    if let error = error {
+                        print(error)
+                        return
+                    }
+                    strongSelf.alcoholImageView.image = downloadImage
+                }
                 itemTypeLabel.text = beer.sixPackBottleType
                 
                 if let sixPackBottlePrice = beer.sixPackBottlePrice {
@@ -117,8 +181,17 @@ class DetailedSelectionViewController: UIViewController {
                 }
             }
             if let spirit = spirit {
-                guard let imageUrl = spirit.mediumBottleImageUrl else {return}
-                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+                guard let imageUrlString = spirit.mediumBottleImageUrl else {return}
+                networkRequest.loadImageFromUrl(urlString: imageUrlString) { [weak self] (downloadImage: UIImage?, error: String?) in
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    if let error = error {
+                        print(error)
+                        return
+                    }
+                    strongSelf.alcoholImageView.image = downloadImage
+                }
                 itemTypeLabel.text = spirit.largeBottleType
                 if let largeBottlePrice = spirit.largeBottlePrice {
                     priceLabel.text = "\(String(largeBottlePrice))$"
@@ -127,8 +200,17 @@ class DetailedSelectionViewController: UIViewController {
         }
         if selection == 4 {
             if let beer = beer {
-                guard let imageUrl = beer.sixPackCanImageUrl else {return}
-                alcoholImageView.loadImagesUsingCacheWithUrlString(urlString: imageUrl)
+                guard let imageUrlString = beer.sixPackCanImageUrlString else {return}
+                networkRequest.loadImageFromUrl(urlString: imageUrlString) { [weak self] (downloadImage: UIImage?, error: String?) in
+                    guard let strongSelf = self else {
+                        return
+                    }
+                    if let error = error {
+                        print(error)
+                        return
+                    }
+                    strongSelf.alcoholImageView.image = downloadImage
+                }
                 itemTypeLabel.text = beer.sixPackCanType
                 if let sixPackCanPrice = beer.sixPackCanPrice {
                     priceLabel.text = String(sixPackCanPrice)
@@ -188,7 +270,7 @@ extension DetailedSelectionViewController {
     fileprivate func addItemToCheckout() {
         if selectionNumber == 1 {
             if let beer = beer {
-                guard let imageUrl = beer.singleBottleImageUrl else {return}
+                guard let imageUrl = beer.singleBottleImageUrlString else {return}
                 guard let itemType = beer.singleBottleType else {return}
                 guard let itemPrice = beer.singleBottlePrice else {return}
                 guard let name = beer.name else {return}
@@ -222,7 +304,7 @@ extension DetailedSelectionViewController {
         }
         if selectionNumber == 2 {
             if let beer = beer {
-                guard let imageUrl = beer.singleCanImageUrl else {return}
+                guard let imageUrl = beer.singleCanImageUrlString else {return}
                 guard let itemType = beer.singleCanType else {return}
                 guard let itemPrice = beer.singleCanPrice else {return}
                 guard let name = beer.name else {return}
@@ -240,7 +322,7 @@ extension DetailedSelectionViewController {
         }
         if selectionNumber == 3 {
             if let beer = beer {
-                guard let imageUrl = beer.sixPackBottleImageUrl else {return}
+                guard let imageUrl = beer.sixPackBottleImageUrlString else {return}
                 guard let itemType = beer.sixPackBottleType else {return}
                 guard let itemPrice = beer.sixPackBottlePrice else {return}
                 guard let name = beer.name else {return}
@@ -259,7 +341,7 @@ extension DetailedSelectionViewController {
         }
         if selectionNumber == 4 {
             if let beer = beer {
-                guard let imageUrl = beer.sixPackCanImageUrl else {return}
+                guard let imageUrl = beer.sixPackCanImageUrlString else {return}
                 guard let itemType = beer.sixPackCanType else {return}
                 guard let itemPrice = beer.sixPackCanPrice else {return}
                 guard let name = beer.name else {return}
