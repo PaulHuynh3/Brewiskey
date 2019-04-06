@@ -9,10 +9,11 @@
 import Foundation
 import UIKit
 import Firebase
+import CodableFirebase
 
 class FirebaseAPI: NSObject {
     
-    class func fetchDatabaseCurrentUser(uid:String, completion:@escaping (_ user:User) -> Void) {
+    class func fetchDatabaseCurrentUser(uid:String, completion: @escaping (_ user:User) -> Void) {
         
         Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
             
@@ -51,7 +52,7 @@ class FirebaseAPI: NSObject {
     }
     
     //fetch all users
-    class func fetchDatabaseUsers(completion:@escaping (_ user: User) -> Void){
+    class func fetchDatabaseUsers(completion:@escaping (_ user: User) -> Void) {
         
         Database.database().reference().child("users").observe(.childAdded, with: { (snapshot) in
             
@@ -68,54 +69,35 @@ class FirebaseAPI: NSObject {
             
         }, withCancel: nil)
     }
-    func fetchAllBeerBrandAndImages(completion:@escaping (_ beer: Beer) -> Void){
-        let beerName = "name"
-        let imageUrl = "imageUrl"
-        let country = "country"
-        let alcoholPercent = "alcoholPercent"
-        let singleCan = "singleCan"
-        let singleBottle = "singleBottle"
-        let sixPackCan = "sixPackCan"
-        let sixPackBottle = "sixPackBottle"
-        let price = "price"
-        let content = "content"
-        let type = "type"
-        Database.database().reference().child("beers").observe(.childAdded, with: { (snapshot) in
-            
-            if let dictionary = snapshot.value as? [String:AnyObject]{
-                let beer = Beer()
-                beer.name = dictionary[beerName] as? String
-                beer.country = dictionary[country] as? String
-                beer.percent = dictionary[alcoholPercent] as? String
-                
-                if let singleCan = dictionary[singleCan] as? NSDictionary{
-                    beer.singleCanPrice = singleCan[price] as? Double
-                    beer.singleCanContent = singleCan[content] as? Int
-                    beer.singleCanImageUrlString = singleCan[imageUrl] as? String
-                    beer.singleCanType = singleCan[type] as? String
-                }
-                if let singleBottle = dictionary[singleBottle] as? NSDictionary{
-                    beer.singleBottlePrice = singleBottle[price] as? Double
-                    beer.singleBottleContent = singleBottle[content] as? Int
-                    beer.singleBottleImageUrlString = singleBottle[imageUrl] as? String
-                    beer.singleBottleType = singleBottle[type] as? String
-                }
-                if let sixPackCan = dictionary[sixPackCan] as? NSDictionary{
-                    beer.sixPackCanPrice = sixPackCan[price] as? Double
-                    beer.sixPackCanImageUrlString = sixPackCan[imageUrl] as? String
-                    beer.sixPackCanType = sixPackCan[type] as? String
-                }
-                if let sixPackBottle = dictionary[sixPackBottle] as? NSDictionary{
-                    beer.sixPackBottlePrice = sixPackBottle[price] as? Double
-                    beer.sixPackBottleImageUrlString = sixPackBottle[imageUrl] as? String
-                    beer.sixPackBottleType = sixPackBottle[type] as? String
-                }
+    
+    func fetchAllBeerBrandAndImages(success: @escaping (_ beer: Beer) -> Void, failure: @escaping (_ error: String?) -> Void) {
+        let beers = "beers"
+        Database.database().reference().child(beers).observe(.childAdded, with: { (snapshot) in
+
+            guard let value = snapshot.value else {
                 DispatchQueue.main.async {
-                    completion(beer)
+                    failure("The value \(beers) is not associated with any value in the database")
+                }
+                return
+            }
+            
+            do {
+                let beer = try FirebaseDecoder().decode(Beer.self, from: value)
+                DispatchQueue.main.async {
+                    success(beer)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    failure("Failed to decode Beer")
                 }
             }
-        }, withCancel: nil)
+        }, withCancel: { (error: Error) in
+            DispatchQueue.main.async {
+               failure(error.localizedDescription)
+            }
+        })
     }
+    
     func fetchAllSpiritBrandAndImages(completion:@escaping (_ spirit: Spirit) -> Void){
         
         Database.database().reference().child("spirits").observe(.childAdded, with: { (snapshot) in
@@ -189,27 +171,6 @@ class FirebaseAPI: NSObject {
                 }
             }
         }, withCancel: nil)
-    }
-    
-    func loadImageFromUrl(url: URL, completion: @escaping (UIImage) -> Void) {
-        let task = URLSession.shared.dataTask(with: url, completionHandler: { (data, response, error) in
-            
-            if let error = error {
-                print(error, #line)
-                return
-            }
-            
-            guard let data = data else {
-                return
-            }
-            
-            DispatchQueue.main.async {
-                if let downloadedImage = UIImage(data: data) {
-                completion(downloadedImage)
-                }
-            }
-        })
-        task.resume()
     }
     
     func fetchItemsInCart(completion:@escaping (_ checkoutItems: CheckoutItem?, _ error: String?) -> Void) {

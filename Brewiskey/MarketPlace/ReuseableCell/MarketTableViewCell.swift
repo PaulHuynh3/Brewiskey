@@ -16,17 +16,15 @@ class MarketTableViewCell: UITableViewCell {
     let networkRequest = NetworkRequest()
     
     func setupBeerNamesAndImages(_ beer: Beer){
-        if let imageUrlString = beer.singleBottleImageUrlString{
-            networkRequest.loadImageFromUrl(urlString: imageUrlString) { [weak self] (downloadImage: UIImage?, error: String?) in
-                guard let strongSelf = self else {
-                    return
-                }
-                if let error = error {
-                    print(error)
-                    return
-                }
-                strongSelf.alcoholImageView.image = downloadImage
+        networkRequest.loadImageFromUrl(urlString: beer.singleBottle.imageUrl) { [weak self] (downloadImage: UIImage?, error: String?) in
+            guard let strongSelf = self else {
+                return
             }
+            if let error = error {
+                print(error)
+                return
+            }
+            strongSelf.alcoholImageView.image = downloadImage
         }
         brandNameLabel.text = beer.name
     }

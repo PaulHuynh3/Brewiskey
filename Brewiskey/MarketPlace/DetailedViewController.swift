@@ -51,7 +51,7 @@ class DetailedViewController: UIViewController {
     
     fileprivate func configureBeerMode() {
         alcoholNameLabel.text = beer?.name
-        if let selectionOneImage = beer?.singleBottleImageUrlString {
+        if let selectionOneImage = beer?.singleBottle.imageUrl {
             networkRequest.loadImageFromUrl(urlString: selectionOneImage) { [weak self] (downloadImage: UIImage?, error: String?) in
                 guard let strongSelf = self else {
                     return
@@ -63,7 +63,7 @@ class DetailedViewController: UIViewController {
                 strongSelf.selectionOneImageview.image = downloadImage
             }
         }
-        if let selectionTwoImage = beer?.singleCanImageUrlString {
+        if let selectionTwoImage = beer?.singleCan.imageUrl {
             networkRequest.loadImageFromUrl(urlString: selectionTwoImage) { [weak self] (downloadImage: UIImage?, error: String?) in
                 guard let strongSelf = self else {
                     return
@@ -75,7 +75,7 @@ class DetailedViewController: UIViewController {
                 strongSelf.selectionTwoImageview.image = downloadImage
             }
         }
-        if let selectionThreeImage = beer?.sixPackBottleImageUrlString {
+        if let selectionThreeImage = beer?.sixPackBottle.imageUrl {
             networkRequest.loadImageFromUrl(urlString: selectionThreeImage) { [weak self] (downloadImage: UIImage?, error: String?) in
                 guard let strongSelf = self else {
                     return
@@ -87,7 +87,7 @@ class DetailedViewController: UIViewController {
                 strongSelf.selectionThreeImageview.image = downloadImage
             }
         }
-        if let selectionFourImage = beer?.sixPackCanImageUrlString {
+        if let selectionFourImage = beer?.sixPackCan.imageUrl {
             networkRequest.loadImageFromUrl(urlString: selectionFourImage) { [weak self] (downloadImage: UIImage?, error: String?) in
                 guard let strongSelf = self else {
                     return

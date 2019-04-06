@@ -73,9 +73,8 @@ class StripeAPI {
         Alamofire.request(stripeCustomerBaseUrl!, method: .post, parameters: params, encoding: URLEncoding.default, headers: authorizationHeader).validate(statusCode: 200..<300).responseJSON{ (response) in
             if let error = response.result.error  {
                 DispatchQueue.main.async {
-                    completion(nil, error.localizedDescription)
                     print(error)
-                    return
+                    completion(nil, error.localizedDescription)
                 }
             }
             if let customerJSON = response.result.value {

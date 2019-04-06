@@ -6,6 +6,7 @@ PODS:
   - Bolts/AppLinks (1.9.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.9.0)
+  - CodableFirebase (0.2.1)
   - FBSDKCoreKit (4.29.0):
     - Bolts (~> 1.7)
   - FBSDKLoginKit (4.29.0):
@@ -94,6 +95,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire
+  - CodableFirebase
   - FBSDKCoreKit
   - FBSDKLoginKit
   - FBSDKShareKit
@@ -110,6 +112,7 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - Bolts
+    - CodableFirebase
     - FBSDKCoreKit
     - FBSDKLoginKit
     - FBSDKShareKit
@@ -134,6 +137,7 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
   Bolts: ac6567323eac61e203f6a9763667d0f711be34c8
+  CodableFirebase: 0bf201991eeec35eb9fcd987d271ea463cf34a80
   FBSDKCoreKit: 6f139173dc63a1deaff4430a55f2fe5bb222d2af
   FBSDKLoginKit: 56a057ca6822535ea0faa25f57a7c41edb697fd4
   FBSDKShareKit: 18a2cd118aef11dd657fe7e8b64bae5c719088b2
@@ -155,6 +159,6 @@ SPEC CHECKSUMS:
   ReachabilitySwift: 6849231cd4e06559f3b9ef4a97a0a0f96d41e09f
   Stripe: 76c203e21555089b708e6cbe972a3e3baf1ab4d8
 
-PODFILE CHECKSUM: 42abe3ad15da92af5afe7e47dcd10ca8c3e39d4c
+PODFILE CHECKSUM: 5d89c47efb619f9744286500e1672ed6c8b6ab5b
 
 COCOAPODS: 1.5.3

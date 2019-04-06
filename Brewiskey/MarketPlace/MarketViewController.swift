@@ -150,7 +150,7 @@ class MarketViewController: UIViewController, UISearchControllerDelegate, UISear
         if beerMode == true {
             searchedBeers.removeAll()
             for specificBeer in beers {
-                if specificBeer.name?.range(of: searchText) != nil {
+                if specificBeer.name.range(of: searchText) != nil {
                     isUsedSearch = true
                     searchedBeers.append(specificBeer)
                     tableView.reloadData()
@@ -196,12 +196,14 @@ class MarketViewController: UIViewController, UISearchControllerDelegate, UISear
 extension MarketViewController {
     
     fileprivate func fetchAllBeerProducts() {
-        FirebaseAPI().fetchAllBeerBrandAndImages{ [weak self] (beer) in
-            DispatchQueue.main.async {
-                self?.beers.append(beer)
-                self?.tableView.reloadData()
+        FirebaseAPI().fetchAllBeerBrandAndImages(success: { (beer: Beer) in
+            self.beers.append(beer)
+            self.tableView.reloadData()
+        }, failure: { (error: String?) in
+            if let error = error {
+                print(error)
             }
-        }
+        })
     }
     fileprivate func fetchAllWineProducts() {
         FirebaseAPI().fetchAllWineBrandAndImages { [weak self] (wine) in

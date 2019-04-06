@@ -15,6 +15,12 @@ class DetailedSelectionViewController: UIViewController {
     var spirit: Spirit?
     var snack: Snacks?
     let networkRequest = NetworkRequest()
+    let detailedSelectionViewModel: DetailedSelectionViewModel
+    
+    required init?(coder aDecoder: NSCoder) {
+        detailedSelectionViewModel = DetailedSelectionViewModel()
+        super.init(coder: aDecoder)
+    }
     
     @IBOutlet weak var alcoholImageView: UIImageView!
     @IBOutlet weak var itemTypeLabel: UILabel!
@@ -56,8 +62,7 @@ class DetailedSelectionViewController: UIViewController {
     fileprivate func showSelectedItem(selection: Int) {
         if selection == 1 {
             if let beer = beer {
-                guard let imageUrlString = beer.singleBottleImageUrlString else {return}
-                networkRequest.loadImageFromUrl(urlString: imageUrlString) { [weak self] (downloadImage: UIImage?, error: String?) in
+                networkRequest.loadImageFromUrl(urlString: beer.singleCan.imageUrl) { [weak self] (downloadImage: UIImage?, error: String?) in
                     guard let strongSelf = self else {
                         return
                     }
@@ -67,10 +72,8 @@ class DetailedSelectionViewController: UIViewController {
                     }
                     strongSelf.alcoholImageView.image = downloadImage
                 }
-                itemTypeLabel.text = beer.singleBottleType
-                if let beerSingleBottlePrice = beer.singleBottlePrice {
-                    priceLabel.text = "\(String(beerSingleBottlePrice))$"
-                }
+                itemTypeLabel.text = beer.singleBottle.type
+                priceLabel.text = "\(String(beer.singleBottle.price))$"
             }
             if let wine = wine {
                 guard let imageUrlString = wine.imageUrl else {return}
@@ -127,7 +130,7 @@ class DetailedSelectionViewController: UIViewController {
         
         if selection == 2 {
             if let beer = beer {
-                guard let imageUrlString = beer.singleCanImageUrlString else {return}
+                let imageUrlString = beer.singleCan.imageUrl
                 networkRequest.loadImageFromUrl(urlString: imageUrlString) { [weak self] (downloadImage: UIImage?, error: String?) in
                     guard let strongSelf = self else {
                         return
@@ -138,10 +141,9 @@ class DetailedSelectionViewController: UIViewController {
                     }
                     strongSelf.alcoholImageView.image = downloadImage
                 }
-                itemTypeLabel.text = beer.singleCanType
-                if let beerSingleCanPrice = beer.singleCanPrice {
-                    priceLabel.text = String(beerSingleCanPrice)
-                }
+                itemTypeLabel.text = beer.singleCan.type
+                priceLabel.text = String(beer.singleCan.price)
+                
             }
             if let spirit = spirit {
                 guard let imageUrlString = spirit.mediumBottleImageUrl else {return}
@@ -163,8 +165,7 @@ class DetailedSelectionViewController: UIViewController {
         }
         if selection == 3 {
             if let beer = beer {
-                guard let imageUrlString = beer.sixPackBottleImageUrlString else {return}
-                networkRequest.loadImageFromUrl(urlString: imageUrlString) { [weak self] (downloadImage: UIImage?, error: String?) in
+                networkRequest.loadImageFromUrl(urlString: beer.sixPackBottle.imageUrl) { [weak self] (downloadImage: UIImage?, error: String?) in
                     guard let strongSelf = self else {
                         return
                     }
@@ -174,11 +175,8 @@ class DetailedSelectionViewController: UIViewController {
                     }
                     strongSelf.alcoholImageView.image = downloadImage
                 }
-                itemTypeLabel.text = beer.sixPackBottleType
-                
-                if let sixPackBottlePrice = beer.sixPackBottlePrice {
-                    priceLabel.text = String(sixPackBottlePrice)
-                }
+                itemTypeLabel.text = beer.sixPackBottle.type
+                priceLabel.text = String(beer.sixPackBottle.price)
             }
             if let spirit = spirit {
                 guard let imageUrlString = spirit.mediumBottleImageUrl else {return}
@@ -200,8 +198,7 @@ class DetailedSelectionViewController: UIViewController {
         }
         if selection == 4 {
             if let beer = beer {
-                guard let imageUrlString = beer.sixPackCanImageUrlString else {return}
-                networkRequest.loadImageFromUrl(urlString: imageUrlString) { [weak self] (downloadImage: UIImage?, error: String?) in
+                networkRequest.loadImageFromUrl(urlString: beer.sixPackCan.imageUrl) { [weak self] (downloadImage: UIImage?, error: String?) in
                     guard let strongSelf = self else {
                         return
                     }
@@ -211,10 +208,8 @@ class DetailedSelectionViewController: UIViewController {
                     }
                     strongSelf.alcoholImageView.image = downloadImage
                 }
-                itemTypeLabel.text = beer.sixPackCanType
-                if let sixPackCanPrice = beer.sixPackCanPrice {
-                    priceLabel.text = String(sixPackCanPrice)
-                }
+                itemTypeLabel.text = beer.sixPackCan.type
+                priceLabel.text = String(beer.sixPackCan.price)
             }
         }
     }
@@ -270,10 +265,10 @@ extension DetailedSelectionViewController {
     fileprivate func addItemToCheckout() {
         if selectionNumber == 1 {
             if let beer = beer {
-                guard let imageUrl = beer.singleBottleImageUrlString else {return}
-                guard let itemType = beer.singleBottleType else {return}
-                guard let itemPrice = beer.singleBottlePrice else {return}
-                guard let name = beer.name else {return}
+                let imageUrl = beer.singleBottle.imageUrl
+                let itemType = beer.singleBottle.type
+                let itemPrice = beer.singleBottle.price
+                let name = beer.name
                 
                 updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price: itemPrice, quantity: Int(currentValue))
             }
@@ -304,10 +299,10 @@ extension DetailedSelectionViewController {
         }
         if selectionNumber == 2 {
             if let beer = beer {
-                guard let imageUrl = beer.singleCanImageUrlString else {return}
-                guard let itemType = beer.singleCanType else {return}
-                guard let itemPrice = beer.singleCanPrice else {return}
-                guard let name = beer.name else {return}
+               let imageUrl = beer.singleCan.imageUrl
+               let itemType = beer.singleCan.type
+               let itemPrice = beer.singleCan.price
+               let name = beer.name
                 
                 updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price: itemPrice, quantity: Int(currentValue))
             }
@@ -322,10 +317,10 @@ extension DetailedSelectionViewController {
         }
         if selectionNumber == 3 {
             if let beer = beer {
-                guard let imageUrl = beer.sixPackBottleImageUrlString else {return}
-                guard let itemType = beer.sixPackBottleType else {return}
-                guard let itemPrice = beer.sixPackBottlePrice else {return}
-                guard let name = beer.name else {return}
+                 let imageUrl = beer.sixPackBottle.imageUrl
+                 let itemType = beer.sixPackBottle.type
+                 let itemPrice = beer.sixPackBottle.price
+                 let name = beer.name
  
                 updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price: itemPrice, quantity: Int(currentValue))
             }
@@ -341,10 +336,10 @@ extension DetailedSelectionViewController {
         }
         if selectionNumber == 4 {
             if let beer = beer {
-                guard let imageUrl = beer.sixPackCanImageUrlString else {return}
-                guard let itemType = beer.sixPackCanType else {return}
-                guard let itemPrice = beer.sixPackCanPrice else {return}
-                guard let name = beer.name else {return}
+                 let imageUrl = beer.sixPackCan.imageUrl
+                 let itemType = beer.sixPackCan.type
+                 let itemPrice = beer.sixPackCan.price
+                 let name = beer.name
                 
                 updateUserCartOnFirebase(name: name, imageUrl: imageUrl, type: itemType, price: itemPrice, quantity: Int(currentValue))
             }

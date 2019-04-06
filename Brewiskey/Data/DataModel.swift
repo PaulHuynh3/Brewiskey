@@ -91,31 +91,6 @@ class Snacks {
     var imageUrl: String?
 }
 
-class Beer {
-    var name: String?
-    var percent: String?
-    var country: String?
-    var shortDescription: String?
-    
-    var singleCanPrice: Double?
-    var singleCanContent: Int?
-    var singleCanImageUrlString: String?
-    var singleCanType: String?
-    
-    var singleBottlePrice: Double?
-    var singleBottleContent: Int?
-    var singleBottleImageUrlString: String?
-    var singleBottleType: String?
-    
-    var sixPackCanPrice: Double?
-    var sixPackCanImageUrlString: String?
-    var sixPackCanType: String?
-    
-    var sixPackBottlePrice: Double?
-    var sixPackBottleImageUrlString: String?
-    var sixPackBottleType: String?
-}
-
 class CheckoutItem {
     var name: String?
     var imageUrl: String?

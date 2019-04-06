@@ -11,7 +11,7 @@ import FBSDKLoginKit
 class FacebookAPI: NSObject {
     
     class func userFacebookData(completion: @escaping (Dictionary<String, Any>)->Void) {
-        if FBSDKAccessToken.current() != nil{
+        if FBSDKAccessToken.current() != nil {
             let graphPath = "me"
             let fields = "fields"
             let parameters = "id, name, first_name, last_name, picture.type(large), email"

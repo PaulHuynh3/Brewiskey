@@ -19,13 +19,8 @@ class NetworkManager: NSObject {
     
     override init() {
         super.init()
-        
-        //initialize reachability
         reachability = Reachability()!
-        
-        //register an observer for the network status
         NotificationCenter.default.addObserver(self, selector: #selector(networkStatusChanged(_:)), name: .reachabilityChanged, object: reachability)
-        
         do {
             //start network status notifier
             try reachability.startNotifier()
